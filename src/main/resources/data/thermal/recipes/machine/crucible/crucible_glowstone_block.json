@@ -1,0 +1,13 @@
+{
+  "type": "thermal:crucible",
+  "ingredient": {
+    "item": "minecraft:glowstone"
+  },
+  "result": [
+    {
+      "fluid": "thermal:glowstone",
+      "amount": 1000
+    }
+  ],
+  "energy": 80000
+}

@@ -1,0 +1,31 @@
+{
+  "type": "thermal:smelter",
+  "ingredients": [
+    {
+      "tag": "forge:obsidian",
+      "count": 1
+    },
+    {
+      "value": [
+        {
+          "tag": "forge:gems/quartz"
+        },
+        {
+          "tag": "forge:dusts/quartz"
+        }
+      ],
+      "count": 1
+    },
+    {
+      "tag": "forge:sand",
+      "count": 1
+    }
+  ],
+  "result": [
+    {
+      "item": "thermal:obsidian_glass",
+      "count": 2
+    }
+  ],
+  "energy": 4800
+}

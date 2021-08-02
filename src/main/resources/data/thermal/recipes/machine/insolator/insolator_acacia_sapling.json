@@ -1,0 +1,18 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "minecraft:acacia_sapling"
+  },
+  "result": [
+    {
+      "item": "minecraft:acacia_log",
+      "chance": 6.0
+    },
+    {
+      "item": "minecraft:acacia_sapling",
+      "chance": 1.1
+    }
+  ],
+  "energy_mod": 3.0,
+  "water_mod": 3.0
+}

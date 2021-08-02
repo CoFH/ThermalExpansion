@@ -1,0 +1,19 @@
+{
+  "type": "thermal:press",
+  "ingredients": [
+    {
+      "item": "minecraft:melon",
+      "count": 1
+    },
+    {
+      "item": "thermal:press_unpacking_die"
+    }
+  ],
+  "result": [
+    {
+      "item": "minecraft:melon_slice",
+      "count": 9
+    }
+  ],
+  "energy": 400
+}

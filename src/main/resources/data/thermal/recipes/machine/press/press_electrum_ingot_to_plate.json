@@ -1,0 +1,11 @@
+{
+  "type": "thermal:press",
+  "ingredient": {
+    "tag": "forge:ingots/electrum"
+  },
+  "result": [
+    {
+      "item": "thermal:electrum_plate"
+    }
+  ]
+}

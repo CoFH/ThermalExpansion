@@ -1,0 +1,19 @@
+{
+  "type": "thermal:press",
+  "ingredients": [
+    {
+      "item": "minecraft:honeycomb_block",
+      "count": 1
+    },
+    {
+      "item": "thermal:press_unpacking_die"
+    }
+  ],
+  "result": [
+    {
+      "item": "minecraft:honeycomb",
+      "count": 4
+    }
+  ],
+  "energy": 400
+}

@@ -1,0 +1,18 @@
+{
+  "type": "thermal:press",
+  "ingredients": [
+    {
+      "tag": "forge:nuggets/copper",
+      "count": 3
+    },
+    {
+      "item": "thermal:press_coin_die"
+    }
+  ],
+  "result": [
+    {
+      "item": "thermal:copper_coin"
+    }
+  ],
+  "energy": 800
+}

@@ -1,0 +1,23 @@
+{
+  "type": "thermal:pulverizer",
+  "ingredient": {
+    "value": [
+      {
+        "item": "minecraft:granite"
+      },
+      {
+        "item": "minecraft:polished_granite"
+      }
+    ]
+  },
+  "result": [
+    {
+      "item": "minecraft:cobblestone"
+    },
+    {
+      "item": "thermal:quartz_dust",
+      "count": 2
+    }
+  ],
+  "experience": 0.1
+}

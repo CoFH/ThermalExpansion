@@ -1,0 +1,22 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "minecraft:oak_sapling"
+  },
+  "result": [
+    {
+      "item": "minecraft:oak_log",
+      "chance": 6.0
+    },
+    {
+      "item": "minecraft:oak_sapling",
+      "chance": 1.1
+    },
+    {
+      "item": "minecraft:apple",
+      "chance": 0.5
+    }
+  ],
+  "energy_mod": 3.0,
+  "water_mod": 3.0
+}

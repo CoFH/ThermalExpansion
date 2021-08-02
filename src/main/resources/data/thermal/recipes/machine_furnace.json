@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    "YCY",
+    "IPI"
+  ],
+  "key": {
+    "C": {
+      "item": "thermal:machine_frame"
+    },
+    "I": {
+      "tag": "forge:gears/copper"
+    },
+    "P": {
+      "item": "thermal:rf_coil"
+    },
+    "X": {
+      "tag": "forge:dusts/redstone"
+    },
+    "Y": {
+      "item": "minecraft:bricks"
+    }
+  },
+  "result": {
+    "item": "thermal:machine_furnace"
+  }
+}

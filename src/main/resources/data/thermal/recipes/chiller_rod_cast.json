@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " P ",
+    "PXP",
+    " P "
+  ],
+  "key": {
+    "P": {
+      "tag": "forge:plates/bronze"
+    },
+    "X": {
+      "item": "minecraft:blaze_rod"
+    }
+  },
+  "result": {
+    "item": "thermal:chiller_rod_cast"
+  }
+}

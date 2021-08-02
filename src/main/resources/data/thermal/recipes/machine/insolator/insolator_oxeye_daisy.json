@@ -1,0 +1,12 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "minecraft:oxeye_daisy"
+  },
+  "result": [
+    {
+      "item": "minecraft:oxeye_daisy",
+      "chance": 2.0
+    }
+  ]
+}

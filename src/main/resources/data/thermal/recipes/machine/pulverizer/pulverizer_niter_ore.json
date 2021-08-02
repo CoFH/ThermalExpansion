@@ -1,0 +1,13 @@
+{
+  "type": "thermal:pulverizer",
+  "ingredient": {
+    "tag": "forge:ores/niter"
+  },
+  "result": [
+    {
+      "item": "thermal:niter",
+      "chance": 6.5
+    }
+  ],
+  "experience": 0.5
+}

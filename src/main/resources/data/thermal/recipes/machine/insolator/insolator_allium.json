@@ -1,0 +1,12 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "minecraft:allium"
+  },
+  "result": [
+    {
+      "item": "minecraft:allium",
+      "chance": 2.0
+    }
+  ]
+}

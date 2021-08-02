@@ -1,0 +1,17 @@
+{
+  "type": "thermal:bottler",
+  "ingredients": [
+    {
+      "item": "minecraft:black_concrete_powder"
+    },
+    {
+      "fluid": "minecraft:water",
+      "amount": 1000
+    }
+  ],
+  "result": [
+    {
+      "item": "minecraft:black_concrete"
+    }
+  ]
+}

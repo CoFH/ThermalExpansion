@@ -1,0 +1,19 @@
+{
+  "type": "thermal:chiller",
+  "ingredients": [
+    {
+      "fluid": "thermal:ender",
+      "amount": 250
+    },
+    {
+      "item": "thermal:chiller_ball_cast"
+    }
+  ],
+  "result": [
+    {
+      "item": "minecraft:ender_pearl",
+      "count": 1
+    }
+  ],
+  "energy": 20000
+}

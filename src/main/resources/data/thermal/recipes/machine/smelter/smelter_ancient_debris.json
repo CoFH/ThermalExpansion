@@ -1,0 +1,18 @@
+{
+  "type": "thermal:smelter",
+  "ingredient": {
+    "item": "minecraft:ancient_debris"
+  },
+  "result": [
+    {
+      "item": "minecraft:netherite_scrap",
+      "count": 2
+    },
+    {
+      "item": "thermal:rich_slag",
+      "chance": 0.2,
+      "locked": true
+    }
+  ],
+  "experience": 2.0
+}

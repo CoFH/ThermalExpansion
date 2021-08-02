@@ -1,0 +1,9 @@
+{
+  "parent": "thermal:block/dynamo_stirling",
+  "textures": {
+    "top": "thermal:block/dynamos/dynamo_stirling_active",
+    "side": "thermal:block/dynamos/dynamo_stirling_side_active",
+    "bottom": "thermal:block/dynamos/dynamo_stirling_active",
+    "coil": "thermal:block/dynamos/dynamo_coil_rf_active"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "type": "thermal:smelter",
+  "ingredients": [
+    {
+      "item": "thermal:rubber",
+      "count": 2
+    },
+    {
+      "value": [
+        {
+          "tag": "forge:gems/sulfur"
+        },
+        {
+          "tag": "forge:dusts/sulfur"
+        }
+      ],
+      "count": 1
+    }
+  ],
+  "result": [
+    {
+      "item": "thermal:cured_rubber",
+      "count": 4
+    }
+  ]
+}

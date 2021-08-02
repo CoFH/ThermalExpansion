@@ -1,0 +1,11 @@
+{
+  "type": "thermal:smelter_catalyst",
+  "ingredient": {
+    "item": "minecraft:blaze_powder"
+  },
+  "primary_mod": 1.25,
+  "secondary_mod": 3.0,
+  "energy_mod": 0.25,
+  "min_chance": 0.20,
+  "use_chance": 0.50
+}

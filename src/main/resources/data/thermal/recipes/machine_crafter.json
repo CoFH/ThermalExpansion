@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    "YCY",
+    "IPI"
+  ],
+  "key": {
+    "C": {
+      "item": "thermal:machine_frame"
+    },
+    "I": {
+      "tag": "forge:gears/copper"
+    },
+    "P": {
+      "item": "thermal:rf_coil"
+    },
+    "X": {
+      "item": "minecraft:crafting_table"
+    },
+    "Y": {
+      "tag": "forge:ingots/tin"
+    }
+  },
+  "result": {
+    "item": "thermal:machine_crafter"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "thermal:crucible",
+  "ingredient": {
+    "tag": "forge:dusts/glowstone"
+  },
+  "result": [
+    {
+      "fluid": "thermal:glowstone",
+      "amount": 250
+    }
+  ],
+  "energy": 80000
+}

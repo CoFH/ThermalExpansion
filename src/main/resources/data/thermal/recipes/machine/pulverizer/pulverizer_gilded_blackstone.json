@@ -1,0 +1,13 @@
+{
+  "type": "thermal:pulverizer",
+  "ingredient": {
+    "item": "gilded_blackstone"
+  },
+  "result": [
+    {
+      "item": "minecraft:gold_nugget",
+      "chance": 7.5
+    }
+  ],
+  "experience": 0.2
+}

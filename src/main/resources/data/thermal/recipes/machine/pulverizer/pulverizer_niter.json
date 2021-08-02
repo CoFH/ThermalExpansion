@@ -1,0 +1,12 @@
+{
+  "type": "thermal:pulverizer",
+  "ingredient": {
+    "tag": "forge:gems/niter"
+  },
+  "result": [
+    {
+      "item": "thermal:niter_dust",
+      "count": 1
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "minecraft:cactus"
+  },
+  "result": [
+    {
+      "item": "minecraft:cactus",
+      "chance": 2.0
+    }
+  ],
+  "energy_mod": 1.5,
+  "water_mod": 0.5
+}

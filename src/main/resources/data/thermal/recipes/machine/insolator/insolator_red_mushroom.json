@@ -1,0 +1,14 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "minecraft:red_mushroom"
+  },
+  "result": [
+    {
+      "item": "minecraft:red_mushroom",
+      "chance": 2.0
+    }
+  ],
+  "energy_mod": 0.5,
+  "water_mod": 1.5
+}

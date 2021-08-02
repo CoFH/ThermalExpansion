@@ -1,0 +1,13 @@
+{
+  "type": "thermal:chiller",
+  "ingredient": {
+    "fluid": "minecraft:lava",
+    "amount": 1000
+  },
+  "result": [
+    {
+      "item": "minecraft:obsidian"
+    }
+  ],
+  "energy": 8000
+}

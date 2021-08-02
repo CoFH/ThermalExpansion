@@ -1,0 +1,17 @@
+{
+  "type": "thermal:pulverizer_recycle",
+  "ingredient": {
+    "tag": "forge:tools/diamond"
+  },
+  "result": [
+    {
+      "item": "minecraft:diamond",
+      "count": 1
+    },
+    {
+      "item": "thermal:sawdust",
+      "count": 1
+    }
+  ],
+  "experience": 0.5
+}

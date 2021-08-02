@@ -1,0 +1,12 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "minecraft:sugar_cane"
+  },
+  "result": [
+    {
+      "item": "minecraft:sugar_cane",
+      "chance": 2.0
+    }
+  ]
+}

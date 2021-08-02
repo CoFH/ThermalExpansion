@@ -1,0 +1,19 @@
+{
+  "type": "thermal:chiller",
+  "ingredients": [
+    {
+      "fluid": "minecraft:water",
+      "amount": 500
+    },
+    {
+      "item": "thermal:chiller_ball_cast"
+    }
+  ],
+  "result": [
+    {
+      "item": "minecraft:snowball",
+      "count": 4
+    }
+  ],
+  "energy": 1000
+}

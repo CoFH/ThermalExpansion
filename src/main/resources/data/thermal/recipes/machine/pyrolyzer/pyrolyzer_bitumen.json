@@ -1,0 +1,21 @@
+{
+  "type": "thermal:pyrolyzer",
+  "ingredient": {
+    "item": "thermal:bitumen"
+  },
+  "result": [
+    {
+      "item": "thermal:coal_coke"
+    },
+    {
+      "item": "thermal:tar",
+      "chance": 0.50
+    },
+    {
+      "fluid": "thermal:heavy_oil",
+      "amount": 50
+    }
+  ],
+  "energy": 4000,
+  "experience": 0.15
+}

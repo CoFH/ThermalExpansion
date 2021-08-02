@@ -1,0 +1,12 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "minecraft:kelp"
+  },
+  "result": [
+    {
+      "item": "minecraft:kelp",
+      "chance": 2.0
+    }
+  ]
+}

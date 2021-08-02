@@ -1,0 +1,13 @@
+{
+  "type": "thermal:smelter",
+  "ingredient": {
+    "tag": "forge:dusts/iron"
+  },
+  "result": [
+    {
+      "item": "thermal:iron_ingot",
+      "count": 1
+    }
+  ],
+  "energy_mod": 0.5
+}

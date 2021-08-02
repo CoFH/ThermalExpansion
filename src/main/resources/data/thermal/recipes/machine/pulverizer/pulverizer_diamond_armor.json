@@ -1,0 +1,13 @@
+{
+  "type": "thermal:pulverizer_recycle",
+  "ingredient": {
+    "tag": "forge:armor/diamond"
+  },
+  "result": [
+    {
+      "item": "minecraft:diamond",
+      "count": 3
+    }
+  ],
+  "experience": 1.5
+}

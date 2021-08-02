@@ -1,0 +1,12 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "minecraft:twisting_vines"
+  },
+  "result": [
+    {
+      "item": "minecraft:twisting_vines",
+      "chance": 2.0
+    }
+  ]
+}

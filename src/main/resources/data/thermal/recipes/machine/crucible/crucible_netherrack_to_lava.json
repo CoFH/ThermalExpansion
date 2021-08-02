@@ -1,0 +1,13 @@
+{
+  "type": "thermal:crucible",
+  "ingredient": {
+    "item": "minecraft:netherrack"
+  },
+  "result": [
+    {
+      "fluid": "minecraft:lava",
+      "amount": 1000
+    }
+  ],
+  "energy": 60000
+}

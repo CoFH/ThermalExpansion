@@ -1,0 +1,11 @@
+{
+  "type": "thermal:press",
+  "ingredient": {
+    "tag": "forge:ingots/iron"
+  },
+  "result": [
+    {
+      "item": "thermal:iron_plate"
+    }
+  ]
+}

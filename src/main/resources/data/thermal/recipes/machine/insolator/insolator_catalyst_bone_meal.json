@@ -1,0 +1,11 @@
+{
+  "type": "thermal:insolator_catalyst",
+  "ingredient": {
+    "item": "minecraft:bone_meal"
+  },
+  "primary_mod": 1.5,
+  "secondary_mod": 1.5,
+  "energy_mod": 0.8,
+  "min_chance": 0.1,
+  "use_chance": 0.5
+}

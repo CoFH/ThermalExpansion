@@ -1,0 +1,12 @@
+{
+  "type": "thermal:pulverizer",
+  "ingredient": {
+    "tag": "forge:gems/sapphire"
+  },
+  "result": [
+    {
+      "item": "thermal:sapphire_dust",
+      "count": 1
+    }
+  ]
+}

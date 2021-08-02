@@ -1,0 +1,12 @@
+{
+  "type": "thermal:centrifuge",
+  "ingredient": {
+    "item": "minecraft:honeycomb"
+  },
+  "result": [
+    {
+      "fluid": "cofh_core:honey",
+      "amount": 100
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "type": "thermal:crucible",
+  "ingredient": {
+    "item": "minecraft:stone"
+  },
+  "result": [
+    {
+      "fluid": "minecraft:lava",
+      "amount": 1000
+    }
+  ],
+  "energy": 200000
+}

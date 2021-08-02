@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " P ",
+    "PXP",
+    " P "
+  ],
+  "key": {
+    "P": {
+      "tag": "forge:plates/invar"
+    },
+    "X": {
+      "tag": "forge:gems/emerald"
+    }
+  },
+  "result": {
+    "item": "thermal:press_coin_die"
+  }
+}

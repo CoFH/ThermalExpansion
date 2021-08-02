@@ -1,0 +1,17 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "minecraft:wheat_seeds"
+  },
+  "result": [
+    {
+      "item": "minecraft:wheat",
+      "chance": 2.0
+    },
+    {
+      "item": "minecraft:wheat_seeds",
+      "chance": 1.1
+    }
+  ],
+  "water_mod": 0.5
+}

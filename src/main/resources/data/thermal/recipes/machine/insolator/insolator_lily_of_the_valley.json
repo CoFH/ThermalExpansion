@@ -1,0 +1,12 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "minecraft:lily_of_the_valley"
+  },
+  "result": [
+    {
+      "item": "minecraft:lily_of_the_valley",
+      "chance": 2.0
+    }
+  ]
+}

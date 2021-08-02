@@ -1,0 +1,12 @@
+{
+  "type": "thermal:pulverizer",
+  "ingredient": {
+    "tag": "forge:gems/ruby"
+  },
+  "result": [
+    {
+      "item": "thermal:ruby_dust",
+      "count": 1
+    }
+  ]
+}

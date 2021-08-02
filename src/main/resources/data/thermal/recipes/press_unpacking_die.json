@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "C I",
+    " X ",
+    "I C"
+  ],
+  "key": {
+    "C": {
+      "tag": "forge:plates/constantan"
+    },
+    "I": {
+      "tag": "forge:plates/invar"
+    },
+    "X": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "result": {
+    "item": "thermal:press_unpacking_die"
+  }
+}

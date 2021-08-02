@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " P ",
+    "PXP",
+    " P "
+  ],
+  "key": {
+    "P": {
+      "tag": "forge:plates/bronze"
+    },
+    "X": {
+      "item": "minecraft:magma_cream"
+    }
+  },
+  "result": {
+    "item": "thermal:chiller_ball_cast"
+  }
+}

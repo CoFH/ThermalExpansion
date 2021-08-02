@@ -1,0 +1,18 @@
+{
+  "type": "thermal:refinery",
+  "ingredient": {
+    "fluid": "thermal:sap",
+    "amount": 1000
+  },
+  "result": [
+    {
+      "fluid": "thermal:syrup",
+      "amount": 50
+    },
+    {
+      "fluid": "minecraft:water",
+      "amount": 950
+    }
+  ],
+  "energy": 4000
+}

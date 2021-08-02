@@ -1,0 +1,6 @@
+{
+  "parent": "thermal:block/machine_smelter",
+  "textures": {
+    "north": "thermal:block/machines/machine_smelter_active"
+  }
+}

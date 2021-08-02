@@ -1,0 +1,13 @@
+{
+  "type": "thermal:centrifuge",
+  "ingredient": {
+    "item": "minecraft:sunflower"
+  },
+  "result": [
+    {
+      "item": "minecraft:yellow_dye",
+      "count": 6
+    }
+  ],
+  "energy": 3200
+}

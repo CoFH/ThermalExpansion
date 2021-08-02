@@ -1,0 +1,13 @@
+{
+  "type": "thermal:centrifuge",
+  "ingredient": {
+    "item": "minecraft:wither_rose"
+  },
+  "result": [
+    {
+      "item": "minecraft:black_dye",
+      "count": 3
+    }
+  ],
+  "energy": 1600
+}

@@ -1,0 +1,13 @@
+{
+  "type": "thermal:centrifuge",
+  "ingredient": {
+    "item": "minecraft:allium"
+  },
+  "result": [
+    {
+      "item": "minecraft:magenta_dye",
+      "count": 3
+    }
+  ],
+  "energy": 1600
+}

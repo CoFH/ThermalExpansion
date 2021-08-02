@@ -1,0 +1,12 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "minecraft:rose_bush"
+  },
+  "result": [
+    {
+      "item": "minecraft:rose_bush",
+      "chance": 2.0
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "thermal:block/machine_pulverizer",
+  "textures": {
+    "north": "thermal:block/machines/machine_pulverizer_active"
+  }
+}

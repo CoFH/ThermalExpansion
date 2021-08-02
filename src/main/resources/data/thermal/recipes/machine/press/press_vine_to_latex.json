@@ -1,0 +1,15 @@
+{
+  "type": "thermal:press",
+  "ingredients": [
+    {
+      "item": "minecraft:vine"
+    }
+  ],
+  "result": [
+    {
+      "fluid": "thermal:latex",
+      "amount": 50
+    }
+  ],
+  "energy": 400
+}

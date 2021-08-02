@@ -1,0 +1,14 @@
+{
+  "type": "thermal:centrifuge",
+  "ingredient": {
+    "item": "cofh_core:ectoplasm"
+  },
+  "result": [
+    {
+      "item": "minecraft:slime_ball"
+    },
+    {
+      "item": "minecraft:ghast_tear"
+    }
+  ]
+}

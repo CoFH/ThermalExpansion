@@ -1,0 +1,22 @@
+{
+  "type": "thermal:refinery",
+  "ingredient": {
+    "fluid": "thermal:crude_oil",
+    "amount": 100
+  },
+  "result": [
+    {
+      "fluid": "thermal:heavy_oil",
+      "amount": 40
+    },
+    {
+      "fluid": "thermal:light_oil",
+      "amount": 60
+    },
+    {
+      "item": "thermal:bitumen",
+      "chance": 0.10
+    }
+  ],
+  "energy": 6000
+}

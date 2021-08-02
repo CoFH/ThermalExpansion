@@ -1,0 +1,16 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "minecraft:potato"
+  },
+  "result": [
+    {
+      "item": "minecraft:potato",
+      "chance": 2.5
+    },
+    {
+      "item": "minecraft:poisonous_potato",
+      "chance": 0.05
+    }
+  ]
+}

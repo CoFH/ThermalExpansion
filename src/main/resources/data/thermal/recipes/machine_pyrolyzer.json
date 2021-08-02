@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    "YCY",
+    "IPI"
+  ],
+  "key": {
+    "C": {
+      "item": "thermal:machine_frame"
+    },
+    "I": {
+      "tag": "forge:gears/constantan"
+    },
+    "P": {
+      "item": "thermal:rf_coil"
+    },
+    "X": {
+      "item": "minecraft:blaze_rod"
+    },
+    "Y": {
+      "item": "minecraft:nether_bricks"
+    }
+  },
+  "result": {
+    "item": "thermal:machine_pyrolyzer"
+  }
+}

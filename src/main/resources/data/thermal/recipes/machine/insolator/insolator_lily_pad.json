@@ -1,0 +1,12 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "minecraft:lily_pad"
+  },
+  "result": [
+    {
+      "item": "minecraft:lily_pad",
+      "chance": 2.0
+    }
+  ]
+}

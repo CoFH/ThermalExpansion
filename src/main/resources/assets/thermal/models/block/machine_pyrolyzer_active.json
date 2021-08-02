@@ -1,0 +1,6 @@
+{
+  "parent": "thermal:block/machine_pyrolyzer",
+  "textures": {
+    "north": "thermal:block/machines/machine_pyrolyzer_active"
+  }
+}

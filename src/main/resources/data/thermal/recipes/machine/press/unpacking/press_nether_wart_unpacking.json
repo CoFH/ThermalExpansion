@@ -1,0 +1,28 @@
+{
+  "type": "thermal:press",
+  "ingredients": [
+    {
+      "item": "minecraft:nether_wart_block",
+      "count": 1
+    },
+    {
+      "item": "thermal:press_unpacking_die"
+    }
+  ],
+  "result": [
+    {
+      "item": "minecraft:nether_wart",
+      "count": 9
+    }
+  ],
+  "energy": 400,
+  "conditions": [
+    {
+      "type": "forge:not",
+      "value": {
+        "type": "quark:flag",
+        "flag": "nether_wart_sack"
+      }
+    }
+  ]
+}

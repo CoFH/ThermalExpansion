@@ -1,0 +1,56 @@
+{
+  "variants": {
+    "facing=north,active=false": {
+      "model": "thermal:block/dynamo_stirling",
+      "x": 90
+    },
+    "facing=east,active=false": {
+      "model": "thermal:block/dynamo_stirling",
+      "x": 90,
+      "y": 90
+    },
+    "facing=south,active=false": {
+      "model": "thermal:block/dynamo_stirling",
+      "x": 90,
+      "y": 180
+    },
+    "facing=west,active=false": {
+      "model": "thermal:block/dynamo_stirling",
+      "x": 90,
+      "y": 270
+    },
+    "facing=up,active=false": {
+      "model": "thermal:block/dynamo_stirling"
+    },
+    "facing=down,active=false": {
+      "model": "thermal:block/dynamo_stirling",
+      "x": 180
+    },
+    "facing=north,active=true": {
+      "model": "thermal:block/dynamo_stirling_active",
+      "x": 90
+    },
+    "facing=east,active=true": {
+      "model": "thermal:block/dynamo_stirling_active",
+      "x": 90,
+      "y": 90
+    },
+    "facing=south,active=true": {
+      "model": "thermal:block/dynamo_stirling_active",
+      "x": 90,
+      "y": 180
+    },
+    "facing=west,active=true": {
+      "model": "thermal:block/dynamo_stirling_active",
+      "x": 90,
+      "y": 270
+    },
+    "facing=up,active=true": {
+      "model": "thermal:block/dynamo_stirling_active"
+    },
+    "facing=down,active=true": {
+      "model": "thermal:block/dynamo_stirling_active",
+      "x": 180
+    }
+  }
+}

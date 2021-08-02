@@ -1,0 +1,11 @@
+{
+  "type": "thermal:insolator_catalyst",
+  "ingredient": {
+    "item": "thermal:phytogro"
+  },
+  "primary_mod": 3.0,
+  "secondary_mod": 3.0,
+  "energy_mod": 0.8,
+  "min_chance": 0.75,
+  "use_chance": 0.75
+}

@@ -1,0 +1,17 @@
+{
+  "type": "thermal:centrifuge",
+  "ingredient": {
+    "tag": "forge:dusts/bronze",
+    "count": 4
+  },
+  "result": [
+    {
+      "item": "thermal:copper_dust",
+      "count": 3
+    },
+    {
+      "item": "thermal:tin_dust"
+    }
+  ],
+  "energy": 4000
+}

@@ -1,0 +1,13 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "minecraft:nether_wart"
+  },
+  "result": [
+    {
+      "item": "minecraft:nether_wart",
+      "chance": 2.0
+    }
+  ],
+  "energy_mod": 1.5
+}

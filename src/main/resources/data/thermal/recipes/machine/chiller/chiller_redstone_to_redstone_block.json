@@ -1,0 +1,13 @@
+{
+  "type": "thermal:chiller",
+  "ingredient": {
+    "fluid": "thermal:redstone",
+    "amount": 900
+  },
+  "result": [
+    {
+      "item": "minecraft:redstone_block"
+    }
+  ],
+  "energy": 72000
+}

@@ -1,0 +1,13 @@
+{
+  "type": "thermal:crucible",
+  "ingredient": {
+    "tag": "forge:storage_blocks/redstone"
+  },
+  "result": [
+    {
+      "fluid": "thermal:redstone",
+      "amount": 900
+    }
+  ],
+  "energy": 72000
+}

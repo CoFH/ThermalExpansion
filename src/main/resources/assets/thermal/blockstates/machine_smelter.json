@@ -1,0 +1,36 @@
+{
+  "variants": {
+    "facing=north,active=false": {
+      "model": "thermal:block/machine_smelter"
+    },
+    "facing=east,active=false": {
+      "model": "thermal:block/machine_smelter",
+      "y": 90
+    },
+    "facing=south,active=false": {
+      "model": "thermal:block/machine_smelter",
+      "y": 180
+    },
+    "facing=west,active=false": {
+      "model": "thermal:block/machine_smelter",
+      "y": 270
+    },
+
+    "facing=north,active=true": {
+      "model": "thermal:block/machine_smelter_active"
+    },
+    "facing=east,active=true": {
+      "model": "thermal:block/machine_smelter_active",
+      "y": 90
+    },
+    "facing=south,active=true": {
+      "model": "thermal:block/machine_smelter_active",
+      "y": 180
+    },
+    "facing=west,active=true": {
+      "model": "thermal:block/machine_smelter_active",
+      "y": 270
+    }
+
+  }
+}

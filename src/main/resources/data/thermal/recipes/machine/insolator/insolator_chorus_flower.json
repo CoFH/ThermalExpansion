@@ -1,0 +1,18 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "minecraft:chorus_flower"
+  },
+  "result": [
+    {
+      "item": "minecraft:chorus_fruit",
+      "chance": 1.1
+    },
+    {
+      "item": "minecraft:chorus_flower",
+      "chance": 1.1
+    }
+  ],
+  "energy_mod": 2.0,
+  "water_mod": 2.0
+}

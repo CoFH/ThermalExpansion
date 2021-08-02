@@ -1,0 +1,6 @@
+{
+  "parent": "thermal:block/machine_crucible",
+  "textures": {
+    "north": "thermal:block/machines/machine_crucible_active"
+  }
+}

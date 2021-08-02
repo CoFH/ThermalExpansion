@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " C ",
+    "IGI",
+    "YXY"
+  ],
+  "key": {
+    "C": {
+      "item": "thermal:rf_coil"
+    },
+    "I": {
+      "tag": "forge:ingots/iron"
+    },
+    "G": {
+      "tag": "forge:gears/gold"
+    },
+    "X": {
+      "tag": "forge:dusts/redstone"
+    },
+    "Y": {
+      "tag": "forge:gems/lapis"
+    }
+  },
+  "result": {
+    "item": "thermal:dynamo_lapidary"
+  }
+}

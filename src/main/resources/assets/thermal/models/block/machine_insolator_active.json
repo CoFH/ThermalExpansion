@@ -1,0 +1,6 @@
+{
+  "parent": "thermal:block/machine_insolator",
+  "textures": {
+    "north": "thermal:block/machines/machine_insolator_active"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "thermal:smelter",
+  "ingredients": [
+    {
+      "item": "thermal:obsidian_glass",
+      "count": 2
+    },
+    {
+      "value": [
+        {
+          "tag": "forge:ingots/lumium"
+        },
+        {
+          "tag": "forge:dusts/lumium"
+        }
+      ],
+      "count": 1
+    }
+  ],
+  "result": [
+    {
+      "item": "thermal:lumium_glass",
+      "count": 2
+    }
+  ],
+  "energy": 4800
+}

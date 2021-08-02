@@ -1,0 +1,12 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "minecraft:pink_tulip"
+  },
+  "result": [
+    {
+      "item": "minecraft:pink_tulip",
+      "chance": 2.0
+    }
+  ]
+}

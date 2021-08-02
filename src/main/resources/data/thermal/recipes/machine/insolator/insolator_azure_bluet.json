@@ -1,0 +1,12 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "minecraft:azure_bluet"
+  },
+  "result": [
+    {
+      "item": "minecraft:azure_bluet",
+      "chance": 2.0
+    }
+  ]
+}

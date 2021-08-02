@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    "YCY",
+    "IPI"
+  ],
+  "key": {
+    "C": {
+      "item": "thermal:machine_frame"
+    },
+    "I": {
+      "tag": "forge:gears/invar"
+    },
+    "P": {
+      "item": "thermal:rf_coil"
+    },
+    "X": {
+      "item": "minecraft:blast_furnace"
+    },
+    "Y": {
+      "tag": "forge:sand"
+    }
+  },
+  "result": {
+    "item": "thermal:machine_smelter"
+  }
+}

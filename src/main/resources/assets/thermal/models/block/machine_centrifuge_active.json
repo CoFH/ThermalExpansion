@@ -1,0 +1,6 @@
+{
+  "parent": "thermal:block/machine_base",
+  "textures": {
+    "north": "thermal:block/machines/machine_centrifuge_active"
+  }
+}

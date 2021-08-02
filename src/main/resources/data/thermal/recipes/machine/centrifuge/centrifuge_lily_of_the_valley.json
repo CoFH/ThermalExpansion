@@ -1,0 +1,13 @@
+{
+  "type": "thermal:centrifuge",
+  "ingredient": {
+    "item": "minecraft:lily_of_the_valley"
+  },
+  "result": [
+    {
+      "item": "minecraft:white_dye",
+      "count": 3
+    }
+  ],
+  "energy": 1600
+}

@@ -1,0 +1,14 @@
+{
+  "type": "thermal:centrifuge",
+  "ingredient": {
+    "item": "minecraft:magma_cream"
+  },
+  "result": [
+    {
+      "item": "minecraft:slime_ball"
+    },
+    {
+      "item": "minecraft:blaze_powder"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "type": "thermal:smelter",
+  "ingredient": {
+    "tag": "forge:dusts/electrum"
+  },
+  "result": [
+    {
+      "item": "thermal:electrum_ingot",
+      "count": 1
+    }
+  ],
+  "energy_mod": 0.5
+}

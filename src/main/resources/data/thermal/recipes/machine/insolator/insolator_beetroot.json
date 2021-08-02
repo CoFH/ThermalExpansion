@@ -1,0 +1,16 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "minecraft:beetroot_seeds"
+  },
+  "result": [
+    {
+      "item": "minecraft:beetroot",
+      "chance": 2.0
+    },
+    {
+      "item": "minecraft:beetroot_seeds",
+      "chance": 1.1
+    }
+  ]
+}

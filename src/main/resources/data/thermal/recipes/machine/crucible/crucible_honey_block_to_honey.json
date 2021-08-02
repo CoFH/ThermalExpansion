@@ -1,0 +1,13 @@
+{
+  "type": "thermal:crucible",
+  "ingredient": {
+    "item": "minecraft:honey_block"
+  },
+  "result": [
+    {
+      "fluid": "cofh_core:honey",
+      "amount": 1000
+    }
+  ],
+  "energy": 2000
+}

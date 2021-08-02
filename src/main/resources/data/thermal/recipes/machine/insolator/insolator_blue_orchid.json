@@ -1,0 +1,12 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "minecraft:blue_orchid"
+  },
+  "result": [
+    {
+      "item": "minecraft:blue_orchid",
+      "chance": 2.0
+    }
+  ]
+}

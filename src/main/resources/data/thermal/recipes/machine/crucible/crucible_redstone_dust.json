@@ -1,0 +1,13 @@
+{
+  "type": "thermal:crucible",
+  "ingredient": {
+    "tag": "forge:dusts/redstone"
+  },
+  "result": [
+    {
+      "fluid": "thermal:redstone",
+      "amount": 100
+    }
+  ],
+  "energy": 8000
+}

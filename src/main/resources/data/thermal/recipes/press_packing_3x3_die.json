@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " I ",
+    "CXC",
+    " I "
+  ],
+  "key": {
+    "C": {
+      "tag": "forge:plates/constantan"
+    },
+    "I": {
+      "tag": "forge:plates/invar"
+    },
+    "X": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "result": {
+    "item": "thermal:press_packing_3x3_die"
+  }
+}

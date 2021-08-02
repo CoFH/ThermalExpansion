@@ -1,0 +1,12 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "minecraft:dandelion"
+  },
+  "result": [
+    {
+      "item": "minecraft:dandelion",
+      "chance": 2.0
+    }
+  ]
+}
