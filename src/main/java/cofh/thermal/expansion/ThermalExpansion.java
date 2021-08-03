@@ -106,6 +106,8 @@ public class ThermalExpansion {
         ScreenManager.registerFactory(DYNAMO_MAGMATIC_CONTAINER, DynamoMagmaticScreen::new);
         ScreenManager.registerFactory(DYNAMO_NUMISMATIC_CONTAINER, DynamoNumismaticScreen::new);
         ScreenManager.registerFactory(DYNAMO_LAPIDARY_CONTAINER, DynamoLapidaryScreen::new);
+        ScreenManager.registerFactory(DYNAMO_DISENCHANTMENT_CONTAINER, DynamoDisenchantmentScreen::new);
+        ScreenManager.registerFactory(DYNAMO_GOURMAND_CONTAINER, DynamoGourmandScreen::new);
     }
 
     private void registerRenderLayers() {
@@ -132,6 +134,8 @@ public class ThermalExpansion {
         RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_DYNAMO_MAGMATIC), cutout);
         RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_DYNAMO_NUMISMATIC), cutout);
         RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_DYNAMO_LAPIDARY), cutout);
+        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_DYNAMO_DISENCHANTMENT), cutout);
+        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_DYNAMO_GOURMAND), cutout);
     }
     // endregion
 }

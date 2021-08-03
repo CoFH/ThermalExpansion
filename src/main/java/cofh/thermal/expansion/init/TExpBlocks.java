@@ -60,6 +60,8 @@ public class TExpBlocks {
         registerAugBlock(ID_DYNAMO_MAGMATIC, () -> new TileBlockDynamo(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 7)), DynamoMagmaticTile::new), dynamoAugs, DYNAMO_VALIDATOR);
         registerAugBlock(ID_DYNAMO_NUMISMATIC, () -> new TileBlockDynamo(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 7)), DynamoNumismaticTile::new), dynamoAugs, DYNAMO_NO_FLUID_VALIDATOR);
         registerAugBlock(ID_DYNAMO_LAPIDARY, () -> new TileBlockDynamo(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 7)), DynamoLapidaryTile::new), dynamoAugs, DYNAMO_NO_FLUID_VALIDATOR);
+        registerAugBlock(ID_DYNAMO_DISENCHANTMENT, () -> new TileBlockDynamo(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 7)), DynamoDisenchantmentTile::new), dynamoAugs, DYNAMO_NO_FLUID_VALIDATOR);
+        registerAugBlock(ID_DYNAMO_GOURMAND, () -> new TileBlockDynamo(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 7)), DynamoGourmandTile::new), dynamoAugs, DYNAMO_NO_FLUID_VALIDATOR);
     }
 
     private static void registerTileEntities() {
@@ -84,6 +86,8 @@ public class TExpBlocks {
         TILE_ENTITIES.register(ID_DYNAMO_MAGMATIC, () -> TileEntityType.Builder.create(DynamoMagmaticTile::new, DYNAMO_MAGMATIC_BLOCK).build(null));
         TILE_ENTITIES.register(ID_DYNAMO_NUMISMATIC, () -> TileEntityType.Builder.create(DynamoNumismaticTile::new, DYNAMO_NUMISMATIC_BLOCK).build(null));
         TILE_ENTITIES.register(ID_DYNAMO_LAPIDARY, () -> TileEntityType.Builder.create(DynamoLapidaryTile::new, DYNAMO_LAPIDARY_BLOCK).build(null));
+        TILE_ENTITIES.register(ID_DYNAMO_DISENCHANTMENT, () -> TileEntityType.Builder.create(DynamoDisenchantmentTile::new, DYNAMO_DISENCHANTMENT_BLOCK).build(null));
+        TILE_ENTITIES.register(ID_DYNAMO_GOURMAND, () -> TileEntityType.Builder.create(DynamoGourmandTile::new, DYNAMO_GOURMAND_BLOCK).build(null));
     }
     // endregion
 }

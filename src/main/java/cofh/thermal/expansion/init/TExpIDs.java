@@ -12,6 +12,8 @@ public class TExpIDs {
     public static final String ID_DYNAMO_MAGMATIC = "dynamo_magmatic";
     public static final String ID_DYNAMO_NUMISMATIC = "dynamo_numismatic";
     public static final String ID_DYNAMO_LAPIDARY = "dynamo_lapidary";
+    public static final String ID_DYNAMO_DISENCHANTMENT = "dynamo_disenchantment";
+    public static final String ID_DYNAMO_GOURMAND = "dynamo_gourmand";
     // endregion
 
     // region MACHINES
