@@ -50,6 +50,12 @@ public class MachineInsolatorTile extends MachineTileProcess {
     }
 
     @Override
+    protected int getBaseProcessTick() {
+
+        return InsolatorRecipeManager.instance().getBasePower();
+    }
+
+    @Override
     protected boolean cacheRecipe() {
 
         curRecipe = InsolatorRecipeManager.instance().getRecipe(this);

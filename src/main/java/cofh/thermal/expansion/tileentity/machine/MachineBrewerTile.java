@@ -42,6 +42,12 @@ public class MachineBrewerTile extends MachineTileProcess {
     }
 
     @Override
+    protected int getBaseProcessTick() {
+
+        return BrewerRecipeManager.instance().getBasePower();
+    }
+
+    @Override
     protected boolean cacheRecipe() {
 
         curRecipe = BrewerRecipeManager.instance().getRecipe(this);

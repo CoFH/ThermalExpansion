@@ -44,6 +44,12 @@ public class MachinePressTile extends MachineTileProcess {
     }
 
     @Override
+    protected int getBaseProcessTick() {
+
+        return PressRecipeManager.instance().getBasePower();
+    }
+
+    @Override
     protected boolean cacheRecipe() {
 
         curRecipe = PressRecipeManager.instance().getRecipe(this);

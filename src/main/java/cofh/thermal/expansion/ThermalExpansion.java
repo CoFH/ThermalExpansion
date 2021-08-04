@@ -17,9 +17,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import static cofh.lib.util.constants.Constants.ID_THERMAL_EXPANSION;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
-import static cofh.thermal.lib.common.ThermalIDs.*;
 import static cofh.thermal.expansion.init.TExpReferences.*;
 import static cofh.thermal.lib.common.ThermalFlags.*;
+import static cofh.thermal.lib.common.ThermalIDs.*;
 
 @Mod(ID_THERMAL_EXPANSION)
 public class ThermalExpansion {
@@ -68,6 +68,21 @@ public class ThermalExpansion {
         setFlag(ID_DYNAMO_LAPIDARY, true);
         setFlag(ID_DYNAMO_DISENCHANTMENT, true);
         setFlag(ID_DYNAMO_GOURMAND, true);
+
+        setFlag(ID_MACHINE_FURNACE, true);
+        setFlag(ID_MACHINE_SAWMILL, true);
+        setFlag(ID_MACHINE_PULVERIZER, true);
+        setFlag(ID_MACHINE_SMELTER, true);
+        setFlag(ID_MACHINE_INSOLATOR, true);
+        setFlag(ID_MACHINE_CENTRIFUGE, true);
+        setFlag(ID_MACHINE_PRESS, true);
+        setFlag(ID_MACHINE_CRUCIBLE, true);
+        setFlag(ID_MACHINE_CHILLER, true);
+        setFlag(ID_MACHINE_REFINERY, true);
+        setFlag(ID_MACHINE_PYROLYZER, true);
+        setFlag(ID_MACHINE_BOTTLER, true);
+        setFlag(ID_MACHINE_BREWER, true);
+        setFlag(ID_MACHINE_CRAFTER, true);
 
         setFlag(ID_ENERGY_CELL_FRAME, true);
         setFlag(ID_ENERGY_CELL, true);

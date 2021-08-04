@@ -34,6 +34,12 @@ public class MachineSawmillTile extends MachineTileProcess {
     }
 
     @Override
+    protected int getBaseProcessTick() {
+
+        return SawmillRecipeManager.instance().getBasePower();
+    }
+
+    @Override
     protected boolean cacheRecipe() {
 
         curRecipe = SawmillRecipeManager.instance().getRecipe(this);

@@ -43,6 +43,12 @@ public class MachineBottlerTile extends MachineTileProcess {
     }
 
     @Override
+    protected int getBaseProcessTick() {
+
+        return BottlerRecipeManager.instance().getBasePower();
+    }
+
+    @Override
     protected boolean cacheRecipe() {
 
         curRecipe = BottlerRecipeManager.instance().getRecipe(this);

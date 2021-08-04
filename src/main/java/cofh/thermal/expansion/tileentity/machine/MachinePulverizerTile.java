@@ -42,6 +42,12 @@ public class MachinePulverizerTile extends MachineTileProcess {
     }
 
     @Override
+    protected int getBaseProcessTick() {
+
+        return PulverizerRecipeManager.instance().getBasePower();
+    }
+
+    @Override
     protected boolean cacheRecipe() {
 
         curRecipe = PulverizerRecipeManager.instance().getRecipe(this);

@@ -41,6 +41,12 @@ public class MachineChillerTile extends MachineTileProcess {
     }
 
     @Override
+    protected int getBaseProcessTick() {
+
+        return ChillerRecipeManager.instance().getBasePower();
+    }
+
+    @Override
     protected boolean cacheRecipe() {
 
         curRecipe = ChillerRecipeManager.instance().getRecipe(this);

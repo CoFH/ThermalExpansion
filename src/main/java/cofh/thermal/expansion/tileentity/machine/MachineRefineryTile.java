@@ -44,6 +44,12 @@ public class MachineRefineryTile extends MachineTileProcess {
     }
 
     @Override
+    protected int getBaseProcessTick() {
+
+        return RefineryRecipeManager.instance().getBasePower();
+    }
+
+    @Override
     protected boolean cacheRecipe() {
 
         curRecipe = RefineryRecipeManager.instance().getRecipe(this);

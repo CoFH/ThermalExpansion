@@ -50,6 +50,12 @@ public class MachineSmelterTile extends MachineTileProcess {
     }
 
     @Override
+    protected int getBaseProcessTick() {
+
+        return SmelterRecipeManager.instance().getBasePower();
+    }
+
+    @Override
     protected boolean cacheRecipe() {
 
         curRecipe = SmelterRecipeManager.instance().getRecipe(this);

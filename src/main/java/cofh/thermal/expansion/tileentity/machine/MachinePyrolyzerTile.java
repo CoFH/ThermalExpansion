@@ -39,11 +39,10 @@ public class MachinePyrolyzerTile extends MachineTileProcess {
         initHandlers();
     }
 
-    // TODO: Adjust when recipes have min/max power.
     @Override
     protected int getBaseProcessTick() {
 
-        return BASE_PROCESS_TICK / 4;
+        return PyrolyzerRecipeManager.instance().getBasePower();
     }
 
     @Override

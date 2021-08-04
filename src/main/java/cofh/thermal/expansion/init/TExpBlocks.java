@@ -15,11 +15,11 @@ import java.util.function.IntSupplier;
 import static cofh.lib.util.constants.Constants.ACTIVE;
 import static cofh.lib.util.helpers.BlockHelper.lightValue;
 import static cofh.thermal.core.ThermalCore.TILE_ENTITIES;
-import static cofh.thermal.lib.common.ThermalIDs.*;
 import static cofh.thermal.core.util.RegistrationHelper.registerAugBlock;
 import static cofh.thermal.expansion.init.TExpReferences.*;
 import static cofh.thermal.lib.common.ThermalAugmentRules.*;
 import static cofh.thermal.lib.common.ThermalFlags.getFlag;
+import static cofh.thermal.lib.common.ThermalIDs.*;
 import static net.minecraft.block.AbstractBlock.Properties.create;
 
 public class TExpBlocks {
@@ -39,20 +39,20 @@ public class TExpBlocks {
 
         IntSupplier machineAugs = () -> ThermalConfig.machineAugments;
 
-        registerAugBlock(ID_MACHINE_FURNACE, () -> new TileBlockActive4Way(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 14)), MachineFurnaceTile::new), machineAugs, MACHINE_NO_FLUID_VALIDATOR);
-        registerAugBlock(ID_MACHINE_SAWMILL, () -> new TileBlockActive4Way(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 0)), MachineSawmillTile::new), machineAugs, MACHINE_NO_FLUID_VALIDATOR);
-        registerAugBlock(ID_MACHINE_PULVERIZER, () -> new TileBlockActive4Way(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 0)), MachinePulverizerTile::new), machineAugs, MACHINE_NO_FLUID_VALIDATOR);
-        registerAugBlock(ID_MACHINE_SMELTER, () -> new TileBlockActive4Way(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 14)), MachineSmelterTile::new), machineAugs, MACHINE_NO_FLUID_VALIDATOR);
-        registerAugBlock(ID_MACHINE_INSOLATOR, () -> new TileBlockActive4Way(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 15)), MachineInsolatorTile::new), machineAugs, MACHINE_VALIDATOR);
-        registerAugBlock(ID_MACHINE_CENTRIFUGE, () -> new TileBlockActive4Way(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 0)), MachineCentrifugeTile::new), machineAugs, MACHINE_VALIDATOR);
-        registerAugBlock(ID_MACHINE_PRESS, () -> new TileBlockActive4Way(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 0)), MachinePressTile::new), machineAugs, MACHINE_VALIDATOR);
-        registerAugBlock(ID_MACHINE_CRUCIBLE, () -> new TileBlockActive4Way(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 14)), MachineCrucibleTile::new), machineAugs, MACHINE_VALIDATOR);
-        registerAugBlock(ID_MACHINE_CHILLER, () -> new TileBlockActive4Way(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 0)), MachineChillerTile::new), machineAugs, MACHINE_VALIDATOR);
-        registerAugBlock(ID_MACHINE_REFINERY, () -> new TileBlockActive4Way(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 12)), MachineRefineryTile::new), machineAugs, MACHINE_VALIDATOR);
-        registerAugBlock(ID_MACHINE_PYROLYZER, () -> new TileBlockActive4Way(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 8)), MachinePyrolyzerTile::new), machineAugs, MACHINE_VALIDATOR);
-        registerAugBlock(ID_MACHINE_BOTTLER, () -> new TileBlockActive4Way(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 0)), MachineBottlerTile::new), machineAugs, MACHINE_VALIDATOR);
-        registerAugBlock(ID_MACHINE_BREWER, () -> new TileBlockActive4Way(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 0)), MachineBrewerTile::new), machineAugs, MACHINE_VALIDATOR);
-        registerAugBlock(ID_MACHINE_CRAFTER, () -> new TileBlockActive4Way(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 0)), MachineCrafterTile::new), machineAugs, MACHINE_VALIDATOR);
+        registerAugBlock(ID_MACHINE_FURNACE, () -> new TileBlockActive4Way(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 14)), MachineFurnaceTile::new), machineAugs, MACHINE_NO_FLUID_VALIDATOR, getFlag(ID_MACHINE_FURNACE));
+        registerAugBlock(ID_MACHINE_SAWMILL, () -> new TileBlockActive4Way(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 0)), MachineSawmillTile::new), machineAugs, MACHINE_NO_FLUID_VALIDATOR, getFlag(ID_MACHINE_SAWMILL));
+        registerAugBlock(ID_MACHINE_PULVERIZER, () -> new TileBlockActive4Way(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 0)), MachinePulverizerTile::new), machineAugs, MACHINE_NO_FLUID_VALIDATOR, getFlag(ID_MACHINE_PULVERIZER));
+        registerAugBlock(ID_MACHINE_SMELTER, () -> new TileBlockActive4Way(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 14)), MachineSmelterTile::new), machineAugs, MACHINE_NO_FLUID_VALIDATOR, getFlag(ID_MACHINE_SMELTER));
+        registerAugBlock(ID_MACHINE_INSOLATOR, () -> new TileBlockActive4Way(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 15)), MachineInsolatorTile::new), machineAugs, MACHINE_VALIDATOR, getFlag(ID_MACHINE_INSOLATOR));
+        registerAugBlock(ID_MACHINE_CENTRIFUGE, () -> new TileBlockActive4Way(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 0)), MachineCentrifugeTile::new), machineAugs, MACHINE_VALIDATOR, getFlag(ID_MACHINE_CENTRIFUGE));
+        registerAugBlock(ID_MACHINE_PRESS, () -> new TileBlockActive4Way(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 0)), MachinePressTile::new), machineAugs, MACHINE_VALIDATOR, getFlag(ID_MACHINE_PRESS));
+        registerAugBlock(ID_MACHINE_CRUCIBLE, () -> new TileBlockActive4Way(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 14)), MachineCrucibleTile::new), machineAugs, MACHINE_VALIDATOR, getFlag(ID_MACHINE_CRUCIBLE));
+        registerAugBlock(ID_MACHINE_CHILLER, () -> new TileBlockActive4Way(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 0)), MachineChillerTile::new), machineAugs, MACHINE_VALIDATOR, getFlag(ID_MACHINE_CHILLER));
+        registerAugBlock(ID_MACHINE_REFINERY, () -> new TileBlockActive4Way(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 12)), MachineRefineryTile::new), machineAugs, MACHINE_VALIDATOR, getFlag(ID_MACHINE_REFINERY));
+        registerAugBlock(ID_MACHINE_PYROLYZER, () -> new TileBlockActive4Way(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 8)), MachinePyrolyzerTile::new), machineAugs, MACHINE_VALIDATOR, getFlag(ID_MACHINE_PYROLYZER));
+        registerAugBlock(ID_MACHINE_BOTTLER, () -> new TileBlockActive4Way(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 0)), MachineBottlerTile::new), machineAugs, MACHINE_VALIDATOR, getFlag(ID_MACHINE_BOTTLER));
+        registerAugBlock(ID_MACHINE_BREWER, () -> new TileBlockActive4Way(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 0)), MachineBrewerTile::new), machineAugs, MACHINE_VALIDATOR, getFlag(ID_MACHINE_BREWER));
+        registerAugBlock(ID_MACHINE_CRAFTER, () -> new TileBlockActive4Way(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 0)), MachineCrafterTile::new), machineAugs, MACHINE_VALIDATOR, getFlag(ID_MACHINE_CRAFTER));
 
         IntSupplier dynamoAugs = () -> ThermalConfig.dynamoAugments;
 

@@ -37,6 +37,12 @@ public class MachineFurnaceTile extends MachineTileProcess {
     }
 
     @Override
+    protected int getBaseProcessTick() {
+
+        return FurnaceRecipeManager.instance().getBasePower();
+    }
+
+    @Override
     protected boolean cacheRecipe() {
 
         curRecipe = FurnaceRecipeManager.instance().getRecipe(this);

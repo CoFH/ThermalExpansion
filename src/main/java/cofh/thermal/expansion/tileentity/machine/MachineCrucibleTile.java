@@ -41,6 +41,12 @@ public class MachineCrucibleTile extends MachineTileProcess {
     }
 
     @Override
+    protected int getBaseProcessTick() {
+
+        return CrucibleRecipeManager.instance().getBasePower();
+    }
+
+    @Override
     protected boolean cacheRecipe() {
 
         curRecipe = CrucibleRecipeManager.instance().getRecipe(this);

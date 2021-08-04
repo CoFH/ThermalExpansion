@@ -70,6 +70,12 @@ public class MachineCrafterTile extends MachineTileProcess {
     }
 
     @Override
+    protected int getBaseProcessTick() {
+
+        return CrafterRecipeManager.instance().getBasePower();
+    }
+
+    @Override
     public void tick() {
 
         if (!resultSlot.isEmpty() && craftResult.getRecipeUsed() == null) {

@@ -40,6 +40,12 @@ public class MachineCentrifugeTile extends MachineTileProcess {
     }
 
     @Override
+    protected int getBaseProcessTick() {
+
+        return CentrifugeRecipeManager.instance().getBasePower();
+    }
+
+    @Override
     protected boolean cacheRecipe() {
 
         curRecipe = CentrifugeRecipeManager.instance().getRecipe(this);
