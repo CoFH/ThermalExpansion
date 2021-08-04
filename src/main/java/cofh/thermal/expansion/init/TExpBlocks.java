@@ -15,10 +15,11 @@ import java.util.function.IntSupplier;
 import static cofh.lib.util.constants.Constants.ACTIVE;
 import static cofh.lib.util.helpers.BlockHelper.lightValue;
 import static cofh.thermal.core.ThermalCore.TILE_ENTITIES;
+import static cofh.thermal.lib.common.ThermalIDs.*;
 import static cofh.thermal.core.util.RegistrationHelper.registerAugBlock;
-import static cofh.thermal.expansion.init.TExpIDs.*;
 import static cofh.thermal.expansion.init.TExpReferences.*;
 import static cofh.thermal.lib.common.ThermalAugmentRules.*;
+import static cofh.thermal.lib.common.ThermalFlags.getFlag;
 import static net.minecraft.block.AbstractBlock.Properties.create;
 
 public class TExpBlocks {
@@ -55,13 +56,13 @@ public class TExpBlocks {
 
         IntSupplier dynamoAugs = () -> ThermalConfig.dynamoAugments;
 
-        registerAugBlock(ID_DYNAMO_STIRLING, () -> new TileBlockDynamo(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 7)), DynamoStirlingTile::new), dynamoAugs, DYNAMO_NO_FLUID_VALIDATOR);
-        registerAugBlock(ID_DYNAMO_COMPRESSION, () -> new TileBlockDynamo(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 7)), DynamoCompressionTile::new), dynamoAugs, DYNAMO_VALIDATOR);
-        registerAugBlock(ID_DYNAMO_MAGMATIC, () -> new TileBlockDynamo(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 7)), DynamoMagmaticTile::new), dynamoAugs, DYNAMO_VALIDATOR);
-        registerAugBlock(ID_DYNAMO_NUMISMATIC, () -> new TileBlockDynamo(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 7)), DynamoNumismaticTile::new), dynamoAugs, DYNAMO_NO_FLUID_VALIDATOR);
-        registerAugBlock(ID_DYNAMO_LAPIDARY, () -> new TileBlockDynamo(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 7)), DynamoLapidaryTile::new), dynamoAugs, DYNAMO_NO_FLUID_VALIDATOR);
-        registerAugBlock(ID_DYNAMO_DISENCHANTMENT, () -> new TileBlockDynamo(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 7)), DynamoDisenchantmentTile::new), dynamoAugs, DYNAMO_NO_FLUID_VALIDATOR);
-        registerAugBlock(ID_DYNAMO_GOURMAND, () -> new TileBlockDynamo(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 7)), DynamoGourmandTile::new), dynamoAugs, DYNAMO_NO_FLUID_VALIDATOR);
+        registerAugBlock(ID_DYNAMO_STIRLING, () -> new TileBlockDynamo(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 7)), DynamoStirlingTile::new), dynamoAugs, DYNAMO_NO_FLUID_VALIDATOR, getFlag(ID_DYNAMO_STIRLING));
+        registerAugBlock(ID_DYNAMO_COMPRESSION, () -> new TileBlockDynamo(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 7)), DynamoCompressionTile::new), dynamoAugs, DYNAMO_VALIDATOR, getFlag(ID_DYNAMO_COMPRESSION));
+        registerAugBlock(ID_DYNAMO_MAGMATIC, () -> new TileBlockDynamo(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 7)), DynamoMagmaticTile::new), dynamoAugs, DYNAMO_VALIDATOR, getFlag(ID_DYNAMO_MAGMATIC));
+        registerAugBlock(ID_DYNAMO_NUMISMATIC, () -> new TileBlockDynamo(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 7)), DynamoNumismaticTile::new), dynamoAugs, DYNAMO_NO_FLUID_VALIDATOR, getFlag(ID_DYNAMO_NUMISMATIC));
+        registerAugBlock(ID_DYNAMO_LAPIDARY, () -> new TileBlockDynamo(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 7)), DynamoLapidaryTile::new), dynamoAugs, DYNAMO_NO_FLUID_VALIDATOR, getFlag(ID_DYNAMO_LAPIDARY));
+        registerAugBlock(ID_DYNAMO_DISENCHANTMENT, () -> new TileBlockDynamo(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 7)), DynamoDisenchantmentTile::new), dynamoAugs, DYNAMO_NO_FLUID_VALIDATOR, getFlag(ID_DYNAMO_DISENCHANTMENT));
+        registerAugBlock(ID_DYNAMO_GOURMAND, () -> new TileBlockDynamo(create(Material.IRON).sound(SoundType.NETHERITE).hardnessAndResistance(2.0F).harvestTool(ToolType.PICKAXE).setLightLevel(lightValue(ACTIVE, 7)), DynamoGourmandTile::new), dynamoAugs, DYNAMO_NO_FLUID_VALIDATOR, getFlag(ID_DYNAMO_GOURMAND));
     }
 
     private static void registerTileEntities() {

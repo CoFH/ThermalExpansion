@@ -6,7 +6,7 @@ import cofh.thermal.expansion.inventory.container.machine.*;
 import net.minecraftforge.common.extensions.IForgeContainerType;
 
 import static cofh.thermal.core.ThermalCore.CONTAINERS;
-import static cofh.thermal.expansion.init.TExpIDs.*;
+import static cofh.thermal.lib.common.ThermalIDs.*;
 
 public class TExpContainers {
 

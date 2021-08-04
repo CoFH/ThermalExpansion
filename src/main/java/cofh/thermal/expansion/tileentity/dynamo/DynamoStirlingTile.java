@@ -28,6 +28,12 @@ public class DynamoStirlingTile extends DynamoTileBase {
         initHandlers();
     }
 
+    @Override
+    protected int getBaseProcessTick() {
+
+        return StirlingFuelManager.instance().getBasePower();
+    }
+
     // region PROCESS
     @Override
     protected boolean canProcessStart() {

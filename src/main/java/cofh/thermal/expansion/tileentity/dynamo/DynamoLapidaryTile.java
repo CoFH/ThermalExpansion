@@ -28,6 +28,12 @@ public class DynamoLapidaryTile extends DynamoTileBase {
         initHandlers();
     }
 
+    @Override
+    protected int getBaseProcessTick() {
+
+        return LapidaryFuelManager.instance().getBasePower();
+    }
+
     // region PROCESS
     @Override
     protected boolean canProcessStart() {

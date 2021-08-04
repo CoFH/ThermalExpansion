@@ -27,6 +27,12 @@ public class DynamoGourmandTile extends DynamoTileBase {
         initHandlers();
     }
 
+    @Override
+    protected int getBaseProcessTick() {
+
+        return GourmandFuelManager.instance().getBasePower();
+    }
+
     // region PROCESS
     @Override
     protected boolean canProcessStart() {

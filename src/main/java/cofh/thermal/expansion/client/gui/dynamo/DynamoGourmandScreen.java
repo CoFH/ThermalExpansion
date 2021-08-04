@@ -28,7 +28,7 @@ public class DynamoGourmandScreen extends DynamoScreenBase<DynamoGourmandContain
 
         super.init();
 
-        addElement(ThermalGuiHelper.createDefaultDuration(this, 80, 35, SCALE_FLAME, tile));
+        addElement(ThermalGuiHelper.createDefaultDuration(this, 80, 35, SCALE_ALCHEMY, tile));
     }
 
 }

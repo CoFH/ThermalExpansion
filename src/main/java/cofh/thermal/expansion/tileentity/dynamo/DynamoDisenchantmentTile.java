@@ -27,6 +27,12 @@ public class DynamoDisenchantmentTile extends DynamoTileBase {
         initHandlers();
     }
 
+    @Override
+    protected int getBaseProcessTick() {
+
+        return DisenchantmentFuelManager.instance().getBasePower();
+    }
+
     // region PROCESS
     @Override
     protected boolean canProcessStart() {

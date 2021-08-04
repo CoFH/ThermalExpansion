@@ -17,8 +17,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import static cofh.lib.util.constants.Constants.ID_THERMAL_EXPANSION;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
-import static cofh.thermal.core.init.TCoreIDs.*;
-import static cofh.thermal.expansion.init.TExpIDs.*;
+import static cofh.thermal.lib.common.ThermalIDs.*;
 import static cofh.thermal.expansion.init.TExpReferences.*;
 import static cofh.thermal.lib.common.ThermalFlags.*;
 
@@ -61,6 +60,14 @@ public class ThermalExpansion {
         setFlag(ID_DEVICE_ROCK_GEN, true);
         setFlag(ID_DEVICE_COLLECTOR, true);
         setFlag(ID_DEVICE_NULLIFIER, true);
+
+        setFlag(ID_DYNAMO_STIRLING, true);
+        setFlag(ID_DYNAMO_COMPRESSION, true);
+        setFlag(ID_DYNAMO_MAGMATIC, true);
+        setFlag(ID_DYNAMO_NUMISMATIC, true);
+        setFlag(ID_DYNAMO_LAPIDARY, true);
+        setFlag(ID_DYNAMO_DISENCHANTMENT, true);
+        setFlag(ID_DYNAMO_GOURMAND, true);
 
         setFlag(ID_ENERGY_CELL_FRAME, true);
         setFlag(ID_ENERGY_CELL, true);
