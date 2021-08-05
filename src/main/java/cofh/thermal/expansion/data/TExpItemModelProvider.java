@@ -32,15 +32,15 @@ public class TExpItemModelProvider extends ItemModelProviderCoFH {
 
         DeferredRegisterCoFH<Item> reg = ITEMS;
 
-        generated(reg.getSup("press_coin_die"), CRAFTING);
-        generated(reg.getSup("press_gear_die"), CRAFTING);
-        generated(reg.getSup("press_packing_2x2_die"), CRAFTING);
-        generated(reg.getSup("press_packing_3x3_die"), CRAFTING);
-        generated(reg.getSup("press_unpacking_die"), CRAFTING);
+        generated(reg.getSup("press_coin_die"));
+        generated(reg.getSup("press_gear_die"));
+        generated(reg.getSup("press_packing_2x2_die"));
+        generated(reg.getSup("press_packing_3x3_die"));
+        generated(reg.getSup("press_unpacking_die"));
 
-        generated(reg.getSup("chiller_ball_cast"), CRAFTING);
-        generated(reg.getSup("chiller_ingot_cast"), CRAFTING);
-        generated(reg.getSup("chiller_rod_cast"), CRAFTING);
+        generated(reg.getSup("chiller_ball_cast"));
+        generated(reg.getSup("chiller_ingot_cast"));
+        generated(reg.getSup("chiller_rod_cast"));
     }
 
     private void registerBlockItemModels() {
