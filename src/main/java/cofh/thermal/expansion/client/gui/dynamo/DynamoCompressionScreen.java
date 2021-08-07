@@ -13,7 +13,7 @@ import static cofh.lib.util.constants.Constants.ID_THERMAL;
 
 public class DynamoCompressionScreen extends DynamoScreenBase<DynamoCompressionContainer> {
 
-    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/dynamos/compression.png";
+    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/container/fluid_dynamo.png";
     public static final ResourceLocation TEXTURE = new ResourceLocation(TEX_PATH);
 
     public DynamoCompressionScreen(DynamoCompressionContainer container, PlayerInventory inv, ITextComponent titleIn) {

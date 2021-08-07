@@ -13,7 +13,7 @@ import static cofh.lib.util.constants.Constants.ID_THERMAL;
 
 public class MachineCrucibleScreen extends MachineScreenReconfigurable<MachineCrucibleContainer> {
 
-    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/machines/crucible.png";
+    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/container/crucible.png";
     public static final ResourceLocation TEXTURE = new ResourceLocation(TEX_PATH);
 
     public MachineCrucibleScreen(MachineCrucibleContainer container, PlayerInventory inv, ITextComponent titleIn) {

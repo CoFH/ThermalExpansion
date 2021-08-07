@@ -13,7 +13,7 @@ import static cofh.lib.util.constants.Constants.ID_THERMAL;
 
 public class DynamoDisenchantmentScreen extends DynamoScreenBase<DynamoDisenchantmentContainer> {
 
-    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/dynamos/disenchantment.png";
+    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/container/item_dynamo.png";
     public static final ResourceLocation TEXTURE = new ResourceLocation(TEX_PATH);
 
     public DynamoDisenchantmentScreen(DynamoDisenchantmentContainer container, PlayerInventory inv, ITextComponent titleIn) {

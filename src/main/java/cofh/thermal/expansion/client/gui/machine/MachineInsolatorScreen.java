@@ -13,7 +13,7 @@ import static cofh.lib.util.constants.Constants.ID_THERMAL;
 
 public class MachineInsolatorScreen extends MachineScreenReconfigurable<MachineInsolatorContainer> {
 
-    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/machines/insolator.png";
+    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/container/insolator.png";
     public static final ResourceLocation TEXTURE = new ResourceLocation(TEX_PATH);
 
     public MachineInsolatorScreen(MachineInsolatorContainer container, PlayerInventory inv, ITextComponent titleIn) {
