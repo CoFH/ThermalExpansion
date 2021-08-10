@@ -7,11 +7,11 @@
   "result": [
     {
       "fluid": "thermal:syrup",
-      "amount": 50
+      "amount": 250
     },
     {
       "fluid": "minecraft:water",
-      "amount": 950
+      "amount": 750
     }
   ],
   "energy": 4000
