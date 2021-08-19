@@ -80,14 +80,14 @@ minecraft {
             args '--all', '--output', file('src/generated/'),
                     '--mod', archivesBaseName,
                     '--existing', sourceSets.main.resources.srcDirs[0],
-                    '--existing', new File(project(':ThermalCore').projectDir, "src/main/resources/")
+                    '--existing', new File(project(':Thermal').projectDir, "src/main/resources/")
 
             mods {
                 CoFHCore {
                     source findProject(':CoFHCore').sourceSets.main
                 }
-                ThermalCore {
-                    source findProject(':ThermalCore').sourceSets.main
+                Thermal {
+                    source findProject(':Thermal').sourceSets.main
                 }
                 ThermalExpansion {
                     source findProject(':ThermalExpansion').sourceSets.main
@@ -111,8 +111,8 @@ dependencies {
     } else {
         // TODO: Maven!
     }
-    if (findProject(':ThermalCore') != null) {
-        compile project(':ThermalCore')
+    if (findProject(':Thermal') != null) {
+        compile project(':Thermal')
     } else {
         // TODO: Maven!
     }
