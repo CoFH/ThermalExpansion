@@ -4,6 +4,7 @@ import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.helpers.MathHelper;
+import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.InsolatorRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineInsolatorContainer;
 import cofh.thermal.lib.tileentity.MachineTileProcess;
@@ -29,7 +30,7 @@ import static cofh.thermal.lib.common.ThermalConfig.machineAugments;
 public class MachineInsolatorTile extends MachineTileProcess {
 
     protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && InsolatorRecipeManager.instance().validRecipe(item));
-    protected ItemStorageCoFH catalystSlot = new ItemStorageCoFH(InsolatorRecipeManager.instance()::validCatalyst);
+    protected ItemStorageCoFH catalystSlot = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || InsolatorRecipeManager.instance().validCatalyst(item));
     protected FluidStorageCoFH waterTank = new FluidStorageCoFH(TANK_SMALL, FluidHelper.IS_WATER);
 
     public MachineInsolatorTile() {

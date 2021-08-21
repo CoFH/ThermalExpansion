@@ -289,6 +289,15 @@ public class TExpRecipeProvider extends RecipeProviderCoFH {
 
         DeferredRegisterCoFH<Item> reg = ITEMS;
 
+        ShapedRecipeBuilder.shapedRecipe(reg.get("slot_seal"))
+                .key('P', ItemTagsCoFH.PLATES_IRON)
+                .key('i', Tags.Items.NUGGETS_IRON)
+                .patternLine("i i")
+                .patternLine(" P ")
+                .patternLine("i i")
+                .addCriterion("has_iron_plate", hasItem(ItemTagsCoFH.PLATES_IRON))
+                .build(consumer);
+
         ShapedRecipeBuilder.shapedRecipe(reg.get("press_coin_die"))
                 .key('P', ItemTagsCoFH.PLATES_INVAR)
                 .key('X', Tags.Items.GEMS_EMERALD)

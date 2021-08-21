@@ -1,6 +1,7 @@
 package cofh.thermal.expansion.init;
 
 import cofh.core.item.ItemCoFH;
+import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.lib.common.ThermalItemGroups;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -16,6 +17,8 @@ public class TExpItems {
     public static void register() {
 
         ItemGroup group = ThermalItemGroups.THERMAL_ITEMS;
+
+        registerItem("slot_seal", () -> new SlotSealItem(new Item.Properties().maxStackSize(1).group(group)));
 
         registerItem("press_coin_die", () -> new ItemCoFH(new Item.Properties().maxStackSize(1).group(group)));
         registerItem("press_gear_die", () -> new ItemCoFH(new Item.Properties().maxStackSize(1).group(group)));

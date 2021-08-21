@@ -90,6 +90,9 @@ public class ThermalExpansion {
         setFlag(ID_FLUID_CELL_FRAME, true);
         setFlag(ID_FLUID_CELL, true);
 
+        setFlag(ID_ITEM_CELL_FRAME, true);
+        setFlag(ID_ITEM_CELL, true);
+
         setFlag(FLAG_XP_STORAGE_AUGMENT, true);
     }
 

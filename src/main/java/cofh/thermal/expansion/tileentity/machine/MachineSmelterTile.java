@@ -3,6 +3,7 @@ package cofh.thermal.expansion.tileentity.machine;
 import cofh.lib.client.audio.ConditionalSound;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.helpers.MathHelper;
+import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.SmelterRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineSmelterContainer;
 import cofh.thermal.lib.tileentity.MachineTileProcess;
@@ -28,15 +29,15 @@ import static cofh.thermal.lib.common.ThermalConfig.machineAugments;
 public class MachineSmelterTile extends MachineTileProcess {
 
     protected ItemStorageCoFH[] inputSlots = new ItemStorageCoFH[3];
-    protected ItemStorageCoFH catalystSlot = new ItemStorageCoFH(item -> SmelterRecipeManager.instance().validCatalyst(item) && !itemsEqual(item, inputSlots[0].getItemStack()) && !itemsEqual(item, inputSlots[1].getItemStack()) && !itemsEqual(item, inputSlots[2].getItemStack()));
+    protected ItemStorageCoFH catalystSlot = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || SmelterRecipeManager.instance().validCatalyst(item) && !itemsEqual(item, inputSlots[0].getItemStack()) && !itemsEqual(item, inputSlots[1].getItemStack()) && !itemsEqual(item, inputSlots[2].getItemStack()));
 
     public MachineSmelterTile() {
 
         super(MACHINE_SMELTER_TILE);
 
-        inputSlots[0] = new ItemStorageCoFH(item -> filter.valid(item) && SmelterRecipeManager.instance().validItem(item) && !itemsEqual(item, inputSlots[1].getItemStack()) && !itemsEqual(item, inputSlots[2].getItemStack()) && !itemsEqual(item, catalystSlot.getItemStack()));
-        inputSlots[1] = new ItemStorageCoFH(item -> filter.valid(item) && SmelterRecipeManager.instance().validItem(item) && !itemsEqual(item, inputSlots[0].getItemStack()) && !itemsEqual(item, inputSlots[2].getItemStack()) && !itemsEqual(item, catalystSlot.getItemStack()));
-        inputSlots[2] = new ItemStorageCoFH(item -> filter.valid(item) && SmelterRecipeManager.instance().validItem(item) && !itemsEqual(item, inputSlots[0].getItemStack()) && !itemsEqual(item, inputSlots[1].getItemStack()) && !itemsEqual(item, catalystSlot.getItemStack()));
+        inputSlots[0] = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || filter.valid(item) && SmelterRecipeManager.instance().validItem(item) && !itemsEqual(item, inputSlots[1].getItemStack()) && !itemsEqual(item, inputSlots[2].getItemStack()) && !itemsEqual(item, catalystSlot.getItemStack()));
+        inputSlots[1] = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || filter.valid(item) && SmelterRecipeManager.instance().validItem(item) && !itemsEqual(item, inputSlots[0].getItemStack()) && !itemsEqual(item, inputSlots[2].getItemStack()) && !itemsEqual(item, catalystSlot.getItemStack()));
+        inputSlots[2] = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || filter.valid(item) && SmelterRecipeManager.instance().validItem(item) && !itemsEqual(item, inputSlots[0].getItemStack()) && !itemsEqual(item, inputSlots[1].getItemStack()) && !itemsEqual(item, catalystSlot.getItemStack()));
 
         for (int i = 0; i < 3; ++i) {
             inventory.addSlot(inputSlots[i], INPUT);

@@ -125,6 +125,9 @@
   "item.thermal.press_packing_3x3_die": "Packing Die (3x3)",
   "item.thermal.press_unpacking_die": "Unpacking Die",
 
+  "item.thermal.slot_seal": "Slot Seal",
+  "item.thermal.slot_seal.desc": "Prevents a slot from being used. Useful in machines with multiple input slots.",
+
   "subtitle.thermal.block.machine_bottler": "Fluid Encapsulator fills",
   "subtitle.thermal.block.machine_crucible": "Magma Crucible hums",
   "subtitle.thermal.block.machine_furnace": "Redstone Furnace hums and crackles",

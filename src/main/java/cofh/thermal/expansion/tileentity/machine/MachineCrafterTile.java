@@ -6,6 +6,7 @@ import cofh.lib.inventory.FalseCraftingInventory;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.Utils;
 import cofh.lib.xp.EmptyXpStorage;
+import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.CrafterRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineCrafterContainer;
 import cofh.thermal.lib.common.ThermalConfig;
@@ -56,7 +57,7 @@ public class MachineCrafterTile extends MachineTileProcess {
 
         xpStorage = EmptyXpStorage.INSTANCE;
 
-        inventory.addSlots(INPUT, 9, item -> filter.valid(item) && CrafterRecipeManager.instance().validItem(item, curRecipe));
+        inventory.addSlots(INPUT, 9, item -> item.getItem() instanceof SlotSealItem || filter.valid(item) && CrafterRecipeManager.instance().validItem(item, curRecipe));
         inventory.addSlot(outputSlot, OUTPUT);
         inventory.addSlot(chargeSlot, INTERNAL);
 

@@ -3,6 +3,7 @@ package cofh.thermal.expansion.tileentity.machine;
 import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.ChillerRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineChillerContainer;
 import cofh.thermal.lib.tileentity.MachineTileProcess;
@@ -22,7 +23,7 @@ import static cofh.thermal.lib.common.ThermalConfig.machineAugments;
 
 public class MachineChillerTile extends MachineTileProcess {
 
-    protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && ChillerRecipeManager.instance().validItem(item));
+    protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || filter.valid(item) && ChillerRecipeManager.instance().validItem(item));
     protected ItemStorageCoFH outputSlot = new ItemStorageCoFH();
     protected FluidStorageCoFH inputTank = new FluidStorageCoFH(TANK_MEDIUM, fluid -> filter.valid(fluid) && ChillerRecipeManager.instance().validFluid(fluid));
 

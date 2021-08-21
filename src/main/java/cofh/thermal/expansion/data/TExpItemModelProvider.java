@@ -32,6 +32,8 @@ public class TExpItemModelProvider extends ItemModelProviderCoFH {
 
         DeferredRegisterCoFH<Item> reg = ITEMS;
 
+        generated(reg.getSup("slot_seal"));
+
         generated(reg.getSup("press_coin_die"));
         generated(reg.getSup("press_gear_die"));
         generated(reg.getSup("press_packing_2x2_die"));
@@ -59,13 +61,16 @@ public class TExpItemModelProvider extends ItemModelProviderCoFH {
         blockItem(reg.getSup(ID_MACHINE_REFINERY));
         blockItem(reg.getSup(ID_MACHINE_BREWER));
         blockItem(reg.getSup(ID_MACHINE_BOTTLER));
-        // blockItem(reg.getSup(ID_MACHINE_FURNACE));
+        blockItem(reg.getSup(ID_MACHINE_BREWER));
+        blockItem(reg.getSup(ID_MACHINE_CRAFTER));
 
         blockItem(reg.getSup(ID_DYNAMO_STIRLING));
         blockItem(reg.getSup(ID_DYNAMO_COMPRESSION));
         blockItem(reg.getSup(ID_DYNAMO_MAGMATIC));
         blockItem(reg.getSup(ID_DYNAMO_NUMISMATIC));
         blockItem(reg.getSup(ID_DYNAMO_LAPIDARY));
+        blockItem(reg.getSup(ID_DYNAMO_DISENCHANTMENT));
+        blockItem(reg.getSup(ID_DYNAMO_GOURMAND));
     }
 
 }

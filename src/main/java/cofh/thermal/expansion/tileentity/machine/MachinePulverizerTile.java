@@ -3,6 +3,7 @@ package cofh.thermal.expansion.tileentity.machine;
 import cofh.lib.client.audio.ConditionalSound;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.helpers.MathHelper;
+import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.PulverizerRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachinePulverizerContainer;
 import cofh.thermal.lib.tileentity.MachineTileProcess;
@@ -26,7 +27,7 @@ import static cofh.thermal.lib.common.ThermalConfig.machineAugments;
 public class MachinePulverizerTile extends MachineTileProcess {
 
     protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && PulverizerRecipeManager.instance().validRecipe(item));
-    protected ItemStorageCoFH catalystSlot = new ItemStorageCoFH(PulverizerRecipeManager.instance()::validCatalyst);
+    protected ItemStorageCoFH catalystSlot = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || PulverizerRecipeManager.instance().validCatalyst(item));
 
     public MachinePulverizerTile() {
 
