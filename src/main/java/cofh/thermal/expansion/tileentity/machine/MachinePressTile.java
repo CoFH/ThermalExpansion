@@ -78,7 +78,7 @@ public class MachinePressTile extends MachineTileProcess {
         // Input Items
         inputSlot.modify(-itemInputCounts.get(0));
 
-        if (itemInputCounts.size() > 1 && !dieSlot.getItemStack().getItem().isIn(MACHINE_DIES)) {
+        if (itemInputCounts.size() > 1 && !dieSlot.getItemStack().getItem().is(MACHINE_DIES)) {
             dieSlot.modify(-itemInputCounts.get(1));
         }
     }
@@ -87,7 +87,7 @@ public class MachinePressTile extends MachineTileProcess {
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new MachinePressContainer(i, world, pos, inventory, player);
+        return new MachinePressContainer(i, level, worldPosition, inventory, player);
     }
 
 }

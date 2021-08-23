@@ -23,7 +23,7 @@ public class SmelterProcessor implements IComponentProcessor {
         if (!variables.has("recipe"))
             return;
         ResourceLocation recipeId = new ResourceLocation(variables.get("recipe").asString());
-        IRecipe<?> recipe = Minecraft.getInstance().world.getRecipeManager().getRecipe(recipeId).get();
+        IRecipe<?> recipe = Minecraft.getInstance().level.getRecipeManager().byKey(recipeId).get();
         if (recipe == null)
             LogManager.getLogger().warn("Thermalpedia missing the smelter recipe: " + recipeId);
         else
@@ -42,7 +42,7 @@ public class SmelterProcessor implements IComponentProcessor {
             int index = Integer.parseInt(key.substring(key.length() - 1)) - 1;
             if (recipe.getInputItems().size() <= index)
                 return null;
-            return IVariable.wrapList(Arrays.stream(recipe.getInputItems().get(index).getMatchingStacks()).map(IVariable::from).collect(Collectors.toList()));
+            return IVariable.wrapList(Arrays.stream(recipe.getInputItems().get(index).getItems()).map(IVariable::from).collect(Collectors.toList()));
         }
         return null;
     }

@@ -73,7 +73,7 @@ public class MachineBrewerTile extends MachineTileProcess {
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new MachineBrewerContainer(i, world, pos, inventory, player);
+        return new MachineBrewerContainer(i, level, worldPosition, inventory, player);
     }
 
     // region OPTIMIZATION

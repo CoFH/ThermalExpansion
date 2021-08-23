@@ -93,27 +93,27 @@ public class MachineCrafterTile extends MachineTileProcess {
 
     protected void setRecipe() {
 
-        if (world == null || Utils.isClientWorld(world)) {
+        if (level == null || Utils.isClientWorld(level)) {
             return;
         }
         for (int i = 0; i < 9; ++i) {
-            craftMatrix.setInventorySlotContents(i, inventory.get(SLOT_CRAFTING_START + i));
+            craftMatrix.setItem(i, inventory.get(SLOT_CRAFTING_START + i));
         }
         ICraftingRecipe craftRecipe;
-        Optional<ICraftingRecipe> possibleRecipe = world.getRecipeManager().getRecipe(IRecipeType.CRAFTING, craftMatrix, world);
+        Optional<ICraftingRecipe> possibleRecipe = level.getRecipeManager().getRecipeFor(IRecipeType.CRAFTING, craftMatrix, level);
         if (possibleRecipe.isPresent()) {
             craftRecipe = possibleRecipe.get();
-            craftResult.setInventorySlotContents(0, craftRecipe.getCraftingResult(craftMatrix));
+            craftResult.setItem(0, craftRecipe.assemble(craftMatrix));
         } else {
             craftRecipe = null;
-            craftResult.setInventorySlotContents(0, ItemStack.EMPTY);
+            craftResult.setItem(0, ItemStack.EMPTY);
             if (isActive) {
                 processOff();
             }
         }
         craftResult.setRecipeUsed(craftRecipe);
         curRecipe = CrafterRecipeManager.instance().getRecipe(craftRecipe);
-        resultSlot.setItemStack(craftResult.getStackInSlot(0));
+        resultSlot.setItemStack(craftResult.getItem(0));
         clearRecipeChanges();
     }
 
@@ -140,7 +140,7 @@ public class MachineCrafterTile extends MachineTileProcess {
 
         if (!ThermalConfig.keepItems.get()) {
             for (int i = 0; i < invSize() - augSize() - 9 - 1; ++i) {
-                InventoryHelper.spawnItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), inventory.getStackInSlot(i));
+                InventoryHelper.dropItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), inventory.getStackInSlot(i));
             }
         }
         if (!ThermalConfig.keepAugments.get()) {
@@ -188,7 +188,7 @@ public class MachineCrafterTile extends MachineTileProcess {
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new MachineCrafterContainer(i, world, pos, inventory, player);
+        return new MachineCrafterContainer(i, level, worldPosition, inventory, player);
     }
 
     // region NETWORK
@@ -200,7 +200,7 @@ public class MachineCrafterTile extends MachineTileProcess {
         super.getConfigPacket(buffer);
 
         for (int i = SLOT_CRAFTING_START; i < SLOT_CRAFTING_START + 9; ++i) {
-            buffer.writeItemStack(inventory.getStackInSlot(i));
+            buffer.writeItem(inventory.getStackInSlot(i));
         }
         return buffer;
     }
@@ -211,7 +211,7 @@ public class MachineCrafterTile extends MachineTileProcess {
         super.handleConfigPacket(buffer);
 
         for (int i = SLOT_CRAFTING_START; i < SLOT_CRAFTING_START + 9; ++i) {
-            inventory.set(i, buffer.readItemStack());
+            inventory.set(i, buffer.readItem());
         }
         setRecipe();
     }
@@ -235,8 +235,8 @@ public class MachineCrafterTile extends MachineTileProcess {
 
         super.handleGuiPacket(buffer);
 
-        if (buffer.readBoolean() && world != null) {
-            Optional<? extends IRecipe<?>> possibleRecipe = world.getRecipeManager().getRecipe(buffer.readResourceLocation());
+        if (buffer.readBoolean() && level != null) {
+            Optional<? extends IRecipe<?>> possibleRecipe = level.getRecipeManager().byKey(buffer.readResourceLocation());
             possibleRecipe.ifPresent(recipe -> curRecipe = CrafterRecipeManager.instance().getRecipe(recipe));
         } else {
             curRecipe = null;

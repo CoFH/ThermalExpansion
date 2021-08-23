@@ -111,33 +111,33 @@ public class ThermalExpansion {
     // region HELPERS
     private void registerGuiFactories() {
 
-        ScreenManager.registerFactory(MACHINE_FURNACE_CONTAINER, MachineFurnaceScreen::new);
-        ScreenManager.registerFactory(MACHINE_SAWMILL_CONTAINER, MachineSawmillScreen::new);
-        ScreenManager.registerFactory(MACHINE_PULVERIZER_CONTAINER, MachinePulverizerScreen::new);
-        ScreenManager.registerFactory(MACHINE_SMELTER_CONTAINER, MachineSmelterScreen::new);
-        ScreenManager.registerFactory(MACHINE_INSOLATOR_CONTAINER, MachineInsolatorScreen::new);
-        ScreenManager.registerFactory(MACHINE_CENTRIFUGE_CONTAINER, MachineCentrifugeScreen::new);
-        ScreenManager.registerFactory(MACHINE_PRESS_CONTAINER, MachinePressScreen::new);
-        ScreenManager.registerFactory(MACHINE_CRUCIBLE_CONTAINER, MachineCrucibleScreen::new);
-        ScreenManager.registerFactory(MACHINE_CHILLER_CONTAINER, MachineChillerScreen::new);
-        ScreenManager.registerFactory(MACHINE_REFINERY_CONTAINER, MachineRefineryScreen::new);
-        ScreenManager.registerFactory(MACHINE_PYROLYZER_CONTAINER, MachinePyrolyzerScreen::new);
-        ScreenManager.registerFactory(MACHINE_BREWER_CONTAINER, MachineBrewerScreen::new);
-        ScreenManager.registerFactory(MACHINE_BOTTLER_CONTAINER, MachineBottlerScreen::new);
-        ScreenManager.registerFactory(MACHINE_CRAFTER_CONTAINER, MachineCrafterScreen::new);
+        ScreenManager.register(MACHINE_FURNACE_CONTAINER, MachineFurnaceScreen::new);
+        ScreenManager.register(MACHINE_SAWMILL_CONTAINER, MachineSawmillScreen::new);
+        ScreenManager.register(MACHINE_PULVERIZER_CONTAINER, MachinePulverizerScreen::new);
+        ScreenManager.register(MACHINE_SMELTER_CONTAINER, MachineSmelterScreen::new);
+        ScreenManager.register(MACHINE_INSOLATOR_CONTAINER, MachineInsolatorScreen::new);
+        ScreenManager.register(MACHINE_CENTRIFUGE_CONTAINER, MachineCentrifugeScreen::new);
+        ScreenManager.register(MACHINE_PRESS_CONTAINER, MachinePressScreen::new);
+        ScreenManager.register(MACHINE_CRUCIBLE_CONTAINER, MachineCrucibleScreen::new);
+        ScreenManager.register(MACHINE_CHILLER_CONTAINER, MachineChillerScreen::new);
+        ScreenManager.register(MACHINE_REFINERY_CONTAINER, MachineRefineryScreen::new);
+        ScreenManager.register(MACHINE_PYROLYZER_CONTAINER, MachinePyrolyzerScreen::new);
+        ScreenManager.register(MACHINE_BREWER_CONTAINER, MachineBrewerScreen::new);
+        ScreenManager.register(MACHINE_BOTTLER_CONTAINER, MachineBottlerScreen::new);
+        ScreenManager.register(MACHINE_CRAFTER_CONTAINER, MachineCrafterScreen::new);
 
-        ScreenManager.registerFactory(DYNAMO_STIRLING_CONTAINER, DynamoStirlingScreen::new);
-        ScreenManager.registerFactory(DYNAMO_COMPRESSION_CONTAINER, DynamoCompressionScreen::new);
-        ScreenManager.registerFactory(DYNAMO_MAGMATIC_CONTAINER, DynamoMagmaticScreen::new);
-        ScreenManager.registerFactory(DYNAMO_NUMISMATIC_CONTAINER, DynamoNumismaticScreen::new);
-        ScreenManager.registerFactory(DYNAMO_LAPIDARY_CONTAINER, DynamoLapidaryScreen::new);
-        ScreenManager.registerFactory(DYNAMO_DISENCHANTMENT_CONTAINER, DynamoDisenchantmentScreen::new);
-        ScreenManager.registerFactory(DYNAMO_GOURMAND_CONTAINER, DynamoGourmandScreen::new);
+        ScreenManager.register(DYNAMO_STIRLING_CONTAINER, DynamoStirlingScreen::new);
+        ScreenManager.register(DYNAMO_COMPRESSION_CONTAINER, DynamoCompressionScreen::new);
+        ScreenManager.register(DYNAMO_MAGMATIC_CONTAINER, DynamoMagmaticScreen::new);
+        ScreenManager.register(DYNAMO_NUMISMATIC_CONTAINER, DynamoNumismaticScreen::new);
+        ScreenManager.register(DYNAMO_LAPIDARY_CONTAINER, DynamoLapidaryScreen::new);
+        ScreenManager.register(DYNAMO_DISENCHANTMENT_CONTAINER, DynamoDisenchantmentScreen::new);
+        ScreenManager.register(DYNAMO_GOURMAND_CONTAINER, DynamoGourmandScreen::new);
     }
 
     private void registerRenderLayers() {
 
-        RenderType cutout = RenderType.getCutout();
+        RenderType cutout = RenderType.cutout();
 
         RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_MACHINE_FURNACE), cutout);
         RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_MACHINE_SAWMILL), cutout);

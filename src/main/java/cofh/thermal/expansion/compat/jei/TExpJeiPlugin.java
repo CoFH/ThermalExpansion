@@ -37,43 +37,43 @@ public class TExpJeiPlugin implements IModPlugin {
             // TODO: Log an error.
             return;
         }
-        registration.addRecipes(recipeManager.getRecipes(RECIPE_FURNACE).values(), ID_RECIPE_FURNACE);
+        registration.addRecipes(recipeManager.byType(RECIPE_FURNACE).values(), ID_RECIPE_FURNACE);
         registration.addRecipes(FurnaceRecipeManager.instance().getConvertedRecipes(), ID_RECIPE_FURNACE);
 
-        registration.addRecipes(recipeManager.getRecipes(RECIPE_SAWMILL).values(), ID_RECIPE_SAWMILL);
+        registration.addRecipes(recipeManager.byType(RECIPE_SAWMILL).values(), ID_RECIPE_SAWMILL);
 
-        registration.addRecipes(recipeManager.getRecipes(RECIPE_PULVERIZER).values(), ID_RECIPE_PULVERIZER);
-        registration.addRecipes(recipeManager.getRecipes(RECIPE_PULVERIZER_RECYCLE).values(), ID_RECIPE_PULVERIZER);
-        registration.addRecipes(recipeManager.getRecipes(CATALYST_PULVERIZER).values(), ID_CATALYST_PULVERIZER);
+        registration.addRecipes(recipeManager.byType(RECIPE_PULVERIZER).values(), ID_RECIPE_PULVERIZER);
+        registration.addRecipes(recipeManager.byType(RECIPE_PULVERIZER_RECYCLE).values(), ID_RECIPE_PULVERIZER);
+        registration.addRecipes(recipeManager.byType(CATALYST_PULVERIZER).values(), ID_CATALYST_PULVERIZER);
 
-        registration.addRecipes(recipeManager.getRecipes(RECIPE_SMELTER).values(), ID_RECIPE_SMELTER);
-        registration.addRecipes(recipeManager.getRecipes(RECIPE_SMELTER_RECYCLE).values(), ID_RECIPE_SMELTER);
-        registration.addRecipes(recipeManager.getRecipes(CATALYST_SMELTER).values(), ID_CATALYST_SMELTER);
+        registration.addRecipes(recipeManager.byType(RECIPE_SMELTER).values(), ID_RECIPE_SMELTER);
+        registration.addRecipes(recipeManager.byType(RECIPE_SMELTER_RECYCLE).values(), ID_RECIPE_SMELTER);
+        registration.addRecipes(recipeManager.byType(CATALYST_SMELTER).values(), ID_CATALYST_SMELTER);
 
-        registration.addRecipes(recipeManager.getRecipes(RECIPE_INSOLATOR).values(), ID_RECIPE_INSOLATOR);
-        registration.addRecipes(recipeManager.getRecipes(CATALYST_INSOLATOR).values(), ID_CATALYST_INSOLATOR);
+        registration.addRecipes(recipeManager.byType(RECIPE_INSOLATOR).values(), ID_RECIPE_INSOLATOR);
+        registration.addRecipes(recipeManager.byType(CATALYST_INSOLATOR).values(), ID_CATALYST_INSOLATOR);
 
-        registration.addRecipes(recipeManager.getRecipes(RECIPE_CENTRIFUGE).values(), ID_RECIPE_CENTRIFUGE);
-        registration.addRecipes(recipeManager.getRecipes(RECIPE_PRESS).values(), ID_RECIPE_PRESS);
-        registration.addRecipes(recipeManager.getRecipes(RECIPE_CRUCIBLE).values(), ID_RECIPE_CRUCIBLE);
-        registration.addRecipes(recipeManager.getRecipes(RECIPE_CHILLER).values(), ID_RECIPE_CHILLER);
-        registration.addRecipes(recipeManager.getRecipes(RECIPE_REFINERY).values(), ID_RECIPE_REFINERY);
-        registration.addRecipes(recipeManager.getRecipes(RECIPE_PYROLYZER).values(), ID_RECIPE_PYROLYZER);
+        registration.addRecipes(recipeManager.byType(RECIPE_CENTRIFUGE).values(), ID_RECIPE_CENTRIFUGE);
+        registration.addRecipes(recipeManager.byType(RECIPE_PRESS).values(), ID_RECIPE_PRESS);
+        registration.addRecipes(recipeManager.byType(RECIPE_CRUCIBLE).values(), ID_RECIPE_CRUCIBLE);
+        registration.addRecipes(recipeManager.byType(RECIPE_CHILLER).values(), ID_RECIPE_CHILLER);
+        registration.addRecipes(recipeManager.byType(RECIPE_REFINERY).values(), ID_RECIPE_REFINERY);
+        registration.addRecipes(recipeManager.byType(RECIPE_PYROLYZER).values(), ID_RECIPE_PYROLYZER);
 
-        registration.addRecipes(recipeManager.getRecipes(RECIPE_BREWER).values(), ID_RECIPE_BREWER);
+        registration.addRecipes(recipeManager.byType(RECIPE_BREWER).values(), ID_RECIPE_BREWER);
         registration.addRecipes(BrewerRecipeManager.instance().getConvertedRecipes(), ID_RECIPE_BREWER);
 
-        registration.addRecipes(recipeManager.getRecipes(RECIPE_BOTTLER).values(), ID_RECIPE_BOTTLER);
+        registration.addRecipes(recipeManager.byType(RECIPE_BOTTLER).values(), ID_RECIPE_BOTTLER);
         registration.addRecipes(BottlerRecipeManager.instance().getConvertedRecipes(), ID_RECIPE_BOTTLER);
 
-        registration.addRecipes(recipeManager.getRecipes(FUEL_STIRLING).values(), ID_FUEL_STIRLING);
+        registration.addRecipes(recipeManager.byType(FUEL_STIRLING).values(), ID_FUEL_STIRLING);
         registration.addRecipes(StirlingFuelManager.instance().getConvertedFuels(), ID_FUEL_STIRLING);
-        registration.addRecipes(recipeManager.getRecipes(FUEL_COMPRESSION).values(), ID_FUEL_COMPRESSION);
-        registration.addRecipes(recipeManager.getRecipes(FUEL_MAGMATIC).values(), ID_FUEL_MAGMATIC);
-        registration.addRecipes(recipeManager.getRecipes(FUEL_NUMISMATIC).values(), ID_FUEL_NUMISMATIC);
-        registration.addRecipes(recipeManager.getRecipes(FUEL_LAPIDARY).values(), ID_FUEL_LAPIDARY);
+        registration.addRecipes(recipeManager.byType(FUEL_COMPRESSION).values(), ID_FUEL_COMPRESSION);
+        registration.addRecipes(recipeManager.byType(FUEL_MAGMATIC).values(), ID_FUEL_MAGMATIC);
+        registration.addRecipes(recipeManager.byType(FUEL_NUMISMATIC).values(), ID_FUEL_NUMISMATIC);
+        registration.addRecipes(recipeManager.byType(FUEL_LAPIDARY).values(), ID_FUEL_LAPIDARY);
 
-        registration.addRecipes(recipeManager.getRecipes(FUEL_GOURMAND).values(), ID_FUEL_GOURMAND);
+        registration.addRecipes(recipeManager.byType(FUEL_GOURMAND).values(), ID_FUEL_GOURMAND);
         registration.addRecipes(GourmandFuelManager.instance().getConvertedFuels(), ID_FUEL_GOURMAND);
     }
 
@@ -190,7 +190,7 @@ public class TExpJeiPlugin implements IModPlugin {
     private RecipeManager getRecipeManager() {
 
         RecipeManager recipeManager = null;
-        ClientWorld world = Minecraft.getInstance().world;
+        ClientWorld world = Minecraft.getInstance().level;
         if (world != null) {
             recipeManager = world.getRecipeManager();
         }

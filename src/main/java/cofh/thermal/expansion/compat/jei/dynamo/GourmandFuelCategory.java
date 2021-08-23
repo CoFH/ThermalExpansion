@@ -27,7 +27,7 @@ public class GourmandFuelCategory extends ThermalFuelCategory<GourmandFuel> {
         background = guiHelper.drawableBuilder(DynamoGourmandScreen.TEXTURE, 26, 11, 70, 62)
                 .addPadding(0, 0, 16, 78)
                 .build();
-        name = getTextComponent(DYNAMO_GOURMAND_BLOCK.getTranslationKey());
+        name = getTextComponent(DYNAMO_GOURMAND_BLOCK.getDescriptionId());
 
         durationBackground = Drawables.getDrawables(guiHelper).getScale(Drawables.SCALE_ALCHEMY);
 

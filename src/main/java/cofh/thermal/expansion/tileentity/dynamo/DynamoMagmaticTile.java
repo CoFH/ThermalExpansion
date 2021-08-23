@@ -77,7 +77,7 @@ public class DynamoMagmaticTile extends DynamoTileBase {
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new DynamoMagmaticContainer(i, world, pos, inventory, player);
+        return new DynamoMagmaticContainer(i, level, worldPosition, inventory, player);
     }
 
     @Nonnull

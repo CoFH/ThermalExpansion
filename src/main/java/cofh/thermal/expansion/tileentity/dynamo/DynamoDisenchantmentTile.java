@@ -52,7 +52,7 @@ public class DynamoDisenchantmentTile extends DynamoTileBase {
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new DynamoDisenchantmentContainer(i, world, pos, inventory, player);
+        return new DynamoDisenchantmentContainer(i, level, worldPosition, inventory, player);
     }
 
 }

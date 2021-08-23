@@ -2,8 +2,7 @@ buildscript {
     repositories {
         mavenLocal()
         jcenter()
-        maven { url 'https://files.minecraftforge.net/maven' }
-        maven { url = 'https://repo.spongepowered.org/maven' }
+        maven { url 'https://maven.minecraftforge.net/' }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:4.1.+'
@@ -19,6 +18,8 @@ plugins {
 apply plugin: 'net.minecraftforge.gradle'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(8)
+
+sourceSets.main.resources.srcDirs += "src/main/generated"
 
 def signProps = [:]
 if (System.getenv('KEY_STORE')) {
@@ -39,6 +40,8 @@ if (System.getenv('KEY_STORE')) {
     println 'No signing secrets found, build will not be signed.'
 }
 
+mod_version = "${mod_version}." + (System.getenv("BUILD_NUMBER") ?: "1")
+
 version = "${mc_version}-${mod_version}"
 group = 'com.teamcofh'
 archivesBaseName = "${mod_id}"
@@ -52,25 +55,16 @@ repositories {
         url 'https://maven.tterrag.com/'
     }
     maven { // JEI
-        url 'http://dvs1.progwml6.com/files/maven'
+        url 'https://dvs1.progwml6.com/files/maven/'
     }
     maven { // Patchouli
-        url 'https://maven.blamejared.com'
+        url 'https://maven.blamejared.com/'
     }
-}
-
-def setupSourceSet(SourceSet sourceSet, String name) {
-    sourceSet.java {
-        srcDir 'src/' + name + '/java'
-    }
-    sourceSet.compileClasspath += sourceSets.main.output
 }
 
 minecraft {
-    mappings channel: 'snapshot', version: "${mcp_mappings}"
+    mappings channel: 'official', version: "${mc_version}"
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
-
-    evaluationDependsOn(':CoFHCore')
 
     runs {
         data {
@@ -80,17 +74,11 @@ minecraft {
             args '--all', '--output', file('src/generated/'),
                     '--mod', archivesBaseName,
                     '--existing', sourceSets.main.resources.srcDirs[0],
-                    '--existing', new File(project(':Thermal').projectDir, "src/main/resources/")
+                    '--existing-mod', 'thermal'
 
             mods {
-                CoFHCore {
-                    source findProject(':CoFHCore').sourceSets.main
-                }
-                Thermal {
-                    source findProject(':Thermal').sourceSets.main
-                }
                 ThermalExpansion {
-                    source findProject(':ThermalExpansion').sourceSets.main
+                    source sourceSets.main
                 }
             }
         }
@@ -100,22 +88,14 @@ minecraft {
 dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
 
+    compile fg.deobf("com.teamcofh:cofh_core:${mc_version}-${cofh_core_version}")
+    compile fg.deobf("com.teamcofh:thermal_foundation:${mc_version}-${thermal_foundation_version}")
+
     compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
 
     compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
     runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
-
-    if (findProject(':CoFHCore') != null) {
-        compile project(':CoFHCore')
-    } else {
-        // TODO: Maven!
-    }
-    if (findProject(':Thermal') != null) {
-        compile project(':Thermal')
-    } else {
-        // TODO: Maven!
-    }
 }
 
 signing {
@@ -146,20 +126,60 @@ jar {
     }
 }
 
-def reobfFile = file("$buildDir/reobfJar/output.jar")
-def reobfArtifact = artifacts.add('default', reobfFile) {
-    type 'jar'
-    builtBy 'reobfJar'
+task srcJar(type: Jar) {
+    build.dependsOn it
+    from sourceSets.main.allSource
+    classifier = 'sources'
 }
+
 publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifact reobfArtifact
+    repositories {
+        if (System.getenv('MAVEN_PASS')) {
+            maven {
+                url 'https://nexus.covers1624.net/repository/cofh-releases/'
+                credentials {
+                    username 'kinglemming'
+                    password System.getenv('MAVEN_PASS')
+                }
+            }
         }
     }
-    repositories {
-        maven {
-            url "file:///${project.projectDir}/mcmodsrepo"
+    publications {
+        mod(MavenPublication) {
+            groupId project.group
+            artifactId project.archivesBaseName
+            version project.version
+            artifact jar
+            artifact srcJar
+
+            pom {
+                name = archivesBaseName
+                description = archivesBaseName
+                url = "https://github.com/CoFH/${project.name}"
+                scm {
+                    url = "https://github.com/CoFH/${project.name}"
+                    connection = "scm:git:git://github.com/CoFH/${project.name}.git"
+                    connection = "scm:git:git@github.com:CoFH/${project.name}.git"
+                }
+
+                issueManagement {
+                    system = 'discord'
+                    url = 'https://discord.gg/uRKrnbH'
+                }
+                licenses {
+                    license {
+                        name = 'Don\'t Be a Jerk v2'
+                        url = "https://github.com/CoFH/${project.name}/blob/main/README.md"
+                        distribution = 'repo'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'teamcofh'
+                        name = 'Team CoFH'
+                    }
+                }
+            }
         }
     }
 }

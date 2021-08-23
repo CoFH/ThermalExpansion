@@ -56,13 +56,13 @@ public class MachineFurnaceTile extends MachineTileProcess {
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new MachineFurnaceContainer(i, world, pos, inventory, player);
+        return new MachineFurnaceContainer(i, level, worldPosition, inventory, player);
     }
 
     @Override
     protected Object getSound() {
 
-        return new ConditionalSound(SOUND_MACHINE_FURNACE, SoundCategory.AMBIENT, this, () -> !removed && isActive);
+        return new ConditionalSound(SOUND_MACHINE_FURNACE, SoundCategory.AMBIENT, this, () -> !remove && isActive);
     }
 
     // region OPTIMIZATION

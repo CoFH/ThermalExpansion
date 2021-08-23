@@ -71,7 +71,7 @@ public class MachineCentrifugeTile extends MachineTileProcess {
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new MachineCentrifugeContainer(i, world, pos, inventory, player);
+        return new MachineCentrifugeContainer(i, level, worldPosition, inventory, player);
     }
 
     // region OPTIMIZATION

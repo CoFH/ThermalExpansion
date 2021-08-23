@@ -35,7 +35,7 @@ public class MagmaticFuelCategory extends ThermalFuelCategory<MagmaticFuel> {
         background = guiHelper.drawableBuilder(DynamoMagmaticScreen.TEXTURE, 26, 11, 70, 62)
                 .addPadding(0, 0, 16, 78)
                 .build();
-        name = getTextComponent(DYNAMO_MAGMATIC_BLOCK.getTranslationKey());
+        name = getTextComponent(DYNAMO_MAGMATIC_BLOCK.getDescriptionId());
 
         durationBackground = Drawables.getDrawables(guiHelper).getScale(Drawables.SCALE_FLAME);
 

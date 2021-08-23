@@ -37,7 +37,7 @@ public class BottlerRecipeCategory extends ThermalRecipeCategory<BottlerRecipe> 
         background = guiHelper.drawableBuilder(MachineBottlerScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)
                 .build();
-        name = getTextComponent(MACHINE_BOTTLER_BLOCK.getTranslationKey());
+        name = getTextComponent(MACHINE_BOTTLER_BLOCK.getDescriptionId());
 
         progressBackground = Drawables.getDrawables(guiHelper).getProgress(Drawables.PROGRESS_ARROW);
         progressFluidBackground = Drawables.getDrawables(guiHelper).getProgressFill(Drawables.PROGRESS_ARROW_FLUID);

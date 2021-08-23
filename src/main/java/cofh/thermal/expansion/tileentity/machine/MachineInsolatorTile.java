@@ -91,8 +91,8 @@ public class MachineInsolatorTile extends MachineTileProcess {
         }
         int decrement = itemInputCounts.size() > 1 ? itemInputCounts.get(1) : 0;
         if (decrement > 0) {
-            if (catalystSlot.getItemStack().isDamageable()) {
-                if (catalystSlot.getItemStack().attemptDamageItem(decrement, MathHelper.RANDOM, null)) {
+            if (catalystSlot.getItemStack().isDamageableItem()) {
+                if (catalystSlot.getItemStack().hurt(decrement, MathHelper.RANDOM, null)) {
                     catalystSlot.modify(-1);
                 }
             } else {
@@ -109,7 +109,7 @@ public class MachineInsolatorTile extends MachineTileProcess {
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new MachineInsolatorContainer(i, world, pos, inventory, player);
+        return new MachineInsolatorContainer(i, level, worldPosition, inventory, player);
     }
 
     // region OPTIMIZATION

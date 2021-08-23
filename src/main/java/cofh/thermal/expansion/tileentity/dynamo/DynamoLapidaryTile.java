@@ -53,7 +53,7 @@ public class DynamoLapidaryTile extends DynamoTileBase {
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new DynamoLapidaryContainer(i, world, pos, inventory, player);
+        return new DynamoLapidaryContainer(i, level, worldPosition, inventory, player);
     }
 
 }

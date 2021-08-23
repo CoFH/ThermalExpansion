@@ -15,7 +15,7 @@ public class PulverizerCatalystCategory extends ThermalCatalystCategory<Pulveriz
 
         super(guiHelper, icon, uid);
 
-        name = getTextComponent(MACHINE_PULVERIZER_BLOCK.getTranslationKey()).appendString(": ").append(getTextComponent("info.thermal.catalysts"));
+        name = getTextComponent(MACHINE_PULVERIZER_BLOCK.getDescriptionId()).append(": ").append(getTextComponent("info.thermal.catalysts"));
     }
 
     @Override

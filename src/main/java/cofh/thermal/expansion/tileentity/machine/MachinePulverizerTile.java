@@ -77,8 +77,8 @@ public class MachinePulverizerTile extends MachineTileProcess {
         }
         int decrement = itemInputCounts.size() > 1 ? itemInputCounts.get(1) : 0;
         if (decrement > 0) {
-            if (catalystSlot.getItemStack().isDamageable()) {
-                if (catalystSlot.getItemStack().attemptDamageItem(decrement, MathHelper.RANDOM, null)) {
+            if (catalystSlot.getItemStack().isDamageableItem()) {
+                if (catalystSlot.getItemStack().hurt(decrement, MathHelper.RANDOM, null)) {
                     catalystSlot.modify(-1);
                 }
             } else {
@@ -91,13 +91,13 @@ public class MachinePulverizerTile extends MachineTileProcess {
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new MachinePulverizerContainer(i, world, pos, inventory, player);
+        return new MachinePulverizerContainer(i, level, worldPosition, inventory, player);
     }
 
     @Override
     protected Object getSound() {
 
-        return new ConditionalSound(SOUND_MACHINE_PULVERIZER, SoundCategory.AMBIENT, this, () -> !removed && isActive);
+        return new ConditionalSound(SOUND_MACHINE_PULVERIZER, SoundCategory.AMBIENT, this, () -> !remove && isActive);
     }
 
     // region OPTIMIZATION

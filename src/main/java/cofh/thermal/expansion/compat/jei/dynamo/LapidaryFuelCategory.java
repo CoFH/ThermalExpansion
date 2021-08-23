@@ -27,7 +27,7 @@ public class LapidaryFuelCategory extends ThermalFuelCategory<LapidaryFuel> {
         background = guiHelper.drawableBuilder(DynamoLapidaryScreen.TEXTURE, 26, 11, 70, 62)
                 .addPadding(0, 0, 16, 78)
                 .build();
-        name = getTextComponent(DYNAMO_LAPIDARY_BLOCK.getTranslationKey());
+        name = getTextComponent(DYNAMO_LAPIDARY_BLOCK.getDescriptionId());
 
         durationBackground = Drawables.getDrawables(guiHelper).getScale(Drawables.SCALE_FLAME_GREEN);
 

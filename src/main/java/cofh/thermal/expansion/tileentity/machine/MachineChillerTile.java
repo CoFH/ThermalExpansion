@@ -73,7 +73,7 @@ public class MachineChillerTile extends MachineTileProcess {
     protected void resolveInputs() {
 
         // Input Items
-        if (!itemInputCounts.isEmpty() && !inputSlot.getItemStack().getItem().isIn(MACHINE_CASTS)) {
+        if (!itemInputCounts.isEmpty() && !inputSlot.getItemStack().getItem().is(MACHINE_CASTS)) {
             inputSlot.modify(-itemInputCounts.get(0));
         }
         // Input Fluids
@@ -86,7 +86,7 @@ public class MachineChillerTile extends MachineTileProcess {
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new MachineChillerContainer(i, world, pos, inventory, player);
+        return new MachineChillerContainer(i, level, worldPosition, inventory, player);
     }
 
 }

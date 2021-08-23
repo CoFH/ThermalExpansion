@@ -38,7 +38,7 @@ public class InsolatorRecipeCategory extends ThermalRecipeCategory<InsolatorReci
         background = guiHelper.drawableBuilder(MachineInsolatorScreen.TEXTURE, 26, 11, 130, 62)
                 .addPadding(0, 0, 16, 18)
                 .build();
-        name = getTextComponent(MACHINE_INSOLATOR_BLOCK.getTranslationKey());
+        name = getTextComponent(MACHINE_INSOLATOR_BLOCK.getDescriptionId());
 
         progressBackground = Drawables.getDrawables(guiHelper).getProgress(Drawables.PROGRESS_ARROW);
         progressFluidBackground = Drawables.getDrawables(guiHelper).getProgressFill(Drawables.PROGRESS_ARROW_FLUID);

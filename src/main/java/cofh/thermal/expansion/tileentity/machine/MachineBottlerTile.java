@@ -78,13 +78,13 @@ public class MachineBottlerTile extends MachineTileProcess {
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new MachineBottlerContainer(i, world, pos, inventory, player);
+        return new MachineBottlerContainer(i, level, worldPosition, inventory, player);
     }
 
     @Override
     protected Object getSound() {
 
-        return new ConditionalSound(SOUND_MACHINE_BOTTLER, SoundCategory.AMBIENT, this, () -> !removed && isActive);
+        return new ConditionalSound(SOUND_MACHINE_BOTTLER, SoundCategory.AMBIENT, this, () -> !remove && isActive);
     }
 
 }

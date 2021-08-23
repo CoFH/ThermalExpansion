@@ -28,7 +28,7 @@ public class FurnaceRecipeCategory extends ThermalRecipeCategory<FurnaceRecipe> 
         background = guiHelper.drawableBuilder(MachineFurnaceScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)
                 .build();
-        name = getTextComponent(MACHINE_FURNACE_BLOCK.getTranslationKey());
+        name = getTextComponent(MACHINE_FURNACE_BLOCK.getDescriptionId());
 
         progressBackground = Drawables.getDrawables(guiHelper).getProgress(Drawables.PROGRESS_ARROW);
         speedBackground = Drawables.getDrawables(guiHelper).getScale(Drawables.SCALE_FLAME);
