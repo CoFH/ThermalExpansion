@@ -54,7 +54,7 @@ public class CompressionFuelCategory extends ThermalFuelCategory<CompressionFuel
     @Override
     public void setIngredients(CompressionFuel fuel, IIngredients ingredients) {
 
-        ingredients.setInputs(VanillaTypes.FLUID, fuel.getInputFluids());
+        setInputIngredients(ingredients, fuel.getInputFluids());
     }
 
     @Override

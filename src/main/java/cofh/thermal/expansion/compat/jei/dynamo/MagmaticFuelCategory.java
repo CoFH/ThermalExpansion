@@ -54,7 +54,7 @@ public class MagmaticFuelCategory extends ThermalFuelCategory<MagmaticFuel> {
     @Override
     public void setIngredients(MagmaticFuel fuel, IIngredients ingredients) {
 
-        ingredients.setInputs(VanillaTypes.FLUID, fuel.getInputFluids());
+        setInputIngredients(ingredients, fuel.getInputFluids());
     }
 
     @Override
