@@ -72,7 +72,9 @@ public class TExpJeiPlugin implements IModPlugin {
         registration.addRecipes(recipeManager.byType(FUEL_MAGMATIC).values(), ID_FUEL_MAGMATIC);
         registration.addRecipes(recipeManager.byType(FUEL_NUMISMATIC).values(), ID_FUEL_NUMISMATIC);
         registration.addRecipes(recipeManager.byType(FUEL_LAPIDARY).values(), ID_FUEL_LAPIDARY);
-
+        registration.addRecipes(recipeManager.byType(FUEL_DISENCHANTMENT).values(), ID_FUEL_DISENCHANTMENT);
+    
+    
         registration.addRecipes(recipeManager.byType(FUEL_GOURMAND).values(), ID_FUEL_GOURMAND);
         registration.addRecipes(GourmandFuelManager.instance().getConvertedFuels(), ID_FUEL_GOURMAND);
     }
@@ -106,6 +108,7 @@ public class TExpJeiPlugin implements IModPlugin {
         registration.addRecipeCategories(new MagmaticFuelCategory(registration.getJeiHelpers().getGuiHelper(), new ItemStack(DYNAMO_MAGMATIC_BLOCK), ID_FUEL_MAGMATIC));
         registration.addRecipeCategories(new NumismaticFuelCategory(registration.getJeiHelpers().getGuiHelper(), new ItemStack(DYNAMO_NUMISMATIC_BLOCK), ID_FUEL_NUMISMATIC));
         registration.addRecipeCategories(new LapidaryFuelCategory(registration.getJeiHelpers().getGuiHelper(), new ItemStack(DYNAMO_LAPIDARY_BLOCK), ID_FUEL_LAPIDARY));
+        registration.addRecipeCategories(new DisenchantmentFuelCategory(registration.getJeiHelpers().getGuiHelper(), new ItemStack(DYNAMO_DISENCHANTMENT_BLOCK), ID_FUEL_DISENCHANTMENT));
 
         registration.addRecipeCategories(new GourmandFuelCategory(registration.getJeiHelpers().getGuiHelper(), new ItemStack(DYNAMO_GOURMAND_BLOCK), ID_FUEL_GOURMAND));
     }
@@ -143,7 +146,8 @@ public class TExpJeiPlugin implements IModPlugin {
         registration.addRecipeClickArea(DynamoMagmaticScreen.class, 80, progressY, progressH, progressH, ID_FUEL_MAGMATIC);
         registration.addRecipeClickArea(DynamoNumismaticScreen.class, 80, progressY, progressH, progressH, ID_FUEL_NUMISMATIC);
         registration.addRecipeClickArea(DynamoLapidaryScreen.class, 80, progressY, progressH, progressH, ID_FUEL_LAPIDARY);
-
+        registration.addRecipeClickArea(DynamoDisenchantmentScreen.class, 80, progressY, progressH, progressH, ID_FUEL_DISENCHANTMENT);
+        
         registration.addRecipeClickArea(DynamoGourmandScreen.class, 80, progressY, progressH, progressH, ID_FUEL_GOURMAND);
     }
 
@@ -176,7 +180,8 @@ public class TExpJeiPlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(DYNAMO_MAGMATIC_BLOCK), ID_FUEL_MAGMATIC);
         registration.addRecipeCatalyst(new ItemStack(DYNAMO_NUMISMATIC_BLOCK), ID_FUEL_NUMISMATIC);
         registration.addRecipeCatalyst(new ItemStack(DYNAMO_LAPIDARY_BLOCK), ID_FUEL_LAPIDARY);
-
+        registration.addRecipeCatalyst(new ItemStack(DYNAMO_DISENCHANTMENT_BLOCK), ID_FUEL_DISENCHANTMENT);
+        
         registration.addRecipeCatalyst(new ItemStack(DYNAMO_GOURMAND_BLOCK), ID_FUEL_GOURMAND);
     }
 
