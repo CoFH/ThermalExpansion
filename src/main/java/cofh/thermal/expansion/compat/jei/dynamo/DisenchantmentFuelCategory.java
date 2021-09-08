@@ -1,8 +1,9 @@
 package cofh.thermal.expansion.compat.jei.dynamo;
 
-import cofh.thermal.core.util.recipes.dynamo.*;
+import cofh.thermal.core.util.recipes.dynamo.DisenchantmentFuel;
 import cofh.thermal.expansion.client.gui.dynamo.DynamoLapidaryScreen;
-import cofh.thermal.lib.compat.jei.*;
+import cofh.thermal.lib.compat.jei.Drawables;
+import cofh.thermal.lib.compat.jei.ThermalFuelCategory;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
@@ -15,7 +16,7 @@ import net.minecraft.util.ResourceLocation;
 import java.util.List;
 
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
-import static cofh.thermal.expansion.init.TExpReferences.*;
+import static cofh.thermal.expansion.init.TExpReferences.DYNAMO_DISENCHANTMENT_BLOCK;
 
 public class DisenchantmentFuelCategory extends ThermalFuelCategory<DisenchantmentFuel> {
 
