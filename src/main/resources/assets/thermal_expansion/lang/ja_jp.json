@@ -1,0 +1,174 @@
+{
+  "_comment": "========================================================================================================",
+  "_comment": "Thermal Expansion",
+  "_comment": "========================================================================================================",
+
+  "block.thermal.dynamo_compression": "圧縮ダイナモ",
+  "block.thermal.dynamo_disenchantment": "Disenchantment Dynamo",
+  "block.thermal.dynamo_gourmand": "Gourmand Dynamo",
+  "block.thermal.dynamo_lapidary": "宝石ダイナモ",
+  "block.thermal.dynamo_magmatic": "溶岩ダイナモ",
+  "block.thermal.dynamo_numismatic": "貨幣ダイナモ",
+  "block.thermal.dynamo_stirling": "スターリングダイナモ",
+
+  "block.thermal.machine_bottler": "流体密封機",
+  "block.thermal.machine_brewer": "錬金術的醸造機",
+  "block.thermal.machine_centrifuge": "遠心分離器",
+  "block.thermal.machine_chiller": "急速冷凍機",
+  "block.thermal.machine_crafter": "連続作製機",
+  "block.thermal.machine_crucible": "溶岩るつぼ",
+  "block.thermal.machine_furnace": "レッドストーンかまど",
+  "block.thermal.machine_insolator": "植物日照機",
+  "block.thermal.machine_press": "マルチサーボプレス機",
+  "block.thermal.machine_pulverizer": "粉砕機",
+  "block.thermal.machine_pyrolyzer": "熱分解機",
+  "block.thermal.machine_refinery": "分画蒸留機",
+  "block.thermal.machine_sawmill": "製材機",
+  "block.thermal.machine_smelter": "誘導加熱炉",
+
+  "info.thermal.device_fluid_buffer.0": "液体を溜めて転送できます。自動搬出ができます。",
+  "info.thermal.device_fluid_buffer.1": "液体用ホッパーのようなものです。",
+  "info.thermal.device_fluid_buffer.2": "ShiftキーやCtrlキーで流入出量を細かく設定できます。",
+
+  "info.thermal.device_item_buffer.0": "アイテムを溜めて転送できます。自動搬出ができます。",
+  "info.thermal.device_item_buffer.1": "ホッパーより実際優秀。",
+  "info.thermal.device_item_buffer.2": "ShiftキーやCtrlキーで搬入出数を細かく設定できます。",
+
+  "info.thermal.dynamo.throttle": "内部フィードバックに基づいて出力を制限します。",
+
+  "info.thermal.dynamo_compression.0": "液体燃料からRFを生成します。",
+
+  "info.thermal.dynamo_disenchantment.0": "Generates Redstone Flux using enchanted items.",
+  "info.thermal.dynamo_disenchantment.1": "The item is destroyed along with the enchantment. That's why it works.",
+
+  "info.thermal.dynamo_gourmand.0": "Generates Redstone Flux using food!",
+  "info.thermal.dynamo_gourmand.1": "Who knows what sort of beast you may be feeding.",
+  "info.thermal.dynamo_gourmand.2": "It's calorific!",
+
+  "info.thermal.dynamo_lapidary.0": "宝石からRFを生成します。",
+  "info.thermal.dynamo_lapidary.1": "きっと……異世界への扉でしょう……キラキラしたものに魅せられたゴブリンの。",
+  "info.thermal.dynamo_lapidary.2": "宝石はただきれいなだけの石だし",
+
+  "info.thermal.dynamo_magmatic.0": "非常に高温な流体を使ってRFを生成します。",
+  "info.thermal.dynamo_magmatic.1": "使用された流体は無へと霧散していきます。",
+
+  "info.thermal.dynamo_numismatic.0": "経済的な価値をRFに変換します。",
+  "info.thermal.dynamo_numismatic.1": "純粋な欲望うずまく別次元への入り口かもしれない。",
+  "info.thermal.dynamo_numismatic.2": "あまり深く考えず、コインを入れよう。",
+
+  "info.thermal.dynamo_stirling.0": "固形燃料からRFを生成します。",
+  "info.thermal.dynamo_stirling.1": "かまどの燃料はほとんど使用できます。",
+
+  "info.thermal.machine_bottler.0": "容器に流体を詰めます。",
+  "info.thermal.machine_bottler.1": "特定の飲み物を摂取するために必要となります。",
+  "info.thermal.machine_bottler.2": "さわやか",
+
+  "info.thermal.machine_brewer.0": "ポーションを醸造して液体を変質させます。",
+  "info.thermal.machine_brewer.1": "連続して醸造することができます。",
+  "info.thermal.machine_brewer.2": "瓶は不要です!",
+
+  "info.thermal.machine_centrifuge.0": "アイテムをクラフト前の素材へと分離します。",
+  "info.thermal.machine_centrifuge.1": "幾つかのアイテムは流体も分離します。",
+  "info.thermal.machine_centrifuge.2": "勝利へのスピン",
+
+  "info.thermal.machine_chiller.0": "アイテムや流体を急速冷凍します。",
+  "info.thermal.machine_chiller.1": "流体の場合金型で製品の形状を決めることが出来ます。",
+  "info.thermal.machine_chiller.2": "ﾌﾞﾙﾙｯ",
+
+  "info.thermal.machine_crafter.0": "グリッドにアイテムを配置してクラフトレシピを決めます。",
+  "info.thermal.machine_crafter.1": "あとは確認ボタンを押すだけ!",
+  "info.thermal.machine_crafter.2": "全てのレシピが使えるとは限りません。",
+
+  "info.thermal.machine_crucible.0": "高熱により固体を液体に変換します。",
+  "info.thermal.machine_crucible.1": "上位のブロックの作成に有用です。",
+  "info.thermal.machine_crucible.2": "小さい子供やペットから離してご使用下さい。",
+
+  "info.thermal.machine_furnace.0": "RFでアイテムを製錬します。",
+  "info.thermal.machine_furnace.1": "食べ物の調理はとても少ないRFで済みます。",
+  "info.thermal.machine_furnace.2": "もぐもぐもぐ",
+
+  "info.thermal.machine_insolator.0": "RFを使用して栄養と光を植物に注入します。",
+  "info.thermal.machine_insolator.1": "正確には有機農業ではありません。",
+  "info.thermal.machine_insolator.2": "きれいな白色灯!",
+
+  "info.thermal.machine_press.0": "アイテムの絞り・歪曲加工を行います。",
+  "info.thermal.machine_press.1": "製造金型で製品の形状を指定できます。",
+  "info.thermal.machine_press.2": "汎用性に富み満足度が高いです。",
+
+  "info.thermal.machine_pulverizer.0": "打撃によって素材を破砕します。",
+  "info.thermal.machine_pulverizer.1": "アイテムの加工や鉱石処理に有用です。",
+  "info.thermal.machine_pulverizer.2": "典型的な不可逆処理です。",
+
+  "info.thermal.machine_pyrolyzer.0": "高温で固体を分解します。",
+  "info.thermal.machine_pyrolyzer.1": "燃料精製に非常に有用です。",
+  "info.thermal.machine_pyrolyzer.2": "お触り禁止",
+
+  "info.thermal.machine_refinery.0": "様々な流体を精製します。",
+  "info.thermal.machine_refinery.1": "幾つかの流体を精製すると、副産物として固体の素材ができます。",
+  "info.thermal.machine_refinery.2": "生成物は飲めるかもしれないし飲めないかもしれない。",
+
+  "info.thermal.machine_sawmill.0": "原木を板材にカットし、木製品の再加工を行います。",
+  "info.thermal.machine_sawmill.1": "木材の取り扱いにとても便利です。",
+  "info.thermal.machine_sawmill.2": "手に気をつけてください。",
+
+  "info.thermal.machine_smelter.0": "高温を要する、金属などの物質を融解させます。",
+  "info.thermal.machine_smelter.1": "鉱石処理や上位のブロックの作成に有用です。",
+  "info.thermal.machine_smelter.2": "食べ物は絶対に料理できません。",
+
+  "item.thermal.chiller_ball_cast": "ボール金型",
+  "item.thermal.chiller_ingot_cast": "インゴット金型",
+  "item.thermal.chiller_rod_cast": "棒金型",
+
+  "item.thermal.press_coin_die": "貨幣の打ち抜き型",
+  "item.thermal.press_gear_die": "歯車の打ち抜き型",
+  "item.thermal.press_packing_2x2_die": "パッキング型 (2x2)",
+  "item.thermal.press_packing_3x3_die": "パッキング型 (3x3)",
+  "item.thermal.press_unpacking_die": "アンパッキング型",
+
+  "item.thermal.slot_seal": "スロット封",
+  "item.thermal.slot_seal.desc": "スロットが使用されないようにします。複数の入力スロットを持つ機械に使用できます。",
+
+  "subtitle.thermal.block.machine_bottler": "流体密封機が充填する",
+  "subtitle.thermal.block.machine_crucible": "溶岩るつぼがうなる",
+  "subtitle.thermal.block.machine_furnace": "レッドストーンかまどがうなりながらパチパチ音をたてる",
+  "subtitle.thermal.block.machine_pulverizer": "粉砕機が打ち砕く",
+  "subtitle.thermal.block.machine_sawmill": "製材機がカットする",
+  "subtitle.thermal.block.machine_smelter": "誘導加熱炉がうなる",
+
+  "_comment": "========================================================================================================",
+  "_comment": "Keywords - These terms help things show up in JEI or other tooltip searches! :)",
+  "_comment": "========================================================================================================",
+
+  "block.thermal.dynamo_compression.keyword": "engine fuel generator power",
+  "block.thermal.dynamo_disenchantment.keyword": "book engine generator power",
+  "block.thermal.dynamo_gourmand.keyword": "engine food generator power",
+  "block.thermal.dynamo_lapidary.keyword": "engine gem generator power",
+  "block.thermal.dynamo_magmatic.keyword": "engine generator lava power",
+  "block.thermal.dynamo_numismatic.keyword": "coin engine generator power",
+  "block.thermal.dynamo_stirling.keyword": "charcoal coke engine generator power",
+
+  "block.thermal.machine_bottler.keyword": "bucket filler machine transposer",
+  "block.thermal.machine_brewer.keyword": "brewer brewing machine potion",
+  "block.thermal.machine_centrifuge.keyword": "centrifuge machine",
+  "block.thermal.machine_chiller.keyword": "freezer machine obsidian",
+  "block.thermal.machine_crafter.keyword": "assembler autocrafter autocrafting crafter crafting machine table workbench",
+  "block.thermal.machine_crucible.keyword": "machine melter",
+  "block.thermal.machine_furnace.keyword": "cooking furnace machine",
+  "block.thermal.machine_insolator.keyword": "catalyst cloche crops farm fertilizer machine plant sapling tree",
+  "block.thermal.machine_press.keyword": "coin gear machine",
+  "block.thermal.machine_pulverizer.keyword": "catalyst crusher macerator machine ore",
+  "block.thermal.machine_pyrolyzer.keyword": "charcoal coke creosote machine oven",
+  "block.thermal.machine_refinery.keyword": "machine oil refinery",
+  "block.thermal.machine_sawmill.keyword": "log machine plank",
+  "block.thermal.machine_smelter.keyword": "alloy catalyst machine ore",
+
+  "item.thermal.chiller_ball_cast.keyword": "chiller freezer",
+  "item.thermal.chiller_ingot_cast.keyword": "chiller freezer",
+  "item.thermal.chiller_rod_cast.keyword": "chiller freezer",
+
+  "item.thermal.press_coin_die.keyword": "press",
+  "item.thermal.press_gear_die.keyword": "press",
+  "item.thermal.press_packing_2x2_die.keyword": "press",
+  "item.thermal.press_packing_3x3_die.keyword": "press",
+  "item.thermal.press_unpacking_die.keyword": "press"
+}
