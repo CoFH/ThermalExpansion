@@ -1,5 +1,6 @@
 package cofh.thermal.expansion.compat.jei;
 
+import cofh.thermal.core.util.managers.dynamo.DisenchantmentFuelManager;
 import cofh.thermal.core.util.managers.dynamo.GourmandFuelManager;
 import cofh.thermal.core.util.managers.dynamo.StirlingFuelManager;
 import cofh.thermal.core.util.managers.machine.BottlerRecipeManager;
@@ -68,12 +69,14 @@ public class TExpJeiPlugin implements IModPlugin {
 
         registration.addRecipes(recipeManager.byType(FUEL_STIRLING).values(), ID_FUEL_STIRLING);
         registration.addRecipes(StirlingFuelManager.instance().getConvertedFuels(), ID_FUEL_STIRLING);
+
         registration.addRecipes(recipeManager.byType(FUEL_COMPRESSION).values(), ID_FUEL_COMPRESSION);
         registration.addRecipes(recipeManager.byType(FUEL_MAGMATIC).values(), ID_FUEL_MAGMATIC);
         registration.addRecipes(recipeManager.byType(FUEL_NUMISMATIC).values(), ID_FUEL_NUMISMATIC);
         registration.addRecipes(recipeManager.byType(FUEL_LAPIDARY).values(), ID_FUEL_LAPIDARY);
-        registration.addRecipes(recipeManager.byType(FUEL_DISENCHANTMENT).values(), ID_FUEL_DISENCHANTMENT);
 
+        registration.addRecipes(recipeManager.byType(FUEL_DISENCHANTMENT).values(), ID_FUEL_DISENCHANTMENT);
+        registration.addRecipes(DisenchantmentFuelManager.instance().getConvertedFuels(), ID_FUEL_DISENCHANTMENT);
 
         registration.addRecipes(recipeManager.byType(FUEL_GOURMAND).values(), ID_FUEL_GOURMAND);
         registration.addRecipes(GourmandFuelManager.instance().getConvertedFuels(), ID_FUEL_GOURMAND);

@@ -283,6 +283,30 @@ public class TExpRecipeProvider extends RecipeProviderCoFH {
                 .pattern("YXY")
                 .unlockedBy("has_rf_coil", has(rfCoil))
                 .save(consumer);
+
+        ShapedRecipeBuilder.shaped(reg.get(ID_DYNAMO_DISENCHANTMENT))
+                .define('C', rfCoil)
+                .define('I', Tags.Items.INGOTS_IRON)
+                .define('G', ItemTagsCoFH.GEARS_SILVER)
+                .define('X', Tags.Items.DUSTS_REDSTONE)
+                .define('Y', Items.EXPERIENCE_BOTTLE)
+                .pattern(" C ")
+                .pattern("IGI")
+                .pattern("YXY")
+                .unlockedBy("has_rf_coil", has(rfCoil))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(reg.get(ID_DYNAMO_GOURMAND))
+                .define('C', rfCoil)
+                .define('I', Tags.Items.INGOTS_IRON)
+                .define('G', ItemTagsCoFH.GEARS_COPPER)
+                .define('X', Tags.Items.DUSTS_REDSTONE)
+                .define('Y', ItemTagsCoFH.INGOTS_TIN)
+                .pattern(" C ")
+                .pattern("IGI")
+                .pattern("YXY")
+                .unlockedBy("has_rf_coil", has(rfCoil))
+                .save(consumer);
     }
 
     private void generateCraftingRecipes(Consumer<IFinishedRecipe> consumer) {
