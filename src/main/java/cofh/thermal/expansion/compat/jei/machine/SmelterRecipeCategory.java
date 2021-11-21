@@ -87,7 +87,7 @@ public class SmelterRecipeCategory extends ThermalRecipeCategory<SmelterRecipe> 
         for (int i = 0; i < outputs.size(); ++i) {
             guiItemStacks.set(i + 4, outputs.get(i));
         }
-        addCatalyzedItemTooltipCallback(guiItemStacks, recipe.getOutputItemChances(), 4);
+        addCatalyzedItemTooltipCallback(guiItemStacks, recipe.getOutputItemChances(), recipe.isCatalyzable(), 4);
     }
 
     @Override

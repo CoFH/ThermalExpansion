@@ -84,7 +84,7 @@ public class PulverizerRecipeCategory extends ThermalRecipeCategory<PulverizerRe
         for (int i = 0; i < outputs.size(); ++i) {
             guiItemStacks.set(i + 2, outputs.get(i));
         }
-        addCatalyzedItemTooltipCallback(guiItemStacks, recipe.getOutputItemChances(), 2);
+        addCatalyzedItemTooltipCallback(guiItemStacks, recipe.getOutputItemChances(), recipe.isCatalyzable(), 2);
     }
 
     @Override
