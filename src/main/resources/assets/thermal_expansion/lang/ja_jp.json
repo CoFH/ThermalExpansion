@@ -4,8 +4,8 @@
   "_comment": "========================================================================================================",
 
   "block.thermal.dynamo_compression": "圧縮ダイナモ",
-  "block.thermal.dynamo_disenchantment": "Disenchantment Dynamo",
-  "block.thermal.dynamo_gourmand": "Gourmand Dynamo",
+  "block.thermal.dynamo_disenchantment": "ディスエンチャントダイナモ",
+  "block.thermal.dynamo_gourmand": "健啖ダイナモ",
   "block.thermal.dynamo_lapidary": "宝石ダイナモ",
   "block.thermal.dynamo_magmatic": "溶岩ダイナモ",
   "block.thermal.dynamo_numismatic": "貨幣ダイナモ",
@@ -38,12 +38,12 @@
 
   "info.thermal.dynamo_compression.0": "液体燃料からRFを生成します。",
 
-  "info.thermal.dynamo_disenchantment.0": "Generates Redstone Flux using enchanted items.",
-  "info.thermal.dynamo_disenchantment.1": "The item is destroyed along with the enchantment. That's why it works.",
+  "info.thermal.dynamo_disenchantment.0": "エンチャントされたアイテムからRFを生み出します。",
+  "info.thermal.dynamo_disenchantment.1": "エンチャントとともにアイテムは破壊されます。故に動作するのです。",
 
-  "info.thermal.dynamo_gourmand.0": "Generates Redstone Flux using food!",
-  "info.thermal.dynamo_gourmand.1": "Who knows what sort of beast you may be feeding.",
-  "info.thermal.dynamo_gourmand.2": "It's calorific!",
+  "info.thermal.dynamo_gourmand.0": "食べ物からRFを発電します。",
+  "info.thermal.dynamo_gourmand.1": "どんなケダモノに餌を与えているのか、あなたは知る由もない。",
+  "info.thermal.dynamo_gourmand.2": "高カロリー!",
 
   "info.thermal.dynamo_lapidary.0": "宝石からRFを生成します。",
   "info.thermal.dynamo_lapidary.1": "きっと……異世界への扉でしょう……キラキラしたものに魅せられたゴブリンの。",
