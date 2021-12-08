@@ -27,7 +27,7 @@ public class StirlingFuelCategory extends ThermalFuelCategory<StirlingFuel> {
         background = guiHelper.drawableBuilder(DynamoStirlingScreen.TEXTURE, 26, 11, 70, 62)
                 .addPadding(0, 0, 16, 78)
                 .build();
-        name = getTextComponent(DYNAMO_STIRLING_BLOCK.getTranslationKey());
+        name = getTextComponent(DYNAMO_STIRLING_BLOCK.getDescriptionId());
 
         durationBackground = Drawables.getDrawables(guiHelper).getScale(Drawables.SCALE_FLAME);
 

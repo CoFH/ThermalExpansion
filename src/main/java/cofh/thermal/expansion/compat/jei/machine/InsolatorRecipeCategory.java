@@ -38,7 +38,7 @@ public class InsolatorRecipeCategory extends ThermalRecipeCategory<InsolatorReci
         background = guiHelper.drawableBuilder(MachineInsolatorScreen.TEXTURE, 26, 11, 130, 62)
                 .addPadding(0, 0, 16, 18)
                 .build();
-        name = getTextComponent(MACHINE_INSOLATOR_BLOCK.getTranslationKey());
+        name = getTextComponent(MACHINE_INSOLATOR_BLOCK.getDescriptionId());
 
         progressBackground = Drawables.getDrawables(guiHelper).getProgress(Drawables.PROGRESS_ARROW);
         progressFluidBackground = Drawables.getDrawables(guiHelper).getProgressFill(Drawables.PROGRESS_ARROW_FLUID);
@@ -62,7 +62,8 @@ public class InsolatorRecipeCategory extends ThermalRecipeCategory<InsolatorReci
     public void setIngredients(InsolatorRecipe recipe, IIngredients ingredients) {
 
         ingredients.setInputIngredients(recipe.getInputItems());
-        ingredients.setInputs(VanillaTypes.FLUID, recipe.getInputFluids());
+        setInputIngredients(ingredients, recipe.getInputFluids());
+
         ingredients.setOutputs(VanillaTypes.ITEM, recipe.getOutputItems());
     }
 
@@ -104,7 +105,7 @@ public class InsolatorRecipeCategory extends ThermalRecipeCategory<InsolatorReci
         for (int i = 0; i < outputs.size(); ++i) {
             guiItemStacks.set(i + 2, outputs.get(i));
         }
-        addCatalyzedItemTooltipCallback(guiItemStacks, recipe.getOutputItemChances(), 2);
+        addCatalyzedItemTooltipCallback(guiItemStacks, recipe.getOutputItemChances(), recipe.isCatalyzable(), 2);
         addDefaultFluidTooltipCallback(guiFluidStacks);
     }
 
@@ -118,7 +119,7 @@ public class InsolatorRecipeCategory extends ThermalRecipeCategory<InsolatorReci
         speedBackground.draw(matrixStack, 52, 24);
 
         if (!recipe.getInputFluids().isEmpty()) {
-            RenderHelper.drawFluid(matrixStack, 76, 23, recipe.getInputFluids().get(0), 24, 16);
+            RenderHelper.drawFluid(matrixStack, 76, 23, recipe.getInputFluids().get(0).getFluids()[0], 24, 16);
             progressFluidBackground.draw(matrixStack, 76, 23);
             progressFluid.draw(matrixStack, 76, 23);
         } else {

@@ -29,7 +29,7 @@ public class SmelterRecipeCategory extends ThermalRecipeCategory<SmelterRecipe> 
         background = guiHelper.drawableBuilder(MachineSmelterScreen.TEXTURE, 26, 11, 140, 62)
                 .addPadding(0, 0, 16, 8)
                 .build();
-        name = getTextComponent(MACHINE_SMELTER_BLOCK.getTranslationKey());
+        name = getTextComponent(MACHINE_SMELTER_BLOCK.getDescriptionId());
 
         progressBackground = Drawables.getDrawables(guiHelper).getProgress(Drawables.PROGRESS_ARROW);
         speedBackground = Drawables.getDrawables(guiHelper).getScale(Drawables.SCALE_FLAME);
@@ -87,7 +87,7 @@ public class SmelterRecipeCategory extends ThermalRecipeCategory<SmelterRecipe> 
         for (int i = 0; i < outputs.size(); ++i) {
             guiItemStacks.set(i + 4, outputs.get(i));
         }
-        addCatalyzedItemTooltipCallback(guiItemStacks, recipe.getOutputItemChances(), 4);
+        addCatalyzedItemTooltipCallback(guiItemStacks, recipe.getOutputItemChances(), recipe.isCatalyzable(), 4);
     }
 
     @Override

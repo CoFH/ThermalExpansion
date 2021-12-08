@@ -15,7 +15,7 @@ public class SmelterCatalystCategory extends ThermalCatalystCategory<SmelterCata
 
         super(guiHelper, icon, uid);
 
-        name = getTextComponent(MACHINE_SMELTER_BLOCK.getTranslationKey()).appendString(": ").append(getTextComponent("info.thermal.catalysts"));
+        name = getTextComponent(MACHINE_SMELTER_BLOCK.getDescriptionId()).append(": ").append(getTextComponent("info.thermal.catalysts"));
     }
 
     @Override

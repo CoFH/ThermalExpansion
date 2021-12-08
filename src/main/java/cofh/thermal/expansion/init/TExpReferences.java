@@ -10,7 +10,7 @@ import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.registries.ObjectHolder;
 
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
-import static cofh.thermal.expansion.init.TExpIDs.*;
+import static cofh.thermal.lib.common.ThermalIDs.*;
 
 @ObjectHolder(ID_THERMAL)
 public class TExpReferences {
@@ -54,6 +54,20 @@ public class TExpReferences {
     public static final TileEntityType<DynamoLapidaryTile> DYNAMO_LAPIDARY_TILE = null;
     @ObjectHolder(ID_DYNAMO_LAPIDARY)
     public static final ContainerType<DynamoLapidaryContainer> DYNAMO_LAPIDARY_CONTAINER = null;
+
+    @ObjectHolder(ID_DYNAMO_DISENCHANTMENT)
+    public static final Block DYNAMO_DISENCHANTMENT_BLOCK = null;
+    @ObjectHolder(ID_DYNAMO_DISENCHANTMENT)
+    public static final TileEntityType<DynamoDisenchantmentTile> DYNAMO_DISENCHANTMENT_TILE = null;
+    @ObjectHolder(ID_DYNAMO_DISENCHANTMENT)
+    public static final ContainerType<DynamoDisenchantmentContainer> DYNAMO_DISENCHANTMENT_CONTAINER = null;
+
+    @ObjectHolder(ID_DYNAMO_GOURMAND)
+    public static final Block DYNAMO_GOURMAND_BLOCK = null;
+    @ObjectHolder(ID_DYNAMO_GOURMAND)
+    public static final TileEntityType<DynamoGourmandTile> DYNAMO_GOURMAND_TILE = null;
+    @ObjectHolder(ID_DYNAMO_GOURMAND)
+    public static final ContainerType<DynamoGourmandContainer> DYNAMO_GOURMAND_CONTAINER = null;
     // endregion
 
     // region MACHINES

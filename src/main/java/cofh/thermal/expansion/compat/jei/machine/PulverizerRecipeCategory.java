@@ -29,7 +29,7 @@ public class PulverizerRecipeCategory extends ThermalRecipeCategory<PulverizerRe
         background = guiHelper.drawableBuilder(MachinePulverizerScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)
                 .build();
-        name = getTextComponent(MACHINE_PULVERIZER_BLOCK.getTranslationKey());
+        name = getTextComponent(MACHINE_PULVERIZER_BLOCK.getDescriptionId());
 
         progressBackground = Drawables.getDrawables(guiHelper).getProgress(Drawables.PROGRESS_ARROW);
         speedBackground = Drawables.getDrawables(guiHelper).getScale(Drawables.SCALE_CRUSH);
@@ -84,7 +84,7 @@ public class PulverizerRecipeCategory extends ThermalRecipeCategory<PulverizerRe
         for (int i = 0; i < outputs.size(); ++i) {
             guiItemStacks.set(i + 2, outputs.get(i));
         }
-        addCatalyzedItemTooltipCallback(guiItemStacks, recipe.getOutputItemChances(), 2);
+        addCatalyzedItemTooltipCallback(guiItemStacks, recipe.getOutputItemChances(), recipe.isCatalyzable(), 2);
     }
 
     @Override

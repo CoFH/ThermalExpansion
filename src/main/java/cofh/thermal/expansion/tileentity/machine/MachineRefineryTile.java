@@ -44,6 +44,12 @@ public class MachineRefineryTile extends MachineTileProcess {
     }
 
     @Override
+    protected int getBaseProcessTick() {
+
+        return RefineryRecipeManager.instance().getBasePower();
+    }
+
+    @Override
     protected boolean cacheRecipe() {
 
         curRecipe = RefineryRecipeManager.instance().getRecipe(this);
@@ -72,7 +78,7 @@ public class MachineRefineryTile extends MachineTileProcess {
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new MachineRefineryContainer(i, world, pos, inventory, player);
+        return new MachineRefineryContainer(i, level, worldPosition, inventory, player);
     }
 
     // region OPTIMIZATION

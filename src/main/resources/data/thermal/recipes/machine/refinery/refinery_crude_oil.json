@@ -1,7 +1,7 @@
 {
   "type": "thermal:refinery",
   "ingredient": {
-    "fluid": "thermal:crude_oil",
+    "fluid_tag": "forge:crude_oil",
     "amount": 100
   },
   "result": [

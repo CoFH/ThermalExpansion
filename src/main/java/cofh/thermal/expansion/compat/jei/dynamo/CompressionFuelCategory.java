@@ -35,7 +35,7 @@ public class CompressionFuelCategory extends ThermalFuelCategory<CompressionFuel
         background = guiHelper.drawableBuilder(DynamoCompressionScreen.TEXTURE, 26, 11, 70, 62)
                 .addPadding(0, 0, 16, 78)
                 .build();
-        name = getTextComponent(DYNAMO_COMPRESSION_BLOCK.getTranslationKey());
+        name = getTextComponent(DYNAMO_COMPRESSION_BLOCK.getDescriptionId());
 
         durationBackground = Drawables.getDrawables(guiHelper).getScale(Drawables.SCALE_FLAME);
 
@@ -54,7 +54,7 @@ public class CompressionFuelCategory extends ThermalFuelCategory<CompressionFuel
     @Override
     public void setIngredients(CompressionFuel fuel, IIngredients ingredients) {
 
-        ingredients.setInputs(VanillaTypes.FLUID, fuel.getInputFluids());
+        setInputIngredients(ingredients, fuel.getInputFluids());
     }
 
     @Override

@@ -17,7 +17,7 @@ import static cofh.lib.util.helpers.SoundHelper.playClickSound;
 
 public class MachineCrafterScreen extends MachineScreenReconfigurable<MachineCrafterContainer> {
 
-    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/machines/crafter.png";
+    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/container/crafter.png";
     public static final ResourceLocation TEXTURE = new ResourceLocation(TEX_PATH);
 
     public static final String TEX_ACCEPT = ID_COFH_CORE + ":textures/gui/elements/button_accept.png";
@@ -28,7 +28,7 @@ public class MachineCrafterScreen extends MachineScreenReconfigurable<MachineCra
         texture = TEXTURE;
         info = generatePanelInfo("info.thermal.machine_crafter");
         name = "crafter";
-        ySize = 190;
+        imageHeight = 190;
     }
 
     @Override
@@ -50,7 +50,7 @@ public class MachineCrafterScreen extends MachineScreenReconfigurable<MachineCra
                 .setName("SetRecipe")
                 .setSize(18, 18)
                 .setTexture(TEX_ACCEPT, 54, 18)
-                .setEnabled(container.tile::hasRecipeChanges);
+                .setEnabled(menu.tile::hasRecipeChanges);
 
         addElement(setRecipe);
     }
@@ -59,8 +59,8 @@ public class MachineCrafterScreen extends MachineScreenReconfigurable<MachineCra
     public boolean handleElementButtonClick(String buttonName, int mouseButton) {
 
         if (buttonName.equalsIgnoreCase("SetRecipe")) {
-            container.setRecipe();
-            playClickSound(container.hasValidRecipe() ? 0.8F : 0.6F);
+            menu.setRecipe();
+            playClickSound(menu.hasValidRecipe() ? 0.8F : 0.6F);
         }
         return true;
     }
@@ -71,7 +71,7 @@ public class MachineCrafterScreen extends MachineScreenReconfigurable<MachineCra
                 .setName("SetRecipe")
                 .setSize(18, 18)
                 .setTexture(TEX_ACCEPT, 54, 18)
-                .setEnabled(container.tile::hasRecipeChanges);
+                .setEnabled(menu.tile::hasRecipeChanges);
 
         addElement(setRecipe);
     }

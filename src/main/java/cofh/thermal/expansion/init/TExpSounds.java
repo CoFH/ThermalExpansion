@@ -1,10 +1,11 @@
 package cofh.thermal.expansion.init;
 
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.registries.ObjectHolder;
 
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
-import static cofh.thermal.core.util.RegistrationHelper.registerSound;
+import static cofh.thermal.core.ThermalCore.SOUND_EVENTS;
 
 public class TExpSounds {
 
@@ -20,6 +21,11 @@ public class TExpSounds {
         registerSound(ID_SOUND_MACHINE_PULVERIZER);
         registerSound(ID_SOUND_MACHINE_SAWMILL);
         registerSound(ID_SOUND_MACHINE_SMELTER);
+    }
+
+    public static void registerSound(String soundID) {
+
+        SOUND_EVENTS.register(soundID, () -> new SoundEvent(new ResourceLocation(soundID)));
     }
 
     // region IDs
@@ -49,6 +55,5 @@ public class TExpSounds {
 
     @ObjectHolder(ID_SOUND_MACHINE_SMELTER)
     public static final SoundEvent SOUND_MACHINE_SMELTER = null;
-
     // endregion
 }

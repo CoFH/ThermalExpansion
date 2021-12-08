@@ -15,7 +15,7 @@ public class InsolatorCatalystCategory extends ThermalCatalystCategory<Insolator
 
         super(guiHelper, icon, uid);
 
-        name = getTextComponent(MACHINE_INSOLATOR_BLOCK.getTranslationKey()).appendString(": ").append(getTextComponent("info.thermal.catalysts"));
+        name = getTextComponent(MACHINE_INSOLATOR_BLOCK.getDescriptionId()).append(": ").append(getTextComponent("info.thermal.catalysts"));
     }
 
     @Override

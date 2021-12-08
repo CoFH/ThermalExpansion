@@ -19,7 +19,7 @@ public class MachineChillerContainer extends TileContainer {
     public MachineChillerContainer(int windowId, World world, BlockPos pos, PlayerInventory inventory, PlayerEntity player) {
 
         super(MACHINE_CHILLER_CONTAINER, windowId, world, pos, inventory, player);
-        this.tile = (ReconfigurableTile4Way) world.getTileEntity(pos);
+        this.tile = (ReconfigurableTile4Way) world.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 
         addSlot(new SlotCoFH(tileInv, 0, 62, 26));

@@ -3,6 +3,7 @@ package cofh.thermal.expansion.tileentity.machine;
 import cofh.lib.client.audio.ConditionalSound;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.helpers.MathHelper;
+import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.PulverizerRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachinePulverizerContainer;
 import cofh.thermal.lib.tileentity.MachineTileProcess;
@@ -26,7 +27,7 @@ import static cofh.thermal.lib.common.ThermalConfig.machineAugments;
 public class MachinePulverizerTile extends MachineTileProcess {
 
     protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && PulverizerRecipeManager.instance().validRecipe(item));
-    protected ItemStorageCoFH catalystSlot = new ItemStorageCoFH(PulverizerRecipeManager.instance()::validCatalyst);
+    protected ItemStorageCoFH catalystSlot = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || PulverizerRecipeManager.instance().validCatalyst(item));
 
     public MachinePulverizerTile() {
 
@@ -39,6 +40,12 @@ public class MachinePulverizerTile extends MachineTileProcess {
 
         addAugmentSlots(machineAugments);
         initHandlers();
+    }
+
+    @Override
+    protected int getBaseProcessTick() {
+
+        return PulverizerRecipeManager.instance().getBasePower();
     }
 
     @Override
@@ -70,8 +77,8 @@ public class MachinePulverizerTile extends MachineTileProcess {
         }
         int decrement = itemInputCounts.size() > 1 ? itemInputCounts.get(1) : 0;
         if (decrement > 0) {
-            if (catalystSlot.getItemStack().isDamageable()) {
-                if (catalystSlot.getItemStack().attemptDamageItem(decrement, MathHelper.RANDOM, null)) {
+            if (catalystSlot.getItemStack().isDamageableItem()) {
+                if (catalystSlot.getItemStack().hurt(decrement, MathHelper.RANDOM, null)) {
                     catalystSlot.modify(-1);
                 }
             } else {
@@ -84,13 +91,13 @@ public class MachinePulverizerTile extends MachineTileProcess {
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new MachinePulverizerContainer(i, world, pos, inventory, player);
+        return new MachinePulverizerContainer(i, level, worldPosition, inventory, player);
     }
 
     @Override
     protected Object getSound() {
 
-        return new ConditionalSound(SOUND_MACHINE_PULVERIZER, SoundCategory.AMBIENT, this, () -> !removed && isActive);
+        return new ConditionalSound(SOUND_MACHINE_PULVERIZER, SoundCategory.AMBIENT, this, () -> !remove && isActive);
     }
 
     // region OPTIMIZATION

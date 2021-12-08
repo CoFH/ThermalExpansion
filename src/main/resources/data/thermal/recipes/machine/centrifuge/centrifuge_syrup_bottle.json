@@ -1,0 +1,16 @@
+{
+  "type": "thermal:centrifuge",
+  "ingredient": {
+    "item": "thermal:syrup_bottle"
+  },
+  "result": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "fluid": "thermal:syrup",
+      "amount": 250
+    }
+  ],
+  "energy": 400
+}

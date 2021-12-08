@@ -28,6 +28,12 @@ public class DynamoNumismaticTile extends DynamoTileBase {
         initHandlers();
     }
 
+    @Override
+    protected int getBaseProcessTick() {
+
+        return NumismaticFuelManager.instance().getBasePower();
+    }
+
     // region PROCESS
     @Override
     protected boolean canProcessStart() {
@@ -47,7 +53,7 @@ public class DynamoNumismaticTile extends DynamoTileBase {
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new DynamoNumismaticContainer(i, world, pos, inventory, player);
+        return new DynamoNumismaticContainer(i, level, worldPosition, inventory, player);
     }
 
 }

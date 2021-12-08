@@ -8,7 +8,7 @@ import net.minecraft.item.Item;
 
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
-import static cofh.thermal.expansion.init.TExpIDs.*;
+import static cofh.thermal.lib.common.ThermalIDs.*;
 
 public class TExpLootTableProvider extends LootTableProviderCoFH {
 
@@ -41,6 +41,7 @@ public class TExpLootTableProvider extends LootTableProviderCoFH {
         createSyncDropTable(regBlocks.get(ID_MACHINE_REFINERY));
         createSyncDropTable(regBlocks.get(ID_MACHINE_PYROLYZER));
         createSyncDropTable(regBlocks.get(ID_MACHINE_BOTTLER));
+        createSyncDropTable(regBlocks.get(ID_MACHINE_BREWER));
         createSyncDropTable(regBlocks.get(ID_MACHINE_CRAFTER));
 
         createSyncDropTable(regBlocks.get(ID_DYNAMO_STIRLING));
@@ -48,6 +49,8 @@ public class TExpLootTableProvider extends LootTableProviderCoFH {
         createSyncDropTable(regBlocks.get(ID_DYNAMO_MAGMATIC));
         createSyncDropTable(regBlocks.get(ID_DYNAMO_NUMISMATIC));
         createSyncDropTable(regBlocks.get(ID_DYNAMO_LAPIDARY));
+        createSyncDropTable(regBlocks.get(ID_DYNAMO_DISENCHANTMENT));
+        createSyncDropTable(regBlocks.get(ID_DYNAMO_GOURMAND));
     }
 
 }

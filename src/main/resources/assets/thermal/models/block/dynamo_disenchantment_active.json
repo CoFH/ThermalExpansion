@@ -1,0 +1,9 @@
+{
+  "parent": "thermal:block/dynamo_disenchantment",
+  "textures": {
+    "top": "thermal:block/dynamos/dynamo_disenchantment_active",
+    "side": "thermal:block/dynamos/dynamo_disenchantment_side_active",
+    "bottom": "thermal:block/dynamos/dynamo_disenchantment_active",
+    "coil": "thermal:block/dynamos/dynamo_coil_rf_active"
+  }
+}

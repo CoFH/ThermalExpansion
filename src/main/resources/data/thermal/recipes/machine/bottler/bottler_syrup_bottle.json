@@ -1,0 +1,17 @@
+{
+  "type": "thermal:bottler",
+  "ingredients": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "fluid": "thermal:syrup",
+      "amount": 250
+    }
+  ],
+  "result": [
+    {
+      "item": "thermal:syrup_bottle"
+    }
+  ]
+}

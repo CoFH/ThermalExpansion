@@ -4,6 +4,7 @@ import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.helpers.MathHelper;
+import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.InsolatorRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineInsolatorContainer;
 import cofh.thermal.lib.tileentity.MachineTileProcess;
@@ -29,7 +30,7 @@ import static cofh.thermal.lib.common.ThermalConfig.machineAugments;
 public class MachineInsolatorTile extends MachineTileProcess {
 
     protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && InsolatorRecipeManager.instance().validRecipe(item));
-    protected ItemStorageCoFH catalystSlot = new ItemStorageCoFH(InsolatorRecipeManager.instance()::validCatalyst);
+    protected ItemStorageCoFH catalystSlot = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || InsolatorRecipeManager.instance().validCatalyst(item));
     protected FluidStorageCoFH waterTank = new FluidStorageCoFH(TANK_SMALL, FluidHelper.IS_WATER);
 
     public MachineInsolatorTile() {
@@ -47,6 +48,12 @@ public class MachineInsolatorTile extends MachineTileProcess {
 
         addAugmentSlots(machineAugments);
         initHandlers();
+    }
+
+    @Override
+    protected int getBaseProcessTick() {
+
+        return InsolatorRecipeManager.instance().getBasePower();
     }
 
     @Override
@@ -84,8 +91,8 @@ public class MachineInsolatorTile extends MachineTileProcess {
         }
         int decrement = itemInputCounts.size() > 1 ? itemInputCounts.get(1) : 0;
         if (decrement > 0) {
-            if (catalystSlot.getItemStack().isDamageable()) {
-                if (catalystSlot.getItemStack().attemptDamageItem(decrement, MathHelper.RANDOM, null)) {
+            if (catalystSlot.getItemStack().isDamageableItem()) {
+                if (catalystSlot.getItemStack().hurt(decrement, MathHelper.RANDOM, null)) {
                     catalystSlot.modify(-1);
                 }
             } else {
@@ -102,7 +109,7 @@ public class MachineInsolatorTile extends MachineTileProcess {
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new MachineInsolatorContainer(i, world, pos, inventory, player);
+        return new MachineInsolatorContainer(i, level, worldPosition, inventory, player);
     }
 
     // region OPTIMIZATION

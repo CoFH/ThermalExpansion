@@ -13,7 +13,7 @@ import static cofh.lib.util.constants.Constants.ID_THERMAL;
 
 public class MachinePyrolyzerScreen extends MachineScreenReconfigurable<MachinePyrolyzerContainer> {
 
-    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/machines/pyrolyzer.png";
+    public static final String TEX_PATH = ID_THERMAL + ":textures/gui/container/pyrolyzer.png";
     public static final ResourceLocation TEXTURE = new ResourceLocation(TEX_PATH);
 
     public MachinePyrolyzerScreen(MachinePyrolyzerContainer container, PlayerInventory inv, ITextComponent titleIn) {

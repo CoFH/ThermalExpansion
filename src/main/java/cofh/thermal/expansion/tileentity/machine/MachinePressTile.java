@@ -3,6 +3,7 @@ package cofh.thermal.expansion.tileentity.machine;
 import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.PressRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachinePressContainer;
 import cofh.thermal.lib.tileentity.MachineTileProcess;
@@ -24,7 +25,7 @@ import static cofh.thermal.lib.common.ThermalConfig.machineAugments;
 public class MachinePressTile extends MachineTileProcess {
 
     protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && PressRecipeManager.instance().validInput(item));
-    protected ItemStorageCoFH dieSlot = new ItemStorageCoFH(item -> filter.valid(item) && PressRecipeManager.instance().validDie(item));
+    protected ItemStorageCoFH dieSlot = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || filter.valid(item) && PressRecipeManager.instance().validDie(item));
     protected ItemStorageCoFH outputSlot = new ItemStorageCoFH();
     protected FluidStorageCoFH outputTank = new FluidStorageCoFH(TANK_SMALL);
 
@@ -41,6 +42,12 @@ public class MachinePressTile extends MachineTileProcess {
 
         addAugmentSlots(machineAugments);
         initHandlers();
+    }
+
+    @Override
+    protected int getBaseProcessTick() {
+
+        return PressRecipeManager.instance().getBasePower();
     }
 
     @Override
@@ -71,7 +78,7 @@ public class MachinePressTile extends MachineTileProcess {
         // Input Items
         inputSlot.modify(-itemInputCounts.get(0));
 
-        if (itemInputCounts.size() > 1 && !dieSlot.getItemStack().getItem().isIn(MACHINE_DIES)) {
+        if (itemInputCounts.size() > 1 && !dieSlot.getItemStack().getItem().is(MACHINE_DIES)) {
             dieSlot.modify(-itemInputCounts.get(1));
         }
     }
@@ -80,7 +87,7 @@ public class MachinePressTile extends MachineTileProcess {
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new MachinePressContainer(i, world, pos, inventory, player);
+        return new MachinePressContainer(i, level, worldPosition, inventory, player);
     }
 
 }

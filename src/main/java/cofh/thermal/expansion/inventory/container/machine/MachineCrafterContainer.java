@@ -38,7 +38,7 @@ public class MachineCrafterContainer extends TileContainer {
     public MachineCrafterContainer(int windowId, World world, BlockPos pos, PlayerInventory inventory, PlayerEntity player) {
 
         super(MACHINE_CRAFTER_CONTAINER, windowId, world, pos, inventory, player);
-        this.tile = (MachineCrafterTile) world.getTileEntity(pos);
+        this.tile = (MachineCrafterTile) world.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
         this.player = inventory.player;
 
@@ -57,7 +57,7 @@ public class MachineCrafterContainer extends TileContainer {
         addSlot(new CraftingResultSlot(player, craftMatrix, craftResult, 0, 114, 44) {
 
             @Override
-            public boolean canTakeStack(PlayerEntity player) {
+            public boolean mayPickup(PlayerEntity player) {
 
                 return false;
             }
@@ -68,7 +68,7 @@ public class MachineCrafterContainer extends TileContainer {
 
         if (Utils.isServerWorld(world)) {
             for (int i = 0; i < 9; ++i) {
-                craftMatrix.setInventorySlotContents(i, tile.getItemInv().get(MachineCrafterTile.SLOT_CRAFTING_START + i));
+                craftMatrix.setItem(i, tile.getItemInv().get(MachineCrafterTile.SLOT_CRAFTING_START + i));
             }
             calcCraftingGrid();
         }
@@ -82,28 +82,28 @@ public class MachineCrafterContainer extends TileContainer {
     }
 
     @Override
-    public void onContainerClosed(PlayerEntity playerIn) {
+    public void removed(PlayerEntity playerIn) {
 
-        super.onContainerClosed(playerIn);
+        super.removed(playerIn);
         tile.clearRecipeChanges();
     }
 
     @Override
-    public void onCraftMatrixChanged(IInventory inventoryIn) {
+    public void slotsChanged(IInventory inventoryIn) {
 
-        super.onCraftMatrixChanged(inventoryIn);
+        super.slotsChanged(inventoryIn);
         slotChangedCraftingGrid();
     }
 
     public boolean hasValidRecipe() {
 
-        return !craftResult.getStackInSlot(0).isEmpty();
+        return !craftResult.getItem(0).isEmpty();
     }
 
     public void setRecipe() {
 
-        for (int i = 0; i < craftMatrix.getSizeInventory(); ++i) {
-            tile.getItemInv().set(MachineCrafterTile.SLOT_CRAFTING_START + i, craftMatrix.getStackInSlot(i));
+        for (int i = 0; i < craftMatrix.getContainerSize(); ++i) {
+            tile.getItemInv().set(MachineCrafterTile.SLOT_CRAFTING_START + i, craftMatrix.getItem(i));
         }
         TileConfigPacket.sendToServer(tile);
         tile.clearRecipeChanges();
@@ -114,18 +114,18 @@ public class MachineCrafterContainer extends TileContainer {
         if (syncing || !initialized) {
             return;
         }
-        World world = tile.getWorld();
+        World world = tile.getLevel();
         if (Utils.isServerWorld(world)) {
             ServerPlayerEntity playerMP = (ServerPlayerEntity) player;
             ItemStack stack = ItemStack.EMPTY;
-            Optional<ICraftingRecipe> possibleRecipe = world.getRecipeManager().getRecipe(IRecipeType.CRAFTING, craftMatrix, world);
+            Optional<ICraftingRecipe> possibleRecipe = world.getRecipeManager().getRecipeFor(IRecipeType.CRAFTING, craftMatrix, world);
             if (possibleRecipe.isPresent()) {
-                stack = possibleRecipe.get().getCraftingResult(craftMatrix);
+                stack = possibleRecipe.get().assemble(craftMatrix);
                 craftResult.setRecipeUsed(craftResult.getRecipeUsed());
             }
             tile.markRecipeChanges();
-            craftResult.setInventorySlotContents(0, stack);
-            playerMP.connection.sendPacket(new SSetSlotPacket(this.windowId, 20, stack));
+            craftResult.setItem(0, stack);
+            playerMP.connection.send(new SSetSlotPacket(this.containerId, 20, stack));
         } else {
             calcCraftingGrid();
             tile.markRecipeChanges();
@@ -134,16 +134,16 @@ public class MachineCrafterContainer extends TileContainer {
 
     protected void calcCraftingGrid() {
 
-        World world = tile.getWorld();
+        World world = tile.getLevel();
         ItemStack stack = ItemStack.EMPTY;
         if (world != null) {
-            Optional<ICraftingRecipe> possibleRecipe = world.getRecipeManager().getRecipe(IRecipeType.CRAFTING, craftMatrix, world);
+            Optional<ICraftingRecipe> possibleRecipe = world.getRecipeManager().getRecipeFor(IRecipeType.CRAFTING, craftMatrix, world);
             if (possibleRecipe.isPresent()) {
                 craftResult.setRecipeUsed(possibleRecipe.get());
-                stack = possibleRecipe.get().getCraftingResult(craftMatrix);
+                stack = possibleRecipe.get().assemble(craftMatrix);
             }
         }
-        craftResult.setInventorySlotContents(0, stack);
+        craftResult.setItem(0, stack);
     }
 
 }

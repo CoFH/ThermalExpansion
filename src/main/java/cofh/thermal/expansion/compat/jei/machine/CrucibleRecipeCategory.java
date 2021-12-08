@@ -37,7 +37,7 @@ public class CrucibleRecipeCategory extends ThermalRecipeCategory<CrucibleRecipe
         background = guiHelper.drawableBuilder(MachineCrucibleScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)
                 .build();
-        name = getTextComponent(MACHINE_CRUCIBLE_BLOCK.getTranslationKey());
+        name = getTextComponent(MACHINE_CRUCIBLE_BLOCK.getDescriptionId());
 
         progressBackground = Drawables.getDrawables(guiHelper).getProgress(Drawables.PROGRESS_DROP);
         progressFluidBackground = Drawables.getDrawables(guiHelper).getProgressFill(Drawables.PROGRESS_DROP);

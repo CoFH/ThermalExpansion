@@ -28,7 +28,7 @@ public class SawmillRecipeCategory extends ThermalRecipeCategory<SawmillRecipe> 
         background = guiHelper.drawableBuilder(MachineSawmillScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)
                 .build();
-        name = getTextComponent(MACHINE_SAWMILL_BLOCK.getTranslationKey());
+        name = getTextComponent(MACHINE_SAWMILL_BLOCK.getDescriptionId());
 
         progressBackground = Drawables.getDrawables(guiHelper).getProgress(Drawables.PROGRESS_ARROW);
         speedBackground = Drawables.getDrawables(guiHelper).getScale(Drawables.SCALE_SAW);

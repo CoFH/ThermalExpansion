@@ -34,6 +34,12 @@ public class MachineSawmillTile extends MachineTileProcess {
     }
 
     @Override
+    protected int getBaseProcessTick() {
+
+        return SawmillRecipeManager.instance().getBasePower();
+    }
+
+    @Override
     protected boolean cacheRecipe() {
 
         curRecipe = SawmillRecipeManager.instance().getRecipe(this);
@@ -47,13 +53,13 @@ public class MachineSawmillTile extends MachineTileProcess {
     @Override
     public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
 
-        return new MachineSawmillContainer(i, world, pos, inventory, player);
+        return new MachineSawmillContainer(i, level, worldPosition, inventory, player);
     }
 
     @Override
     protected Object getSound() {
 
-        return new ConditionalSound(SOUND_MACHINE_SAWMILL, SoundCategory.AMBIENT, this, () -> !removed && isActive);
+        return new ConditionalSound(SOUND_MACHINE_SAWMILL, SoundCategory.AMBIENT, this, () -> !remove && isActive);
     }
 
     // region OPTIMIZATION

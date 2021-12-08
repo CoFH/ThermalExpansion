@@ -27,7 +27,7 @@ public class NumismaticFuelCategory extends ThermalFuelCategory<NumismaticFuel> 
         background = guiHelper.drawableBuilder(DynamoNumismaticScreen.TEXTURE, 26, 11, 70, 62)
                 .addPadding(0, 0, 16, 78)
                 .build();
-        name = getTextComponent(DYNAMO_NUMISMATIC_BLOCK.getTranslationKey());
+        name = getTextComponent(DYNAMO_NUMISMATIC_BLOCK.getDescriptionId());
 
         durationBackground = Drawables.getDrawables(guiHelper).getScale(Drawables.SCALE_FLAME_GREEN);
 

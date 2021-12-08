@@ -37,7 +37,7 @@ public class ChillerRecipeCategory extends ThermalRecipeCategory<ChillerRecipe> 
         background = guiHelper.drawableBuilder(MachineChillerScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)
                 .build();
-        name = getTextComponent(MACHINE_CHILLER_BLOCK.getTranslationKey());
+        name = getTextComponent(MACHINE_CHILLER_BLOCK.getDescriptionId());
 
         progressBackground = Drawables.getDrawables(guiHelper).getProgress(Drawables.PROGRESS_ARROW);
         progressFluidBackground = Drawables.getDrawables(guiHelper).getProgressFill(Drawables.PROGRESS_ARROW_FLUID);
@@ -62,7 +62,8 @@ public class ChillerRecipeCategory extends ThermalRecipeCategory<ChillerRecipe> 
     public void setIngredients(ChillerRecipe recipe, IIngredients ingredients) {
 
         ingredients.setInputIngredients(recipe.getInputItems());
-        ingredients.setInputs(VanillaTypes.FLUID, recipe.getInputFluids());
+        setInputIngredients(ingredients, recipe.getInputFluids());
+
         ingredients.setOutputs(VanillaTypes.ITEM, recipe.getOutputItems());
     }
 
@@ -102,7 +103,7 @@ public class ChillerRecipeCategory extends ThermalRecipeCategory<ChillerRecipe> 
         speedBackground.draw(matrixStack, 52, 34);
 
         if (!recipe.getInputFluids().isEmpty()) {
-            RenderHelper.drawFluid(matrixStack, 78, 23, recipe.getInputFluids().get(0), 24, 16);
+            RenderHelper.drawFluid(matrixStack, 78, 23, recipe.getInputFluids().get(0).getFluids()[0], 24, 16);
             progressFluidBackground.draw(matrixStack, 78, 23);
             progressFluid.draw(matrixStack, 78, 23);
         } else {

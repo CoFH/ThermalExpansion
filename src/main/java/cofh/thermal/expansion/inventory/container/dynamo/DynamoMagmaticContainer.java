@@ -17,7 +17,7 @@ public class DynamoMagmaticContainer extends TileContainer {
     public DynamoMagmaticContainer(int windowId, World world, BlockPos pos, PlayerInventory inventory, PlayerEntity player) {
 
         super(DYNAMO_MAGMATIC_CONTAINER, windowId, world, pos, inventory, player);
-        this.tile = (DynamoTileBase) world.getTileEntity(pos);
+        this.tile = (DynamoTileBase) world.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 
         bindAugmentSlots(tileInv, 0, this.tile.augSize());

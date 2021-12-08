@@ -40,7 +40,7 @@ public class BrewerRecipeCategory extends ThermalRecipeCategory<BrewerRecipe> {
         background = guiHelper.drawableBuilder(MachineBrewerScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)
                 .build();
-        name = getTextComponent(MACHINE_BREWER_BLOCK.getTranslationKey());
+        name = getTextComponent(MACHINE_BREWER_BLOCK.getDescriptionId());
 
         progressBackground = Drawables.getDrawables(guiHelper).getProgress(Drawables.PROGRESS_DROP);
         progressFluidBackground = Drawables.getDrawables(guiHelper).getProgressFill(Drawables.PROGRESS_DROP);
@@ -67,7 +67,8 @@ public class BrewerRecipeCategory extends ThermalRecipeCategory<BrewerRecipe> {
     public void setIngredients(BrewerRecipe recipe, IIngredients ingredients) {
 
         ingredients.setInputIngredients(recipe.getInputItems());
-        ingredients.setInputs(VanillaTypes.FLUID, recipe.getInputFluids());
+        setInputIngredients(ingredients, recipe.getInputFluids());
+
         ingredients.setOutputs(VanillaTypes.FLUID, recipe.getOutputFluids());
     }
 
@@ -103,7 +104,7 @@ public class BrewerRecipeCategory extends ThermalRecipeCategory<BrewerRecipe> {
         speedBackground.draw(matrixStack, 52, 34);
 
         if (!recipe.getInputFluids().isEmpty()) {
-            RenderHelper.drawFluid(matrixStack, 78, 23, recipe.getInputFluids().get(0), 24, 16);
+            RenderHelper.drawFluid(matrixStack, 78, 23, recipe.getInputFluids().get(0).getFluids()[0], 24, 16);
             progressFluidBackground.draw(matrixStack, 78, 23);
             progressFluid.draw(matrixStack, 78, 23);
         } else {
