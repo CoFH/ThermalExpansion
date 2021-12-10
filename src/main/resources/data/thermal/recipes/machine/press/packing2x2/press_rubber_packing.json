@@ -3,10 +3,10 @@
   "ingredients": [
     {
       "item": "thermal:rubber",
-      "count": 9
+      "count": 4
     },
     {
-      "item": "thermal:press_packing_3x3_die"
+      "item": "thermal:press_packing_2x2_die"
     }
   ],
   "result": [
