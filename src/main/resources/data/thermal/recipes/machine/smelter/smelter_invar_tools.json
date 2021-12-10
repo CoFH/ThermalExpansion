@@ -1,0 +1,13 @@
+{
+  "type": "thermal:smelter_recycle",
+  "ingredient": {
+    "tag": "forge:tools/invar"
+  },
+  "result": [
+    {
+      "item": "thermal:invar_ingot",
+      "count": 1
+    }
+  ],
+  "experience": 0.3
+}

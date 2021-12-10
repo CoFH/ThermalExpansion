@@ -1,0 +1,13 @@
+{
+  "type": "thermal:smelter_recycle",
+  "ingredient": {
+    "tag": "forge:armor/electrum"
+  },
+  "result": [
+    {
+      "item": "thermal:electrum_ingot",
+      "count": 3
+    }
+  ],
+  "experience": 1.2
+}

@@ -1,0 +1,13 @@
+{
+  "type": "thermal:smelter_recycle",
+  "ingredient": {
+    "tag": "forge:armor/copper"
+  },
+  "result": [
+    {
+      "item": "thermal:copper_ingot",
+      "count": 3
+    }
+  ],
+  "experience": 0.6
+}

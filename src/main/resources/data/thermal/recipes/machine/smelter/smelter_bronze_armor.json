@@ -1,0 +1,13 @@
+{
+  "type": "thermal:smelter_recycle",
+  "ingredient": {
+    "tag": "forge:armor/bronze"
+  },
+  "result": [
+    {
+      "item": "thermal:bronze_ingot",
+      "count": 3
+    }
+  ],
+  "experience": 0.9
+}

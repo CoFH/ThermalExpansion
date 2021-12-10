@@ -1,0 +1,13 @@
+{
+  "type": "thermal:smelter_recycle",
+  "ingredient": {
+    "tag": "forge:tools/tin"
+  },
+  "result": [
+    {
+      "item": "thermal:tin_ingot",
+      "count": 1
+    }
+  ],
+  "experience": 0.2
+}
