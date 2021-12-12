@@ -21,7 +21,7 @@ import static cofh.thermal.expansion.init.TExpReferences.*;
 import static cofh.thermal.lib.common.ThermalFlags.*;
 import static cofh.thermal.lib.common.ThermalIDs.*;
 
-@Mod(ID_THERMAL_EXPANSION)
+@Mod (ID_THERMAL_EXPANSION)
 public class ThermalExpansion {
 
     public ThermalExpansion() {

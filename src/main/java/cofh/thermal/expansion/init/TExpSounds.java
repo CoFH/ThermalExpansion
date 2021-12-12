@@ -38,22 +38,22 @@ public class TExpSounds {
     // endregion
 
     // region REFERENCES
-    @ObjectHolder(ID_SOUND_MACHINE_BOTTLER)
+    @ObjectHolder (ID_SOUND_MACHINE_BOTTLER)
     public static final SoundEvent SOUND_MACHINE_BOTTLER = null;
 
-    @ObjectHolder(ID_SOUND_MACHINE_CRUCIBLE)
+    @ObjectHolder (ID_SOUND_MACHINE_CRUCIBLE)
     public static final SoundEvent SOUND_MACHINE_CRUCIBLE = null;
 
-    @ObjectHolder(ID_SOUND_MACHINE_FURNACE)
+    @ObjectHolder (ID_SOUND_MACHINE_FURNACE)
     public static final SoundEvent SOUND_MACHINE_FURNACE = null;
 
-    @ObjectHolder(ID_SOUND_MACHINE_PULVERIZER)
+    @ObjectHolder (ID_SOUND_MACHINE_PULVERIZER)
     public static final SoundEvent SOUND_MACHINE_PULVERIZER = null;
 
-    @ObjectHolder(ID_SOUND_MACHINE_SAWMILL)
+    @ObjectHolder (ID_SOUND_MACHINE_SAWMILL)
     public static final SoundEvent SOUND_MACHINE_SAWMILL = null;
 
-    @ObjectHolder(ID_SOUND_MACHINE_SMELTER)
+    @ObjectHolder (ID_SOUND_MACHINE_SMELTER)
     public static final SoundEvent SOUND_MACHINE_SMELTER = null;
     // endregion
 }
