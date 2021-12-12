@@ -9,5 +9,11 @@
       "count": 1
     }
   ],
-  "experience": 0.4
+  "experience": 0.4,
+  "conditions": [
+    {
+      "tag": "forge:tools/gold",
+      "type": "cofh_core:tag_exists"
+    }
+  ]
 }
