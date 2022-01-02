@@ -10,6 +10,7 @@ import vazkii.patchouli.api.IVariable;
 import vazkii.patchouli.api.IVariableProvider;
 
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class SmelterProcessor implements IComponentProcessor {
@@ -23,11 +24,12 @@ public class SmelterProcessor implements IComponentProcessor {
         if (!variables.has("recipe"))
             return;
         ResourceLocation recipeId = new ResourceLocation(variables.get("recipe").asString());
-        IRecipe<?> recipe = Minecraft.getInstance().level.getRecipeManager().byKey(recipeId).get();
-        if (recipe == null)
+        Optional<? extends IRecipe<?>> recipe = Minecraft.getInstance().level.getRecipeManager().byKey(recipeId);
+        if (recipe.isPresent()) {
+            this.recipe = (SmelterRecipe) recipe.get();
+        } else {
             LogManager.getLogger().warn("Thermalpedia missing the smelter recipe: " + recipeId);
-        else
-            this.recipe = (SmelterRecipe) recipe;
+        }
     }
 
     // Did you ever hear the tragedy of Darth Lemming the wise?
