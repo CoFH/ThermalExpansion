@@ -1,0 +1,21 @@
+{
+  "type": "thermal:centrifuge",
+  "ingredient": {
+    "item": "thermal:red_rockwool"
+  },
+  "result": [
+    {
+      "item": "thermal:white_rockwool"
+    },
+    {
+      "item": "minecraft:red_dye"
+    }
+  ],
+  "energy": 1600,
+  "conditions": [
+    {
+      "flag": "rockwool",
+      "type": "thermal:flag"
+    }
+  ]
+}

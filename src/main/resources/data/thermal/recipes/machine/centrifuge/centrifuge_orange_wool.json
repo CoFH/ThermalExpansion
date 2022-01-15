@@ -1,0 +1,15 @@
+{
+  "type": "thermal:centrifuge",
+  "ingredient": {
+    "item": "minecraft:orange_wool"
+  },
+  "result": [
+    {
+      "item": "minecraft:white_wool"
+    },
+    {
+      "item": "minecraft:orange_dye"
+    }
+  ],
+  "energy": 1600
+}
