@@ -43,3 +43,10 @@ mandatory = true
 versionRange = "[1.4.1,1.5]"
 ordering = "AFTER"
 side = "BOTH"
+
+[[dependencies.thermal_expansion]]
+modId = "thermal_foundation"
+mandatory = true
+versionRange = "[1.4,1.5]"
+ordering = "AFTER"
+side = "BOTH"
