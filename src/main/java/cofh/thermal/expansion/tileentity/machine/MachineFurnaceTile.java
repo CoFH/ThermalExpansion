@@ -5,11 +5,13 @@ import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.core.util.managers.machine.FurnaceRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineFurnaceContainer;
 import cofh.thermal.lib.tileentity.MachineTileProcess;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 
@@ -24,9 +26,9 @@ public class MachineFurnaceTile extends MachineTileProcess {
     protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && FurnaceRecipeManager.instance().validRecipe(item));
     protected ItemStorageCoFH outputSlot = new ItemStorageCoFH();
 
-    public MachineFurnaceTile() {
+    public MachineFurnaceTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_FURNACE_TILE);
+        super(MACHINE_FURNACE_TILE, pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
         inventory.addSlot(outputSlot, OUTPUT);
@@ -54,7 +56,7 @@ public class MachineFurnaceTile extends MachineTileProcess {
 
     @Nullable
     @Override
-    public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
+    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
         return new MachineFurnaceContainer(i, level, worldPosition, inventory, player);
     }
@@ -62,7 +64,7 @@ public class MachineFurnaceTile extends MachineTileProcess {
     @Override
     protected Object getSound() {
 
-        return new ConditionalSound(SOUND_MACHINE_FURNACE, SoundCategory.AMBIENT, this, () -> !remove && isActive);
+        return new ConditionalSound(SOUND_MACHINE_FURNACE, SoundSource.AMBIENT, this, () -> !remove && isActive);
     }
 
     // region OPTIMIZATION

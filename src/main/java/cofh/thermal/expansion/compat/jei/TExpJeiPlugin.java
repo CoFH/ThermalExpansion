@@ -17,10 +17,10 @@ import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.world.ClientWorld;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.RecipeManager;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeManager;
 
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
 import static cofh.thermal.core.ThermalCore.ITEMS;
@@ -198,9 +198,9 @@ public class TExpJeiPlugin implements IModPlugin {
     private RecipeManager getRecipeManager() {
 
         RecipeManager recipeManager = null;
-        ClientWorld world = Minecraft.getInstance().level;
-        if (world != null) {
-            recipeManager = world.getRecipeManager();
+        ClientLevel level = Minecraft.getInstance().level;
+        if (level != null) {
+            recipeManager = level.getRecipeManager();
         }
         return recipeManager;
     }

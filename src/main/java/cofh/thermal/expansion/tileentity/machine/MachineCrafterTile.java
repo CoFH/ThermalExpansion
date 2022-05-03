@@ -11,19 +11,19 @@ import cofh.thermal.core.util.managers.machine.CrafterRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineCrafterContainer;
 import cofh.thermal.lib.common.ThermalConfig;
 import cofh.thermal.lib.tileentity.MachineTileProcess;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.CraftResultInventory;
-import net.minecraft.inventory.InventoryHelper;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.ICraftingRecipe;
-import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.Containers;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ResultContainer;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.CraftingRecipe;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -42,7 +42,7 @@ public class MachineCrafterTile extends MachineTileProcess {
     public static final int SLOT_CRAFTING_START = 11;
 
     protected FalseCraftingInventory craftMatrix = new FalseCraftingInventory(3, 3);
-    protected CraftResultInventory craftResult = new CraftResultInventory();
+    protected ResultContainer craftResult = new ResultContainer();
     protected boolean hasRecipeChanges;
     protected boolean validRecipe;
 
@@ -51,9 +51,9 @@ public class MachineCrafterTile extends MachineTileProcess {
 
     protected FluidStorageCoFH inputTank = new FluidStorageCoFH(TANK_MEDIUM, fluid -> filter.valid(fluid) && CrafterRecipeManager.instance().validFluid(fluid, curRecipe));
 
-    public MachineCrafterTile() {
+    public MachineCrafterTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_CRAFTER_TILE);
+        super(MACHINE_CRAFTER_TILE, pos, state);
 
         xpStorage = EmptyXpStorage.INSTANCE;
 
@@ -77,12 +77,12 @@ public class MachineCrafterTile extends MachineTileProcess {
     }
 
     @Override
-    public void tick() {
+    public void tickServer() {
 
         if (!resultSlot.isEmpty() && craftResult.getRecipeUsed() == null) {
             setRecipe();
         }
-        super.tick();
+        super.tickServer();
     }
 
     @Override
@@ -99,8 +99,8 @@ public class MachineCrafterTile extends MachineTileProcess {
         for (int i = 0; i < 9; ++i) {
             craftMatrix.setItem(i, inventory.get(SLOT_CRAFTING_START + i));
         }
-        ICraftingRecipe craftRecipe;
-        Optional<ICraftingRecipe> possibleRecipe = level.getRecipeManager().getRecipeFor(IRecipeType.CRAFTING, craftMatrix, level);
+        CraftingRecipe craftRecipe;
+        Optional<CraftingRecipe> possibleRecipe = level.getRecipeManager().getRecipeFor(RecipeType.CRAFTING, craftMatrix, level);
         if (possibleRecipe.isPresent()) {
             craftRecipe = possibleRecipe.get();
             craftResult.setItem(0, craftRecipe.assemble(craftMatrix));
@@ -136,16 +136,16 @@ public class MachineCrafterTile extends MachineTileProcess {
     }
 
     @Override
-    public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState) {
+    public void onReplaced(BlockState state, Level levelIn, BlockPos pos, BlockState newState) {
 
         if (!ThermalConfig.keepItems.get()) {
             for (int i = 0; i < invSize() - augSize() - 9 - 1; ++i) {
-                InventoryHelper.dropItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), inventory.getStackInSlot(i));
+                Containers.dropItemStack(levelIn, pos.getX(), pos.getY(), pos.getZ(), inventory.getStackInSlot(i));
             }
         }
         if (!ThermalConfig.keepAugments.get()) {
             for (int i = invSize() - augSize(); i < invSize(); ++i) {
-                Utils.dropItemStackIntoWorldWithRandomness(inventory.getStackInSlot(i), worldIn, pos);
+                Utils.dropItemStackIntoWorldWithRandomness(inventory.getStackInSlot(i), levelIn, pos);
             }
         }
     }
@@ -186,7 +186,7 @@ public class MachineCrafterTile extends MachineTileProcess {
 
     @Nullable
     @Override
-    public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
+    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
         return new MachineCrafterContainer(i, level, worldPosition, inventory, player);
     }
@@ -195,7 +195,7 @@ public class MachineCrafterTile extends MachineTileProcess {
 
     // CONFIG
     @Override
-    public PacketBuffer getConfigPacket(PacketBuffer buffer) {
+    public FriendlyByteBuf getConfigPacket(FriendlyByteBuf buffer) {
 
         super.getConfigPacket(buffer);
 
@@ -206,7 +206,7 @@ public class MachineCrafterTile extends MachineTileProcess {
     }
 
     @Override
-    public void handleConfigPacket(PacketBuffer buffer) {
+    public void handleConfigPacket(FriendlyByteBuf buffer) {
 
         super.handleConfigPacket(buffer);
 
@@ -218,7 +218,7 @@ public class MachineCrafterTile extends MachineTileProcess {
 
     // GUI
     @Override
-    public PacketBuffer getGuiPacket(PacketBuffer buffer) {
+    public FriendlyByteBuf getGuiPacket(FriendlyByteBuf buffer) {
 
         super.getGuiPacket(buffer);
 
@@ -231,12 +231,12 @@ public class MachineCrafterTile extends MachineTileProcess {
     }
 
     @Override
-    public void handleGuiPacket(PacketBuffer buffer) {
+    public void handleGuiPacket(FriendlyByteBuf buffer) {
 
         super.handleGuiPacket(buffer);
 
         if (buffer.readBoolean() && level != null) {
-            Optional<? extends IRecipe<?>> possibleRecipe = level.getRecipeManager().byKey(buffer.readResourceLocation());
+            Optional<? extends Recipe<?>> possibleRecipe = level.getRecipeManager().byKey(buffer.readResourceLocation());
             possibleRecipe.ifPresent(recipe -> curRecipe = CrafterRecipeManager.instance().getRecipe(recipe));
         } else {
             curRecipe = null;

@@ -7,12 +7,14 @@ import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.PulverizerRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachinePulverizerContainer;
 import cofh.thermal.lib.tileentity.MachineTileProcess;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 
@@ -29,9 +31,9 @@ public class MachinePulverizerTile extends MachineTileProcess {
     protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && PulverizerRecipeManager.instance().validRecipe(item));
     protected ItemStorageCoFH catalystSlot = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || PulverizerRecipeManager.instance().validCatalyst(item));
 
-    public MachinePulverizerTile() {
+    public MachinePulverizerTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_PULVERIZER_TILE);
+        super(MACHINE_PULVERIZER_TILE, pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
         inventory.addSlot(catalystSlot, CATALYST);
@@ -89,7 +91,7 @@ public class MachinePulverizerTile extends MachineTileProcess {
 
     @Nullable
     @Override
-    public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
+    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
         return new MachinePulverizerContainer(i, level, worldPosition, inventory, player);
     }
@@ -97,7 +99,7 @@ public class MachinePulverizerTile extends MachineTileProcess {
     @Override
     protected Object getSound() {
 
-        return new ConditionalSound(SOUND_MACHINE_PULVERIZER, SoundCategory.AMBIENT, this, () -> !remove && isActive);
+        return new ConditionalSound(SOUND_MACHINE_PULVERIZER, SoundSource.AMBIENT, this, () -> !remove && isActive);
     }
 
     // region OPTIMIZATION
@@ -123,7 +125,7 @@ public class MachinePulverizerTile extends MachineTileProcess {
     }
 
     @Override
-    protected void setAttributesFromAugment(CompoundNBT augmentData) {
+    protected void setAttributesFromAugment(CompoundTag augmentData) {
 
         super.setAttributesFromAugment(augmentData);
 

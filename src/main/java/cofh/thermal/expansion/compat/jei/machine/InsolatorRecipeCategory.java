@@ -6,7 +6,7 @@ import cofh.thermal.core.util.recipes.machine.InsolatorRecipe;
 import cofh.thermal.expansion.client.gui.machine.MachineInsolatorScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
 import cofh.thermal.lib.compat.jei.ThermalRecipeCategory;
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
@@ -15,8 +15,8 @@ import mezz.jei.api.gui.ingredient.IGuiFluidStackGroup;
 import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.ingredients.IIngredients;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.List;
@@ -110,7 +110,7 @@ public class InsolatorRecipeCategory extends ThermalRecipeCategory<InsolatorReci
     }
 
     @Override
-    public void draw(InsolatorRecipe recipe, MatrixStack matrixStack, double mouseX, double mouseY) {
+    public void draw(InsolatorRecipe recipe, PoseStack matrixStack, double mouseX, double mouseY) {
 
         super.draw(recipe, matrixStack, mouseX, mouseY);
 

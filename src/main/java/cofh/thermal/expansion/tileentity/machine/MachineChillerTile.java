@@ -7,9 +7,11 @@ import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.ChillerRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineChillerContainer;
 import cofh.thermal.lib.tileentity.MachineTileProcess;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Container;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
@@ -27,9 +29,9 @@ public class MachineChillerTile extends MachineTileProcess {
     protected ItemStorageCoFH outputSlot = new ItemStorageCoFH();
     protected FluidStorageCoFH inputTank = new FluidStorageCoFH(TANK_MEDIUM, fluid -> filter.valid(fluid) && ChillerRecipeManager.instance().validFluid(fluid));
 
-    public MachineChillerTile() {
+    public MachineChillerTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_CHILLER_TILE);
+        super(MACHINE_CHILLER_TILE, pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
         inventory.addSlot(outputSlot, OUTPUT);
@@ -73,7 +75,7 @@ public class MachineChillerTile extends MachineTileProcess {
     protected void resolveInputs() {
 
         // Input Items
-        if (!itemInputCounts.isEmpty() && !inputSlot.getItemStack().getItem().is(MACHINE_CASTS)) {
+        if (!itemInputCounts.isEmpty() && !inputSlot.getItemStack().is(MACHINE_CASTS)) {
             inputSlot.modify(-itemInputCounts.get(0));
         }
         // Input Fluids
@@ -84,7 +86,7 @@ public class MachineChillerTile extends MachineTileProcess {
 
     @Nullable
     @Override
-    public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
+    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
         return new MachineChillerContainer(i, level, worldPosition, inventory, player);
     }

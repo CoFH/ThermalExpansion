@@ -4,9 +4,9 @@ import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
 import cofh.thermal.expansion.inventory.container.machine.MachineSmelterContainer;
 import cofh.thermal.lib.client.gui.MachineScreenReconfigurable;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Inventory;
 
 import static cofh.core.util.helpers.GuiHelper.*;
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
@@ -16,7 +16,7 @@ public class MachineSmelterScreen extends MachineScreenReconfigurable<MachineSme
     public static final String TEX_PATH = ID_THERMAL + ":textures/gui/container/smelter.png";
     public static final ResourceLocation TEXTURE = new ResourceLocation(TEX_PATH);
 
-    public MachineSmelterScreen(MachineSmelterContainer container, PlayerInventory inv, ITextComponent titleIn) {
+    public MachineSmelterScreen(MachineSmelterContainer container, Inventory inv, Component titleIn) {
 
         super(container, inv, container.tile, StringHelper.getTextComponent("block.thermal.machine_smelter"));
         texture = TEXTURE;

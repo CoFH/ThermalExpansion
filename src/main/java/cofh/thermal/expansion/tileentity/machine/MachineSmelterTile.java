@@ -7,12 +7,14 @@ import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.SmelterRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineSmelterContainer;
 import cofh.thermal.lib.tileentity.MachineTileProcess;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -31,9 +33,9 @@ public class MachineSmelterTile extends MachineTileProcess {
     protected ItemStorageCoFH[] inputSlots = new ItemStorageCoFH[3];
     protected ItemStorageCoFH catalystSlot = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || SmelterRecipeManager.instance().validCatalyst(item) && !itemsEqual(item, inputSlots[0].getItemStack()) && !itemsEqual(item, inputSlots[1].getItemStack()) && !itemsEqual(item, inputSlots[2].getItemStack()));
 
-    public MachineSmelterTile() {
+    public MachineSmelterTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_SMELTER_TILE);
+        super(MACHINE_SMELTER_TILE, pos, state);
 
         inputSlots[0] = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || filter.valid(item) && SmelterRecipeManager.instance().validItem(item) && !itemsEqual(item, inputSlots[1].getItemStack()) && !itemsEqual(item, inputSlots[2].getItemStack()) && !itemsEqual(item, catalystSlot.getItemStack()));
         inputSlots[1] = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || filter.valid(item) && SmelterRecipeManager.instance().validItem(item) && !itemsEqual(item, inputSlots[0].getItemStack()) && !itemsEqual(item, inputSlots[2].getItemStack()) && !itemsEqual(item, catalystSlot.getItemStack()));
@@ -98,7 +100,7 @@ public class MachineSmelterTile extends MachineTileProcess {
 
     @Nullable
     @Override
-    public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
+    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
         return new MachineSmelterContainer(i, level, worldPosition, inventory, player);
     }
@@ -106,7 +108,7 @@ public class MachineSmelterTile extends MachineTileProcess {
     @Override
     protected Object getSound() {
 
-        return new ConditionalSound(SOUND_MACHINE_SMELTER, SoundCategory.AMBIENT, this, () -> !remove && isActive);
+        return new ConditionalSound(SOUND_MACHINE_SMELTER, SoundSource.AMBIENT, this, () -> !remove && isActive);
     }
 
     // region OPTIMIZATION
@@ -139,7 +141,7 @@ public class MachineSmelterTile extends MachineTileProcess {
     }
 
     @Override
-    protected void setAttributesFromAugment(CompoundNBT augmentData) {
+    protected void setAttributesFromAugment(CompoundTag augmentData) {
 
         super.setAttributesFromAugment(augmentData);
 

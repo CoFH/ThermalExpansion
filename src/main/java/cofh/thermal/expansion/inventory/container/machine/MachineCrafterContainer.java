@@ -8,19 +8,19 @@ import cofh.lib.inventory.container.slot.SlotRemoveOnly;
 import cofh.lib.inventory.wrapper.InvWrapperCoFH;
 import cofh.lib.util.Utils;
 import cofh.thermal.expansion.tileentity.machine.MachineCrafterTile;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.inventory.CraftResultInventory;
-import net.minecraft.inventory.CraftingInventory;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.container.CraftingResultSlot;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.ICraftingRecipe;
-import net.minecraft.item.crafting.IRecipeType;
-import net.minecraft.network.play.server.SSetSlotPacket;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.Container;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.CraftingContainer;
+import net.minecraft.world.inventory.ResultContainer;
+import net.minecraft.world.inventory.ResultSlot;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.CraftingRecipe;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.Level;
 
 import java.util.Optional;
 
@@ -29,16 +29,16 @@ import static cofh.thermal.expansion.init.TExpReferences.MACHINE_CRAFTER_CONTAIN
 public class MachineCrafterContainer extends TileContainer {
 
     public final MachineCrafterTile tile;
-    private final CraftingInventory craftMatrix = new CraftingInventory(this, 3, 3);
-    private final CraftResultInventory craftResult = new CraftResultInventory();
-    private final PlayerEntity player;
+    private final CraftingContainer craftMatrix = new CraftingContainer(this, 3, 3);
+    private final ResultContainer craftResult = new ResultContainer();
+    private final Player player;
 
     private final boolean initialized;
 
-    public MachineCrafterContainer(int windowId, World world, BlockPos pos, PlayerInventory inventory, PlayerEntity player) {
+    public MachineCrafterContainer(int windowId, Level level, BlockPos pos, Inventory inventory, Player player) {
 
-        super(MACHINE_CRAFTER_CONTAINER, windowId, world, pos, inventory, player);
-        this.tile = (MachineCrafterTile) world.getBlockEntity(pos);
+        super(MACHINE_CRAFTER_CONTAINER, windowId, level, pos, inventory, player);
+        this.tile = (MachineCrafterTile) level.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
         this.player = inventory.player;
 
@@ -54,10 +54,10 @@ public class MachineCrafterContainer extends TileContainer {
                 addSlot(new SlotFalseCopy(craftMatrix, j + i * 3, 53 + j * 18, 17 + i * 18));
             }
         }
-        addSlot(new CraftingResultSlot(player, craftMatrix, craftResult, 0, 114, 44) {
+        addSlot(new ResultSlot(player, craftMatrix, craftResult, 0, 114, 44) {
 
             @Override
-            public boolean mayPickup(PlayerEntity player) {
+            public boolean mayPickup(Player player) {
 
                 return false;
             }
@@ -66,7 +66,7 @@ public class MachineCrafterContainer extends TileContainer {
         bindAugmentSlots(tileInv, 21, this.tile.augSize());
         bindPlayerInventory(inventory);
 
-        if (Utils.isServerWorld(world)) {
+        if (Utils.isServerWorld(level)) {
             for (int i = 0; i < 9; ++i) {
                 craftMatrix.setItem(i, tile.getItemInv().get(MachineCrafterTile.SLOT_CRAFTING_START + i));
             }
@@ -82,14 +82,14 @@ public class MachineCrafterContainer extends TileContainer {
     }
 
     @Override
-    public void removed(PlayerEntity playerIn) {
+    public void removed(Player playerIn) {
 
         super.removed(playerIn);
         tile.clearRecipeChanges();
     }
 
     @Override
-    public void slotsChanged(IInventory inventoryIn) {
+    public void slotsChanged(Container inventoryIn) {
 
         super.slotsChanged(inventoryIn);
         slotChangedCraftingGrid();
@@ -114,18 +114,18 @@ public class MachineCrafterContainer extends TileContainer {
         if (syncing || !initialized) {
             return;
         }
-        World world = tile.getLevel();
-        if (Utils.isServerWorld(world)) {
-            ServerPlayerEntity playerMP = (ServerPlayerEntity) player;
+        Level level = tile.getLevel();
+        if (Utils.isServerWorld(level)) {
+            ServerPlayer playerMP = (ServerPlayer) player;
             ItemStack stack = ItemStack.EMPTY;
-            Optional<ICraftingRecipe> possibleRecipe = world.getRecipeManager().getRecipeFor(IRecipeType.CRAFTING, craftMatrix, world);
+            Optional<CraftingRecipe> possibleRecipe = level.getRecipeManager().getRecipeFor(RecipeType.CRAFTING, craftMatrix, level);
             if (possibleRecipe.isPresent()) {
                 stack = possibleRecipe.get().assemble(craftMatrix);
                 craftResult.setRecipeUsed(craftResult.getRecipeUsed());
             }
             tile.markRecipeChanges();
             craftResult.setItem(0, stack);
-            playerMP.connection.send(new SSetSlotPacket(this.containerId, 20, stack));
+            playerMP.connection.send(new ClientboundContainerSetSlotPacket(this.containerId, this.incrementStateId(), 20, stack));
         } else {
             calcCraftingGrid();
             tile.markRecipeChanges();
@@ -134,10 +134,10 @@ public class MachineCrafterContainer extends TileContainer {
 
     protected void calcCraftingGrid() {
 
-        World world = tile.getLevel();
+        Level level = tile.getLevel();
         ItemStack stack = ItemStack.EMPTY;
-        if (world != null) {
-            Optional<ICraftingRecipe> possibleRecipe = world.getRecipeManager().getRecipeFor(IRecipeType.CRAFTING, craftMatrix, world);
+        if (level != null) {
+            Optional<CraftingRecipe> possibleRecipe = level.getRecipeManager().getRecipeFor(RecipeType.CRAFTING, craftMatrix, level);
             if (possibleRecipe.isPresent()) {
                 craftResult.setRecipeUsed(possibleRecipe.get());
                 stack = possibleRecipe.get().assemble(craftMatrix);

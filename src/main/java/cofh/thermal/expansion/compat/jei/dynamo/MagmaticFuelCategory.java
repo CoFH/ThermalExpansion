@@ -4,7 +4,7 @@ import cofh.thermal.core.util.recipes.dynamo.MagmaticFuel;
 import cofh.thermal.expansion.client.gui.dynamo.DynamoMagmaticScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
 import cofh.thermal.lib.compat.jei.ThermalFuelCategory;
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
@@ -12,8 +12,8 @@ import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.gui.ingredient.IGuiFluidStackGroup;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.ingredients.IIngredients;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.List;
@@ -72,7 +72,7 @@ public class MagmaticFuelCategory extends ThermalFuelCategory<MagmaticFuel> {
     }
 
     @Override
-    public void draw(MagmaticFuel fuel, MatrixStack matrixStack, double mouseX, double mouseY) {
+    public void draw(MagmaticFuel fuel, PoseStack matrixStack, double mouseX, double mouseY) {
 
         super.draw(fuel, matrixStack, mouseX, mouseY);
 

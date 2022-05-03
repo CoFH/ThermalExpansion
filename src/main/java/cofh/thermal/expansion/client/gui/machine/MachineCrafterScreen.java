@@ -6,9 +6,9 @@ import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
 import cofh.thermal.expansion.inventory.container.machine.MachineCrafterContainer;
 import cofh.thermal.lib.client.gui.MachineScreenReconfigurable;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Inventory;
 
 import static cofh.core.util.helpers.GuiHelper.*;
 import static cofh.lib.util.constants.Constants.ID_COFH_CORE;
@@ -22,7 +22,7 @@ public class MachineCrafterScreen extends MachineScreenReconfigurable<MachineCra
 
     public static final String TEX_ACCEPT = ID_COFH_CORE + ":textures/gui/elements/button_accept.png";
 
-    public MachineCrafterScreen(MachineCrafterContainer container, PlayerInventory inv, ITextComponent titleIn) {
+    public MachineCrafterScreen(MachineCrafterContainer container, Inventory inv, Component titleIn) {
 
         super(container, inv, container.tile, StringHelper.getTextComponent("block.thermal.machine_crafter"));
         texture = TEXTURE;

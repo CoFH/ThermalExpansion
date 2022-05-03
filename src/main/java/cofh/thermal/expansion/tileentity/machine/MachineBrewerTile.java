@@ -6,10 +6,12 @@ import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.core.util.managers.machine.BrewerRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineBrewerContainer;
 import cofh.thermal.lib.tileentity.MachineTileProcess;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.inventory.container.Container;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
@@ -25,9 +27,9 @@ public class MachineBrewerTile extends MachineTileProcess {
     protected FluidStorageCoFH inputTank = new FluidStorageCoFH(TANK_SMALL, fluid -> filter.valid(fluid) && BrewerRecipeManager.instance().validFluid(fluid));
     protected FluidStorageCoFH outputTank = new FluidStorageCoFH(TANK_MEDIUM);
 
-    public MachineBrewerTile() {
+    public MachineBrewerTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_BREWER_TILE);
+        super(MACHINE_BREWER_TILE, pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
         inventory.addSlot(chargeSlot, INTERNAL);
@@ -71,7 +73,7 @@ public class MachineBrewerTile extends MachineTileProcess {
 
     @Nullable
     @Override
-    public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
+    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
         return new MachineBrewerContainer(i, level, worldPosition, inventory, player);
     }

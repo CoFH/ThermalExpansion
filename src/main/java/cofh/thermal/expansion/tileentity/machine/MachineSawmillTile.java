@@ -5,10 +5,12 @@ import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.core.util.managers.machine.SawmillRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineSawmillContainer;
 import cofh.thermal.lib.tileentity.MachineTileProcess;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 
@@ -21,9 +23,9 @@ public class MachineSawmillTile extends MachineTileProcess {
 
     protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && SawmillRecipeManager.instance().validRecipe(item));
 
-    public MachineSawmillTile() {
+    public MachineSawmillTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_SAWMILL_TILE);
+        super(MACHINE_SAWMILL_TILE, pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
         inventory.addSlots(OUTPUT, 4);
@@ -51,7 +53,7 @@ public class MachineSawmillTile extends MachineTileProcess {
 
     @Nullable
     @Override
-    public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
+    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
         return new MachineSawmillContainer(i, level, worldPosition, inventory, player);
     }
@@ -59,7 +61,7 @@ public class MachineSawmillTile extends MachineTileProcess {
     @Override
     protected Object getSound() {
 
-        return new ConditionalSound(SOUND_MACHINE_SAWMILL, SoundCategory.AMBIENT, this, () -> !remove && isActive);
+        return new ConditionalSound(SOUND_MACHINE_SAWMILL, SoundSource.AMBIENT, this, () -> !remove && isActive);
     }
 
     // region OPTIMIZATION

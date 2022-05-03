@@ -6,9 +6,9 @@ import cofh.thermal.expansion.init.TExpBlocks;
 import cofh.thermal.expansion.init.TExpContainers;
 import cofh.thermal.expansion.init.TExpItems;
 import cofh.thermal.expansion.init.TExpSounds;
-import net.minecraft.client.gui.ScreenManager;
+import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -111,56 +111,56 @@ public class ThermalExpansion {
     // region HELPERS
     private void registerGuiFactories() {
 
-        ScreenManager.register(MACHINE_FURNACE_CONTAINER, MachineFurnaceScreen::new);
-        ScreenManager.register(MACHINE_SAWMILL_CONTAINER, MachineSawmillScreen::new);
-        ScreenManager.register(MACHINE_PULVERIZER_CONTAINER, MachinePulverizerScreen::new);
-        ScreenManager.register(MACHINE_SMELTER_CONTAINER, MachineSmelterScreen::new);
-        ScreenManager.register(MACHINE_INSOLATOR_CONTAINER, MachineInsolatorScreen::new);
-        ScreenManager.register(MACHINE_CENTRIFUGE_CONTAINER, MachineCentrifugeScreen::new);
-        ScreenManager.register(MACHINE_PRESS_CONTAINER, MachinePressScreen::new);
-        ScreenManager.register(MACHINE_CRUCIBLE_CONTAINER, MachineCrucibleScreen::new);
-        ScreenManager.register(MACHINE_CHILLER_CONTAINER, MachineChillerScreen::new);
-        ScreenManager.register(MACHINE_REFINERY_CONTAINER, MachineRefineryScreen::new);
-        ScreenManager.register(MACHINE_PYROLYZER_CONTAINER, MachinePyrolyzerScreen::new);
-        ScreenManager.register(MACHINE_BREWER_CONTAINER, MachineBrewerScreen::new);
-        ScreenManager.register(MACHINE_BOTTLER_CONTAINER, MachineBottlerScreen::new);
-        ScreenManager.register(MACHINE_CRAFTER_CONTAINER, MachineCrafterScreen::new);
+        MenuScreens.register(MACHINE_FURNACE_CONTAINER, MachineFurnaceScreen::new);
+        MenuScreens.register(MACHINE_SAWMILL_CONTAINER, MachineSawmillScreen::new);
+        MenuScreens.register(MACHINE_PULVERIZER_CONTAINER, MachinePulverizerScreen::new);
+        MenuScreens.register(MACHINE_SMELTER_CONTAINER, MachineSmelterScreen::new);
+        MenuScreens.register(MACHINE_INSOLATOR_CONTAINER, MachineInsolatorScreen::new);
+        MenuScreens.register(MACHINE_CENTRIFUGE_CONTAINER, MachineCentrifugeScreen::new);
+        MenuScreens.register(MACHINE_PRESS_CONTAINER, MachinePressScreen::new);
+        MenuScreens.register(MACHINE_CRUCIBLE_CONTAINER, MachineCrucibleScreen::new);
+        MenuScreens.register(MACHINE_CHILLER_CONTAINER, MachineChillerScreen::new);
+        MenuScreens.register(MACHINE_REFINERY_CONTAINER, MachineRefineryScreen::new);
+        MenuScreens.register(MACHINE_PYROLYZER_CONTAINER, MachinePyrolyzerScreen::new);
+        MenuScreens.register(MACHINE_BREWER_CONTAINER, MachineBrewerScreen::new);
+        MenuScreens.register(MACHINE_BOTTLER_CONTAINER, MachineBottlerScreen::new);
+        MenuScreens.register(MACHINE_CRAFTER_CONTAINER, MachineCrafterScreen::new);
 
-        ScreenManager.register(DYNAMO_STIRLING_CONTAINER, DynamoStirlingScreen::new);
-        ScreenManager.register(DYNAMO_COMPRESSION_CONTAINER, DynamoCompressionScreen::new);
-        ScreenManager.register(DYNAMO_MAGMATIC_CONTAINER, DynamoMagmaticScreen::new);
-        ScreenManager.register(DYNAMO_NUMISMATIC_CONTAINER, DynamoNumismaticScreen::new);
-        ScreenManager.register(DYNAMO_LAPIDARY_CONTAINER, DynamoLapidaryScreen::new);
-        ScreenManager.register(DYNAMO_DISENCHANTMENT_CONTAINER, DynamoDisenchantmentScreen::new);
-        ScreenManager.register(DYNAMO_GOURMAND_CONTAINER, DynamoGourmandScreen::new);
+        MenuScreens.register(DYNAMO_STIRLING_CONTAINER, DynamoStirlingScreen::new);
+        MenuScreens.register(DYNAMO_COMPRESSION_CONTAINER, DynamoCompressionScreen::new);
+        MenuScreens.register(DYNAMO_MAGMATIC_CONTAINER, DynamoMagmaticScreen::new);
+        MenuScreens.register(DYNAMO_NUMISMATIC_CONTAINER, DynamoNumismaticScreen::new);
+        MenuScreens.register(DYNAMO_LAPIDARY_CONTAINER, DynamoLapidaryScreen::new);
+        MenuScreens.register(DYNAMO_DISENCHANTMENT_CONTAINER, DynamoDisenchantmentScreen::new);
+        MenuScreens.register(DYNAMO_GOURMAND_CONTAINER, DynamoGourmandScreen::new);
     }
 
     private void registerRenderLayers() {
 
         RenderType cutout = RenderType.cutout();
 
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_MACHINE_FURNACE), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_MACHINE_SAWMILL), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_MACHINE_PULVERIZER), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_MACHINE_SMELTER), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_MACHINE_INSOLATOR), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_MACHINE_CENTRIFUGE), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_MACHINE_PRESS), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_MACHINE_CRUCIBLE), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_MACHINE_CHILLER), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_MACHINE_REFINERY), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_MACHINE_PYROLYZER), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_MACHINE_BREWER), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_MACHINE_BOTTLER), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_MACHINE_CRAFTER), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_FURNACE), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_SAWMILL), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_PULVERIZER), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_SMELTER), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_INSOLATOR), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_CENTRIFUGE), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_PRESS), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_CRUCIBLE), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_CHILLER), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_REFINERY), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_PYROLYZER), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_BREWER), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_BOTTLER), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_CRAFTER), cutout);
 
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_DYNAMO_STIRLING), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_DYNAMO_COMPRESSION), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_DYNAMO_MAGMATIC), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_DYNAMO_NUMISMATIC), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_DYNAMO_LAPIDARY), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_DYNAMO_DISENCHANTMENT), cutout);
-        RenderTypeLookup.setRenderLayer(BLOCKS.get(ID_DYNAMO_GOURMAND), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_DYNAMO_STIRLING), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_DYNAMO_COMPRESSION), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_DYNAMO_MAGMATIC), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_DYNAMO_NUMISMATIC), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_DYNAMO_LAPIDARY), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_DYNAMO_DISENCHANTMENT), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_DYNAMO_GOURMAND), cutout);
     }
     // endregion
 }

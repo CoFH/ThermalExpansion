@@ -5,15 +5,15 @@ import cofh.thermal.core.util.recipes.machine.PulverizerRecipe;
 import cofh.thermal.expansion.client.gui.machine.MachinePulverizerScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
 import cofh.thermal.lib.compat.jei.ThermalRecipeCategory;
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.ingredients.IIngredients;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 
@@ -88,7 +88,7 @@ public class PulverizerRecipeCategory extends ThermalRecipeCategory<PulverizerRe
     }
 
     @Override
-    public void draw(PulverizerRecipe recipe, MatrixStack matrixStack, double mouseX, double mouseY) {
+    public void draw(PulverizerRecipe recipe, PoseStack matrixStack, double mouseX, double mouseY) {
 
         super.draw(recipe, matrixStack, mouseX, mouseY);
 

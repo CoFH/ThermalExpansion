@@ -7,10 +7,12 @@ import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.core.util.managers.machine.BottlerRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineBottlerContainer;
 import cofh.thermal.lib.tileentity.MachineTileProcess;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.util.SoundCategory;
+import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
@@ -28,9 +30,9 @@ public class MachineBottlerTile extends MachineTileProcess {
     protected ItemStorageCoFH outputSlot = new ItemStorageCoFH();
     protected FluidStorageCoFH inputTank = new FluidStorageCoFH(TANK_MEDIUM, fluid -> filter.valid(fluid) && BottlerRecipeManager.instance().validFluid(fluid));
 
-    public MachineBottlerTile() {
+    public MachineBottlerTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_BOTTLER_TILE);
+        super(MACHINE_BOTTLER_TILE, pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
         inventory.addSlot(outputSlot, OUTPUT);
@@ -76,7 +78,7 @@ public class MachineBottlerTile extends MachineTileProcess {
 
     @Nullable
     @Override
-    public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
+    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
         return new MachineBottlerContainer(i, level, worldPosition, inventory, player);
     }
@@ -84,7 +86,7 @@ public class MachineBottlerTile extends MachineTileProcess {
     @Override
     protected Object getSound() {
 
-        return new ConditionalSound(SOUND_MACHINE_BOTTLER, SoundCategory.AMBIENT, this, () -> !remove && isActive);
+        return new ConditionalSound(SOUND_MACHINE_BOTTLER, SoundSource.AMBIENT, this, () -> !remove && isActive);
     }
 
 }

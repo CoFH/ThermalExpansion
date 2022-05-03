@@ -7,9 +7,11 @@ import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.PressRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachinePressContainer;
 import cofh.thermal.lib.tileentity.MachineTileProcess;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Container;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
@@ -29,9 +31,9 @@ public class MachinePressTile extends MachineTileProcess {
     protected ItemStorageCoFH outputSlot = new ItemStorageCoFH();
     protected FluidStorageCoFH outputTank = new FluidStorageCoFH(TANK_SMALL);
 
-    public MachinePressTile() {
+    public MachinePressTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_PRESS_TILE);
+        super(MACHINE_PRESS_TILE, pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
         inventory.addSlot(dieSlot, INPUT);
@@ -78,14 +80,14 @@ public class MachinePressTile extends MachineTileProcess {
         // Input Items
         inputSlot.modify(-itemInputCounts.get(0));
 
-        if (itemInputCounts.size() > 1 && !dieSlot.getItemStack().getItem().is(MACHINE_DIES)) {
+        if (itemInputCounts.size() > 1 && !dieSlot.getItemStack().is(MACHINE_DIES)) {
             dieSlot.modify(-itemInputCounts.get(1));
         }
     }
 
     @Nullable
     @Override
-    public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
+    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
         return new MachinePressContainer(i, level, worldPosition, inventory, player);
     }

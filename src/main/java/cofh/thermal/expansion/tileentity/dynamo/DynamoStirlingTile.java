@@ -4,9 +4,11 @@ import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.core.util.managers.dynamo.StirlingFuelManager;
 import cofh.thermal.expansion.inventory.container.dynamo.DynamoStirlingContainer;
 import cofh.thermal.lib.tileentity.DynamoTileBase;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Container;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 
@@ -18,9 +20,9 @@ public class DynamoStirlingTile extends DynamoTileBase {
 
     protected ItemStorageCoFH fuelSlot = new ItemStorageCoFH(item -> filter.valid(item) && StirlingFuelManager.instance().validFuel(item));
 
-    public DynamoStirlingTile() {
+    public DynamoStirlingTile(BlockPos pos, BlockState state) {
 
-        super(DYNAMO_STIRLING_TILE);
+        super(DYNAMO_STIRLING_TILE, pos, state);
 
         inventory.addSlot(fuelSlot, INPUT);
 
@@ -51,7 +53,7 @@ public class DynamoStirlingTile extends DynamoTileBase {
 
     @Nullable
     @Override
-    public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
+    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
         return new DynamoStirlingContainer(i, level, worldPosition, inventory, player);
     }

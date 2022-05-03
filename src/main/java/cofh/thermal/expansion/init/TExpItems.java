@@ -3,8 +3,8 @@ package cofh.thermal.expansion.init;
 import cofh.core.item.ItemCoFH;
 import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.lib.common.ThermalItemGroups;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
 
 import static cofh.lib.util.constants.Constants.ID_THERMAL_EXPANSION;
 import static cofh.thermal.core.util.RegistrationHelper.registerItem;
@@ -17,7 +17,7 @@ public class TExpItems {
 
     public static void register() {
 
-        ItemGroup group = ThermalItemGroups.THERMAL_ITEMS;
+        CreativeModeTab group = ThermalItemGroups.THERMAL_ITEMS;
 
         registerItem("slot_seal", () -> new SlotSealItem(new Item.Properties().stacksTo(1).tab(group)).setModId(ID_THERMAL_EXPANSION));
 

@@ -5,15 +5,15 @@ import cofh.thermal.core.util.recipes.machine.SmelterRecipe;
 import cofh.thermal.expansion.client.gui.machine.MachineSmelterScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
 import cofh.thermal.lib.compat.jei.ThermalRecipeCategory;
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.ingredients.IIngredients;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 
@@ -91,7 +91,7 @@ public class SmelterRecipeCategory extends ThermalRecipeCategory<SmelterRecipe> 
     }
 
     @Override
-    public void draw(SmelterRecipe recipe, MatrixStack matrixStack, double mouseX, double mouseY) {
+    public void draw(SmelterRecipe recipe, PoseStack matrixStack, double mouseX, double mouseY) {
 
         super.draw(recipe, matrixStack, mouseX, mouseY);
 

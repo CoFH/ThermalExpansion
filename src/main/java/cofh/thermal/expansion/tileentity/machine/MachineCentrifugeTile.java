@@ -6,9 +6,11 @@ import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.core.util.managers.machine.CentrifugeRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineCentrifugeContainer;
 import cofh.thermal.lib.tileentity.MachineTileProcess;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Container;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
@@ -25,9 +27,9 @@ public class MachineCentrifugeTile extends MachineTileProcess {
     protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && CentrifugeRecipeManager.instance().validRecipe(item));
     protected FluidStorageCoFH outputTank = new FluidStorageCoFH(TANK_SMALL);
 
-    public MachineCentrifugeTile() {
+    public MachineCentrifugeTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_CENTRIFUGE_TILE);
+        super(MACHINE_CENTRIFUGE_TILE, pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
         inventory.addSlots(OUTPUT, 4);
@@ -69,7 +71,7 @@ public class MachineCentrifugeTile extends MachineTileProcess {
 
     @Nullable
     @Override
-    public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
+    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
         return new MachineCentrifugeContainer(i, level, worldPosition, inventory, player);
     }

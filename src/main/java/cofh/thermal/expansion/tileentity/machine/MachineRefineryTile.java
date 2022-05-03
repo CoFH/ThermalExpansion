@@ -6,10 +6,12 @@ import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.core.util.managers.machine.RefineryRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineRefineryContainer;
 import cofh.thermal.lib.tileentity.MachineTileProcess;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.inventory.container.Container;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
@@ -26,9 +28,9 @@ public class MachineRefineryTile extends MachineTileProcess {
     protected FluidStorageCoFH outputTankA = new FluidStorageCoFH(TANK_MEDIUM);
     protected FluidStorageCoFH outputTankB = new FluidStorageCoFH(TANK_MEDIUM);
 
-    public MachineRefineryTile() {
+    public MachineRefineryTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_REFINERY_TILE);
+        super(MACHINE_REFINERY_TILE, pos, state);
 
         inventory.addSlot(outputSlot, OUTPUT);
         inventory.addSlot(chargeSlot, INTERNAL);
@@ -76,7 +78,7 @@ public class MachineRefineryTile extends MachineTileProcess {
 
     @Nullable
     @Override
-    public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
+    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
         return new MachineRefineryContainer(i, level, worldPosition, inventory, player);
     }

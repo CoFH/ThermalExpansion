@@ -6,10 +6,12 @@ import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.thermal.core.util.managers.dynamo.CompressionFuelManager;
 import cofh.thermal.expansion.inventory.container.dynamo.DynamoCompressionContainer;
 import cofh.thermal.lib.tileentity.DynamoTileBase;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.inventory.container.Container;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.client.model.data.IModelData;
 import net.minecraftforge.client.model.data.ModelDataMap;
 import net.minecraftforge.fluids.FluidStack;
@@ -29,9 +31,9 @@ public class DynamoCompressionTile extends DynamoTileBase {
 
     protected FluidStorageCoFH fuelTank = new FluidStorageCoFH(TANK_SMALL, fluid -> filter.valid(fluid) && CompressionFuelManager.instance().validFuel(fluid));
 
-    public DynamoCompressionTile() {
+    public DynamoCompressionTile(BlockPos pos, BlockState state) {
 
-        super(DYNAMO_COMPRESSION_TILE);
+        super(DYNAMO_COMPRESSION_TILE, pos, state);
 
         tankInv.addTank(fuelTank, INPUT);
 
@@ -75,7 +77,7 @@ public class DynamoCompressionTile extends DynamoTileBase {
 
     @Nullable
     @Override
-    public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
+    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
         return new DynamoCompressionContainer(i, level, worldPosition, inventory, player);
     }

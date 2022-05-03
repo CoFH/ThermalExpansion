@@ -4,13 +4,13 @@ import cofh.lib.data.RecipeProviderCoFH;
 import cofh.lib.util.DeferredRegisterCoFH;
 import cofh.lib.util.references.ItemTagsCoFH;
 import cofh.thermal.lib.common.ThermalFlags;
-import net.minecraft.block.Blocks;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.IFinishedRecipe;
-import net.minecraft.data.ShapedRecipeBuilder;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
+import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 
 import java.util.function.Consumer;
@@ -34,7 +34,7 @@ public class TExpRecipeProvider extends RecipeProviderCoFH {
     }
 
     @Override
-    protected void buildShapelessRecipes(Consumer<IFinishedRecipe> consumer) {
+    protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
 
         generateMachineRecipes(consumer);
         generateDynamoRecipes(consumer);
@@ -42,7 +42,7 @@ public class TExpRecipeProvider extends RecipeProviderCoFH {
         generateCraftingRecipes(consumer);
     }
 
-    private void generateMachineRecipes(Consumer<IFinishedRecipe> consumer) {
+    private void generateMachineRecipes(Consumer<FinishedRecipe> consumer) {
 
         DeferredRegisterCoFH<Item> reg = ITEMS;
 
@@ -218,7 +218,7 @@ public class TExpRecipeProvider extends RecipeProviderCoFH {
                 .save(consumer);
     }
 
-    private void generateDynamoRecipes(Consumer<IFinishedRecipe> consumer) {
+    private void generateDynamoRecipes(Consumer<FinishedRecipe> consumer) {
 
         DeferredRegisterCoFH<Item> reg = ITEMS;
 
@@ -309,7 +309,7 @@ public class TExpRecipeProvider extends RecipeProviderCoFH {
                 .save(consumer);
     }
 
-    private void generateCraftingRecipes(Consumer<IFinishedRecipe> consumer) {
+    private void generateCraftingRecipes(Consumer<FinishedRecipe> consumer) {
 
         DeferredRegisterCoFH<Item> reg = ITEMS;
 

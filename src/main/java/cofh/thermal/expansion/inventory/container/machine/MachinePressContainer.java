@@ -5,10 +5,10 @@ import cofh.lib.inventory.container.slot.SlotCoFH;
 import cofh.lib.inventory.container.slot.SlotRemoveOnly;
 import cofh.lib.inventory.wrapper.InvWrapperCoFH;
 import cofh.thermal.lib.tileentity.ReconfigurableTile4Way;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 
 import static cofh.thermal.expansion.init.TExpReferences.MACHINE_PRESS_CONTAINER;
 
@@ -16,10 +16,10 @@ public class MachinePressContainer extends TileContainer {
 
     public final ReconfigurableTile4Way tile;
 
-    public MachinePressContainer(int windowId, World world, BlockPos pos, PlayerInventory inventory, PlayerEntity player) {
+    public MachinePressContainer(int windowId, Level level, BlockPos pos, Inventory inventory, Player player) {
 
-        super(MACHINE_PRESS_CONTAINER, windowId, world, pos, inventory, player);
-        this.tile = (ReconfigurableTile4Way) world.getBlockEntity(pos);
+        super(MACHINE_PRESS_CONTAINER, windowId, level, pos, inventory, player);
+        this.tile = (ReconfigurableTile4Way) level.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 
         addSlot(new SlotCoFH(tileInv, 0, 53, 17));

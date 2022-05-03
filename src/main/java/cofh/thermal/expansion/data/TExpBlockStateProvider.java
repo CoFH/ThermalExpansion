@@ -2,8 +2,8 @@ package cofh.thermal.expansion.data;
 
 import cofh.lib.data.BlockStateProviderCoFH;
 import cofh.lib.util.DeferredRegisterCoFH;
-import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import static cofh.lib.util.constants.Constants.ID_THERMAL;

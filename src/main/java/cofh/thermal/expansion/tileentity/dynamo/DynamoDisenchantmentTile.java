@@ -4,9 +4,11 @@ import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.core.util.managers.dynamo.DisenchantmentFuelManager;
 import cofh.thermal.expansion.inventory.container.dynamo.DynamoDisenchantmentContainer;
 import cofh.thermal.lib.tileentity.DynamoTileBase;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Container;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 
@@ -18,9 +20,9 @@ public class DynamoDisenchantmentTile extends DynamoTileBase {
 
     protected ItemStorageCoFH fuelSlot = new ItemStorageCoFH(item -> filter.valid(item) && DisenchantmentFuelManager.instance().validFuel(item));
 
-    public DynamoDisenchantmentTile() {
+    public DynamoDisenchantmentTile(BlockPos pos, BlockState state) {
 
-        super(DYNAMO_DISENCHANTMENT_TILE);
+        super(DYNAMO_DISENCHANTMENT_TILE, pos, state);
 
         inventory.addSlot(fuelSlot, INPUT);
         addAugmentSlots(dynamoAugments);
@@ -50,7 +52,7 @@ public class DynamoDisenchantmentTile extends DynamoTileBase {
 
     @Nullable
     @Override
-    public Container createMenu(int i, PlayerInventory inventory, PlayerEntity player) {
+    public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
         return new DynamoDisenchantmentContainer(i, level, worldPosition, inventory, player);
     }
