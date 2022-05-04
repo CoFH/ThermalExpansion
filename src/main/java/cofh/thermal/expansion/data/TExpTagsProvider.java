@@ -1,6 +1,6 @@
 package cofh.thermal.expansion.data;
 
-import cofh.lib.util.references.ItemTagsCoFH;
+import cofh.lib.util.references.CoFHTags;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.FluidTagsProvider;
@@ -12,7 +12,6 @@ import static cofh.lib.util.constants.Constants.ID_THERMAL;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
 import static cofh.thermal.lib.common.ThermalIDs.*;
-import static cofh.thermal.lib.common.ThermalIDs.ID_DEVICE_SOIL_INFUSER;
 
 public class TExpTagsProvider {
 
@@ -77,15 +76,15 @@ public class TExpTagsProvider {
         @Override
         protected void addTags() {
 
-            tag(ItemTagsCoFH.MACHINE_DIES).add(ITEMS.get("press_coin_die"));
-            tag(ItemTagsCoFH.MACHINE_DIES).add(ITEMS.get("press_gear_die"));
-            tag(ItemTagsCoFH.MACHINE_DIES).add(ITEMS.get("press_packing_2x2_die"));
-            tag(ItemTagsCoFH.MACHINE_DIES).add(ITEMS.get("press_packing_3x3_die"));
-            tag(ItemTagsCoFH.MACHINE_DIES).add(ITEMS.get("press_unpacking_die"));
+            tag(CoFHTags.Items.MACHINE_DIES).add(ITEMS.get("press_coin_die"));
+            tag(CoFHTags.Items.MACHINE_DIES).add(ITEMS.get("press_gear_die"));
+            tag(CoFHTags.Items.MACHINE_DIES).add(ITEMS.get("press_packing_2x2_die"));
+            tag(CoFHTags.Items.MACHINE_DIES).add(ITEMS.get("press_packing_3x3_die"));
+            tag(CoFHTags.Items.MACHINE_DIES).add(ITEMS.get("press_unpacking_die"));
 
-            tag(ItemTagsCoFH.MACHINE_CASTS).add(ITEMS.get("chiller_ball_cast"));
-            tag(ItemTagsCoFH.MACHINE_CASTS).add(ITEMS.get("chiller_ingot_cast"));
-            tag(ItemTagsCoFH.MACHINE_CASTS).add(ITEMS.get("chiller_rod_cast"));
+            tag(CoFHTags.Items.MACHINE_CASTS).add(ITEMS.get("chiller_ball_cast"));
+            tag(CoFHTags.Items.MACHINE_CASTS).add(ITEMS.get("chiller_ingot_cast"));
+            tag(CoFHTags.Items.MACHINE_CASTS).add(ITEMS.get("chiller_rod_cast"));
         }
 
     }

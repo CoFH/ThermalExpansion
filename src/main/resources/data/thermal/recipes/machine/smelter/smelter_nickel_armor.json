@@ -9,11 +9,5 @@
       "count": 3
     }
   ],
-  "experience": 1.2,
-  "conditions": [
-    {
-      "tag": "forge:armor/nickel",
-      "type": "cofh_core:tag_exists"
-    }
-  ]
+  "experience": 1.2
 }

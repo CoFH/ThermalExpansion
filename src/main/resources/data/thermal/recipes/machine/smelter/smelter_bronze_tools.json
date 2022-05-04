@@ -9,11 +9,5 @@
       "count": 1
     }
   ],
-  "experience": 0.3,
-  "conditions": [
-    {
-      "tag": "forge:tools/bronze",
-      "type": "cofh_core:tag_exists"
-    }
-  ]
+  "experience": 0.3
 }

@@ -5,15 +5,9 @@
   },
   "result": [
     {
-      "item": "thermal:copper_ingot",
+      "item": "minecraft:copper_ingot",
       "count": 3
     }
   ],
-  "experience": 0.6,
-  "conditions": [
-    {
-      "tag": "forge:armor/copper",
-      "type": "cofh_core:tag_exists"
-    }
-  ]
+  "experience": 0.6
 }

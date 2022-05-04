@@ -2,7 +2,7 @@
   "type": "thermal:press",
   "ingredients": [
     {
-      "item": "thermal:copper_block",
+      "item": "minecraft:copper_block",
       "count": 1
     },
     {
@@ -11,7 +11,7 @@
   ],
   "result": [
     {
-      "item": "thermal:copper_ingot",
+      "item": "minecraft:copper_ingot",
       "count": 9
     }
   ],
