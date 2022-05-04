@@ -1,7 +1,7 @@
 {
   "type": "thermal:smelter",
   "ingredient": {
-    "tag": "forge:ores/tin"
+    "tag": "forge:raw_materials/tin"
   },
   "result": [
     {
@@ -10,12 +10,8 @@
     },
     {
       "item": "thermal:apatite",
-      "chance": 0.8
-    },
-    {
-      "item": "thermal:rich_slag",
       "chance": 0.2
     }
   ],
-  "experience": 0.2
+  "experience": 0.1
 }

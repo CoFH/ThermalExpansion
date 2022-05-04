@@ -1,0 +1,17 @@
+{
+  "type": "thermal:smelter",
+  "ingredient": {
+    "tag": "forge:raw_materials/gold"
+  },
+  "result": [
+    {
+      "item": "minecraft:gold_ingot",
+      "chance": 1.0
+    },
+    {
+      "item": "thermal:copper_nugget",
+      "chance": 1.0
+    }
+  ],
+  "experience": 0.1
+}

@@ -1,0 +1,19 @@
+{
+  "type": "thermal:press",
+  "ingredients": [
+    {
+      "item": "minecraft:raw_iron_block",
+      "count": 1
+    },
+    {
+      "item": "thermal:press_unpacking_die"
+    }
+  ],
+  "result": [
+    {
+      "item": "minecraft:raw_iron",
+      "count": 9
+    }
+  ],
+  "energy": 400
+}

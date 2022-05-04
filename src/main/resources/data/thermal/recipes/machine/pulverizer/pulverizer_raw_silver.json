@@ -1,0 +1,17 @@
+{
+  "type": "thermal:pulverizer",
+  "ingredient": {
+    "tag": "forge:raw_materials/silver"
+  },
+  "result": [
+    {
+      "item": "thermal:silver_dust",
+      "chance": 1.25
+    },
+    {
+      "item": "thermal:lead_dust",
+      "chance": 0.05
+    }
+  ],
+  "experience": 0.1
+}

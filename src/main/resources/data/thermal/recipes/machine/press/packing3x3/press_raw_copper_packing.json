@@ -1,0 +1,18 @@
+{
+  "type": "thermal:press",
+  "ingredients": [
+    {
+      "tag": "forge:raw_materials/copper",
+      "count": 9
+    },
+    {
+      "item": "thermal:press_packing_3x3_die"
+    }
+  ],
+  "result": [
+    {
+      "item": "minecraft:raw_copper_block"
+    }
+  ],
+  "energy": 400
+}

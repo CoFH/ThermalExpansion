@@ -1,0 +1,19 @@
+{
+  "type": "thermal:press",
+  "ingredients": [
+    {
+      "item": "minecraft:raw_copper_block",
+      "count": 1
+    },
+    {
+      "item": "thermal:press_unpacking_die"
+    }
+  ],
+  "result": [
+    {
+      "item": "minecraft:raw_copper",
+      "count": 9
+    }
+  ],
+  "energy": 400
+}

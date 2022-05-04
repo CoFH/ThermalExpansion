@@ -1,0 +1,17 @@
+{
+  "type": "thermal:pulverizer",
+  "ingredient": {
+    "tag": "forge:raw_materials/tin"
+  },
+  "result": [
+    {
+      "item": "thermal:tin_dust",
+      "chance": 1.25
+    },
+    {
+      "item": "thermal:apatite",
+      "chance": 0.25
+    }
+  ],
+  "experience": 0.1
+}
