@@ -1,6 +1,8 @@
 package cofh.thermal.expansion.init;
 
 import cofh.core.block.TileBlockActive4Way;
+import cofh.thermal.expansion.block.entity.dynamo.*;
+import cofh.thermal.expansion.block.entity.machine.*;
 import cofh.thermal.expansion.tileentity.dynamo.*;
 import cofh.thermal.expansion.tileentity.machine.*;
 import cofh.thermal.lib.block.TileBlockDynamo;

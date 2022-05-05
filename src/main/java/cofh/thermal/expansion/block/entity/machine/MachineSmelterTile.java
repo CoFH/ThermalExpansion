@@ -1,4 +1,4 @@
-package cofh.thermal.expansion.tileentity.machine;
+package cofh.thermal.expansion.block.entity.machine;
 
 import cofh.lib.client.audio.ConditionalSound;
 import cofh.lib.inventory.ItemStorageCoFH;

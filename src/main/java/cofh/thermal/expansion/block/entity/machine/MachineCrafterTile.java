@@ -1,4 +1,4 @@
-package cofh.thermal.expansion.tileentity.machine;
+package cofh.thermal.expansion.block.entity.machine;
 
 import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.fluid.FluidStorageCoFH;

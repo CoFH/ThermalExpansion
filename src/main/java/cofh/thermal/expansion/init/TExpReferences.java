@@ -1,5 +1,7 @@
 package cofh.thermal.expansion.init;
 
+import cofh.thermal.expansion.block.entity.dynamo.*;
+import cofh.thermal.expansion.block.entity.machine.*;
 import cofh.thermal.expansion.inventory.container.dynamo.*;
 import cofh.thermal.expansion.inventory.container.machine.*;
 import cofh.thermal.expansion.tileentity.dynamo.*;

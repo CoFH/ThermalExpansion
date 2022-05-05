@@ -1,11 +1,10 @@
-package cofh.thermal.expansion.tileentity.machine;
+package cofh.thermal.expansion.block.entity.machine;
 
 import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
-import cofh.thermal.core.item.SlotSealItem;
-import cofh.thermal.core.util.managers.machine.PressRecipeManager;
-import cofh.thermal.expansion.inventory.container.machine.MachinePressContainer;
+import cofh.thermal.core.util.managers.machine.CentrifugeRecipeManager;
+import cofh.thermal.expansion.inventory.container.machine.MachineCentrifugeContainer;
 import cofh.thermal.lib.tileentity.MachineTileProcess;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -20,24 +19,20 @@ import java.util.List;
 import static cofh.lib.util.StorageGroup.*;
 import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.constants.Constants.TANK_SMALL;
-import static cofh.lib.util.references.CoFHTags.Items.MACHINE_DIES;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_PRESS_TILE;
+import static cofh.thermal.expansion.init.TExpReferences.MACHINE_CENTRIFUGE_TILE;
 import static cofh.thermal.lib.common.ThermalConfig.machineAugments;
 
-public class MachinePressTile extends MachineTileProcess {
+public class MachineCentrifugeTile extends MachineTileProcess {
 
-    protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && PressRecipeManager.instance().validInput(item));
-    protected ItemStorageCoFH dieSlot = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || filter.valid(item) && PressRecipeManager.instance().validDie(item));
-    protected ItemStorageCoFH outputSlot = new ItemStorageCoFH();
+    protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && CentrifugeRecipeManager.instance().validRecipe(item));
     protected FluidStorageCoFH outputTank = new FluidStorageCoFH(TANK_SMALL);
 
-    public MachinePressTile(BlockPos pos, BlockState state) {
+    public MachineCentrifugeTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_PRESS_TILE, pos, state);
+        super(MACHINE_CENTRIFUGE_TILE, pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
-        inventory.addSlot(dieSlot, INPUT);
-        inventory.addSlot(outputSlot, OUTPUT);
+        inventory.addSlots(OUTPUT, 4);
         inventory.addSlot(chargeSlot, INTERNAL);
 
         tankInv.addTank(outputTank, OUTPUT);
@@ -49,13 +44,13 @@ public class MachinePressTile extends MachineTileProcess {
     @Override
     protected int getBaseProcessTick() {
 
-        return PressRecipeManager.instance().getBasePower();
+        return CentrifugeRecipeManager.instance().getBasePower();
     }
 
     @Override
     protected boolean cacheRecipe() {
 
-        curRecipe = PressRecipeManager.instance().getRecipe(this);
+        curRecipe = CentrifugeRecipeManager.instance().getRecipe(this);
         if (curRecipe != null) {
             itemInputCounts = curRecipe.getInputItemCounts(this);
         }
@@ -74,22 +69,21 @@ public class MachinePressTile extends MachineTileProcess {
         return !FluidHelper.fluidsEqual(renderFluid, prevFluid);
     }
 
-    @Override
-    protected void resolveInputs() {
-
-        // Input Items
-        inputSlot.modify(-itemInputCounts.get(0));
-
-        if (itemInputCounts.size() > 1 && !dieSlot.getItemStack().is(MACHINE_DIES)) {
-            dieSlot.modify(-itemInputCounts.get(1));
-        }
-    }
-
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
-        return new MachinePressContainer(i, level, worldPosition, inventory, player);
+        return new MachineCentrifugeContainer(i, level, worldPosition, inventory, player);
     }
 
+    // region OPTIMIZATION
+    @Override
+    protected boolean validateInputs() {
+
+        if (!cacheRecipe()) {
+            return false;
+        }
+        return inputSlot.getCount() >= itemInputCounts.get(0);
+    }
+    // endregion
 }

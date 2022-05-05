@@ -1,10 +1,10 @@
-package cofh.thermal.expansion.tileentity.machine;
+package cofh.thermal.expansion.block.entity.machine;
 
 import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
-import cofh.thermal.core.util.managers.machine.CentrifugeRecipeManager;
-import cofh.thermal.expansion.inventory.container.machine.MachineCentrifugeContainer;
+import cofh.thermal.core.util.managers.machine.PyrolyzerRecipeManager;
+import cofh.thermal.expansion.inventory.container.machine.MachinePyrolyzerContainer;
 import cofh.thermal.lib.tileentity.MachineTileProcess;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -19,17 +19,17 @@ import java.util.List;
 import static cofh.lib.util.StorageGroup.*;
 import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.constants.Constants.TANK_SMALL;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_CENTRIFUGE_TILE;
+import static cofh.thermal.expansion.init.TExpReferences.MACHINE_PYROLYZER_TILE;
 import static cofh.thermal.lib.common.ThermalConfig.machineAugments;
 
-public class MachineCentrifugeTile extends MachineTileProcess {
+public class MachinePyrolyzerTile extends MachineTileProcess {
 
-    protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && CentrifugeRecipeManager.instance().validRecipe(item));
+    protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && PyrolyzerRecipeManager.instance().validRecipe(item));
     protected FluidStorageCoFH outputTank = new FluidStorageCoFH(TANK_SMALL);
 
-    public MachineCentrifugeTile(BlockPos pos, BlockState state) {
+    public MachinePyrolyzerTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_CENTRIFUGE_TILE, pos, state);
+        super(MACHINE_PYROLYZER_TILE, pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
         inventory.addSlots(OUTPUT, 4);
@@ -44,13 +44,13 @@ public class MachineCentrifugeTile extends MachineTileProcess {
     @Override
     protected int getBaseProcessTick() {
 
-        return CentrifugeRecipeManager.instance().getBasePower();
+        return PyrolyzerRecipeManager.instance().getBasePower();
     }
 
     @Override
     protected boolean cacheRecipe() {
 
-        curRecipe = CentrifugeRecipeManager.instance().getRecipe(this);
+        curRecipe = PyrolyzerRecipeManager.instance().getRecipe(this);
         if (curRecipe != null) {
             itemInputCounts = curRecipe.getInputItemCounts(this);
         }
@@ -73,7 +73,7 @@ public class MachineCentrifugeTile extends MachineTileProcess {
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
-        return new MachineCentrifugeContainer(i, level, worldPosition, inventory, player);
+        return new MachinePyrolyzerContainer(i, level, worldPosition, inventory, player);
     }
 
     // region OPTIMIZATION

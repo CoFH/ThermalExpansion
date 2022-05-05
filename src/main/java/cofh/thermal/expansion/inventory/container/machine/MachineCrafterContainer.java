@@ -7,7 +7,7 @@ import cofh.lib.inventory.container.slot.SlotFalseCopy;
 import cofh.lib.inventory.container.slot.SlotRemoveOnly;
 import cofh.lib.inventory.wrapper.InvWrapperCoFH;
 import cofh.lib.util.Utils;
-import cofh.thermal.expansion.tileentity.machine.MachineCrafterTile;
+import cofh.thermal.expansion.block.entity.machine.MachineCrafterTile;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
 import net.minecraft.server.level.ServerPlayer;

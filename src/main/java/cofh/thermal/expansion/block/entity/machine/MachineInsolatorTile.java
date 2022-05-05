@@ -1,44 +1,52 @@
-package cofh.thermal.expansion.tileentity.machine;
+package cofh.thermal.expansion.block.entity.machine;
 
-import cofh.lib.client.audio.ConditionalSound;
+import cofh.core.util.helpers.FluidHelper;
+import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.thermal.core.item.SlotSealItem;
-import cofh.thermal.core.util.managers.machine.PulverizerRecipeManager;
-import cofh.thermal.expansion.inventory.container.machine.MachinePulverizerContainer;
+import cofh.thermal.core.util.managers.machine.InsolatorRecipeManager;
+import cofh.thermal.expansion.inventory.container.machine.MachineInsolatorContainer;
 import cofh.thermal.lib.tileentity.MachineTileProcess;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
 
 import static cofh.lib.util.StorageGroup.*;
+import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
+import static cofh.lib.util.constants.Constants.TANK_SMALL;
 import static cofh.lib.util.constants.NBTTags.TAG_AUGMENT_FEATURE_CYCLE_PROCESS;
 import static cofh.lib.util.helpers.AugmentableHelper.getAttributeMod;
 import static cofh.lib.util.helpers.ItemHelper.itemsEqualWithTags;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_PULVERIZER_TILE;
-import static cofh.thermal.expansion.init.TExpSounds.SOUND_MACHINE_PULVERIZER;
+import static cofh.thermal.expansion.init.TExpReferences.MACHINE_INSOLATOR_TILE;
 import static cofh.thermal.lib.common.ThermalConfig.machineAugments;
 
-public class MachinePulverizerTile extends MachineTileProcess {
+public class MachineInsolatorTile extends MachineTileProcess {
 
-    protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && PulverizerRecipeManager.instance().validRecipe(item));
-    protected ItemStorageCoFH catalystSlot = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || PulverizerRecipeManager.instance().validCatalyst(item));
+    protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && InsolatorRecipeManager.instance().validRecipe(item));
+    protected ItemStorageCoFH catalystSlot = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || InsolatorRecipeManager.instance().validCatalyst(item));
+    protected FluidStorageCoFH waterTank = new FluidStorageCoFH(TANK_SMALL, FluidHelper.IS_WATER);
 
-    public MachinePulverizerTile(BlockPos pos, BlockState state) {
+    public MachineInsolatorTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_PULVERIZER_TILE, pos, state);
+        super(MACHINE_INSOLATOR_TILE, pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
         inventory.addSlot(catalystSlot, CATALYST);
         inventory.addSlots(OUTPUT, 4);
         inventory.addSlot(chargeSlot, INTERNAL);
+
+        tankInv.addTank(waterTank, INPUT);
+
+        renderFluid = new FluidStack(Fluids.WATER, BUCKET_VOLUME);
 
         addAugmentSlots(machineAugments);
         initHandlers();
@@ -47,16 +55,17 @@ public class MachinePulverizerTile extends MachineTileProcess {
     @Override
     protected int getBaseProcessTick() {
 
-        return PulverizerRecipeManager.instance().getBasePower();
+        return InsolatorRecipeManager.instance().getBasePower();
     }
 
     @Override
     protected boolean cacheRecipe() {
 
-        curRecipe = PulverizerRecipeManager.instance().getRecipe(this);
-        curCatalyst = PulverizerRecipeManager.instance().getCatalyst(catalystSlot);
+        curRecipe = InsolatorRecipeManager.instance().getRecipe(this);
+        curCatalyst = InsolatorRecipeManager.instance().getCatalyst(catalystSlot);
         if (curRecipe != null) {
             itemInputCounts = curRecipe.getInputItemCounts(this);
+            fluidInputCounts = curRecipe.getInputFluidCounts(this);
         }
         return curRecipe != null;
     }
@@ -65,17 +74,22 @@ public class MachinePulverizerTile extends MachineTileProcess {
     protected void resolveInputs() {
 
         // Input Items
-        inputSlot.modify(-itemInputCounts.get(0));
-
-        if (cyclicProcessingFeature && !catalystSlot.isEmpty() && !catalystSlot.isFull()) {
-            ItemStack catalyst = catalystSlot.getItemStack();
+        int primaryCount = itemInputCounts.get(0);
+        if (cyclicProcessingFeature) {
+            boolean recycled = false;
+            ItemStack input = inputSlot.getItemStack();
             for (ItemStorageCoFH slot : outputSlots()) {
-                if (itemsEqualWithTags(slot.getItemStack(), catalyst)) {
-                    slot.modify(-1);
-                    catalystSlot.modify(1);
+                if (itemsEqualWithTags(slot.getItemStack(), input) && slot.getCount() >= primaryCount) {
+                    slot.modify(-primaryCount);
+                    recycled = true;
                     break;
                 }
             }
+            if (!recycled) {
+                inputSlot.modify(-primaryCount);
+            }
+        } else {
+            inputSlot.modify(-primaryCount);
         }
         int decrement = itemInputCounts.size() > 1 ? itemInputCounts.get(1) : 0;
         if (decrement > 0) {
@@ -87,19 +101,17 @@ public class MachinePulverizerTile extends MachineTileProcess {
                 catalystSlot.modify(-decrement);
             }
         }
+        // Input Fluids
+        if (!fluidInputCounts.isEmpty()) {
+            waterTank.modify(-fluidInputCounts.get(0));
+        }
     }
 
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
-        return new MachinePulverizerContainer(i, level, worldPosition, inventory, player);
-    }
-
-    @Override
-    protected Object getSound() {
-
-        return new ConditionalSound(SOUND_MACHINE_PULVERIZER, SoundSource.AMBIENT, this, () -> !remove && isActive);
+        return new MachineInsolatorContainer(i, level, worldPosition, inventory, player);
     }
 
     // region OPTIMIZATION
@@ -109,7 +121,7 @@ public class MachinePulverizerTile extends MachineTileProcess {
         if (!cacheRecipe()) {
             return false;
         }
-        return inputSlot.getCount() >= itemInputCounts.get(0);
+        return inputSlot.getCount() >= itemInputCounts.get(0) && (fluidInputCounts.isEmpty() || waterTank.getAmount() >= fluidInputCounts.get(0));
     }
     // endregion
 

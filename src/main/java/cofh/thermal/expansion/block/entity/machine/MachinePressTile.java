@@ -1,11 +1,11 @@
-package cofh.thermal.expansion.tileentity.machine;
+package cofh.thermal.expansion.block.entity.machine;
 
 import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.core.item.SlotSealItem;
-import cofh.thermal.core.util.managers.machine.ChillerRecipeManager;
-import cofh.thermal.expansion.inventory.container.machine.MachineChillerContainer;
+import cofh.thermal.core.util.managers.machine.PressRecipeManager;
+import cofh.thermal.expansion.inventory.container.machine.MachinePressContainer;
 import cofh.thermal.lib.tileentity.MachineTileProcess;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -15,29 +15,32 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
 import static cofh.lib.util.StorageGroup.*;
 import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
-import static cofh.lib.util.constants.Constants.TANK_MEDIUM;
-import static cofh.lib.util.references.CoFHTags.Items.MACHINE_CASTS;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_CHILLER_TILE;
+import static cofh.lib.util.constants.Constants.TANK_SMALL;
+import static cofh.lib.util.references.CoFHTags.Items.MACHINE_DIES;
+import static cofh.thermal.expansion.init.TExpReferences.MACHINE_PRESS_TILE;
 import static cofh.thermal.lib.common.ThermalConfig.machineAugments;
 
-public class MachineChillerTile extends MachineTileProcess {
+public class MachinePressTile extends MachineTileProcess {
 
-    protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || filter.valid(item) && ChillerRecipeManager.instance().validItem(item));
+    protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && PressRecipeManager.instance().validInput(item));
+    protected ItemStorageCoFH dieSlot = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || filter.valid(item) && PressRecipeManager.instance().validDie(item));
     protected ItemStorageCoFH outputSlot = new ItemStorageCoFH();
-    protected FluidStorageCoFH inputTank = new FluidStorageCoFH(TANK_MEDIUM, fluid -> filter.valid(fluid) && ChillerRecipeManager.instance().validFluid(fluid));
+    protected FluidStorageCoFH outputTank = new FluidStorageCoFH(TANK_SMALL);
 
-    public MachineChillerTile(BlockPos pos, BlockState state) {
+    public MachinePressTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_CHILLER_TILE, pos, state);
+        super(MACHINE_PRESS_TILE, pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
+        inventory.addSlot(dieSlot, INPUT);
         inventory.addSlot(outputSlot, OUTPUT);
         inventory.addSlot(chargeSlot, INTERNAL);
 
-        tankInv.addTank(inputTank, INPUT);
+        tankInv.addTank(outputTank, OUTPUT);
 
         addAugmentSlots(machineAugments);
         initHandlers();
@@ -46,16 +49,15 @@ public class MachineChillerTile extends MachineTileProcess {
     @Override
     protected int getBaseProcessTick() {
 
-        return ChillerRecipeManager.instance().getBasePower();
+        return PressRecipeManager.instance().getBasePower();
     }
 
     @Override
     protected boolean cacheRecipe() {
 
-        curRecipe = ChillerRecipeManager.instance().getRecipe(this);
+        curRecipe = PressRecipeManager.instance().getRecipe(this);
         if (curRecipe != null) {
             itemInputCounts = curRecipe.getInputItemCounts(this);
-            fluidInputCounts = curRecipe.getInputFluidCounts(this);
         }
         return curRecipe != null;
     }
@@ -67,7 +69,8 @@ public class MachineChillerTile extends MachineTileProcess {
             return false;
         }
         FluidStack prevFluid = renderFluid;
-        renderFluid = new FluidStack(inputTank.getFluidStack(), BUCKET_VOLUME);
+        List<FluidStack> recipeOutputFluids = curRecipe.getOutputFluids(this);
+        renderFluid = recipeOutputFluids.isEmpty() ? FluidStack.EMPTY : new FluidStack(recipeOutputFluids.get(0), BUCKET_VOLUME);
         return !FluidHelper.fluidsEqual(renderFluid, prevFluid);
     }
 
@@ -75,12 +78,10 @@ public class MachineChillerTile extends MachineTileProcess {
     protected void resolveInputs() {
 
         // Input Items
-        if (!itemInputCounts.isEmpty() && !inputSlot.getItemStack().is(MACHINE_CASTS)) {
-            inputSlot.modify(-itemInputCounts.get(0));
-        }
-        // Input Fluids
-        for (int i = 0; i < fluidInputCounts.size(); ++i) {
-            inputTanks().get(i).modify(-fluidInputCounts.get(i));
+        inputSlot.modify(-itemInputCounts.get(0));
+
+        if (itemInputCounts.size() > 1 && !dieSlot.getItemStack().is(MACHINE_DIES)) {
+            dieSlot.modify(-itemInputCounts.get(1));
         }
     }
 
@@ -88,7 +89,7 @@ public class MachineChillerTile extends MachineTileProcess {
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
-        return new MachineChillerContainer(i, level, worldPosition, inventory, player);
+        return new MachinePressContainer(i, level, worldPosition, inventory, player);
     }
 
 }

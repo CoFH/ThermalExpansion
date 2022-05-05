@@ -1,4 +1,4 @@
-package cofh.thermal.expansion.tileentity.dynamo;
+package cofh.thermal.expansion.block.entity.dynamo;
 
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.core.util.managers.dynamo.DisenchantmentFuelManager;
