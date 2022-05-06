@@ -6,10 +6,10 @@ import cofh.lib.inventory.FalseCraftingInventory;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.Utils;
 import cofh.lib.xp.EmptyXpStorage;
+import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.CrafterRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineCrafterContainer;
-import cofh.thermal.lib.common.ThermalConfig;
 import cofh.thermal.lib.tileentity.MachineTileProcess;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
@@ -35,7 +35,6 @@ import static cofh.lib.util.StorageGroup.*;
 import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.constants.Constants.TANK_MEDIUM;
 import static cofh.thermal.expansion.init.TExpReferences.MACHINE_CRAFTER_TILE;
-import static cofh.thermal.lib.common.ThermalConfig.machineAugments;
 
 public class MachineCrafterTile extends MachineTileProcess {
 
@@ -66,7 +65,7 @@ public class MachineCrafterTile extends MachineTileProcess {
 
         tankInv.addTank(inputTank, INPUT);
 
-        addAugmentSlots(machineAugments);
+        addAugmentSlots(ThermalCoreConfig.machineAugments);
         initHandlers();
     }
 
@@ -138,12 +137,12 @@ public class MachineCrafterTile extends MachineTileProcess {
     @Override
     public void onReplaced(BlockState state, Level levelIn, BlockPos pos, BlockState newState) {
 
-        if (!ThermalConfig.keepItems.get()) {
+        if (!ThermalCoreConfig.keepItems) {
             for (int i = 0; i < invSize() - augSize() - 9 - 1; ++i) {
                 Containers.dropItemStack(levelIn, pos.getX(), pos.getY(), pos.getZ(), inventory.getStackInSlot(i));
             }
         }
-        if (!ThermalConfig.keepAugments.get()) {
+        if (!ThermalCoreConfig.keepAugments) {
             for (int i = invSize() - augSize(); i < invSize(); ++i) {
                 Utils.dropItemStackIntoWorldWithRandomness(inventory.getStackInSlot(i), levelIn, pos);
             }

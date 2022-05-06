@@ -2,6 +2,7 @@ package cofh.thermal.expansion.block.entity.machine;
 
 import cofh.lib.client.audio.ConditionalSound;
 import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.machine.SawmillRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineSawmillContainer;
 import cofh.thermal.lib.tileentity.MachineTileProcess;
@@ -17,7 +18,6 @@ import javax.annotation.Nullable;
 import static cofh.lib.util.StorageGroup.*;
 import static cofh.thermal.expansion.init.TExpReferences.MACHINE_SAWMILL_TILE;
 import static cofh.thermal.expansion.init.TExpSounds.SOUND_MACHINE_SAWMILL;
-import static cofh.thermal.lib.common.ThermalConfig.machineAugments;
 
 public class MachineSawmillTile extends MachineTileProcess {
 
@@ -31,7 +31,7 @@ public class MachineSawmillTile extends MachineTileProcess {
         inventory.addSlots(OUTPUT, 4);
         inventory.addSlot(chargeSlot, INTERNAL);
 
-        addAugmentSlots(machineAugments);
+        addAugmentSlots(ThermalCoreConfig.machineAugments);
         initHandlers();
     }
 

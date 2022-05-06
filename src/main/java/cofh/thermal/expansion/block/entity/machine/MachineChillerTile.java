@@ -3,6 +3,7 @@ package cofh.thermal.expansion.block.entity.machine;
 import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.ChillerRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineChillerContainer;
@@ -21,7 +22,6 @@ import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.constants.Constants.TANK_MEDIUM;
 import static cofh.lib.util.references.CoFHTags.Items.MACHINE_CASTS;
 import static cofh.thermal.expansion.init.TExpReferences.MACHINE_CHILLER_TILE;
-import static cofh.thermal.lib.common.ThermalConfig.machineAugments;
 
 public class MachineChillerTile extends MachineTileProcess {
 
@@ -39,7 +39,7 @@ public class MachineChillerTile extends MachineTileProcess {
 
         tankInv.addTank(inputTank, INPUT);
 
-        addAugmentSlots(machineAugments);
+        addAugmentSlots(ThermalCoreConfig.machineAugments);
         initHandlers();
     }
 

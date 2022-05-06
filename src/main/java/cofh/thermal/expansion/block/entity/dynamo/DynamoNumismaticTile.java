@@ -1,6 +1,7 @@
 package cofh.thermal.expansion.block.entity.dynamo;
 
 import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.dynamo.NumismaticFuelManager;
 import cofh.thermal.expansion.inventory.container.dynamo.DynamoNumismaticContainer;
 import cofh.thermal.lib.tileentity.DynamoTileBase;
@@ -14,7 +15,6 @@ import javax.annotation.Nullable;
 
 import static cofh.lib.util.StorageGroup.INPUT;
 import static cofh.thermal.expansion.init.TExpReferences.DYNAMO_NUMISMATIC_TILE;
-import static cofh.thermal.lib.common.ThermalConfig.dynamoAugments;
 
 public class DynamoNumismaticTile extends DynamoTileBase {
 
@@ -26,7 +26,7 @@ public class DynamoNumismaticTile extends DynamoTileBase {
 
         inventory.addSlot(fuelSlot, INPUT);
 
-        addAugmentSlots(dynamoAugments);
+        addAugmentSlots(ThermalCoreConfig.dynamoAugments);
         initHandlers();
     }
 

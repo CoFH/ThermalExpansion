@@ -4,6 +4,7 @@ import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.helpers.MathHelper;
+import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.InsolatorRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineInsolatorContainer;
@@ -27,7 +28,6 @@ import static cofh.lib.util.constants.NBTTags.TAG_AUGMENT_FEATURE_CYCLE_PROCESS;
 import static cofh.lib.util.helpers.AugmentableHelper.getAttributeMod;
 import static cofh.lib.util.helpers.ItemHelper.itemsEqualWithTags;
 import static cofh.thermal.expansion.init.TExpReferences.MACHINE_INSOLATOR_TILE;
-import static cofh.thermal.lib.common.ThermalConfig.machineAugments;
 
 public class MachineInsolatorTile extends MachineTileProcess {
 
@@ -48,7 +48,7 @@ public class MachineInsolatorTile extends MachineTileProcess {
 
         renderFluid = new FluidStack(Fluids.WATER, BUCKET_VOLUME);
 
-        addAugmentSlots(machineAugments);
+        addAugmentSlots(ThermalCoreConfig.machineAugments);
         initHandlers();
     }
 

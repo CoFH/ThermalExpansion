@@ -3,6 +3,7 @@ package cofh.thermal.expansion.block.entity.machine;
 import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.machine.RefineryRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineRefineryContainer;
 import cofh.thermal.lib.tileentity.MachineTileProcess;
@@ -19,7 +20,6 @@ import javax.annotation.Nullable;
 import static cofh.lib.util.StorageGroup.*;
 import static cofh.lib.util.constants.Constants.*;
 import static cofh.thermal.expansion.init.TExpReferences.MACHINE_REFINERY_TILE;
-import static cofh.thermal.lib.common.ThermalConfig.machineAugments;
 
 public class MachineRefineryTile extends MachineTileProcess {
 
@@ -41,7 +41,7 @@ public class MachineRefineryTile extends MachineTileProcess {
 
         renderFluid = new FluidStack(Fluids.WATER, BUCKET_VOLUME);
 
-        addAugmentSlots(machineAugments);
+        addAugmentSlots(ThermalCoreConfig.machineAugments);
         initHandlers();
     }
 

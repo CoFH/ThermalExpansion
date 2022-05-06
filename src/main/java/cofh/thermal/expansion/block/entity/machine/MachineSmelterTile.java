@@ -3,6 +3,7 @@ package cofh.thermal.expansion.block.entity.machine;
 import cofh.lib.client.audio.ConditionalSound;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.helpers.MathHelper;
+import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.SmelterRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineSmelterContainer;
@@ -26,7 +27,6 @@ import static cofh.lib.util.helpers.ItemHelper.itemsEqual;
 import static cofh.lib.util.helpers.ItemHelper.itemsEqualWithTags;
 import static cofh.thermal.expansion.init.TExpReferences.MACHINE_SMELTER_TILE;
 import static cofh.thermal.expansion.init.TExpSounds.SOUND_MACHINE_SMELTER;
-import static cofh.thermal.lib.common.ThermalConfig.machineAugments;
 
 public class MachineSmelterTile extends MachineTileProcess {
 
@@ -48,7 +48,7 @@ public class MachineSmelterTile extends MachineTileProcess {
         inventory.addSlots(OUTPUT, 4);
         inventory.addSlot(chargeSlot, INTERNAL);
 
-        addAugmentSlots(machineAugments);
+        addAugmentSlots(ThermalCoreConfig.machineAugments);
         initHandlers();
     }
 

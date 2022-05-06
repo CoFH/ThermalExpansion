@@ -3,6 +3,7 @@ package cofh.thermal.expansion.block.entity.machine;
 import cofh.lib.client.audio.ConditionalSound;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.helpers.MathHelper;
+import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.PulverizerRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachinePulverizerContainer;
@@ -24,7 +25,6 @@ import static cofh.lib.util.helpers.AugmentableHelper.getAttributeMod;
 import static cofh.lib.util.helpers.ItemHelper.itemsEqualWithTags;
 import static cofh.thermal.expansion.init.TExpReferences.MACHINE_PULVERIZER_TILE;
 import static cofh.thermal.expansion.init.TExpSounds.SOUND_MACHINE_PULVERIZER;
-import static cofh.thermal.lib.common.ThermalConfig.machineAugments;
 
 public class MachinePulverizerTile extends MachineTileProcess {
 
@@ -40,7 +40,7 @@ public class MachinePulverizerTile extends MachineTileProcess {
         inventory.addSlots(OUTPUT, 4);
         inventory.addSlot(chargeSlot, INTERNAL);
 
-        addAugmentSlots(machineAugments);
+        addAugmentSlots(ThermalCoreConfig.machineAugments);
         initHandlers();
     }
 

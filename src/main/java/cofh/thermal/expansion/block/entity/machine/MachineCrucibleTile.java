@@ -4,6 +4,7 @@ import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.client.audio.ConditionalSound;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.machine.CrucibleRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineCrucibleContainer;
 import cofh.thermal.lib.tileentity.MachineTileProcess;
@@ -22,7 +23,6 @@ import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.constants.Constants.TANK_MEDIUM;
 import static cofh.thermal.expansion.init.TExpReferences.MACHINE_CRUCIBLE_TILE;
 import static cofh.thermal.expansion.init.TExpSounds.SOUND_MACHINE_CRUCIBLE;
-import static cofh.thermal.lib.common.ThermalConfig.machineAugments;
 
 public class MachineCrucibleTile extends MachineTileProcess {
 
@@ -38,7 +38,7 @@ public class MachineCrucibleTile extends MachineTileProcess {
 
         tankInv.addTank(outputTank, OUTPUT);
 
-        addAugmentSlots(machineAugments);
+        addAugmentSlots(ThermalCoreConfig.machineAugments);
         initHandlers();
     }
 

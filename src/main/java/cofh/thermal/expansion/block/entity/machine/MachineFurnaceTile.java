@@ -2,6 +2,7 @@ package cofh.thermal.expansion.block.entity.machine;
 
 import cofh.lib.client.audio.ConditionalSound;
 import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.machine.FurnaceRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineFurnaceContainer;
 import cofh.thermal.lib.tileentity.MachineTileProcess;
@@ -19,7 +20,6 @@ import static cofh.lib.util.StorageGroup.*;
 import static cofh.lib.util.helpers.ItemHelper.itemsEqualWithTags;
 import static cofh.thermal.expansion.init.TExpReferences.MACHINE_FURNACE_TILE;
 import static cofh.thermal.expansion.init.TExpSounds.SOUND_MACHINE_FURNACE;
-import static cofh.thermal.lib.common.ThermalConfig.machineAugments;
 
 public class MachineFurnaceTile extends MachineTileProcess {
 
@@ -34,7 +34,7 @@ public class MachineFurnaceTile extends MachineTileProcess {
         inventory.addSlot(outputSlot, OUTPUT);
         inventory.addSlot(chargeSlot, INTERNAL);
 
-        addAugmentSlots(machineAugments);
+        addAugmentSlots(ThermalCoreConfig.machineAugments);
         initHandlers();
     }
 

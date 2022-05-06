@@ -3,6 +3,7 @@ package cofh.thermal.expansion.block.entity.machine;
 import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.machine.PyrolyzerRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachinePyrolyzerContainer;
 import cofh.thermal.lib.tileentity.MachineTileProcess;
@@ -20,7 +21,6 @@ import static cofh.lib.util.StorageGroup.*;
 import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.constants.Constants.TANK_SMALL;
 import static cofh.thermal.expansion.init.TExpReferences.MACHINE_PYROLYZER_TILE;
-import static cofh.thermal.lib.common.ThermalConfig.machineAugments;
 
 public class MachinePyrolyzerTile extends MachineTileProcess {
 
@@ -37,7 +37,7 @@ public class MachinePyrolyzerTile extends MachineTileProcess {
 
         tankInv.addTank(outputTank, OUTPUT);
 
-        addAugmentSlots(machineAugments);
+        addAugmentSlots(ThermalCoreConfig.machineAugments);
         initHandlers();
     }
 

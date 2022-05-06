@@ -1,10 +1,10 @@
 package cofh.thermal.expansion.init;
 
 import cofh.core.block.TileBlockActive4Way;
+import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.expansion.block.entity.dynamo.*;
 import cofh.thermal.expansion.block.entity.machine.*;
 import cofh.thermal.lib.block.TileBlockDynamo;
-import cofh.thermal.lib.common.ThermalConfig;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.material.Material;
@@ -37,7 +37,7 @@ public class TExpBlocks {
     // region HELPERS
     private static void registerTileBlocks() {
 
-        IntSupplier machineAugs = () -> ThermalConfig.machineAugments;
+        IntSupplier machineAugs = () -> ThermalCoreConfig.machineAugments;
 
         registerAugmentableBlock(ID_MACHINE_FURNACE, () -> new TileBlockActive4Way(of(Material.METAL).sound(SoundType.NETHERITE_BLOCK).strength(2.0F).lightLevel(lightValue(ACTIVE, 14)), MachineFurnaceTile.class, () -> MACHINE_FURNACE_TILE), machineAugs, MACHINE_NO_FLUID_VALIDATOR, getFlag(ID_MACHINE_FURNACE), ID_THERMAL_EXPANSION);
         registerAugmentableBlock(ID_MACHINE_SAWMILL, () -> new TileBlockActive4Way(of(Material.METAL).sound(SoundType.NETHERITE_BLOCK).strength(2.0F).lightLevel(lightValue(ACTIVE, 0)), MachineSawmillTile.class, () -> MACHINE_SAWMILL_TILE), machineAugs, MACHINE_NO_FLUID_VALIDATOR, getFlag(ID_MACHINE_SAWMILL), ID_THERMAL_EXPANSION);
@@ -54,7 +54,7 @@ public class TExpBlocks {
         registerAugmentableBlock(ID_MACHINE_BREWER, () -> new TileBlockActive4Way(of(Material.METAL).sound(SoundType.NETHERITE_BLOCK).strength(2.0F).lightLevel(lightValue(ACTIVE, 0)), MachineBrewerTile.class, () -> MACHINE_BREWER_TILE), machineAugs, MACHINE_VALIDATOR, getFlag(ID_MACHINE_BREWER), ID_THERMAL_EXPANSION);
         registerAugmentableBlock(ID_MACHINE_CRAFTER, () -> new TileBlockActive4Way(of(Material.METAL).sound(SoundType.NETHERITE_BLOCK).strength(2.0F).lightLevel(lightValue(ACTIVE, 0)), MachineCrafterTile.class, () -> MACHINE_CRAFTER_TILE), machineAugs, MACHINE_VALIDATOR, getFlag(ID_MACHINE_CRAFTER), ID_THERMAL_EXPANSION);
 
-        IntSupplier dynamoAugs = () -> ThermalConfig.dynamoAugments;
+        IntSupplier dynamoAugs = () -> ThermalCoreConfig.dynamoAugments;
 
         registerAugmentableBlock(ID_DYNAMO_STIRLING, () -> new TileBlockDynamo(of(Material.METAL).sound(SoundType.NETHERITE_BLOCK).strength(2.0F).lightLevel(lightValue(ACTIVE, 7)), DynamoStirlingTile.class, () -> DYNAMO_STIRLING_TILE), dynamoAugs, DYNAMO_NO_FLUID_VALIDATOR, getFlag(ID_DYNAMO_STIRLING), ID_THERMAL_EXPANSION);
         registerAugmentableBlock(ID_DYNAMO_COMPRESSION, () -> new TileBlockDynamo(of(Material.METAL).sound(SoundType.NETHERITE_BLOCK).strength(2.0F).lightLevel(lightValue(ACTIVE, 7)), DynamoCompressionTile.class, () -> DYNAMO_COMPRESSION_TILE), dynamoAugs, DYNAMO_VALIDATOR, getFlag(ID_DYNAMO_COMPRESSION), ID_THERMAL_EXPANSION);

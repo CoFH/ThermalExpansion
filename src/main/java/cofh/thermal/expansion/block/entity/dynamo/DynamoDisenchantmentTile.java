@@ -1,6 +1,7 @@
 package cofh.thermal.expansion.block.entity.dynamo;
 
 import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.dynamo.DisenchantmentFuelManager;
 import cofh.thermal.expansion.inventory.container.dynamo.DynamoDisenchantmentContainer;
 import cofh.thermal.lib.tileentity.DynamoTileBase;
@@ -14,7 +15,6 @@ import javax.annotation.Nullable;
 
 import static cofh.lib.util.StorageGroup.INPUT;
 import static cofh.thermal.expansion.init.TExpReferences.DYNAMO_DISENCHANTMENT_TILE;
-import static cofh.thermal.lib.common.ThermalConfig.dynamoAugments;
 
 public class DynamoDisenchantmentTile extends DynamoTileBase {
 
@@ -25,7 +25,7 @@ public class DynamoDisenchantmentTile extends DynamoTileBase {
         super(DYNAMO_DISENCHANTMENT_TILE, pos, state);
 
         inventory.addSlot(fuelSlot, INPUT);
-        addAugmentSlots(dynamoAugments);
+        addAugmentSlots(ThermalCoreConfig.dynamoAugments);
         initHandlers();
     }
 
