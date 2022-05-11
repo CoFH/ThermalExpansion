@@ -1,21 +1,25 @@
 package cofh.thermal.expansion;
 
+import cofh.lib.config.world.OreConfig;
+import cofh.thermal.core.config.ThermalWorldConfig;
 import cofh.thermal.expansion.client.gui.dynamo.*;
 import cofh.thermal.expansion.client.gui.machine.*;
 import cofh.thermal.expansion.config.ThermalDynamoConfig;
 import cofh.thermal.expansion.config.ThermalMachineConfig;
-import cofh.thermal.expansion.init.TExpBlocks;
-import cofh.thermal.expansion.init.TExpContainers;
-import cofh.thermal.expansion.init.TExpItems;
-import cofh.thermal.expansion.init.TExpSounds;
+import cofh.thermal.expansion.init.*;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+
+import java.util.Collections;
+import java.util.List;
 
 import static cofh.lib.util.constants.Constants.ID_THERMAL_EXPANSION;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
@@ -30,6 +34,7 @@ public class ThermalExpansion {
     public ThermalExpansion() {
 
         setFeatureFlags();
+        addWorldConfigs();
 
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
@@ -45,6 +50,7 @@ public class ThermalExpansion {
 
         TExpContainers.register();
         TExpSounds.register();
+        TExpFeatures.register();
     }
 
     private void setFeatureFlags() {
@@ -101,6 +107,14 @@ public class ThermalExpansion {
         //        setFlag(ID_ITEM_CELL, true);
 
         setFlag(FLAG_XP_STORAGE_AUGMENT, true);
+    }
+
+    private void addWorldConfigs() {
+
+        List<ResourceKey<Level>> defaultDimensions = Collections.singletonList(Level.OVERWORLD);
+
+        ThermalWorldConfig.addOreConfig("cinnabar_ore", new OreConfig("Cinnabar", 1, -16, 48, 5, defaultDimensions));
+        ThermalWorldConfig.addOreConfig("oil_sand", new OreConfig("Oil Sand", 2, 40, 80, 24, defaultDimensions));
     }
 
     // region INITIALIZATION

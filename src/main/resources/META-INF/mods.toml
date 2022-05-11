@@ -19,14 +19,14 @@ Contains the "factory" of the Thermal Series - Dynamos and Machines to both prod
 [[dependencies.thermal_expansion]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.16.5,)"
+versionRange = "[1.18.2,)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.thermal_expansion]]
 modId = "forge"
 mandatory = true
-versionRange = "[36.2.20,)"
+versionRange = "[40.1.0,)"
 ordering = "AFTER"
 side = "BOTH"
 
@@ -47,6 +47,6 @@ side = "BOTH"
 [[dependencies.thermal_expansion]]
 modId = "thermal_foundation"
 mandatory = true
-versionRange = "[1.4,1.5]"
+versionRange = "[1.6,1.7]"
 ordering = "AFTER"
 side = "BOTH"
