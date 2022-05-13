@@ -1,6 +1,7 @@
 package cofh.thermal.expansion;
 
 import cofh.lib.config.world.OreConfig;
+import cofh.thermal.core.ThermalCore;
 import cofh.thermal.core.config.ThermalWorldConfig;
 import cofh.thermal.expansion.client.gui.dynamo.*;
 import cofh.thermal.expansion.client.gui.machine.*;
@@ -17,6 +18,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.NewRegistryEvent;
 
 import java.util.Collections;
 import java.util.List;
@@ -36,21 +38,21 @@ public class ThermalExpansion {
         setFeatureFlags();
         addWorldConfigs();
 
+        CONFIG_MANAGER
+                .addServerConfig(new ThermalDynamoConfig())
+                .addServerConfig(new ThermalMachineConfig());
+
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::clientSetup);
-
-        CONFIG_MANAGER
-                .addServerConfig(new ThermalDynamoConfig())
-                .addServerConfig(new ThermalMachineConfig());
+        modEventBus.addListener(this::registrySetup);
 
         TExpBlocks.register();
         TExpItems.register();
 
         TExpContainers.register();
         TExpSounds.register();
-        TExpFeatures.register();
     }
 
     private void setFeatureFlags() {
@@ -124,8 +126,16 @@ public class ThermalExpansion {
 
     private void clientSetup(final FMLClientSetupEvent event) {
 
-        this.registerGuiFactories();
-        this.registerRenderLayers();
+        event.enqueueWork(this::registerGuiFactories);
+        event.enqueueWork(this::registerRenderLayers);
+    }
+
+    private void registrySetup(final NewRegistryEvent event) {
+
+        while (!ThermalCore.CONFIG_MANAGER.isServerInit()) {
+
+        }
+        TExpFeatures.register();
     }
     // endregion
 
