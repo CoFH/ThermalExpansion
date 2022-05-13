@@ -1,7 +1,6 @@
 package cofh.thermal.expansion.data;
 
 import cofh.lib.data.RecipeProviderCoFH;
-import cofh.lib.util.DeferredRegisterCoFH;
 import cofh.lib.util.references.CoFHTags;
 import cofh.thermal.lib.common.ThermalFlags;
 import net.minecraft.data.DataGenerator;
@@ -43,7 +42,7 @@ public class TExpRecipeProvider extends RecipeProviderCoFH {
 
     private void generateMachineRecipes(Consumer<FinishedRecipe> consumer) {
 
-        DeferredRegisterCoFH<Item> reg = ITEMS;
+        var reg = ITEMS;
 
         Item machineFrame = reg.get("machine_frame");
         Item rfCoil = reg.get("rf_coil");
@@ -219,7 +218,7 @@ public class TExpRecipeProvider extends RecipeProviderCoFH {
 
     private void generateDynamoRecipes(Consumer<FinishedRecipe> consumer) {
 
-        DeferredRegisterCoFH<Item> reg = ITEMS;
+        var reg = ITEMS;
 
         Item rfCoil = reg.get("rf_coil");
 
@@ -310,7 +309,7 @@ public class TExpRecipeProvider extends RecipeProviderCoFH {
 
     private void generateCraftingRecipes(Consumer<FinishedRecipe> consumer) {
 
-        DeferredRegisterCoFH<Item> reg = ITEMS;
+        var reg = ITEMS;
 
         ShapedRecipeBuilder.shaped(reg.get("slot_seal"))
                 .define('P', CoFHTags.Items.PLATES_IRON)

@@ -1,10 +1,7 @@
 package cofh.thermal.expansion.data;
 
 import cofh.lib.data.ItemModelProviderCoFH;
-import cofh.lib.util.DeferredRegisterCoFH;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
@@ -30,7 +27,7 @@ public class TExpItemModelProvider extends ItemModelProviderCoFH {
 
         registerBlockItemModels();
 
-        DeferredRegisterCoFH<Item> reg = ITEMS;
+        var reg = ITEMS;
 
         generated(reg.getSup("slot_seal"));
 
@@ -47,7 +44,7 @@ public class TExpItemModelProvider extends ItemModelProviderCoFH {
 
     private void registerBlockItemModels() {
 
-        DeferredRegisterCoFH<Block> reg = BLOCKS;
+        var reg = BLOCKS;
 
         blockItem(reg.getSup(ID_MACHINE_FURNACE));
         blockItem(reg.getSup(ID_MACHINE_SAWMILL));
