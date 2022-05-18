@@ -6,7 +6,8 @@
   "result": [
     {
       "item": "thermal:silver_ingot",
-      "chance": 1.0
+      "chance": 1.3,
+      "locked": true
     },
     {
       "item": "thermal:lead_nugget",

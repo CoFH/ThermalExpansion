@@ -2,6 +2,8 @@ package cofh.thermal.expansion;
 
 import cofh.thermal.expansion.client.gui.dynamo.*;
 import cofh.thermal.expansion.client.gui.machine.*;
+import cofh.thermal.expansion.config.ThermalDynamoConfig;
+import cofh.thermal.expansion.config.ThermalMachineConfig;
 import cofh.thermal.expansion.init.TExpBlocks;
 import cofh.thermal.expansion.init.TExpContainers;
 import cofh.thermal.expansion.init.TExpItems;
@@ -17,6 +19,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import static cofh.lib.util.constants.Constants.ID_THERMAL_EXPANSION;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
+import static cofh.thermal.core.ThermalCore.CONFIG_MANAGER;
 import static cofh.thermal.expansion.init.TExpReferences.*;
 import static cofh.thermal.lib.common.ThermalFlags.*;
 import static cofh.thermal.lib.common.ThermalIDs.*;
@@ -29,6 +32,10 @@ public class ThermalExpansion {
         setFeatureFlags();
 
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        CONFIG_MANAGER.register(modEventBus)
+                .addServerConfig(new ThermalDynamoConfig())
+                .addServerConfig(new ThermalMachineConfig());
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::clientSetup);

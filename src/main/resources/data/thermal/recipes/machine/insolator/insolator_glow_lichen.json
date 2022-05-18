@@ -1,0 +1,12 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "minecraft:glow_lichen"
+  },
+  "result": [
+    {
+      "item": "minecraft:glow_lichen",
+      "chance": 2.0
+    }
+  ]
+}

@@ -6,7 +6,8 @@
   "result": [
     {
       "item": "minecraft:copper_ingot",
-      "chance": 1.0
+      "chance": 1.3,
+      "locked": true
     },
     {
       "item": "minecraft:gold_nugget",

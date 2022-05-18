@@ -1,0 +1,12 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "minecraft:moss_block"
+  },
+  "result": [
+    {
+      "item": "minecraft:moss_block",
+      "chance": 2.0
+    }
+  ]
+}
