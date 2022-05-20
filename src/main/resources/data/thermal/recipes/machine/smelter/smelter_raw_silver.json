@@ -6,7 +6,7 @@
   "result": [
     {
       "item": "thermal:silver_ingot",
-      "chance": 1.3,
+      "chance": 1.5,
       "locked": true
     },
     {
