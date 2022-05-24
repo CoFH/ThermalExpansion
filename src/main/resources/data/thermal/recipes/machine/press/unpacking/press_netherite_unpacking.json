@@ -2,8 +2,7 @@
   "type": "thermal:press",
   "ingredients": [
     {
-      "item": "minecraft:netherite_block",
-      "count": 1
+      "item": "minecraft:netherite_block"
     },
     {
       "item": "thermal:press_unpacking_die"

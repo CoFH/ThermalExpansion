@@ -2,8 +2,7 @@
   "type": "thermal:press",
   "ingredients": [
     {
-      "item": "minecraft:copper_block",
-      "count": 1
+      "item": "minecraft:copper_block"
     },
     {
       "item": "thermal:press_unpacking_die"

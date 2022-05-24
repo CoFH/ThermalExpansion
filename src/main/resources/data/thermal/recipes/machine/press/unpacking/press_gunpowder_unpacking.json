@@ -2,8 +2,7 @@
   "type": "thermal:press",
   "ingredients": [
     {
-      "item": "thermal:gunpowder_block",
-      "count": 1
+      "item": "thermal:gunpowder_block"
     },
     {
       "item": "thermal:press_unpacking_die"

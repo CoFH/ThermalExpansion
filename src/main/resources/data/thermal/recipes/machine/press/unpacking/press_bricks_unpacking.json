@@ -2,8 +2,7 @@
   "type": "thermal:press",
   "ingredients": [
     {
-      "item": "minecraft:bricks",
-      "count": 1
+      "item": "minecraft:bricks"
     },
     {
       "item": "thermal:press_unpacking_die"

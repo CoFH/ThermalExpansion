@@ -2,8 +2,7 @@
   "type": "thermal:press",
   "ingredients": [
     {
-      "item": "thermal:invar_block",
-      "count": 1
+      "item": "thermal:invar_block"
     },
     {
       "item": "thermal:press_unpacking_die"

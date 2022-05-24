@@ -2,8 +2,7 @@
   "type": "thermal:press",
   "ingredients": [
     {
-      "item": "thermal:coal_coke_block",
-      "count": 1
+      "item": "thermal:coal_coke_block"
     },
     {
       "item": "thermal:press_unpacking_die"

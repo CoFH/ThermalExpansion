@@ -2,8 +2,7 @@
   "type": "thermal:press",
   "ingredients": [
     {
-      "item": "minecraft:clay",
-      "count": 1
+      "item": "minecraft:clay"
     },
     {
       "item": "thermal:press_unpacking_die"

@@ -2,8 +2,7 @@
   "type": "thermal:press",
   "ingredients": [
     {
-      "item": "thermal:bronze_block",
-      "count": 1
+      "item": "thermal:bronze_block"
     },
     {
       "item": "thermal:press_unpacking_die"

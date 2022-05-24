@@ -2,8 +2,7 @@
   "type": "thermal:press",
   "ingredients": [
     {
-      "item": "minecraft:quartz_block",
-      "count": 1
+      "item": "minecraft:quartz_block"
     },
     {
       "item": "thermal:press_unpacking_die"

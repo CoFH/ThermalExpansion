@@ -2,8 +2,7 @@
   "type": "thermal:press",
   "ingredients": [
     {
-      "item": "minecraft:blue_ice",
-      "count": 1
+      "item": "minecraft:blue_ice"
     },
     {
       "item": "thermal:press_unpacking_die"

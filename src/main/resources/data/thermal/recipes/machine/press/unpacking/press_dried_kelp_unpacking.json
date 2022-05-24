@@ -2,8 +2,7 @@
   "type": "thermal:press",
   "ingredients": [
     {
-      "item": "minecraft:dried_kelp_block",
-      "count": 1
+      "item": "minecraft:dried_kelp_block"
     },
     {
       "item": "thermal:press_unpacking_die"

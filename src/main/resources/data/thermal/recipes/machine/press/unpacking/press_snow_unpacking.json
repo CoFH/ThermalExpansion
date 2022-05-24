@@ -2,8 +2,7 @@
   "type": "thermal:press",
   "ingredients": [
     {
-      "item": "minecraft:snow_block",
-      "count": 1
+      "item": "minecraft:snow_block"
     },
     {
       "item": "thermal:press_unpacking_die"

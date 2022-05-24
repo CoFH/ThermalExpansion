@@ -2,8 +2,7 @@
   "type": "thermal:press",
   "ingredients": [
     {
-      "item": "minecraft:white_wool",
-      "count": 1
+      "item": "minecraft:white_wool"
     },
     {
       "item": "thermal:press_unpacking_die"

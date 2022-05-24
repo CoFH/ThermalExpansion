@@ -2,8 +2,7 @@
   "type": "thermal:press",
   "ingredients": [
     {
-      "item": "minecraft:red_sandstone",
-      "count": 1
+      "item": "minecraft:red_sandstone"
     },
     {
       "item": "thermal:press_unpacking_die"

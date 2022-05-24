@@ -2,8 +2,7 @@
   "type": "thermal:press",
   "ingredients": [
     {
-      "item": "minecraft:melon",
-      "count": 1
+      "item": "minecraft:melon"
     },
     {
       "item": "thermal:press_unpacking_die"

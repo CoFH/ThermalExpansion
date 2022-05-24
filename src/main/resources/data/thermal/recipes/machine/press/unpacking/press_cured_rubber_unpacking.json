@@ -2,8 +2,7 @@
   "type": "thermal:press",
   "ingredients": [
     {
-      "item": "thermal:cured_rubber_block",
-      "count": 1
+      "item": "thermal:cured_rubber_block"
     },
     {
       "item": "thermal:press_unpacking_die"
