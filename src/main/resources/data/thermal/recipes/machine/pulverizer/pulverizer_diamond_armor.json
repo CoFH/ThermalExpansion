@@ -9,5 +9,11 @@
       "count": 3
     }
   ],
-  "experience": 1.5
+  "experience": 1.5,
+  "conditions": [
+    {
+      "tag": "forge:armor/diamond",
+      "type": "cofh_core:tag_exists"
+    }
+  ]
 }

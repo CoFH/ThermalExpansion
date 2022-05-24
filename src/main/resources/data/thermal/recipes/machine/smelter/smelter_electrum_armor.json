@@ -9,5 +9,11 @@
       "count": 3
     }
   ],
-  "experience": 1.2
+  "experience": 1.2,
+  "conditions": [
+    {
+      "tag": "forge:armor/electrum",
+      "type": "cofh_core:tag_exists"
+    }
+  ]
 }

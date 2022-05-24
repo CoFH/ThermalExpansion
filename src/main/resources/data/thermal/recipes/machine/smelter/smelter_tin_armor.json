@@ -9,5 +9,11 @@
       "count": 3
     }
   ],
-  "experience": 0.6
+  "experience": 0.6,
+  "conditions": [
+    {
+      "tag": "forge:armor/tin",
+      "type": "cofh_core:tag_exists"
+    }
+  ]
 }

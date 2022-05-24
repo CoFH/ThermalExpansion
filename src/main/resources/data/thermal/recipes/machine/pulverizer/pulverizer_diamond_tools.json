@@ -13,5 +13,11 @@
       "count": 1
     }
   ],
-  "experience": 0.5
+  "experience": 0.5,
+  "conditions": [
+    {
+      "tag": "forge:tools/diamond",
+      "type": "cofh_core:tag_exists"
+    }
+  ]
 }

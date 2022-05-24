@@ -9,5 +9,11 @@
       "count": 3
     }
   ],
-  "experience": 0.9
+  "experience": 0.9,
+  "conditions": [
+    {
+      "tag": "forge:armor/invar",
+      "type": "cofh_core:tag_exists"
+    }
+  ]
 }
