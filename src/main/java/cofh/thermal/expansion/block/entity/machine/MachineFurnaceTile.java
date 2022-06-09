@@ -5,7 +5,7 @@ import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.machine.FurnaceRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineFurnaceContainer;
-import cofh.thermal.lib.tileentity.MachineTileProcess;
+import cofh.thermal.lib.tileentity.MachineTileBase;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Inventory;
@@ -21,7 +21,7 @@ import static cofh.lib.util.helpers.ItemHelper.itemsEqualWithTags;
 import static cofh.thermal.expansion.init.TExpReferences.MACHINE_FURNACE_TILE;
 import static cofh.thermal.expansion.init.TExpSounds.SOUND_MACHINE_FURNACE;
 
-public class MachineFurnaceTile extends MachineTileProcess {
+public class MachineFurnaceTile extends MachineTileBase {
 
     protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && FurnaceRecipeManager.instance().validRecipe(item));
     protected ItemStorageCoFH outputSlot = new ItemStorageCoFH();

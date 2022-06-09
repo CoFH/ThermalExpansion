@@ -8,7 +8,7 @@ import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.InsolatorRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineInsolatorContainer;
-import cofh.thermal.lib.tileentity.MachineTileProcess;
+import cofh.thermal.lib.tileentity.MachineTileBase;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Inventory;
@@ -29,7 +29,7 @@ import static cofh.lib.util.helpers.AugmentableHelper.getAttributeMod;
 import static cofh.lib.util.helpers.ItemHelper.itemsEqualWithTags;
 import static cofh.thermal.expansion.init.TExpReferences.MACHINE_INSOLATOR_TILE;
 
-public class MachineInsolatorTile extends MachineTileProcess {
+public class MachineInsolatorTile extends MachineTileBase {
 
     protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && InsolatorRecipeManager.instance().validRecipe(item));
     protected ItemStorageCoFH catalystSlot = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || InsolatorRecipeManager.instance().validCatalyst(item));

@@ -1,0 +1,31 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "minecraft:azalea"
+  },
+  "result": [
+    {
+      "item": "minecraft:oak_log",
+      "chance": 6.0
+    },
+    {
+      "item": "minecraft:azalea",
+      "chance": 1.1
+    },
+    {
+      "item": "minecraft:hanging_roots",
+      "chance": 1.25
+    }
+  ],
+  "energy_mod": 3.25,
+  "water_mod": 3.0,
+  "conditions": [
+    {
+      "type": "forge:not",
+      "value": {
+        "type": "thermal:flag",
+        "flag": "mod_quark"
+      }
+    }
+  ]
+}

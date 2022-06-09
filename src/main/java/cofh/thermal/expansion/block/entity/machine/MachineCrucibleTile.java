@@ -7,7 +7,7 @@ import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.machine.CrucibleRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineCrucibleContainer;
-import cofh.thermal.lib.tileentity.MachineTileProcess;
+import cofh.thermal.lib.tileentity.MachineTileBase;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Inventory;
@@ -24,7 +24,7 @@ import static cofh.lib.util.constants.Constants.TANK_MEDIUM;
 import static cofh.thermal.expansion.init.TExpReferences.MACHINE_CRUCIBLE_TILE;
 import static cofh.thermal.expansion.init.TExpSounds.SOUND_MACHINE_CRUCIBLE;
 
-public class MachineCrucibleTile extends MachineTileProcess {
+public class MachineCrucibleTile extends MachineTileBase {
 
     protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && CrucibleRecipeManager.instance().validRecipe(item));
     protected FluidStorageCoFH outputTank = new FluidStorageCoFH(TANK_MEDIUM);

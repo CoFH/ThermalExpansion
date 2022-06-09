@@ -6,7 +6,7 @@ import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.machine.RefineryRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineRefineryContainer;
-import cofh.thermal.lib.tileentity.MachineTileProcess;
+import cofh.thermal.lib.tileentity.MachineTileBase;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -21,7 +21,7 @@ import static cofh.lib.util.StorageGroup.*;
 import static cofh.lib.util.constants.Constants.*;
 import static cofh.thermal.expansion.init.TExpReferences.MACHINE_REFINERY_TILE;
 
-public class MachineRefineryTile extends MachineTileProcess {
+public class MachineRefineryTile extends MachineTileBase {
 
     protected ItemStorageCoFH outputSlot = new ItemStorageCoFH();
     protected FluidStorageCoFH inputTank = new FluidStorageCoFH(TANK_SMALL, fluid -> filter.valid(fluid) && RefineryRecipeManager.instance().validRecipe(fluid));

@@ -8,6 +8,7 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 
@@ -76,7 +77,7 @@ public class TExpRecipeProvider extends RecipeProviderCoFH {
                 .define('I', CoFHTags.Items.GEARS_COPPER)
                 .define('P', rfCoil)
                 .define('X', Blocks.PISTON)
-                .define('Y', net.minecraft.world.item.Items.FLINT)
+                .define('Y', Items.FLINT)
                 .pattern(" X ")
                 .pattern("YCY")
                 .pattern("IPI")
@@ -111,7 +112,7 @@ public class TExpRecipeProvider extends RecipeProviderCoFH {
                 .define('C', machineFrame)
                 .define('I', CoFHTags.Items.GEARS_CONSTANTAN)
                 .define('P', rfCoil)
-                .define('X', net.minecraft.world.item.Items.COMPASS)
+                .define('X', Items.COMPASS)
                 .define('Y', CoFHTags.Items.INGOTS_TIN)
                 .pattern(" X ")
                 .pattern("YCY")
@@ -171,8 +172,8 @@ public class TExpRecipeProvider extends RecipeProviderCoFH {
                 .define('C', machineFrame)
                 .define('I', CoFHTags.Items.GEARS_CONSTANTAN)
                 .define('P', rfCoil)
-                .define('X', net.minecraft.world.item.Items.BLAZE_ROD)
-                .define('Y', net.minecraft.world.item.Items.NETHER_BRICKS)
+                .define('X', Items.BLAZE_ROD)
+                .define('Y', Items.NETHER_BRICKS)
                 .pattern(" X ")
                 .pattern("YCY")
                 .pattern("IPI")
@@ -195,7 +196,7 @@ public class TExpRecipeProvider extends RecipeProviderCoFH {
                 .define('C', machineFrame)
                 .define('I', CoFHTags.Items.GEARS_COPPER)
                 .define('P', rfCoil)
-                .define('X', net.minecraft.world.item.Items.BUCKET)
+                .define('X', Items.BUCKET)
                 .define('Y', Tags.Items.GLASS)
                 .pattern(" X ")
                 .pattern("YCY")
@@ -207,7 +208,7 @@ public class TExpRecipeProvider extends RecipeProviderCoFH {
                 .define('C', machineFrame)
                 .define('I', CoFHTags.Items.GEARS_COPPER)
                 .define('P', rfCoil)
-                .define('X', net.minecraft.world.item.Items.CRAFTING_TABLE)
+                .define('X', Items.CRAFTING_TABLE)
                 .define('Y', CoFHTags.Items.INGOTS_TIN)
                 .pattern(" X ")
                 .pattern("YCY")
@@ -287,7 +288,7 @@ public class TExpRecipeProvider extends RecipeProviderCoFH {
                 .define('I', Tags.Items.INGOTS_IRON)
                 .define('G', CoFHTags.Items.GEARS_SILVER)
                 .define('X', Tags.Items.DUSTS_REDSTONE)
-                .define('Y', net.minecraft.world.item.Items.EXPERIENCE_BOTTLE)
+                .define('Y', Items.EXPERIENCE_BOTTLE)
                 .pattern(" C ")
                 .pattern("IGI")
                 .pattern("YXY")
@@ -370,7 +371,7 @@ public class TExpRecipeProvider extends RecipeProviderCoFH {
 
         ShapedRecipeBuilder.shaped(reg.get("chiller_ball_cast"))
                 .define('P', CoFHTags.Items.PLATES_BRONZE)
-                .define('X', net.minecraft.world.item.Items.MAGMA_CREAM)
+                .define('X', Items.MAGMA_CREAM)
                 .pattern(" P ")
                 .pattern("PXP")
                 .pattern(" P ")
@@ -379,7 +380,7 @@ public class TExpRecipeProvider extends RecipeProviderCoFH {
 
         ShapedRecipeBuilder.shaped(reg.get("chiller_ingot_cast"))
                 .define('P', CoFHTags.Items.PLATES_BRONZE)
-                .define('X', net.minecraft.world.item.Items.NETHER_BRICK)
+                .define('X', Items.NETHER_BRICK)
                 .pattern(" P ")
                 .pattern("PXP")
                 .pattern(" P ")
@@ -388,7 +389,7 @@ public class TExpRecipeProvider extends RecipeProviderCoFH {
 
         ShapedRecipeBuilder.shaped(reg.get("chiller_rod_cast"))
                 .define('P', CoFHTags.Items.PLATES_BRONZE)
-                .define('X', net.minecraft.world.item.Items.BLAZE_ROD)
+                .define('X', Items.BLAZE_ROD)
                 .pattern(" P ")
                 .pattern("PXP")
                 .pattern(" P ")

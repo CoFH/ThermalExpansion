@@ -6,7 +6,7 @@ import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.machine.CentrifugeRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineCentrifugeContainer;
-import cofh.thermal.lib.tileentity.MachineTileProcess;
+import cofh.thermal.lib.tileentity.MachineTileBase;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -22,7 +22,7 @@ import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.constants.Constants.TANK_SMALL;
 import static cofh.thermal.expansion.init.TExpReferences.MACHINE_CENTRIFUGE_TILE;
 
-public class MachineCentrifugeTile extends MachineTileProcess {
+public class MachineCentrifugeTile extends MachineTileBase {
 
     protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && CentrifugeRecipeManager.instance().validRecipe(item));
     protected FluidStorageCoFH outputTank = new FluidStorageCoFH(TANK_SMALL);

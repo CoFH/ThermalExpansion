@@ -7,7 +7,7 @@ import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.SmelterRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineSmelterContainer;
-import cofh.thermal.lib.tileentity.MachineTileProcess;
+import cofh.thermal.lib.tileentity.MachineTileBase;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundSource;
@@ -28,7 +28,7 @@ import static cofh.lib.util.helpers.ItemHelper.itemsEqualWithTags;
 import static cofh.thermal.expansion.init.TExpReferences.MACHINE_SMELTER_TILE;
 import static cofh.thermal.expansion.init.TExpSounds.SOUND_MACHINE_SMELTER;
 
-public class MachineSmelterTile extends MachineTileProcess {
+public class MachineSmelterTile extends MachineTileBase {
 
     protected ItemStorageCoFH[] inputSlots = new ItemStorageCoFH[3];
     protected ItemStorageCoFH catalystSlot = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || SmelterRecipeManager.instance().validCatalyst(item) && !itemsEqual(item, inputSlots[0].getItemStack()) && !itemsEqual(item, inputSlots[1].getItemStack()) && !itemsEqual(item, inputSlots[2].getItemStack()));

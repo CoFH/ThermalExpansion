@@ -7,7 +7,7 @@ import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.PulverizerRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachinePulverizerContainer;
-import cofh.thermal.lib.tileentity.MachineTileProcess;
+import cofh.thermal.lib.tileentity.MachineTileBase;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundSource;
@@ -26,7 +26,7 @@ import static cofh.lib.util.helpers.ItemHelper.itemsEqualWithTags;
 import static cofh.thermal.expansion.init.TExpReferences.MACHINE_PULVERIZER_TILE;
 import static cofh.thermal.expansion.init.TExpSounds.SOUND_MACHINE_PULVERIZER;
 
-public class MachinePulverizerTile extends MachineTileProcess {
+public class MachinePulverizerTile extends MachineTileBase {
 
     protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && PulverizerRecipeManager.instance().validRecipe(item));
     protected ItemStorageCoFH catalystSlot = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || PulverizerRecipeManager.instance().validCatalyst(item));
