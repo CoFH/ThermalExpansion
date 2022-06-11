@@ -5,18 +5,23 @@ import cofh.thermal.expansion.client.gui.machine.MachineSawmillScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
 import cofh.thermal.lib.compat.jei.ThermalRecipeCategory;
 import com.mojang.blaze3d.vertex.PoseStack;
-import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.gui.IRecipeLayout;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.builder.IRecipeSlotBuilder;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
-import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
-import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import static cofh.lib.util.helpers.ItemHelper.cloneStack;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
+import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.defaultOutputTooltip;
 import static cofh.thermal.expansion.init.TExpReferences.MACHINE_SAWMILL_BLOCK;
 
 public class SawmillRecipeCategory extends ThermalRecipeCategory<SawmillRecipe> {
@@ -44,46 +49,40 @@ public class SawmillRecipeCategory extends ThermalRecipeCategory<SawmillRecipe> 
     }
 
     @Override
-    public void setIngredients(SawmillRecipe recipe, IIngredients ingredients) {
+    public void setRecipe(IRecipeLayoutBuilder builder, SawmillRecipe recipe, IFocusGroup focuses) {
 
-        ingredients.setInputIngredients(recipe.getInputItems());
-        ingredients.setOutputs(VanillaTypes.ITEM, recipe.getOutputItems());
-    }
+        List<Ingredient> inputs = recipe.getInputItems();
+        List<ItemStack> outputs = new ArrayList<>(recipe.getOutputItems().size());
 
-    @Override
-    public void setRecipe(IRecipeLayout layout, SawmillRecipe recipe, IIngredients ingredients) {
-
-        List<List<ItemStack>> inputs = ingredients.getInputs(VanillaTypes.ITEM);
-        List<List<ItemStack>> outputs = ingredients.getOutputs(VanillaTypes.ITEM);
-
+        for (ItemStack stack : recipe.getOutputItems()) {
+            outputs.add(cloneStack(stack));
+        }
         for (int i = 0; i < outputs.size(); ++i) {
             float chance = recipe.getOutputItemChances().get(i);
             if (chance > 1.0F) {
-                for (ItemStack stack : outputs.get(i)) {
-                    stack.setCount((int) chance);
-                }
+                outputs.get(i).setCount((int) chance);
             }
         }
-        IGuiItemStackGroup guiItemStacks = layout.getItemStacks();
+        IRecipeSlotBuilder[] outputSlots = new IRecipeSlotBuilder[4];
 
-        guiItemStacks.init(0, true, 33, 14);
-        guiItemStacks.init(1, false, 96, 14);
-        guiItemStacks.init(2, false, 114, 14);
-        guiItemStacks.init(3, false, 96, 32);
-        guiItemStacks.init(4, false, 114, 32);
+        builder.addSlot(RecipeIngredientRole.INPUT, 34, 15)
+                .addIngredients(inputs.get(0));
 
-        guiItemStacks.set(0, inputs.get(0));
+        outputSlots[0] = builder.addSlot(RecipeIngredientRole.OUTPUT, 97, 15);
+        outputSlots[1] = builder.addSlot(RecipeIngredientRole.OUTPUT, 115, 15);
+        outputSlots[2] = builder.addSlot(RecipeIngredientRole.OUTPUT, 97, 33);
+        outputSlots[3] = builder.addSlot(RecipeIngredientRole.OUTPUT, 115, 33);
 
         for (int i = 0; i < outputs.size(); ++i) {
-            guiItemStacks.set(i + 1, outputs.get(i));
+            outputSlots[i].addItemStack(outputs.get(i))
+                    .addTooltipCallback(defaultOutputTooltip(recipe.getOutputItemChances().get(i)));
         }
-        addDefaultItemTooltipCallback(guiItemStacks, recipe.getOutputItemChances(), 1);
     }
 
     @Override
-    public void draw(SawmillRecipe recipe, PoseStack matrixStack, double mouseX, double mouseY) {
+    public void draw(SawmillRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack matrixStack, double mouseX, double mouseY) {
 
-        super.draw(recipe, matrixStack, mouseX, mouseY);
+        super.draw(recipe, recipeSlotsView, matrixStack, mouseX, mouseY);
 
         progressBackground.draw(matrixStack, 62, 23);
         speedBackground.draw(matrixStack, 34, 33);

@@ -1,0 +1,11 @@
+{
+  "type": "thermal:insolator_catalyst",
+  "ingredient": {
+    "item": "thermal:compost"
+  },
+  "primary_mod": 1.75,
+  "secondary_mod": 1.25,
+  "energy_mod": 0.6,
+  "min_chance": 0.2,
+  "use_chance": 0.25
+}

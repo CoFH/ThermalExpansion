@@ -63,10 +63,14 @@ public class ThermalExpansion {
         setFlag(ID_MACHINE_FRAME, true);
 
         setFlag(ID_DEVICE_TREE_EXTRACTOR, true);
+        setFlag(ID_DEVICE_FISHER, true);
+        setFlag(ID_DEVICE_COMPOSTER, true);
+
         setFlag(ID_DEVICE_WATER_GEN, true);
         setFlag(ID_DEVICE_ROCK_GEN, true);
         setFlag(ID_DEVICE_COLLECTOR, true);
         setFlag(ID_DEVICE_NULLIFIER, true);
+        setFlag(ID_DEVICE_POTION_DIFFUSER, true);
 
         setFlag(ID_DYNAMO_STIRLING, true);
         setFlag(ID_DYNAMO_COMPRESSION, true);

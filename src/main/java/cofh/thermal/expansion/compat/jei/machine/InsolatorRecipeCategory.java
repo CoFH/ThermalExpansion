@@ -1,27 +1,31 @@
 package cofh.thermal.expansion.compat.jei.machine;
 
 import cofh.core.util.helpers.RenderHelper;
-import cofh.thermal.core.util.managers.machine.InsolatorRecipeManager;
+import cofh.lib.fluid.FluidIngredient;
+import cofh.thermal.core.util.managers.machine.PulverizerRecipeManager;
 import cofh.thermal.core.util.recipes.machine.InsolatorRecipe;
 import cofh.thermal.expansion.client.gui.machine.MachineInsolatorScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
 import cofh.thermal.lib.compat.jei.ThermalRecipeCategory;
 import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.gui.IRecipeLayout;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.builder.IRecipeSlotBuilder;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
-import mezz.jei.api.gui.ingredient.IGuiFluidStackGroup;
-import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
-import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.fluids.FluidStack;
+import net.minecraft.world.item.crafting.Ingredient;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static cofh.lib.util.constants.Constants.TANK_MEDIUM;
+import static cofh.lib.util.helpers.ItemHelper.cloneStack;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.*;
 import static cofh.thermal.expansion.init.TExpReferences.MACHINE_INSOLATOR_BLOCK;
@@ -59,60 +63,53 @@ public class InsolatorRecipeCategory extends ThermalRecipeCategory<InsolatorReci
     }
 
     @Override
-    public void setIngredients(InsolatorRecipe recipe, IIngredients ingredients) {
+    public void setRecipe(IRecipeLayoutBuilder builder, InsolatorRecipe recipe, IFocusGroup focuses) {
 
-        ingredients.setInputIngredients(recipe.getInputItems());
-        setInputIngredients(ingredients, recipe.getInputFluids());
+        List<Ingredient> inputs = recipe.getInputItems();
+        List<FluidIngredient> inputFluids = recipe.getInputFluids();
+        List<ItemStack> outputs = new ArrayList<>(recipe.getOutputItems().size());
+        List<ItemStack> catalysts = PulverizerRecipeManager.instance().getCatalysts();
 
-        ingredients.setOutputs(VanillaTypes.ITEM, recipe.getOutputItems());
-    }
-
-    @Override
-    public void setRecipe(IRecipeLayout layout, InsolatorRecipe recipe, IIngredients ingredients) {
-
-        List<List<ItemStack>> inputs = ingredients.getInputs(VanillaTypes.ITEM);
-        List<List<FluidStack>> inputFluids = ingredients.getInputs(VanillaTypes.FLUID);
-        List<List<ItemStack>> outputs = ingredients.getOutputs(VanillaTypes.ITEM);
-        List<ItemStack> catalysts = InsolatorRecipeManager.instance().getCatalysts();
-
+        for (ItemStack stack : recipe.getOutputItems()) {
+            outputs.add(cloneStack(stack));
+        }
         for (int i = 0; i < outputs.size(); ++i) {
             float chance = recipe.getOutputItemChances().get(i);
             if (chance > 1.0F) {
-                for (ItemStack stack : outputs.get(i)) {
-                    stack.setCount((int) chance);
-                }
+                outputs.get(i).setCount((int) chance);
             }
         }
-        IGuiItemStackGroup guiItemStacks = layout.getItemStacks();
-        IGuiFluidStackGroup guiFluidStacks = layout.getFluidStacks();
+        IRecipeSlotBuilder[] outputSlots = new IRecipeSlotBuilder[4];
+        IRecipeSlotBuilder catalystSlot;
 
-        guiItemStacks.init(0, true, 51, 5);
-        guiItemStacks.init(1, true, 51, 41);
-
-        guiItemStacks.init(2, false, 105, 14);
-        guiItemStacks.init(3, false, 123, 14);
-        guiItemStacks.init(4, false, 105, 32);
-        guiItemStacks.init(5, false, 123, 32);
-
-        guiFluidStacks.init(0, false, 25, 11, 16, 40, tankSize(TANK_MEDIUM), false, tankOverlay(tankOverlay));
-
-        guiItemStacks.set(0, inputs.get(0));
-        guiFluidStacks.set(0, inputFluids.get(0));
+        builder.addSlot(RecipeIngredientRole.INPUT, 52, 6)
+                .addIngredients(inputs.get(0));
+        catalystSlot = builder.addSlot(RecipeIngredientRole.INPUT, 52, 42);
 
         if (recipe.isCatalyzable()) {
-            guiItemStacks.set(1, catalysts);
+            catalystSlot.addItemStacks(catalysts)
+                    .addTooltipCallback(catalystTooltip());
         }
+        outputSlots[0] = builder.addSlot(RecipeIngredientRole.OUTPUT, 106, 15);
+        outputSlots[1] = builder.addSlot(RecipeIngredientRole.OUTPUT, 124, 15);
+        outputSlots[2] = builder.addSlot(RecipeIngredientRole.OUTPUT, 106, 33);
+        outputSlots[3] = builder.addSlot(RecipeIngredientRole.OUTPUT, 124, 33);
+
         for (int i = 0; i < outputs.size(); ++i) {
-            guiItemStacks.set(i + 2, outputs.get(i));
+            outputSlots[i].addItemStack(outputs.get(i))
+                    .addTooltipCallback(catalyzedOutputTooltip(recipe.getOutputItemChances().get(i), recipe.isCatalyzable()));
         }
-        addCatalyzedItemTooltipCallback(guiItemStacks, recipe.getOutputItemChances(), recipe.isCatalyzable(), 2);
-        addDefaultFluidTooltipCallback(guiFluidStacks);
+        builder.addSlot(RecipeIngredientRole.INPUT, 25, 11)
+                .addIngredients(VanillaTypes.FLUID, List.of(inputFluids.get(0).getFluids()))
+                .setFluidRenderer(tankSize(TANK_MEDIUM), false, 16, 40)
+                .setOverlay(tankOverlay, 0, 0)
+                .addTooltipCallback(defaultFluidTooltip());
     }
 
     @Override
-    public void draw(InsolatorRecipe recipe, PoseStack matrixStack, double mouseX, double mouseY) {
+    public void draw(InsolatorRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack matrixStack, double mouseX, double mouseY) {
 
-        super.draw(recipe, matrixStack, mouseX, mouseY);
+        super.draw(recipe, recipeSlotsView, matrixStack, mouseX, mouseY);
 
         progressBackground.draw(matrixStack, 76, 23);
         tankBackground.draw(matrixStack, 24, 10);

@@ -1,28 +1,31 @@
 package cofh.thermal.expansion.compat.jei.machine;
 
 import cofh.core.util.helpers.RenderHelper;
+import cofh.lib.fluid.FluidIngredient;
 import cofh.thermal.core.util.recipes.machine.BrewerRecipe;
 import cofh.thermal.expansion.client.gui.machine.MachineBrewerScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
 import cofh.thermal.lib.compat.jei.ThermalRecipeCategory;
 import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.gui.IRecipeLayout;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
-import mezz.jei.api.gui.ingredient.IGuiFluidStackGroup;
-import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
-import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.List;
 
 import static cofh.lib.util.constants.Constants.TANK_MEDIUM;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
-import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.*;
+import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.defaultFluidTooltip;
+import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.tankSize;
 import static cofh.thermal.expansion.init.TExpReferences.MACHINE_BREWER_BLOCK;
 
 public class BrewerRecipeCategory extends ThermalRecipeCategory<BrewerRecipe> {
@@ -64,39 +67,32 @@ public class BrewerRecipeCategory extends ThermalRecipeCategory<BrewerRecipe> {
     }
 
     @Override
-    public void setIngredients(BrewerRecipe recipe, IIngredients ingredients) {
+    public void setRecipe(IRecipeLayoutBuilder builder, BrewerRecipe recipe, IFocusGroup focuses) {
 
-        ingredients.setInputIngredients(recipe.getInputItems());
-        setInputIngredients(ingredients, recipe.getInputFluids());
+        List<Ingredient> inputs = recipe.getInputItems();
+        List<FluidIngredient> inputFluids = recipe.getInputFluids();
+        List<FluidStack> outputFluids = recipe.getOutputFluids();
 
-        ingredients.setOutputs(VanillaTypes.FLUID, recipe.getOutputFluids());
+        builder.addSlot(RecipeIngredientRole.INPUT, 52, 15)
+                .addIngredients(inputs.get(0));
+
+        builder.addSlot(RecipeIngredientRole.INPUT, 25, 11)
+                .addIngredients(VanillaTypes.FLUID, List.of(inputFluids.get(0).getFluids()))
+                .setFluidRenderer(tankSize(TANK_MEDIUM), false, 16, 40)
+                .setOverlay(inputOverlay, 0, 0)
+                .addTooltipCallback(defaultFluidTooltip());
+
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 116, 11)
+                .addIngredients(VanillaTypes.FLUID, List.of(outputFluids.get(0)))
+                .setFluidRenderer(tankSize(TANK_MEDIUM), false, 16, 40)
+                .setOverlay(outputOverlay, 0, 0)
+                .addTooltipCallback(defaultFluidTooltip());
     }
 
     @Override
-    public void setRecipe(IRecipeLayout layout, BrewerRecipe recipe, IIngredients ingredients) {
+    public void draw(BrewerRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack matrixStack, double mouseX, double mouseY) {
 
-        List<List<ItemStack>> inputItems = ingredients.getInputs(VanillaTypes.ITEM);
-        List<List<FluidStack>> inputFluids = ingredients.getInputs(VanillaTypes.FLUID);
-        List<List<FluidStack>> outputs = ingredients.getOutputs(VanillaTypes.FLUID);
-
-        IGuiItemStackGroup guiItemStacks = layout.getItemStacks();
-        IGuiFluidStackGroup guiFluidStacks = layout.getFluidStacks();
-
-        guiItemStacks.init(0, true, 51, 14);
-        guiFluidStacks.init(0, true, 25, 11, 16, 40, tankSize(TANK_MEDIUM), false, tankOverlay(inputOverlay));
-        guiFluidStacks.init(1, false, 116, 11, 16, 40, tankSize(TANK_MEDIUM), false, tankOverlay(outputOverlay));
-
-        guiItemStacks.set(0, inputItems.get(0));
-        guiFluidStacks.set(0, inputFluids.get(0));
-        guiFluidStacks.set(1, outputs.get(0));
-
-        addDefaultFluidTooltipCallback(guiFluidStacks);
-    }
-
-    @Override
-    public void draw(BrewerRecipe recipe, PoseStack matrixStack, double mouseX, double mouseY) {
-
-        super.draw(recipe, matrixStack, mouseX, mouseY);
+        super.draw(recipe, recipeSlotsView, matrixStack, mouseX, mouseY);
 
         progressBackground.draw(matrixStack, 78, 23);
         tankInput.draw(matrixStack, 24, 10);

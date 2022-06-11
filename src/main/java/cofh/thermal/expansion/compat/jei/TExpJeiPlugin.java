@@ -6,12 +6,15 @@ import cofh.thermal.core.util.managers.dynamo.StirlingFuelManager;
 import cofh.thermal.core.util.managers.machine.BottlerRecipeManager;
 import cofh.thermal.core.util.managers.machine.BrewerRecipeManager;
 import cofh.thermal.core.util.managers.machine.FurnaceRecipeManager;
+import cofh.thermal.core.util.recipes.dynamo.*;
+import cofh.thermal.core.util.recipes.machine.*;
 import cofh.thermal.expansion.client.gui.dynamo.*;
 import cofh.thermal.expansion.client.gui.machine.*;
 import cofh.thermal.expansion.compat.jei.dynamo.*;
 import cofh.thermal.expansion.compat.jei.machine.*;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.IGuiHandlerRegistration;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
@@ -21,6 +24,8 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeManager;
+
+import java.util.ArrayList;
 
 import static cofh.lib.util.constants.Constants.ID_THERMAL;
 import static cofh.thermal.core.ThermalCore.ITEMS;
@@ -38,48 +43,49 @@ public class TExpJeiPlugin implements IModPlugin {
             // TODO: Log an error.
             return;
         }
-        registration.addRecipes(recipeManager.byType(RECIPE_FURNACE).values(), ID_RECIPE_FURNACE);
-        registration.addRecipes(FurnaceRecipeManager.instance().getConvertedRecipes(), ID_RECIPE_FURNACE);
+        registration.addRecipes(FURNACE, recipeManager.getAllRecipesFor(RECIPE_FURNACE));
+        registration.addRecipes(FURNACE, FurnaceRecipeManager.instance().getConvertedRecipes());
 
-        registration.addRecipes(recipeManager.byType(RECIPE_SAWMILL).values(), ID_RECIPE_SAWMILL);
+        registration.addRecipes(SAWMILL, recipeManager.getAllRecipesFor(RECIPE_SAWMILL));
 
-        registration.addRecipes(recipeManager.byType(RECIPE_PULVERIZER).values(), ID_RECIPE_PULVERIZER);
-        registration.addRecipes(recipeManager.byType(RECIPE_PULVERIZER_RECYCLE).values(), ID_RECIPE_PULVERIZER);
-        registration.addRecipes(recipeManager.byType(CATALYST_PULVERIZER).values(), ID_CATALYST_PULVERIZER);
+        registration.addRecipes(PULVERIZER, recipeManager.getAllRecipesFor(RECIPE_PULVERIZER));
+        registration.addRecipes(PULVERIZER, new ArrayList<>(recipeManager.getAllRecipesFor(RECIPE_PULVERIZER_RECYCLE)));
+        registration.addRecipes(PULVERIZER_CATALYST, recipeManager.getAllRecipesFor(CATALYST_PULVERIZER));
 
-        registration.addRecipes(recipeManager.byType(RECIPE_SMELTER).values(), ID_RECIPE_SMELTER);
-        registration.addRecipes(recipeManager.byType(RECIPE_SMELTER_RECYCLE).values(), ID_RECIPE_SMELTER);
-        registration.addRecipes(recipeManager.byType(CATALYST_SMELTER).values(), ID_CATALYST_SMELTER);
+        registration.addRecipes(SMELTER, recipeManager.getAllRecipesFor(RECIPE_SMELTER));
+        registration.addRecipes(SMELTER, new ArrayList<>(recipeManager.getAllRecipesFor(RECIPE_SMELTER_RECYCLE)));
+        registration.addRecipes(SMELTER_CATALYST, recipeManager.getAllRecipesFor(CATALYST_SMELTER));
 
-        registration.addRecipes(recipeManager.byType(RECIPE_INSOLATOR).values(), ID_RECIPE_INSOLATOR);
-        registration.addRecipes(recipeManager.byType(CATALYST_INSOLATOR).values(), ID_CATALYST_INSOLATOR);
+        registration.addRecipes(INSOLATOR, recipeManager.getAllRecipesFor(RECIPE_INSOLATOR));
+        registration.addRecipes(INSOLATOR_CATALYST, recipeManager.getAllRecipesFor(CATALYST_INSOLATOR));
 
-        registration.addRecipes(recipeManager.byType(RECIPE_CENTRIFUGE).values(), ID_RECIPE_CENTRIFUGE);
-        registration.addRecipes(recipeManager.byType(RECIPE_PRESS).values(), ID_RECIPE_PRESS);
-        registration.addRecipes(recipeManager.byType(RECIPE_CRUCIBLE).values(), ID_RECIPE_CRUCIBLE);
-        registration.addRecipes(recipeManager.byType(RECIPE_CHILLER).values(), ID_RECIPE_CHILLER);
-        registration.addRecipes(recipeManager.byType(RECIPE_REFINERY).values(), ID_RECIPE_REFINERY);
-        registration.addRecipes(recipeManager.byType(RECIPE_PYROLYZER).values(), ID_RECIPE_PYROLYZER);
+        registration.addRecipes(CENTRIFUGE, recipeManager.getAllRecipesFor(RECIPE_CENTRIFUGE));
+        registration.addRecipes(PRESS, recipeManager.getAllRecipesFor(RECIPE_PRESS));
+        registration.addRecipes(CRUCIBLE, recipeManager.getAllRecipesFor(RECIPE_CRUCIBLE));
+        registration.addRecipes(CHILLER, recipeManager.getAllRecipesFor(RECIPE_CHILLER));
+        registration.addRecipes(REFINERY, recipeManager.getAllRecipesFor(RECIPE_REFINERY));
+        registration.addRecipes(PYROLYZER, recipeManager.getAllRecipesFor(RECIPE_PYROLYZER));
 
-        registration.addRecipes(recipeManager.byType(RECIPE_BREWER).values(), ID_RECIPE_BREWER);
-        registration.addRecipes(BrewerRecipeManager.instance().getConvertedRecipes(), ID_RECIPE_BREWER);
+        registration.addRecipes(BREWER, recipeManager.getAllRecipesFor(RECIPE_BREWER));
+        registration.addRecipes(BREWER, BrewerRecipeManager.instance().getConvertedRecipes());
 
-        registration.addRecipes(recipeManager.byType(RECIPE_BOTTLER).values(), ID_RECIPE_BOTTLER);
-        registration.addRecipes(BottlerRecipeManager.instance().getConvertedRecipes(), ID_RECIPE_BOTTLER);
+        registration.addRecipes(BOTTLER, recipeManager.getAllRecipesFor(RECIPE_BOTTLER));
+        registration.addRecipes(BOTTLER, BottlerRecipeManager.instance().getConvertedRecipes());
 
-        registration.addRecipes(recipeManager.byType(FUEL_STIRLING).values(), ID_FUEL_STIRLING);
-        registration.addRecipes(StirlingFuelManager.instance().getConvertedFuels(), ID_FUEL_STIRLING);
 
-        registration.addRecipes(recipeManager.byType(FUEL_COMPRESSION).values(), ID_FUEL_COMPRESSION);
-        registration.addRecipes(recipeManager.byType(FUEL_MAGMATIC).values(), ID_FUEL_MAGMATIC);
-        registration.addRecipes(recipeManager.byType(FUEL_NUMISMATIC).values(), ID_FUEL_NUMISMATIC);
-        registration.addRecipes(recipeManager.byType(FUEL_LAPIDARY).values(), ID_FUEL_LAPIDARY);
+        registration.addRecipes(STIRLING_FUEL, recipeManager.getAllRecipesFor(FUEL_STIRLING));
+        registration.addRecipes(STIRLING_FUEL, StirlingFuelManager.instance().getConvertedFuels());
 
-        registration.addRecipes(recipeManager.byType(FUEL_DISENCHANTMENT).values(), ID_FUEL_DISENCHANTMENT);
-        registration.addRecipes(DisenchantmentFuelManager.instance().getConvertedFuels(), ID_FUEL_DISENCHANTMENT);
+        registration.addRecipes(COMPRESSION_FUEL, recipeManager.getAllRecipesFor(FUEL_COMPRESSION));
+        registration.addRecipes(MAGMATIC_FUEL, recipeManager.getAllRecipesFor(FUEL_MAGMATIC));
+        registration.addRecipes(NUMISMATIC_FUEL, recipeManager.getAllRecipesFor(FUEL_NUMISMATIC));
+        registration.addRecipes(LAPIDARY_FUEL, recipeManager.getAllRecipesFor(FUEL_LAPIDARY));
 
-        registration.addRecipes(recipeManager.byType(FUEL_GOURMAND).values(), ID_FUEL_GOURMAND);
-        registration.addRecipes(GourmandFuelManager.instance().getConvertedFuels(), ID_FUEL_GOURMAND);
+        registration.addRecipes(DISENCHANTMENT_FUEL, recipeManager.getAllRecipesFor(FUEL_DISENCHANTMENT));
+        registration.addRecipes(DISENCHANTMENT_FUEL, DisenchantmentFuelManager.instance().getConvertedFuels());
+
+        registration.addRecipes(GOURMAND_FUEL, recipeManager.getAllRecipesFor(FUEL_GOURMAND));
+        registration.addRecipes(GOURMAND_FUEL, GourmandFuelManager.instance().getConvertedFuels());
     }
 
     @Override
@@ -123,69 +129,67 @@ public class TExpJeiPlugin implements IModPlugin {
         int progressW = 24;
         int progressH = 16;
 
-        registration.addRecipeClickArea(MachineFurnaceScreen.class, 79, progressY, progressW, progressH, ID_RECIPE_FURNACE);
-        registration.addRecipeClickArea(MachineSawmillScreen.class, 72, progressY, progressW, progressH, ID_RECIPE_SAWMILL);
+        registration.addRecipeClickArea(MachineFurnaceScreen.class, 79, progressY, progressW, progressH, FURNACE);
+        registration.addRecipeClickArea(MachineSawmillScreen.class, 72, progressY, progressW, progressH, SAWMILL);
 
-        registration.addRecipeClickArea(MachinePulverizerScreen.class, 72, progressY, progressW, progressH, ID_RECIPE_PULVERIZER);
-        registration.addRecipeClickArea(MachinePulverizerScreen.class, 72, progressY, progressW, progressH, ID_CATALYST_PULVERIZER);
+        registration.addRecipeClickArea(MachinePulverizerScreen.class, 72, progressY, progressW, progressH, PULVERIZER);
+        registration.addRecipeClickArea(MachinePulverizerScreen.class, 72, progressY, progressW, progressH, PULVERIZER_CATALYST);
 
-        registration.addRecipeClickArea(MachineSmelterScreen.class, 94, progressY, progressW, progressH, ID_RECIPE_SMELTER);
-        registration.addRecipeClickArea(MachineSmelterScreen.class, 94, progressY, progressW, progressH, ID_CATALYST_SMELTER);
+        registration.addRecipeClickArea(MachineSmelterScreen.class, 94, progressY, progressW, progressH, SMELTER);
+        registration.addRecipeClickArea(MachineSmelterScreen.class, 94, progressY, progressW, progressH, SMELTER_CATALYST);
 
-        registration.addRecipeClickArea(MachineInsolatorScreen.class, 85, progressY, progressW, progressH, ID_RECIPE_INSOLATOR);
-        registration.addRecipeClickArea(MachineInsolatorScreen.class, 85, progressY, progressW, progressH, ID_CATALYST_INSOLATOR);
+        registration.addRecipeClickArea(MachineInsolatorScreen.class, 85, progressY, progressW, progressH, INSOLATOR);
+        registration.addRecipeClickArea(MachineInsolatorScreen.class, 85, progressY, progressW, progressH, INSOLATOR_CATALYST);
 
-        registration.addRecipeClickArea(MachineCentrifugeScreen.class, 72, progressY, progressW, progressH, ID_RECIPE_CENTRIFUGE);
-        registration.addRecipeClickArea(MachinePressScreen.class, 79, progressY, progressW, progressH, ID_RECIPE_PRESS);
-        registration.addRecipeClickArea(MachineCrucibleScreen.class, 84, progressY, progressW, progressH, ID_RECIPE_CRUCIBLE);
-        registration.addRecipeClickArea(MachineChillerScreen.class, 88, progressY, progressW, progressH, ID_RECIPE_CHILLER);
-        registration.addRecipeClickArea(MachineRefineryScreen.class, 65, progressY, progressW, progressH, ID_RECIPE_REFINERY);
-        registration.addRecipeClickArea(MachinePyrolyzerScreen.class, 72, progressY, progressW, progressH, ID_RECIPE_PYROLYZER);
-        registration.addRecipeClickArea(MachineBrewerScreen.class, 88, progressY, progressW, progressH, ID_RECIPE_BREWER);
-        registration.addRecipeClickArea(MachineBottlerScreen.class, 88, progressY, progressW, progressH, ID_RECIPE_BOTTLER);
+        registration.addRecipeClickArea(MachineCentrifugeScreen.class, 72, progressY, progressW, progressH, CENTRIFUGE);
+        registration.addRecipeClickArea(MachinePressScreen.class, 79, progressY, progressW, progressH, PRESS);
+        registration.addRecipeClickArea(MachineCrucibleScreen.class, 84, progressY, progressW, progressH, CRUCIBLE);
+        registration.addRecipeClickArea(MachineChillerScreen.class, 88, progressY, progressW, progressH, CHILLER);
+        registration.addRecipeClickArea(MachineRefineryScreen.class, 65, progressY, progressW, progressH, REFINERY);
+        registration.addRecipeClickArea(MachinePyrolyzerScreen.class, 72, progressY, progressW, progressH, PYROLYZER);
+        registration.addRecipeClickArea(MachineBrewerScreen.class, 88, progressY, progressW, progressH, BREWER);
+        registration.addRecipeClickArea(MachineBottlerScreen.class, 88, progressY, progressW, progressH, BOTTLER);
 
-        registration.addRecipeClickArea(DynamoStirlingScreen.class, 80, progressY, progressH, progressH, ID_FUEL_STIRLING);
-        registration.addRecipeClickArea(DynamoCompressionScreen.class, 80, progressY, progressH, progressH, ID_FUEL_COMPRESSION);
-        registration.addRecipeClickArea(DynamoMagmaticScreen.class, 80, progressY, progressH, progressH, ID_FUEL_MAGMATIC);
-        registration.addRecipeClickArea(DynamoNumismaticScreen.class, 80, progressY, progressH, progressH, ID_FUEL_NUMISMATIC);
-        registration.addRecipeClickArea(DynamoLapidaryScreen.class, 80, progressY, progressH, progressH, ID_FUEL_LAPIDARY);
-        registration.addRecipeClickArea(DynamoDisenchantmentScreen.class, 80, progressY, progressH, progressH, ID_FUEL_DISENCHANTMENT);
-
-        registration.addRecipeClickArea(DynamoGourmandScreen.class, 80, progressY, progressH, progressH, ID_FUEL_GOURMAND);
+        registration.addRecipeClickArea(DynamoStirlingScreen.class, 80, progressY, progressH, progressH, STIRLING_FUEL);
+        registration.addRecipeClickArea(DynamoCompressionScreen.class, 80, progressY, progressH, progressH, COMPRESSION_FUEL);
+        registration.addRecipeClickArea(DynamoMagmaticScreen.class, 80, progressY, progressH, progressH, MAGMATIC_FUEL);
+        registration.addRecipeClickArea(DynamoNumismaticScreen.class, 80, progressY, progressH, progressH, NUMISMATIC_FUEL);
+        registration.addRecipeClickArea(DynamoLapidaryScreen.class, 80, progressY, progressH, progressH, LAPIDARY_FUEL);
+        registration.addRecipeClickArea(DynamoDisenchantmentScreen.class, 80, progressY, progressH, progressH, DISENCHANTMENT_FUEL);
+        registration.addRecipeClickArea(DynamoGourmandScreen.class, 80, progressY, progressH, progressH, GOURMAND_FUEL);
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
 
-        registration.addRecipeCatalyst(new ItemStack(MACHINE_FURNACE_BLOCK), ID_RECIPE_FURNACE);
-        registration.addRecipeCatalyst(new ItemStack(MACHINE_SAWMILL_BLOCK), ID_RECIPE_SAWMILL);
+        registration.addRecipeCatalyst(new ItemStack(MACHINE_FURNACE_BLOCK), FURNACE);
+        registration.addRecipeCatalyst(new ItemStack(MACHINE_SAWMILL_BLOCK), SAWMILL);
 
-        registration.addRecipeCatalyst(new ItemStack(MACHINE_PULVERIZER_BLOCK), ID_RECIPE_PULVERIZER);
-        registration.addRecipeCatalyst(new ItemStack(MACHINE_PULVERIZER_BLOCK), ID_CATALYST_PULVERIZER);
+        registration.addRecipeCatalyst(new ItemStack(MACHINE_PULVERIZER_BLOCK), PULVERIZER);
+        registration.addRecipeCatalyst(new ItemStack(MACHINE_PULVERIZER_BLOCK), PULVERIZER_CATALYST);
 
-        registration.addRecipeCatalyst(new ItemStack(MACHINE_SMELTER_BLOCK), ID_RECIPE_SMELTER);
-        registration.addRecipeCatalyst(new ItemStack(MACHINE_SMELTER_BLOCK), ID_CATALYST_SMELTER);
+        registration.addRecipeCatalyst(new ItemStack(MACHINE_SMELTER_BLOCK), SMELTER);
+        registration.addRecipeCatalyst(new ItemStack(MACHINE_SMELTER_BLOCK), SMELTER_CATALYST);
 
-        registration.addRecipeCatalyst(new ItemStack(MACHINE_INSOLATOR_BLOCK), ID_RECIPE_INSOLATOR);
-        registration.addRecipeCatalyst(new ItemStack(MACHINE_INSOLATOR_BLOCK), ID_CATALYST_INSOLATOR);
+        registration.addRecipeCatalyst(new ItemStack(MACHINE_INSOLATOR_BLOCK), INSOLATOR);
+        registration.addRecipeCatalyst(new ItemStack(MACHINE_INSOLATOR_BLOCK), INSOLATOR_CATALYST);
 
-        registration.addRecipeCatalyst(new ItemStack(MACHINE_CENTRIFUGE_BLOCK), ID_RECIPE_CENTRIFUGE);
-        registration.addRecipeCatalyst(new ItemStack(MACHINE_PRESS_BLOCK), ID_RECIPE_PRESS);
-        registration.addRecipeCatalyst(new ItemStack(MACHINE_CRUCIBLE_BLOCK), ID_RECIPE_CRUCIBLE);
-        registration.addRecipeCatalyst(new ItemStack(MACHINE_CHILLER_BLOCK), ID_RECIPE_CHILLER);
-        registration.addRecipeCatalyst(new ItemStack(MACHINE_REFINERY_BLOCK), ID_RECIPE_REFINERY);
-        registration.addRecipeCatalyst(new ItemStack(MACHINE_PYROLYZER_BLOCK), ID_RECIPE_PYROLYZER);
-        registration.addRecipeCatalyst(new ItemStack(MACHINE_BREWER_BLOCK), ID_RECIPE_BREWER);
-        registration.addRecipeCatalyst(new ItemStack(MACHINE_BOTTLER_BLOCK), ID_RECIPE_BOTTLER);
+        registration.addRecipeCatalyst(new ItemStack(MACHINE_CENTRIFUGE_BLOCK), CENTRIFUGE);
+        registration.addRecipeCatalyst(new ItemStack(MACHINE_PRESS_BLOCK), PRESS);
+        registration.addRecipeCatalyst(new ItemStack(MACHINE_CRUCIBLE_BLOCK), CRUCIBLE);
+        registration.addRecipeCatalyst(new ItemStack(MACHINE_CHILLER_BLOCK), CHILLER);
+        registration.addRecipeCatalyst(new ItemStack(MACHINE_REFINERY_BLOCK), REFINERY);
+        registration.addRecipeCatalyst(new ItemStack(MACHINE_PYROLYZER_BLOCK), PYROLYZER);
+        registration.addRecipeCatalyst(new ItemStack(MACHINE_BREWER_BLOCK), BREWER);
+        registration.addRecipeCatalyst(new ItemStack(MACHINE_BOTTLER_BLOCK), BOTTLER);
 
-        registration.addRecipeCatalyst(new ItemStack(DYNAMO_STIRLING_BLOCK), ID_FUEL_STIRLING);
-        registration.addRecipeCatalyst(new ItemStack(DYNAMO_COMPRESSION_BLOCK), ID_FUEL_COMPRESSION);
-        registration.addRecipeCatalyst(new ItemStack(DYNAMO_MAGMATIC_BLOCK), ID_FUEL_MAGMATIC);
-        registration.addRecipeCatalyst(new ItemStack(DYNAMO_NUMISMATIC_BLOCK), ID_FUEL_NUMISMATIC);
-        registration.addRecipeCatalyst(new ItemStack(DYNAMO_LAPIDARY_BLOCK), ID_FUEL_LAPIDARY);
-        registration.addRecipeCatalyst(new ItemStack(DYNAMO_DISENCHANTMENT_BLOCK), ID_FUEL_DISENCHANTMENT);
-
-        registration.addRecipeCatalyst(new ItemStack(DYNAMO_GOURMAND_BLOCK), ID_FUEL_GOURMAND);
+        registration.addRecipeCatalyst(new ItemStack(DYNAMO_STIRLING_BLOCK), STIRLING_FUEL);
+        registration.addRecipeCatalyst(new ItemStack(DYNAMO_COMPRESSION_BLOCK), COMPRESSION_FUEL);
+        registration.addRecipeCatalyst(new ItemStack(DYNAMO_MAGMATIC_BLOCK), MAGMATIC_FUEL);
+        registration.addRecipeCatalyst(new ItemStack(DYNAMO_NUMISMATIC_BLOCK), NUMISMATIC_FUEL);
+        registration.addRecipeCatalyst(new ItemStack(DYNAMO_LAPIDARY_BLOCK), LAPIDARY_FUEL);
+        registration.addRecipeCatalyst(new ItemStack(DYNAMO_DISENCHANTMENT_BLOCK), DISENCHANTMENT_FUEL);
+        registration.addRecipeCatalyst(new ItemStack(DYNAMO_GOURMAND_BLOCK), GOURMAND_FUEL);
     }
 
     @Override
@@ -204,5 +208,33 @@ public class TExpJeiPlugin implements IModPlugin {
         }
         return recipeManager;
     }
+    // endregion
+
+    // region RECIPE TYPES
+    public static final RecipeType<FurnaceRecipe> FURNACE = new RecipeType<>(ID_RECIPE_FURNACE, FurnaceRecipe.class);
+    public static final RecipeType<SawmillRecipe> SAWMILL = new RecipeType<>(ID_RECIPE_SAWMILL, SawmillRecipe.class);
+    public static final RecipeType<PulverizerRecipe> PULVERIZER = new RecipeType<>(ID_RECIPE_PULVERIZER, PulverizerRecipe.class);
+    public static final RecipeType<SmelterRecipe> SMELTER = new RecipeType<>(ID_RECIPE_SMELTER, SmelterRecipe.class);
+    public static final RecipeType<InsolatorRecipe> INSOLATOR = new RecipeType<>(ID_RECIPE_INSOLATOR, InsolatorRecipe.class);
+    public static final RecipeType<CentrifugeRecipe> CENTRIFUGE = new RecipeType<>(ID_RECIPE_CENTRIFUGE, CentrifugeRecipe.class);
+    public static final RecipeType<PressRecipe> PRESS = new RecipeType<>(ID_RECIPE_PRESS, PressRecipe.class);
+    public static final RecipeType<CrucibleRecipe> CRUCIBLE = new RecipeType<>(ID_RECIPE_CRUCIBLE, CrucibleRecipe.class);
+    public static final RecipeType<ChillerRecipe> CHILLER = new RecipeType<>(ID_RECIPE_CHILLER, ChillerRecipe.class);
+    public static final RecipeType<RefineryRecipe> REFINERY = new RecipeType<>(ID_RECIPE_REFINERY, RefineryRecipe.class);
+    public static final RecipeType<PyrolyzerRecipe> PYROLYZER = new RecipeType<>(ID_RECIPE_PYROLYZER, PyrolyzerRecipe.class);
+    public static final RecipeType<BottlerRecipe> BOTTLER = new RecipeType<>(ID_RECIPE_BOTTLER, BottlerRecipe.class);
+    public static final RecipeType<BrewerRecipe> BREWER = new RecipeType<>(ID_RECIPE_BREWER, BrewerRecipe.class);
+
+    public static final RecipeType<PulverizerCatalyst> PULVERIZER_CATALYST = new RecipeType<>(ID_CATALYST_PULVERIZER, PulverizerCatalyst.class);
+    public static final RecipeType<SmelterCatalyst> SMELTER_CATALYST = new RecipeType<>(ID_CATALYST_SMELTER, SmelterCatalyst.class);
+    public static final RecipeType<InsolatorCatalyst> INSOLATOR_CATALYST = new RecipeType<>(ID_CATALYST_INSOLATOR, InsolatorCatalyst.class);
+
+    public static final RecipeType<StirlingFuel> STIRLING_FUEL = new RecipeType<>(ID_FUEL_STIRLING, StirlingFuel.class);
+    public static final RecipeType<CompressionFuel> COMPRESSION_FUEL = new RecipeType<>(ID_FUEL_COMPRESSION, CompressionFuel.class);
+    public static final RecipeType<MagmaticFuel> MAGMATIC_FUEL = new RecipeType<>(ID_FUEL_MAGMATIC, MagmaticFuel.class);
+    public static final RecipeType<NumismaticFuel> NUMISMATIC_FUEL = new RecipeType<>(ID_FUEL_NUMISMATIC, NumismaticFuel.class);
+    public static final RecipeType<LapidaryFuel> LAPIDARY_FUEL = new RecipeType<>(ID_FUEL_LAPIDARY, LapidaryFuel.class);
+    public static final RecipeType<DisenchantmentFuel> DISENCHANTMENT_FUEL = new RecipeType<>(ID_FUEL_DISENCHANTMENT, DisenchantmentFuel.class);
+    public static final RecipeType<GourmandFuel> GOURMAND_FUEL = new RecipeType<>(ID_FUEL_GOURMAND, GourmandFuel.class);
     // endregion
 }

@@ -7,20 +7,25 @@ import cofh.thermal.lib.compat.jei.Drawables;
 import cofh.thermal.lib.compat.jei.ThermalRecipeCategory;
 import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.gui.IRecipeLayout;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.builder.IRecipeSlotBuilder;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
-import mezz.jei.api.gui.ingredient.IGuiFluidStackGroup;
-import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
-import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.fluids.FluidStack;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static cofh.lib.util.constants.Constants.TANK_SMALL;
+import static cofh.lib.util.helpers.ItemHelper.cloneStack;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.*;
 import static cofh.thermal.expansion.init.TExpReferences.MACHINE_PRESS_BLOCK;
@@ -58,54 +63,44 @@ public class PressRecipeCategory extends ThermalRecipeCategory<PressRecipe> {
     }
 
     @Override
-    public void setIngredients(PressRecipe recipe, IIngredients ingredients) {
+    public void setRecipe(IRecipeLayoutBuilder builder, PressRecipe recipe, IFocusGroup focuses) {
 
-        ingredients.setInputIngredients(recipe.getInputItems());
-        ingredients.setOutputs(VanillaTypes.ITEM, recipe.getOutputItems());
-        ingredients.setOutputs(VanillaTypes.FLUID, recipe.getOutputFluids());
-    }
+        List<Ingredient> inputs = recipe.getInputItems();
+        List<ItemStack> outputs = new ArrayList<>(recipe.getOutputItems().size());
+        List<FluidStack> outputFluids = recipe.getOutputFluids();
 
-    @Override
-    public void setRecipe(IRecipeLayout layout, PressRecipe recipe, IIngredients ingredients) {
-
-        List<List<ItemStack>> inputs = ingredients.getInputs(VanillaTypes.ITEM);
-        List<List<ItemStack>> outputs = ingredients.getOutputs(VanillaTypes.ITEM);
-        List<List<FluidStack>> outputFluids = ingredients.getOutputs(VanillaTypes.FLUID);
-
+        for (ItemStack stack : recipe.getOutputItems()) {
+            outputs.add(cloneStack(stack));
+        }
         for (int i = 0; i < outputs.size(); ++i) {
             float chance = recipe.getOutputItemChances().get(i);
             if (chance > 1.0F) {
-                for (ItemStack stack : outputs.get(i)) {
-                    stack.setCount((int) chance);
-                }
+                outputs.get(i).setCount((int) chance);
             }
         }
-        IGuiItemStackGroup guiItemStacks = layout.getItemStacks();
-        IGuiFluidStackGroup guiFluidStacks = layout.getFluidStacks();
+        builder.addSlot(RecipeIngredientRole.INPUT, 43, 6)
+                .addIngredients(inputs.get(0));
 
-        guiItemStacks.init(0, true, 42, 5);
-        guiItemStacks.init(1, true, 42, 41);
-        guiItemStacks.init(2, false, 105, 23);
+        builder.addSlot(RecipeIngredientRole.INPUT, 43, 42)
+                .addIngredients(inputs.size() < 2 ? Ingredient.EMPTY : inputs.get(1));
 
-        guiFluidStacks.init(0, false, 141, 11, 16, 40, tankSize(TANK_SMALL), false, tankOverlay(tankOverlay));
-
-        for (int i = 0; i < inputs.size(); ++i) {
-            guiItemStacks.set(i, inputs.get(i));
-        }
+        IRecipeSlotBuilder outputSlot = builder.addSlot(RecipeIngredientRole.OUTPUT, 106, 24);
         if (!outputs.isEmpty()) {
-            guiItemStacks.set(2, outputs.get(0));
+            outputSlot.addItemStack(outputs.get(0))
+                    .addTooltipCallback(defaultOutputTooltip(recipe.getOutputItemChances().get(0)));
         }
-        if (!outputFluids.isEmpty()) {
-            guiFluidStacks.set(0, outputFluids.get(0));
-        }
-        addDefaultItemTooltipCallback(guiItemStacks, recipe.getOutputItemChances(), 2);
-        addDefaultFluidTooltipCallback(guiFluidStacks);
+
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 141, 11)
+                .addIngredients(VanillaTypes.FLUID, outputFluids.isEmpty() ? Collections.emptyList() : List.of(outputFluids.get(0)))
+                .setFluidRenderer(tankSize(TANK_SMALL), false, 16, 40)
+                .setOverlay(tankOverlay, 0, 0)
+                .addTooltipCallback(defaultFluidTooltip());
     }
 
     @Override
-    public void draw(PressRecipe recipe, PoseStack matrixStack, double mouseX, double mouseY) {
+    public void draw(PressRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack matrixStack, double mouseX, double mouseY) {
 
-        super.draw(recipe, matrixStack, mouseX, mouseY);
+        super.draw(recipe, recipeSlotsView, matrixStack, mouseX, mouseY);
 
         progressBackground.draw(matrixStack, 69, 23);
         tankBackground.draw(matrixStack, 140, 10);

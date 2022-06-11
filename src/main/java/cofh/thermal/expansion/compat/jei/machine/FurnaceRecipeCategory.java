@@ -5,18 +5,20 @@ import cofh.thermal.expansion.client.gui.machine.MachineFurnaceScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
 import cofh.thermal.lib.compat.jei.ThermalRecipeCategory;
 import com.mojang.blaze3d.vertex.PoseStack;
-import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.gui.IRecipeLayout;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
-import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
-import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.List;
 
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
+import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.defaultOutputTooltip;
 import static cofh.thermal.expansion.init.TExpReferences.MACHINE_FURNACE_BLOCK;
 
 public class FurnaceRecipeCategory extends ThermalRecipeCategory<FurnaceRecipe> {
@@ -44,33 +46,23 @@ public class FurnaceRecipeCategory extends ThermalRecipeCategory<FurnaceRecipe> 
     }
 
     @Override
-    public void setIngredients(FurnaceRecipe recipe, IIngredients ingredients) {
+    public void setRecipe(IRecipeLayoutBuilder builder, FurnaceRecipe recipe, IFocusGroup focuses) {
 
-        ingredients.setInputIngredients(recipe.getInputItems());
-        ingredients.setOutputs(VanillaTypes.ITEM, recipe.getOutputItems());
+        List<Ingredient> inputs = recipe.getInputItems();
+        List<ItemStack> outputs = recipe.getOutputItems();
+
+        builder.addSlot(RecipeIngredientRole.INPUT, 43, 15)
+                .addIngredients(inputs.get(0));
+
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 106, 24)
+                .addItemStack(outputs.get(0))
+                .addTooltipCallback(defaultOutputTooltip(recipe.getOutputItemChances().get(0)));
     }
 
     @Override
-    public void setRecipe(IRecipeLayout layout, FurnaceRecipe recipe, IIngredients ingredients) {
+    public void draw(FurnaceRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack matrixStack, double mouseX, double mouseY) {
 
-        List<List<ItemStack>> inputs = ingredients.getInputs(VanillaTypes.ITEM);
-        List<List<ItemStack>> outputs = ingredients.getOutputs(VanillaTypes.ITEM);
-
-        IGuiItemStackGroup guiItemStacks = layout.getItemStacks();
-
-        guiItemStacks.init(0, true, 42, 14);
-        guiItemStacks.init(1, false, 105, 23);
-
-        guiItemStacks.set(0, inputs.get(0));
-        guiItemStacks.set(1, outputs.get(0));
-
-        addDefaultItemTooltipCallback(guiItemStacks, recipe.getOutputItemChances(), 1);
-    }
-
-    @Override
-    public void draw(FurnaceRecipe recipe, PoseStack matrixStack, double mouseX, double mouseY) {
-
-        super.draw(recipe, matrixStack, mouseX, mouseY);
+        super.draw(recipe, recipeSlotsView, matrixStack, mouseX, mouseY);
 
         progressBackground.draw(matrixStack, 69, 23);
         speedBackground.draw(matrixStack, 43, 33);

@@ -7,22 +7,24 @@ import cofh.thermal.lib.compat.jei.Drawables;
 import cofh.thermal.lib.compat.jei.ThermalRecipeCategory;
 import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.gui.IRecipeLayout;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
-import mezz.jei.api.gui.ingredient.IGuiFluidStackGroup;
-import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
-import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.List;
 
 import static cofh.lib.util.constants.Constants.TANK_MEDIUM;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
-import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.*;
+import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.defaultFluidTooltip;
+import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.tankSize;
 import static cofh.thermal.expansion.init.TExpReferences.MACHINE_CRUCIBLE_BLOCK;
 
 public class CrucibleRecipeCategory extends ThermalRecipeCategory<CrucibleRecipe> {
@@ -58,34 +60,25 @@ public class CrucibleRecipeCategory extends ThermalRecipeCategory<CrucibleRecipe
     }
 
     @Override
-    public void setIngredients(CrucibleRecipe recipe, IIngredients ingredients) {
+    public void setRecipe(IRecipeLayoutBuilder builder, CrucibleRecipe recipe, IFocusGroup focuses) {
 
-        ingredients.setInputIngredients(recipe.getInputItems());
-        ingredients.setOutputs(VanillaTypes.FLUID, recipe.getOutputFluids());
+        List<Ingredient> inputs = recipe.getInputItems();
+        List<FluidStack> outputFluids = recipe.getOutputFluids();
+
+        builder.addSlot(RecipeIngredientRole.INPUT, 43, 15)
+                .addIngredients(inputs.get(0));
+
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 116, 11)
+                .addIngredients(VanillaTypes.FLUID, List.of(outputFluids.get(0)))
+                .setFluidRenderer(tankSize(TANK_MEDIUM), false, 16, 40)
+                .setOverlay(tankOverlay, 0, 0)
+                .addTooltipCallback(defaultFluidTooltip());
     }
 
     @Override
-    public void setRecipe(IRecipeLayout layout, CrucibleRecipe recipe, IIngredients ingredients) {
+    public void draw(CrucibleRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack matrixStack, double mouseX, double mouseY) {
 
-        List<List<ItemStack>> inputs = ingredients.getInputs(VanillaTypes.ITEM);
-        List<List<FluidStack>> outputFluids = ingredients.getOutputs(VanillaTypes.FLUID);
-
-        IGuiItemStackGroup guiItemStacks = layout.getItemStacks();
-        IGuiFluidStackGroup guiFluidStacks = layout.getFluidStacks();
-
-        guiItemStacks.init(0, true, 42, 14);
-        guiFluidStacks.init(0, false, 116, 11, 16, 40, tankSize(TANK_MEDIUM), false, tankOverlay(tankOverlay));
-
-        guiItemStacks.set(0, inputs.get(0));
-        guiFluidStacks.set(0, outputFluids.get(0));
-
-        addDefaultFluidTooltipCallback(guiFluidStacks);
-    }
-
-    @Override
-    public void draw(CrucibleRecipe recipe, PoseStack matrixStack, double mouseX, double mouseY) {
-
-        super.draw(recipe, matrixStack, mouseX, mouseY);
+        super.draw(recipe, recipeSlotsView, matrixStack, mouseX, mouseY);
 
         progressBackground.draw(matrixStack, 74, 23);
         tankBackground.draw(matrixStack, 115, 10);

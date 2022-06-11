@@ -6,18 +6,24 @@ import cofh.thermal.expansion.client.gui.machine.MachinePulverizerScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
 import cofh.thermal.lib.compat.jei.ThermalRecipeCategory;
 import com.mojang.blaze3d.vertex.PoseStack;
-import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.gui.IRecipeLayout;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.builder.IRecipeSlotBuilder;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
-import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
-import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import static cofh.lib.util.helpers.ItemHelper.cloneStack;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
+import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.catalystTooltip;
+import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.catalyzedOutputTooltip;
 import static cofh.thermal.expansion.init.TExpReferences.MACHINE_PULVERIZER_BLOCK;
 
 public class PulverizerRecipeCategory extends ThermalRecipeCategory<PulverizerRecipe> {
@@ -45,52 +51,47 @@ public class PulverizerRecipeCategory extends ThermalRecipeCategory<PulverizerRe
     }
 
     @Override
-    public void setIngredients(PulverizerRecipe recipe, IIngredients ingredients) {
+    public void setRecipe(IRecipeLayoutBuilder builder, PulverizerRecipe recipe, IFocusGroup focuses) {
 
-        ingredients.setInputIngredients(recipe.getInputItems());
-        ingredients.setOutputs(VanillaTypes.ITEM, recipe.getOutputItems());
-    }
-
-    @Override
-    public void setRecipe(IRecipeLayout layout, PulverizerRecipe recipe, IIngredients ingredients) {
-
-        List<List<ItemStack>> inputs = ingredients.getInputs(VanillaTypes.ITEM);
-        List<List<ItemStack>> outputs = ingredients.getOutputs(VanillaTypes.ITEM);
+        List<Ingredient> inputs = recipe.getInputItems();
+        List<ItemStack> outputs = new ArrayList<>(recipe.getOutputItems().size());
         List<ItemStack> catalysts = PulverizerRecipeManager.instance().getCatalysts();
 
+        for (ItemStack stack : recipe.getOutputItems()) {
+            outputs.add(cloneStack(stack));
+        }
         for (int i = 0; i < outputs.size(); ++i) {
             float chance = recipe.getOutputItemChances().get(i);
             if (chance > 1.0F) {
-                for (ItemStack stack : outputs.get(i)) {
-                    stack.setCount((int) chance);
-                }
+                outputs.get(i).setCount((int) chance);
             }
         }
-        IGuiItemStackGroup guiItemStacks = layout.getItemStacks();
+        IRecipeSlotBuilder[] outputSlots = new IRecipeSlotBuilder[4];
+        IRecipeSlotBuilder catalystSlot;
 
-        guiItemStacks.init(0, true, 33, 5);
-        guiItemStacks.init(1, true, 33, 41);
-
-        guiItemStacks.init(2, false, 96, 14);
-        guiItemStacks.init(3, false, 114, 14);
-        guiItemStacks.init(4, false, 96, 32);
-        guiItemStacks.init(5, false, 114, 32);
-
-        guiItemStacks.set(0, inputs.get(0));
+        builder.addSlot(RecipeIngredientRole.INPUT, 34, 6)
+                .addIngredients(inputs.get(0));
+        catalystSlot = builder.addSlot(RecipeIngredientRole.INPUT, 34, 42);
 
         if (recipe.isCatalyzable()) {
-            guiItemStacks.set(1, catalysts);
+            catalystSlot.addItemStacks(catalysts)
+                    .addTooltipCallback(catalystTooltip());
         }
+        outputSlots[0] = builder.addSlot(RecipeIngredientRole.OUTPUT, 97, 15);
+        outputSlots[1] = builder.addSlot(RecipeIngredientRole.OUTPUT, 115, 15);
+        outputSlots[2] = builder.addSlot(RecipeIngredientRole.OUTPUT, 97, 33);
+        outputSlots[3] = builder.addSlot(RecipeIngredientRole.OUTPUT, 115, 33);
+
         for (int i = 0; i < outputs.size(); ++i) {
-            guiItemStacks.set(i + 2, outputs.get(i));
+            outputSlots[i].addItemStack(outputs.get(i))
+                    .addTooltipCallback(catalyzedOutputTooltip(recipe.getOutputItemChances().get(i), recipe.isCatalyzable()));
         }
-        addCatalyzedItemTooltipCallback(guiItemStacks, recipe.getOutputItemChances(), recipe.isCatalyzable(), 2);
     }
 
     @Override
-    public void draw(PulverizerRecipe recipe, PoseStack matrixStack, double mouseX, double mouseY) {
+    public void draw(PulverizerRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack matrixStack, double mouseX, double mouseY) {
 
-        super.draw(recipe, matrixStack, mouseX, mouseY);
+        super.draw(recipe, recipeSlotsView, matrixStack, mouseX, mouseY);
 
         progressBackground.draw(matrixStack, 62, 23);
         speedBackground.draw(matrixStack, 34, 24);

@@ -1,27 +1,32 @@
 package cofh.thermal.expansion.compat.jei.machine;
 
 import cofh.core.util.helpers.RenderHelper;
+import cofh.lib.fluid.FluidIngredient;
 import cofh.thermal.core.util.recipes.machine.RefineryRecipe;
 import cofh.thermal.expansion.client.gui.machine.MachineRefineryScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
 import cofh.thermal.lib.compat.jei.ThermalRecipeCategory;
 import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.gui.IRecipeLayout;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.builder.IRecipeSlotBuilder;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
-import mezz.jei.api.gui.ingredient.IGuiFluidStackGroup;
-import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
-import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static cofh.lib.util.constants.Constants.TANK_MEDIUM;
 import static cofh.lib.util.constants.Constants.TANK_SMALL;
+import static cofh.lib.util.helpers.ItemHelper.cloneStack;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.*;
 import static cofh.thermal.expansion.init.TExpReferences.MACHINE_REFINERY_BLOCK;
@@ -69,53 +74,50 @@ public class RefineryRecipeCategory extends ThermalRecipeCategory<RefineryRecipe
     }
 
     @Override
-    public void setIngredients(RefineryRecipe recipe, IIngredients ingredients) {
+    public void setRecipe(IRecipeLayoutBuilder builder, RefineryRecipe recipe, IFocusGroup focuses) {
 
-        setInputIngredients(ingredients, recipe.getInputFluids());
+        List<FluidIngredient> inputFluids = recipe.getInputFluids();
+        List<ItemStack> outputs = new ArrayList<>(recipe.getOutputItems().size());
+        List<FluidStack> outputFluids = recipe.getOutputFluids();
 
-        ingredients.setOutputs(VanillaTypes.ITEM, recipe.getOutputItems());
-        ingredients.setOutputs(VanillaTypes.FLUID, recipe.getOutputFluids());
-    }
-
-    @Override
-    public void setRecipe(IRecipeLayout layout, RefineryRecipe recipe, IIngredients ingredients) {
-
-        List<List<FluidStack>> inputFluids = ingredients.getInputs(VanillaTypes.FLUID);
-        List<List<FluidStack>> outputFluids = ingredients.getOutputs(VanillaTypes.FLUID);
-        List<List<ItemStack>> outputItems = ingredients.getOutputs(VanillaTypes.ITEM);
-
-        for (int i = 0; i < outputItems.size(); ++i) {
+        for (ItemStack stack : recipe.getOutputItems()) {
+            outputs.add(cloneStack(stack));
+        }
+        for (int i = 0; i < outputs.size(); ++i) {
             float chance = recipe.getOutputItemChances().get(i);
             if (chance > 1.0F) {
-                for (ItemStack stack : outputItems.get(i)) {
-                    stack.setCount((int) chance);
-                }
+                outputs.get(i).setCount((int) chance);
             }
         }
-        IGuiItemStackGroup guiItemStacks = layout.getItemStacks();
-        IGuiFluidStackGroup guiFluidStacks = layout.getFluidStacks();
-
-        guiItemStacks.init(0, false, 96, 23);
-        guiFluidStacks.init(0, true, 29, 6, 16, 32, tankSize(TANK_SMALL), false, tankOverlay(inputOverlay));
-        guiFluidStacks.init(1, false, 126, 12, 16, 40, tankSize(TANK_MEDIUM), false, tankOverlay(outputOverlayA));
-        guiFluidStacks.init(2, false, 144, 12, 16, 40, tankSize(TANK_MEDIUM), false, tankOverlay(outputOverlayB));
-
-        if (!outputItems.isEmpty()) {
-            guiItemStacks.set(0, outputItems.get(0));
+        IRecipeSlotBuilder outputSlot = builder.addSlot(RecipeIngredientRole.OUTPUT, 97, 24);
+        if (!outputs.isEmpty()) {
+            outputSlot.addItemStack(outputs.get(0))
+                    .addTooltipCallback(defaultOutputTooltip(recipe.getOutputItemChances().get(0)));
         }
-        guiFluidStacks.set(0, inputFluids.get(0));
 
-        for (int i = 0; i < outputFluids.size(); ++i) {
-            guiFluidStacks.set(i + 1, outputFluids.get(i));
-        }
-        addDefaultItemTooltipCallback(guiItemStacks, recipe.getOutputItemChances(), 0);
-        addDefaultFluidTooltipCallback(guiFluidStacks);
+        builder.addSlot(RecipeIngredientRole.INPUT, 29, 6)
+                .addIngredients(VanillaTypes.FLUID, List.of(inputFluids.get(0).getFluids()))
+                .setFluidRenderer(tankSize(TANK_SMALL), false, 16, 32)
+                .setOverlay(inputOverlay, 0, 0)
+                .addTooltipCallback(defaultFluidTooltip());
+
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 126, 12)
+                .addIngredients(VanillaTypes.FLUID, outputFluids.isEmpty() ? Collections.emptyList() : List.of(outputFluids.get(0)))
+                .setFluidRenderer(tankSize(TANK_MEDIUM), false, 16, 40)
+                .setOverlay(outputOverlayA, 0, 0)
+                .addTooltipCallback(defaultFluidTooltip());
+
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 144, 12)
+                .addIngredients(VanillaTypes.FLUID, outputFluids.size() < 2 ? Collections.emptyList() : List.of(outputFluids.get(1)))
+                .setFluidRenderer(tankSize(TANK_MEDIUM), false, 16, 40)
+                .setOverlay(outputOverlayB, 0, 0)
+                .addTooltipCallback(defaultFluidTooltip());
     }
 
     @Override
-    public void draw(RefineryRecipe recipe, PoseStack matrixStack, double mouseX, double mouseY) {
+    public void draw(RefineryRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack matrixStack, double mouseX, double mouseY) {
 
-        super.draw(recipe, matrixStack, mouseX, mouseY);
+        super.draw(recipe, recipeSlotsView, matrixStack, mouseX, mouseY);
 
         progressBackground.draw(matrixStack, 57, 22);
         tankInput.draw(matrixStack, 28, 5);

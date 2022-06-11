@@ -4,14 +4,14 @@ import cofh.thermal.core.util.recipes.dynamo.LapidaryFuel;
 import cofh.thermal.expansion.client.gui.dynamo.DynamoLapidaryScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
 import cofh.thermal.lib.compat.jei.ThermalFuelCategory;
-import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.gui.IRecipeLayout;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
-import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
 import mezz.jei.api.helpers.IGuiHelper;
-import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.List;
 
@@ -30,7 +30,6 @@ public class LapidaryFuelCategory extends ThermalFuelCategory<LapidaryFuel> {
         name = getTextComponent(DYNAMO_LAPIDARY_BLOCK.getDescriptionId());
 
         durationBackground = Drawables.getDrawables(guiHelper).getScale(Drawables.SCALE_FLAME_GREEN);
-
         duration = guiHelper.createAnimatedDrawable(Drawables.getDrawables(guiHelper).getScaleFill(Drawables.SCALE_FLAME_GREEN), 400, IDrawableAnimated.StartDirection.TOP, true);
     }
 
@@ -41,21 +40,12 @@ public class LapidaryFuelCategory extends ThermalFuelCategory<LapidaryFuel> {
     }
 
     @Override
-    public void setIngredients(LapidaryFuel fuel, IIngredients ingredients) {
+    public void setRecipe(IRecipeLayoutBuilder builder, LapidaryFuel fuel, IFocusGroup focuses) {
 
-        ingredients.setInputIngredients(fuel.getInputItems());
-    }
+        List<Ingredient> inputs = fuel.getInputItems();
 
-    @Override
-    public void setRecipe(IRecipeLayout layout, LapidaryFuel fuel, IIngredients ingredients) {
-
-        List<List<ItemStack>> inputs = ingredients.getInputs(VanillaTypes.ITEM);
-
-        IGuiItemStackGroup guiItemStacks = layout.getItemStacks();
-
-        guiItemStacks.init(0, true, 33, 23);
-
-        guiItemStacks.set(0, inputs.get(0));
+        builder.addSlot(RecipeIngredientRole.INPUT, 34, 24)
+                .addIngredients(inputs.get(0));
     }
 
 }

@@ -1,26 +1,28 @@
 package cofh.thermal.expansion.compat.jei.dynamo;
 
+import cofh.lib.fluid.FluidIngredient;
 import cofh.thermal.core.util.recipes.dynamo.MagmaticFuel;
 import cofh.thermal.expansion.client.gui.dynamo.DynamoMagmaticScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
 import cofh.thermal.lib.compat.jei.ThermalFuelCategory;
 import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.gui.IRecipeLayout;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
-import mezz.jei.api.gui.ingredient.IGuiFluidStackGroup;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
-import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.fluids.FluidStack;
 
 import java.util.List;
 
 import static cofh.lib.util.constants.Constants.TANK_MEDIUM;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
-import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.*;
+import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.defaultFluidTooltip;
+import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.tankSize;
 import static cofh.thermal.expansion.init.TExpReferences.DYNAMO_MAGMATIC_BLOCK;
 
 public class MagmaticFuelCategory extends ThermalFuelCategory<MagmaticFuel> {
@@ -38,10 +40,8 @@ public class MagmaticFuelCategory extends ThermalFuelCategory<MagmaticFuel> {
         name = getTextComponent(DYNAMO_MAGMATIC_BLOCK.getDescriptionId());
 
         durationBackground = Drawables.getDrawables(guiHelper).getScale(Drawables.SCALE_FLAME);
-
         tankBackground = Drawables.getDrawables(guiHelper).getTank(Drawables.TANK_MEDIUM);
         tankOverlay = Drawables.getDrawables(guiHelper).getTankOverlay(Drawables.TANK_MEDIUM);
-
         duration = guiHelper.createAnimatedDrawable(Drawables.getDrawables(guiHelper).getScaleFill(Drawables.SCALE_FLAME), 400, IDrawableAnimated.StartDirection.TOP, true);
     }
 
@@ -52,30 +52,21 @@ public class MagmaticFuelCategory extends ThermalFuelCategory<MagmaticFuel> {
     }
 
     @Override
-    public void setIngredients(MagmaticFuel fuel, IIngredients ingredients) {
+    public void setRecipe(IRecipeLayoutBuilder builder, MagmaticFuel fuel, IFocusGroup focuses) {
 
-        setInputIngredients(ingredients, fuel.getInputFluids());
+        List<FluidIngredient> inputs = fuel.getInputFluids();
+
+        builder.addSlot(RecipeIngredientRole.INPUT, 34, 11)
+                .addIngredients(VanillaTypes.FLUID, List.of(inputs.get(0).getFluids()))
+                .setFluidRenderer(tankSize(TANK_MEDIUM), false, 16, 40)
+                .setOverlay(tankOverlay, 0, 0)
+                .addTooltipCallback(defaultFluidTooltip());
     }
 
     @Override
-    public void setRecipe(IRecipeLayout layout, MagmaticFuel fuel, IIngredients ingredients) {
+    public void draw(MagmaticFuel fuel, IRecipeSlotsView recipeSlotsView, PoseStack matrixStack, double mouseX, double mouseY) {
 
-        List<List<FluidStack>> inputFluids = ingredients.getInputs(VanillaTypes.FLUID);
-
-        IGuiFluidStackGroup guiFluidStacks = layout.getFluidStacks();
-
-        guiFluidStacks.init(0, false, 34, 11, 16, 40, tankSize(TANK_MEDIUM), false, tankOverlay(tankOverlay));
-
-        guiFluidStacks.set(0, inputFluids.get(0));
-
-        addDefaultFluidTooltipCallback(guiFluidStacks);
-    }
-
-    @Override
-    public void draw(MagmaticFuel fuel, PoseStack matrixStack, double mouseX, double mouseY) {
-
-        super.draw(fuel, matrixStack, mouseX, mouseY);
-
+        super.draw(fuel, recipeSlotsView, matrixStack, mouseX, mouseY);
         tankBackground.draw(matrixStack, 33, 10);
     }
 
