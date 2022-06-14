@@ -4,10 +4,7 @@ import cofh.thermal.expansion.client.gui.dynamo.*;
 import cofh.thermal.expansion.client.gui.machine.*;
 import cofh.thermal.expansion.config.ThermalDynamoConfig;
 import cofh.thermal.expansion.config.ThermalMachineConfig;
-import cofh.thermal.expansion.init.TExpBlocks;
-import cofh.thermal.expansion.init.TExpContainers;
-import cofh.thermal.expansion.init.TExpItems;
-import cofh.thermal.expansion.init.TExpSounds;
+import cofh.thermal.expansion.init.*;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -45,6 +42,7 @@ public class ThermalExpansion {
 
         TExpContainers.register();
         TExpSounds.register();
+        TExpTileEntities.register();
     }
 
     private void setFeatureFlags() {
@@ -65,7 +63,6 @@ public class ThermalExpansion {
         setFlag(ID_DEVICE_TREE_EXTRACTOR, true);
         setFlag(ID_DEVICE_FISHER, true);
         setFlag(ID_DEVICE_COMPOSTER, true);
-
         setFlag(ID_DEVICE_WATER_GEN, true);
         setFlag(ID_DEVICE_ROCK_GEN, true);
         setFlag(ID_DEVICE_COLLECTOR, true);
