@@ -31,7 +31,6 @@ public class TExpDataGen {
 
         gen.addProvider(blockTags);
         gen.addProvider(new TExpTagsProvider.Item(gen, blockTags, exFileHelper));
-        gen.addProvider(new TExpTagsProvider.Fluid(gen, exFileHelper));
 
         gen.addProvider(new TExpLootTableProvider(gen));
         gen.addProvider(new TExpRecipeProvider(gen));

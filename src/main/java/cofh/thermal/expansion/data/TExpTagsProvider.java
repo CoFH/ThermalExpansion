@@ -3,7 +3,6 @@ package cofh.thermal.expansion.data;
 import cofh.thermal.lib.util.references.ThermalTags;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
-import net.minecraft.data.tags.FluidTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.BlockTags;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -85,26 +84,6 @@ public class TExpTagsProvider {
             tag(ThermalTags.Items.MACHINE_CASTS).add(ITEMS.get("chiller_ball_cast"));
             tag(ThermalTags.Items.MACHINE_CASTS).add(ITEMS.get("chiller_ingot_cast"));
             tag(ThermalTags.Items.MACHINE_CASTS).add(ITEMS.get("chiller_rod_cast"));
-        }
-
-    }
-
-    public static class Fluid extends FluidTagsProvider {
-
-        public Fluid(DataGenerator gen, ExistingFileHelper existingFileHelper) {
-
-            super(gen, ID_THERMAL, existingFileHelper);
-        }
-
-        @Override
-        public String getName() {
-
-            return "Thermal Expansion: Fluid Tags";
-        }
-
-        @Override
-        protected void addTags() {
-
         }
 
     }
