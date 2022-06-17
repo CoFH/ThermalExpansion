@@ -15,10 +15,7 @@ import cofh.thermal.expansion.compat.jei.machine.*;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.recipe.RecipeType;
-import mezz.jei.api.registration.IGuiHandlerRegistration;
-import mezz.jei.api.registration.IRecipeCatalystRegistration;
-import mezz.jei.api.registration.IRecipeCategoryRegistration;
-import mezz.jei.api.registration.IRecipeRegistration;
+import mezz.jei.api.registration.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.resources.ResourceLocation;
@@ -190,6 +187,12 @@ public class TExpJeiPlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(DYNAMO_LAPIDARY_BLOCK), LAPIDARY_FUEL);
         registration.addRecipeCatalyst(new ItemStack(DYNAMO_DISENCHANTMENT_BLOCK), DISENCHANTMENT_FUEL);
         registration.addRecipeCatalyst(new ItemStack(DYNAMO_GOURMAND_BLOCK), GOURMAND_FUEL);
+    }
+
+    @Override
+    public void registerAdvanced(IAdvancedRegistration registration) {
+
+        registration.addRecipeManagerPlugin(new PotionFluidRecipeManagerPlugin());
     }
 
     @Override
