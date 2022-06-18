@@ -38,16 +38,20 @@ public class PotionFluidRecipeManagerPlugin implements IRecipeManagerPlugin {
                 var fluidIngredient = focus.getTypedValue().getIngredient(VanillaTypes.FLUID);
                 if (fluidIngredient.isPresent() && fluidIngredient.get().getFluid() == FLUID_POTION) {
                     FluidStack fluid = fluidIngredient.get();
-                    ItemStack item = new ItemStack(Items.POTION);
-                    item.setTag(fluid.getTag().copy());
-                    retList.add(getDynamicBottlerPotionRecipe(item, fluid));
+                    if (fluid.hasTag()) {
+                        ItemStack item = new ItemStack(Items.POTION);
+                        item.setTag(fluid.getTag().copy());
+                        retList.add(getDynamicBottlerPotionRecipe(item, fluid));
+                    }
                 }
             } else if (focus.getRole() == RecipeIngredientRole.OUTPUT) {
                 var ingredient = focus.getTypedValue().getIngredient(VanillaTypes.ITEM);
                 if (ingredient.isPresent() && ingredient.get().getItem() == Items.POTION) {
                     ItemStack item = ingredient.get();
-                    FluidStack fluid = PotionFluid.getPotionFluidFromItem(BOTTLE_VOLUME, item);
-                    retList.add(getDynamicBottlerPotionRecipe(item, fluid));
+                    if (item.hasTag()) {
+                        FluidStack fluid = PotionFluid.getPotionFluidFromItem(BOTTLE_VOLUME, item);
+                        retList.add(getDynamicBottlerPotionRecipe(item, fluid));
+                    }
                 }
             }
             return (List<T>) retList;
