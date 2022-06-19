@@ -8,6 +8,7 @@ import cofh.thermal.expansion.compat.jei.TExpJeiPlugin;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.recipe.IFocus;
 import mezz.jei.api.recipe.RecipeIngredientRole;
+import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.advanced.IRecipeManagerPlugin;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.resources.ResourceLocation;
@@ -28,6 +29,12 @@ import static cofh.lib.util.constants.Constants.ID_THERMAL;
 import static cofh.lib.util.references.CoreReferences.FLUID_POTION;
 
 public class PotionFluidRecipeManagerPlugin implements IRecipeManagerPlugin {
+
+    @Override
+    public <V> List<RecipeType<?>> getRecipeTypes(IFocus<V> focus) {
+
+        return List.of(TExpJeiPlugin.BOTTLER);
+    }
 
     @Override
     public <T, V> List<T> getRecipes(IRecipeCategory<T> recipeCategory, IFocus<V> focus) {
