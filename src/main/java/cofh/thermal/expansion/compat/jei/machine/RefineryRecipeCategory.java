@@ -7,7 +7,7 @@ import cofh.thermal.expansion.client.gui.machine.MachineRefineryScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
 import cofh.thermal.lib.compat.jei.ThermalRecipeCategory;
 import com.mojang.blaze3d.vertex.PoseStack;
-import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.forge.ForgeTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.builder.IRecipeSlotBuilder;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
@@ -96,19 +96,19 @@ public class RefineryRecipeCategory extends ThermalRecipeCategory<RefineryRecipe
         }
 
         builder.addSlot(RecipeIngredientRole.INPUT, 29, 6)
-                .addIngredients(VanillaTypes.FLUID, List.of(inputFluids.get(0).getFluids()))
+                .addIngredients(ForgeTypes.FLUID_STACK, List.of(inputFluids.get(0).getFluids()))
                 .setFluidRenderer(tankSize(TANK_SMALL), false, 16, 32)
                 .setOverlay(inputOverlay, 0, 0)
                 .addTooltipCallback(defaultFluidTooltip());
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 126, 12)
-                .addIngredients(VanillaTypes.FLUID, outputFluids.isEmpty() ? Collections.emptyList() : List.of(outputFluids.get(0)))
+                .addIngredients(ForgeTypes.FLUID_STACK, outputFluids.isEmpty() ? Collections.emptyList() : List.of(outputFluids.get(0)))
                 .setFluidRenderer(tankSize(TANK_MEDIUM), false, 16, 40)
                 .setOverlay(outputOverlayA, 0, 0)
                 .addTooltipCallback(defaultFluidTooltip());
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 144, 12)
-                .addIngredients(VanillaTypes.FLUID, outputFluids.size() < 2 ? Collections.emptyList() : List.of(outputFluids.get(1)))
+                .addIngredients(ForgeTypes.FLUID_STACK, outputFluids.size() < 2 ? Collections.emptyList() : List.of(outputFluids.get(1)))
                 .setFluidRenderer(tankSize(TANK_MEDIUM), false, 16, 40)
                 .setOverlay(outputOverlayB, 0, 0)
                 .addTooltipCallback(defaultFluidTooltip());

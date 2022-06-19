@@ -8,7 +8,7 @@ import cofh.thermal.expansion.client.gui.machine.MachineInsolatorScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
 import cofh.thermal.lib.compat.jei.ThermalRecipeCategory;
 import com.mojang.blaze3d.vertex.PoseStack;
-import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.forge.ForgeTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.builder.IRecipeSlotBuilder;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
@@ -100,7 +100,7 @@ public class InsolatorRecipeCategory extends ThermalRecipeCategory<InsolatorReci
                     .addTooltipCallback(catalyzedOutputTooltip(recipe.getOutputItemChances().get(i), recipe.isCatalyzable()));
         }
         builder.addSlot(RecipeIngredientRole.INPUT, 25, 11)
-                .addIngredients(VanillaTypes.FLUID, List.of(inputFluids.get(0).getFluids()))
+                .addIngredients(ForgeTypes.FLUID_STACK, List.of(inputFluids.get(0).getFluids()))
                 .setFluidRenderer(tankSize(TANK_MEDIUM), false, 16, 40)
                 .setOverlay(tankOverlay, 0, 0)
                 .addTooltipCallback(defaultFluidTooltip());

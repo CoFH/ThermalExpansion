@@ -6,7 +6,7 @@ import cofh.thermal.expansion.client.gui.machine.MachineCentrifugeScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
 import cofh.thermal.lib.compat.jei.ThermalRecipeCategory;
 import com.mojang.blaze3d.vertex.PoseStack;
-import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.forge.ForgeTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.builder.IRecipeSlotBuilder;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
@@ -94,7 +94,7 @@ public class CentrifugeRecipeCategory extends ThermalRecipeCategory<CentrifugeRe
         }
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 141, 11)
-                .addIngredients(VanillaTypes.FLUID, outputFluids.isEmpty() ? Collections.emptyList() : List.of(outputFluids.get(0)))
+                .addIngredients(ForgeTypes.FLUID_STACK, outputFluids.isEmpty() ? Collections.emptyList() : List.of(outputFluids.get(0)))
                 .setFluidRenderer(tankSize(TANK_SMALL), false, 16, 40)
                 .setOverlay(tankOverlay, 0, 0)
                 .addTooltipCallback(defaultFluidTooltip());

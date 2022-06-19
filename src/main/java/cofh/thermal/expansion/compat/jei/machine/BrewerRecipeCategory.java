@@ -7,7 +7,7 @@ import cofh.thermal.expansion.client.gui.machine.MachineBrewerScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
 import cofh.thermal.lib.compat.jei.ThermalRecipeCategory;
 import com.mojang.blaze3d.vertex.PoseStack;
-import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.forge.ForgeTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
@@ -77,13 +77,13 @@ public class BrewerRecipeCategory extends ThermalRecipeCategory<BrewerRecipe> {
                 .addIngredients(inputs.get(0));
 
         builder.addSlot(RecipeIngredientRole.INPUT, 25, 11)
-                .addIngredients(VanillaTypes.FLUID, List.of(inputFluids.get(0).getFluids()))
+                .addIngredients(ForgeTypes.FLUID_STACK, List.of(inputFluids.get(0).getFluids()))
                 .setFluidRenderer(tankSize(TANK_MEDIUM), false, 16, 40)
                 .setOverlay(inputOverlay, 0, 0)
                 .addTooltipCallback(defaultFluidTooltip());
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 116, 11)
-                .addIngredients(VanillaTypes.FLUID, List.of(outputFluids.get(0)))
+                .addIngredients(ForgeTypes.FLUID_STACK, List.of(outputFluids.get(0)))
                 .setFluidRenderer(tankSize(TANK_MEDIUM), false, 16, 40)
                 .setOverlay(outputOverlay, 0, 0)
                 .addTooltipCallback(defaultFluidTooltip());

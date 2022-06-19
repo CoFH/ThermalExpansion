@@ -6,6 +6,7 @@ import cofh.thermal.core.util.managers.machine.BottlerRecipeManager;
 import cofh.thermal.core.util.recipes.machine.BottlerRecipe;
 import cofh.thermal.expansion.compat.jei.TExpJeiPlugin;
 import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.forge.ForgeTypes;
 import mezz.jei.api.recipe.IFocus;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
@@ -42,7 +43,7 @@ public class PotionFluidRecipeManagerPlugin implements IRecipeManagerPlugin {
         if (recipeCategory instanceof BottlerRecipeCategory) {
             List<BottlerRecipe> retList = new ArrayList<>();
             if (focus.getRole() == RecipeIngredientRole.INPUT) {
-                var fluidIngredient = focus.getTypedValue().getIngredient(VanillaTypes.FLUID);
+                var fluidIngredient = focus.getTypedValue().getIngredient(ForgeTypes.FLUID_STACK);
                 if (fluidIngredient.isPresent() && fluidIngredient.get().getFluid() == FLUID_POTION) {
                     FluidStack fluid = fluidIngredient.get();
                     if (fluid.hasTag()) {

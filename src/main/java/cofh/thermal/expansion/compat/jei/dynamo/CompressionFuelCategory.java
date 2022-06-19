@@ -6,7 +6,7 @@ import cofh.thermal.expansion.client.gui.dynamo.DynamoCompressionScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
 import cofh.thermal.lib.compat.jei.ThermalFuelCategory;
 import com.mojang.blaze3d.vertex.PoseStack;
-import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.forge.ForgeTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
@@ -57,7 +57,7 @@ public class CompressionFuelCategory extends ThermalFuelCategory<CompressionFuel
         List<FluidIngredient> inputs = fuel.getInputFluids();
 
         builder.addSlot(RecipeIngredientRole.INPUT, 34, 11)
-                .addIngredients(VanillaTypes.FLUID, List.of(inputs.get(0).getFluids()))
+                .addIngredients(ForgeTypes.FLUID_STACK, List.of(inputs.get(0).getFluids()))
                 .setFluidRenderer(tankSize(TANK_MEDIUM), false, 16, 40)
                 .setOverlay(tankOverlay, 0, 0)
                 .addTooltipCallback(defaultFluidTooltip());
