@@ -1,6 +1,6 @@
 package cofh.thermal.expansion.block.entity.dynamo;
 
-import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.lib.content.inventory.ItemStorageCoFH;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.dynamo.LapidaryFuelManager;
 import cofh.thermal.expansion.inventory.container.dynamo.DynamoLapidaryContainer;
@@ -13,8 +13,8 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 
-import static cofh.lib.util.StorageGroup.INPUT;
-import static cofh.thermal.expansion.init.TExpReferences.DYNAMO_LAPIDARY_TILE;
+import static cofh.lib.api.StorageGroup.INPUT;
+import static cofh.thermal.expansion.init.TExpTileEntities.DYNAMO_LAPIDARY_TILE;
 
 public class DynamoLapidaryTile extends DynamoTileBase {
 
@@ -22,7 +22,7 @@ public class DynamoLapidaryTile extends DynamoTileBase {
 
     public DynamoLapidaryTile(BlockPos pos, BlockState state) {
 
-        super(DYNAMO_LAPIDARY_TILE, pos, state);
+        super(DYNAMO_LAPIDARY_TILE.get(), pos, state);
 
         inventory.addSlot(fuelSlot, INPUT);
 

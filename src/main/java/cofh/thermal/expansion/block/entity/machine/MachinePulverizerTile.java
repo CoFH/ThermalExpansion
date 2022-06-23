@@ -1,10 +1,10 @@
 package cofh.thermal.expansion.block.entity.machine;
 
-import cofh.lib.client.audio.ConditionalSound;
-import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.lib.client.sounds.ConditionalSoundInstance;
+import cofh.lib.content.inventory.ItemStorageCoFH;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.thermal.core.config.ThermalCoreConfig;
-import cofh.thermal.core.item.SlotSealItem;
+import cofh.thermal.core.content.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.PulverizerRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachinePulverizerContainer;
 import cofh.thermal.lib.tileentity.MachineTileBase;
@@ -19,12 +19,12 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 
-import static cofh.lib.util.StorageGroup.*;
+import static cofh.core.util.helpers.AugmentableHelper.getAttributeMod;
+import static cofh.core.util.helpers.ItemHelper.itemsEqualWithTags;
+import static cofh.lib.api.StorageGroup.*;
 import static cofh.lib.util.constants.NBTTags.TAG_AUGMENT_FEATURE_CYCLE_PROCESS;
-import static cofh.lib.util.helpers.AugmentableHelper.getAttributeMod;
-import static cofh.lib.util.helpers.ItemHelper.itemsEqualWithTags;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_PULVERIZER_TILE;
 import static cofh.thermal.expansion.init.TExpSounds.SOUND_MACHINE_PULVERIZER;
+import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_PULVERIZER_TILE;
 
 public class MachinePulverizerTile extends MachineTileBase {
 
@@ -33,7 +33,7 @@ public class MachinePulverizerTile extends MachineTileBase {
 
     public MachinePulverizerTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_PULVERIZER_TILE, pos, state);
+        super(MACHINE_PULVERIZER_TILE.get(), pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
         inventory.addSlot(catalystSlot, CATALYST);
@@ -99,7 +99,7 @@ public class MachinePulverizerTile extends MachineTileBase {
     @Override
     protected Object getSound() {
 
-        return new ConditionalSound(SOUND_MACHINE_PULVERIZER, SoundSource.AMBIENT, this, () -> !remove && isActive);
+        return new ConditionalSoundInstance(SOUND_MACHINE_PULVERIZER.get(), SoundSource.AMBIENT, this, () -> !remove && isActive);
     }
 
     // region OPTIMIZATION

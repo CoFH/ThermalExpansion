@@ -15,7 +15,7 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
-import net.minecraft.resources.ResourceLocation;
+import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.fluids.FluidStack;
@@ -24,25 +24,26 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static cofh.lib.util.constants.Constants.TANK_SMALL;
-import static cofh.lib.util.helpers.ItemHelper.cloneStack;
+import static cofh.core.util.helpers.ItemHelper.cloneStack;
+import static cofh.lib.util.Constants.TANK_SMALL;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.*;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_PYROLYZER_BLOCK;
+import static cofh.thermal.lib.common.ThermalIDs.ID_MACHINE_PYROLYZER;
 
 public class PyrolyzerRecipeCategory extends ThermalRecipeCategory<PyrolyzerRecipe> {
 
     protected IDrawableStatic tankBackground;
     protected IDrawableStatic tankOverlay;
 
-    public PyrolyzerRecipeCategory(IGuiHelper guiHelper, ItemStack icon, ResourceLocation uid) {
+    public PyrolyzerRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<PyrolyzerRecipe> type) {
 
-        super(guiHelper, icon, uid);
+        super(guiHelper, icon, type);
 
         background = guiHelper.drawableBuilder(MachinePyrolyzerScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)
                 .build();
-        name = getTextComponent(MACHINE_PYROLYZER_BLOCK.getDescriptionId());
+        name = getTextComponent(BLOCKS.get(ID_MACHINE_PYROLYZER).getDescriptionId());
 
         progressBackground = Drawables.getDrawables(guiHelper).getProgress(Drawables.PROGRESS_ARROW);
         progressFluidBackground = Drawables.getDrawables(guiHelper).getProgressFill(Drawables.PROGRESS_ARROW_FLUID);
@@ -57,9 +58,9 @@ public class PyrolyzerRecipeCategory extends ThermalRecipeCategory<PyrolyzerReci
     }
 
     @Override
-    public Class<? extends PyrolyzerRecipe> getRecipeClass() {
+    public RecipeType<PyrolyzerRecipe> getRecipeType() {
 
-        return PyrolyzerRecipe.class;
+        return type;
     }
 
     @Override

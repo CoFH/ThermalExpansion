@@ -2,7 +2,7 @@ package cofh.thermal.expansion.block.entity.dynamo;
 
 import cofh.core.network.packet.client.TileStatePacket;
 import cofh.core.util.helpers.FluidHelper;
-import cofh.lib.fluid.FluidStorageCoFH;
+import cofh.lib.content.fluid.FluidStorageCoFH;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.dynamo.MagmaticFuelManager;
 import cofh.thermal.expansion.inventory.container.dynamo.DynamoMagmaticContainer;
@@ -21,10 +21,10 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import static cofh.core.client.renderer.model.ModelUtils.FLUID;
-import static cofh.lib.util.StorageGroup.INPUT;
-import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
-import static cofh.lib.util.constants.Constants.TANK_SMALL;
-import static cofh.thermal.expansion.init.TExpReferences.DYNAMO_MAGMATIC_TILE;
+import static cofh.lib.api.StorageGroup.INPUT;
+import static cofh.lib.util.Constants.BUCKET_VOLUME;
+import static cofh.lib.util.Constants.TANK_SMALL;
+import static cofh.thermal.expansion.init.TExpTileEntities.DYNAMO_MAGMATIC_TILE;
 import static cofh.thermal.lib.util.managers.SingleFluidFuelManager.FLUID_FUEL_AMOUNT;
 
 public class DynamoMagmaticTile extends DynamoTileBase {
@@ -33,7 +33,7 @@ public class DynamoMagmaticTile extends DynamoTileBase {
 
     public DynamoMagmaticTile(BlockPos pos, BlockState state) {
 
-        super(DYNAMO_MAGMATIC_TILE, pos, state);
+        super(DYNAMO_MAGMATIC_TILE.get(), pos, state);
 
         tankInv.addTank(fuelTank, INPUT);
 

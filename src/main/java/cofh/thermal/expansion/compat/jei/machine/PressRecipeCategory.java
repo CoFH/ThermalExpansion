@@ -15,7 +15,7 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
-import net.minecraft.resources.ResourceLocation;
+import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.fluids.FluidStack;
@@ -24,25 +24,26 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static cofh.lib.util.constants.Constants.TANK_SMALL;
-import static cofh.lib.util.helpers.ItemHelper.cloneStack;
+import static cofh.core.util.helpers.ItemHelper.cloneStack;
+import static cofh.lib.util.Constants.TANK_SMALL;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.*;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_PRESS_BLOCK;
+import static cofh.thermal.lib.common.ThermalIDs.ID_MACHINE_PRESS;
 
 public class PressRecipeCategory extends ThermalRecipeCategory<PressRecipe> {
 
     protected IDrawableStatic tankBackground;
     protected IDrawableStatic tankOverlay;
 
-    public PressRecipeCategory(IGuiHelper guiHelper, ItemStack icon, ResourceLocation uid) {
+    public PressRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<PressRecipe> type) {
 
-        super(guiHelper, icon, uid);
+        super(guiHelper, icon, type);
 
         background = guiHelper.drawableBuilder(MachinePressScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)
                 .build();
-        name = getTextComponent(MACHINE_PRESS_BLOCK.getDescriptionId());
+        name = getTextComponent(BLOCKS.get(ID_MACHINE_PRESS).getDescriptionId());
 
         progressBackground = Drawables.getDrawables(guiHelper).getProgress(Drawables.PROGRESS_ARROW);
         progressFluidBackground = Drawables.getDrawables(guiHelper).getProgressFill(Drawables.PROGRESS_ARROW_FLUID);
@@ -57,9 +58,9 @@ public class PressRecipeCategory extends ThermalRecipeCategory<PressRecipe> {
     }
 
     @Override
-    public Class<? extends PressRecipe> getRecipeClass() {
+    public RecipeType<PressRecipe> getRecipeType() {
 
-        return PressRecipe.class;
+        return type;
     }
 
     @Override

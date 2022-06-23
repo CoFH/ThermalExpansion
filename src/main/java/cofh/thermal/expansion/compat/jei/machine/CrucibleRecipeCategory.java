@@ -14,32 +14,33 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
-import net.minecraft.resources.ResourceLocation;
+import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.List;
 
-import static cofh.lib.util.constants.Constants.TANK_MEDIUM;
+import static cofh.lib.util.Constants.TANK_MEDIUM;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.defaultFluidTooltip;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.tankSize;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_CRUCIBLE_BLOCK;
+import static cofh.thermal.lib.common.ThermalIDs.ID_MACHINE_CRUCIBLE;
 
 public class CrucibleRecipeCategory extends ThermalRecipeCategory<CrucibleRecipe> {
 
     protected IDrawableStatic tankBackground;
     protected IDrawableStatic tankOverlay;
 
-    public CrucibleRecipeCategory(IGuiHelper guiHelper, ItemStack icon, ResourceLocation uid) {
+    public CrucibleRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<CrucibleRecipe> type) {
 
-        super(guiHelper, icon, uid);
+        super(guiHelper, icon, type);
 
         background = guiHelper.drawableBuilder(MachineCrucibleScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)
                 .build();
-        name = getTextComponent(MACHINE_CRUCIBLE_BLOCK.getDescriptionId());
+        name = getTextComponent(BLOCKS.get(ID_MACHINE_CRUCIBLE).getDescriptionId());
 
         progressBackground = Drawables.getDrawables(guiHelper).getProgress(Drawables.PROGRESS_DROP);
         progressFluidBackground = Drawables.getDrawables(guiHelper).getProgressFill(Drawables.PROGRESS_DROP);
@@ -54,9 +55,9 @@ public class CrucibleRecipeCategory extends ThermalRecipeCategory<CrucibleRecipe
     }
 
     @Override
-    public Class<? extends CrucibleRecipe> getRecipeClass() {
+    public RecipeType<CrucibleRecipe> getRecipeType() {
 
-        return CrucibleRecipe.class;
+        return type;
     }
 
     @Override

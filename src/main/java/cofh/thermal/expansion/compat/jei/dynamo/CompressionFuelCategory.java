@@ -1,6 +1,6 @@
 package cofh.thermal.expansion.compat.jei.dynamo;
 
-import cofh.lib.fluid.FluidIngredient;
+import cofh.lib.content.fluid.FluidIngredient;
 import cofh.thermal.core.util.recipes.dynamo.CompressionFuel;
 import cofh.thermal.expansion.client.gui.dynamo.DynamoCompressionScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
@@ -14,30 +14,31 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
-import net.minecraft.resources.ResourceLocation;
+import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 
-import static cofh.lib.util.constants.Constants.TANK_MEDIUM;
+import static cofh.lib.util.Constants.TANK_MEDIUM;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.defaultFluidTooltip;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.tankSize;
-import static cofh.thermal.expansion.init.TExpReferences.DYNAMO_COMPRESSION_BLOCK;
+import static cofh.thermal.lib.common.ThermalIDs.ID_DYNAMO_COMPRESSION;
 
 public class CompressionFuelCategory extends ThermalFuelCategory<CompressionFuel> {
 
     protected IDrawableStatic tankBackground;
     protected IDrawableStatic tankOverlay;
 
-    public CompressionFuelCategory(IGuiHelper guiHelper, ItemStack icon, ResourceLocation uid) {
+    public CompressionFuelCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<CompressionFuel> type) {
 
-        super(guiHelper, icon, uid);
+        super(guiHelper, icon, type);
 
         background = guiHelper.drawableBuilder(DynamoCompressionScreen.TEXTURE, 26, 11, 70, 62)
                 .addPadding(0, 0, 16, 78)
                 .build();
-        name = getTextComponent(DYNAMO_COMPRESSION_BLOCK.getDescriptionId());
+        name = getTextComponent(BLOCKS.get(ID_DYNAMO_COMPRESSION).getDescriptionId());
 
         durationBackground = Drawables.getDrawables(guiHelper).getScale(Drawables.SCALE_FLAME);
         tankBackground = Drawables.getDrawables(guiHelper).getTank(Drawables.TANK_MEDIUM);
@@ -46,9 +47,9 @@ public class CompressionFuelCategory extends ThermalFuelCategory<CompressionFuel
     }
 
     @Override
-    public Class<? extends CompressionFuel> getRecipeClass() {
+    public RecipeType<CompressionFuel> getRecipeType() {
 
-        return CompressionFuel.class;
+        return type;
     }
 
     @Override

@@ -1,11 +1,11 @@
 package cofh.thermal.expansion.block.entity.machine;
 
 import cofh.core.util.helpers.FluidHelper;
-import cofh.lib.fluid.FluidStorageCoFH;
-import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.lib.content.fluid.FluidStorageCoFH;
+import cofh.lib.content.inventory.ItemStorageCoFH;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.thermal.core.config.ThermalCoreConfig;
-import cofh.thermal.core.item.SlotSealItem;
+import cofh.thermal.core.content.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.InsolatorRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineInsolatorContainer;
 import cofh.thermal.lib.tileentity.MachineTileBase;
@@ -21,13 +21,13 @@ import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
 
-import static cofh.lib.util.StorageGroup.*;
-import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
-import static cofh.lib.util.constants.Constants.TANK_SMALL;
+import static cofh.core.util.helpers.AugmentableHelper.getAttributeMod;
+import static cofh.core.util.helpers.ItemHelper.itemsEqualWithTags;
+import static cofh.lib.api.StorageGroup.*;
+import static cofh.lib.util.Constants.BUCKET_VOLUME;
+import static cofh.lib.util.Constants.TANK_SMALL;
 import static cofh.lib.util.constants.NBTTags.TAG_AUGMENT_FEATURE_CYCLE_PROCESS;
-import static cofh.lib.util.helpers.AugmentableHelper.getAttributeMod;
-import static cofh.lib.util.helpers.ItemHelper.itemsEqualWithTags;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_INSOLATOR_TILE;
+import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_INSOLATOR_TILE;
 
 public class MachineInsolatorTile extends MachineTileBase {
 
@@ -37,7 +37,7 @@ public class MachineInsolatorTile extends MachineTileBase {
 
     public MachineInsolatorTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_INSOLATOR_TILE, pos, state);
+        super(MACHINE_INSOLATOR_TILE.get(), pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
         inventory.addSlot(catalystSlot, CATALYST);

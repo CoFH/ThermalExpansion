@@ -1,12 +1,12 @@
 package cofh.thermal.expansion.init;
 
-import cofh.core.item.ItemCoFH;
-import cofh.thermal.core.item.SlotSealItem;
+import cofh.core.content.item.ItemCoFH;
+import cofh.thermal.core.content.item.SlotSealItem;
 import cofh.thermal.lib.common.ThermalItemGroups;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 
-import static cofh.lib.util.constants.Constants.ID_THERMAL_EXPANSION;
+import static cofh.lib.util.constants.ModIds.ID_THERMAL_EXPANSION;
 import static cofh.thermal.core.util.RegistrationHelper.registerItem;
 
 public class TExpItems {

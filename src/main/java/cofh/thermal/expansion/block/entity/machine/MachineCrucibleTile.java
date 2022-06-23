@@ -1,9 +1,9 @@
 package cofh.thermal.expansion.block.entity.machine;
 
 import cofh.core.util.helpers.FluidHelper;
-import cofh.lib.client.audio.ConditionalSound;
-import cofh.lib.fluid.FluidStorageCoFH;
-import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.lib.client.sounds.ConditionalSoundInstance;
+import cofh.lib.content.fluid.FluidStorageCoFH;
+import cofh.lib.content.inventory.ItemStorageCoFH;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.machine.CrucibleRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineCrucibleContainer;
@@ -18,11 +18,11 @@ import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
 
-import static cofh.lib.util.StorageGroup.*;
-import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
-import static cofh.lib.util.constants.Constants.TANK_MEDIUM;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_CRUCIBLE_TILE;
+import static cofh.lib.api.StorageGroup.*;
+import static cofh.lib.util.Constants.BUCKET_VOLUME;
+import static cofh.lib.util.Constants.TANK_MEDIUM;
 import static cofh.thermal.expansion.init.TExpSounds.SOUND_MACHINE_CRUCIBLE;
+import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_CRUCIBLE_TILE;
 
 public class MachineCrucibleTile extends MachineTileBase {
 
@@ -31,7 +31,7 @@ public class MachineCrucibleTile extends MachineTileBase {
 
     public MachineCrucibleTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_CRUCIBLE_TILE, pos, state);
+        super(MACHINE_CRUCIBLE_TILE.get(), pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
         inventory.addSlot(chargeSlot, INTERNAL);
@@ -79,7 +79,7 @@ public class MachineCrucibleTile extends MachineTileBase {
     @Override
     protected Object getSound() {
 
-        return new ConditionalSound(SOUND_MACHINE_CRUCIBLE, SoundSource.AMBIENT, this, () -> !remove && isActive);
+        return new ConditionalSoundInstance(SOUND_MACHINE_CRUCIBLE.get(), SoundSource.AMBIENT, this, () -> !remove && isActive);
     }
 
     // region OPTIMIZATION

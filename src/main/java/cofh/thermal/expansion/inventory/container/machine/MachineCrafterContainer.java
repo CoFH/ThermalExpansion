@@ -1,11 +1,11 @@
 package cofh.thermal.expansion.inventory.container.machine;
 
-import cofh.core.inventory.container.TileContainer;
+import cofh.core.content.inventory.container.TileContainer;
 import cofh.core.network.packet.server.TileConfigPacket;
-import cofh.lib.inventory.container.slot.SlotCoFH;
-import cofh.lib.inventory.container.slot.SlotFalseCopy;
-import cofh.lib.inventory.container.slot.SlotRemoveOnly;
-import cofh.lib.inventory.wrapper.InvWrapperCoFH;
+import cofh.lib.content.inventory.container.slot.SlotCoFH;
+import cofh.lib.content.inventory.container.slot.SlotFalseCopy;
+import cofh.lib.content.inventory.container.slot.SlotRemoveOnly;
+import cofh.lib.content.inventory.wrapper.InvWrapperCoFH;
 import cofh.lib.util.Utils;
 import cofh.thermal.expansion.block.entity.machine.MachineCrafterTile;
 import net.minecraft.core.BlockPos;
@@ -24,7 +24,7 @@ import net.minecraft.world.level.Level;
 
 import java.util.Optional;
 
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_CRAFTER_CONTAINER;
+import static cofh.thermal.expansion.init.TExpContainers.MACHINE_CRAFTER_CONTAINER;
 
 public class MachineCrafterContainer extends TileContainer {
 
@@ -37,7 +37,7 @@ public class MachineCrafterContainer extends TileContainer {
 
     public MachineCrafterContainer(int windowId, Level level, BlockPos pos, Inventory inventory, Player player) {
 
-        super(MACHINE_CRAFTER_CONTAINER, windowId, level, pos, inventory, player);
+        super(MACHINE_CRAFTER_CONTAINER.get(), windowId, level, pos, inventory, player);
         this.tile = (MachineCrafterTile) level.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
         this.player = inventory.player;

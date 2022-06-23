@@ -88,14 +88,18 @@ minecraft {
 dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
 
-    implementation fg.deobf("com.teamcofh:cofh_core:${mc_version}-${cofh_core_version}")
-    implementation fg.deobf("com.teamcofh:thermal_foundation:${mc_version}-${thermal_foundation_version}")
+    // implementation fg.deobf("com.teamcofh:cofh_core:${mc_version}-${cofh_core_version}")
+    // implementation fg.deobf("com.teamcofh:thermal_foundation:${mc_version}-${thermal_foundation_version}")
 
-    compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
-    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
+    // compile against the JEI API but do not include it at runtime
+    compileOnly fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
+    compileOnly fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
+    // at runtime, use the full JEI
+    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-common:${jei_version}")
+    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
 
-    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
-    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
+    // compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
+    // runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
 }
 
 signing {

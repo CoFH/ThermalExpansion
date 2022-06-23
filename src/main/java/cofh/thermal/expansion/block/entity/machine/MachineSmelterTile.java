@@ -1,10 +1,10 @@
 package cofh.thermal.expansion.block.entity.machine;
 
-import cofh.lib.client.audio.ConditionalSound;
-import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.lib.client.sounds.ConditionalSoundInstance;
+import cofh.lib.content.inventory.ItemStorageCoFH;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.thermal.core.config.ThermalCoreConfig;
-import cofh.thermal.core.item.SlotSealItem;
+import cofh.thermal.core.content.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.SmelterRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineSmelterContainer;
 import cofh.thermal.lib.tileentity.MachineTileBase;
@@ -20,13 +20,13 @@ import net.minecraft.world.level.block.state.BlockState;
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static cofh.lib.util.StorageGroup.*;
+import static cofh.core.util.helpers.AugmentableHelper.getAttributeMod;
+import static cofh.core.util.helpers.ItemHelper.itemsEqual;
+import static cofh.core.util.helpers.ItemHelper.itemsEqualWithTags;
+import static cofh.lib.api.StorageGroup.*;
 import static cofh.lib.util.constants.NBTTags.TAG_AUGMENT_FEATURE_CYCLE_PROCESS;
-import static cofh.lib.util.helpers.AugmentableHelper.getAttributeMod;
-import static cofh.lib.util.helpers.ItemHelper.itemsEqual;
-import static cofh.lib.util.helpers.ItemHelper.itemsEqualWithTags;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_SMELTER_TILE;
 import static cofh.thermal.expansion.init.TExpSounds.SOUND_MACHINE_SMELTER;
+import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_SMELTER_TILE;
 
 public class MachineSmelterTile extends MachineTileBase {
 
@@ -35,7 +35,7 @@ public class MachineSmelterTile extends MachineTileBase {
 
     public MachineSmelterTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_SMELTER_TILE, pos, state);
+        super(MACHINE_SMELTER_TILE.get(), pos, state);
 
         inputSlots[0] = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || filter.valid(item) && SmelterRecipeManager.instance().validItem(item) && !itemsEqual(item, inputSlots[1].getItemStack()) && !itemsEqual(item, inputSlots[2].getItemStack()) && !itemsEqual(item, catalystSlot.getItemStack()));
         inputSlots[1] = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || filter.valid(item) && SmelterRecipeManager.instance().validItem(item) && !itemsEqual(item, inputSlots[0].getItemStack()) && !itemsEqual(item, inputSlots[2].getItemStack()) && !itemsEqual(item, catalystSlot.getItemStack()));
@@ -108,7 +108,7 @@ public class MachineSmelterTile extends MachineTileBase {
     @Override
     protected Object getSound() {
 
-        return new ConditionalSound(SOUND_MACHINE_SMELTER, SoundSource.AMBIENT, this, () -> !remove && isActive);
+        return new ConditionalSoundInstance(SOUND_MACHINE_SMELTER.get(), SoundSource.AMBIENT, this, () -> !remove && isActive);
     }
 
     // region OPTIMIZATION

@@ -1,8 +1,8 @@
 package cofh.thermal.expansion.block.entity.machine;
 
 import cofh.core.util.helpers.FluidHelper;
-import cofh.lib.fluid.FluidStorageCoFH;
-import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.lib.content.fluid.FluidStorageCoFH;
+import cofh.lib.content.inventory.ItemStorageCoFH;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.machine.CentrifugeRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineCentrifugeContainer;
@@ -17,10 +17,10 @@ import net.minecraftforge.fluids.FluidStack;
 import javax.annotation.Nullable;
 import java.util.List;
 
-import static cofh.lib.util.StorageGroup.*;
-import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
-import static cofh.lib.util.constants.Constants.TANK_SMALL;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_CENTRIFUGE_TILE;
+import static cofh.lib.api.StorageGroup.*;
+import static cofh.lib.util.Constants.BUCKET_VOLUME;
+import static cofh.lib.util.Constants.TANK_SMALL;
+import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_CENTRIFUGE_TILE;
 
 public class MachineCentrifugeTile extends MachineTileBase {
 
@@ -29,7 +29,7 @@ public class MachineCentrifugeTile extends MachineTileBase {
 
     public MachineCentrifugeTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_CENTRIFUGE_TILE, pos, state);
+        super(MACHINE_CENTRIFUGE_TILE.get(), pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
         inventory.addSlots(OUTPUT, 4);

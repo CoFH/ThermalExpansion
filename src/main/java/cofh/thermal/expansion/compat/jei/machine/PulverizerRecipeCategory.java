@@ -13,29 +13,30 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
-import net.minecraft.resources.ResourceLocation;
+import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static cofh.lib.util.helpers.ItemHelper.cloneStack;
+import static cofh.core.util.helpers.ItemHelper.cloneStack;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.catalystTooltip;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.catalyzedOutputTooltip;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_PULVERIZER_BLOCK;
+import static cofh.thermal.lib.common.ThermalIDs.ID_MACHINE_PULVERIZER;
 
 public class PulverizerRecipeCategory extends ThermalRecipeCategory<PulverizerRecipe> {
 
-    public PulverizerRecipeCategory(IGuiHelper guiHelper, ItemStack icon, ResourceLocation uid) {
+    public PulverizerRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<PulverizerRecipe> type) {
 
-        super(guiHelper, icon, uid);
+        super(guiHelper, icon, type);
 
         background = guiHelper.drawableBuilder(MachinePulverizerScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)
                 .build();
-        name = getTextComponent(MACHINE_PULVERIZER_BLOCK.getDescriptionId());
+        name = getTextComponent(BLOCKS.get(ID_MACHINE_PULVERIZER).getDescriptionId());
 
         progressBackground = Drawables.getDrawables(guiHelper).getProgress(Drawables.PROGRESS_ARROW);
         speedBackground = Drawables.getDrawables(guiHelper).getScale(Drawables.SCALE_CRUSH);
@@ -45,9 +46,9 @@ public class PulverizerRecipeCategory extends ThermalRecipeCategory<PulverizerRe
     }
 
     @Override
-    public Class<? extends PulverizerRecipe> getRecipeClass() {
+    public RecipeType<PulverizerRecipe> getRecipeType() {
 
-        return PulverizerRecipe.class;
+        return type;
     }
 
     @Override

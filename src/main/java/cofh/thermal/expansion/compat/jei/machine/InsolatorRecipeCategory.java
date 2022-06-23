@@ -1,7 +1,7 @@
 package cofh.thermal.expansion.compat.jei.machine;
 
 import cofh.core.util.helpers.RenderHelper;
-import cofh.lib.fluid.FluidIngredient;
+import cofh.lib.content.fluid.FluidIngredient;
 import cofh.thermal.core.util.managers.machine.PulverizerRecipeManager;
 import cofh.thermal.core.util.recipes.machine.InsolatorRecipe;
 import cofh.thermal.expansion.client.gui.machine.MachineInsolatorScreen;
@@ -17,32 +17,33 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
-import net.minecraft.resources.ResourceLocation;
+import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static cofh.lib.util.constants.Constants.TANK_MEDIUM;
-import static cofh.lib.util.helpers.ItemHelper.cloneStack;
+import static cofh.core.util.helpers.ItemHelper.cloneStack;
+import static cofh.lib.util.Constants.TANK_MEDIUM;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.*;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_INSOLATOR_BLOCK;
+import static cofh.thermal.lib.common.ThermalIDs.ID_MACHINE_INSOLATOR;
 
 public class InsolatorRecipeCategory extends ThermalRecipeCategory<InsolatorRecipe> {
 
     protected IDrawableStatic tankBackground;
     protected IDrawableStatic tankOverlay;
 
-    public InsolatorRecipeCategory(IGuiHelper guiHelper, ItemStack icon, ResourceLocation uid) {
+    public InsolatorRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<InsolatorRecipe> type) {
 
-        super(guiHelper, icon, uid);
+        super(guiHelper, icon, type);
 
         background = guiHelper.drawableBuilder(MachineInsolatorScreen.TEXTURE, 26, 11, 130, 62)
                 .addPadding(0, 0, 16, 18)
                 .build();
-        name = getTextComponent(MACHINE_INSOLATOR_BLOCK.getDescriptionId());
+        name = getTextComponent(BLOCKS.get(ID_MACHINE_INSOLATOR).getDescriptionId());
 
         progressBackground = Drawables.getDrawables(guiHelper).getProgress(Drawables.PROGRESS_ARROW);
         progressFluidBackground = Drawables.getDrawables(guiHelper).getProgressFill(Drawables.PROGRESS_ARROW_FLUID);
@@ -57,9 +58,9 @@ public class InsolatorRecipeCategory extends ThermalRecipeCategory<InsolatorReci
     }
 
     @Override
-    public Class<? extends InsolatorRecipe> getRecipeClass() {
+    public RecipeType<InsolatorRecipe> getRecipeType() {
 
-        return InsolatorRecipe.class;
+        return type;
     }
 
     @Override

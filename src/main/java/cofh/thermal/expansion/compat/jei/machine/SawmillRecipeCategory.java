@@ -12,28 +12,29 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
-import net.minecraft.resources.ResourceLocation;
+import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static cofh.lib.util.helpers.ItemHelper.cloneStack;
+import static cofh.core.util.helpers.ItemHelper.cloneStack;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.defaultOutputTooltip;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_SAWMILL_BLOCK;
+import static cofh.thermal.lib.common.ThermalIDs.ID_MACHINE_SAWMILL;
 
 public class SawmillRecipeCategory extends ThermalRecipeCategory<SawmillRecipe> {
 
-    public SawmillRecipeCategory(IGuiHelper guiHelper, ItemStack icon, ResourceLocation uid) {
+    public SawmillRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<SawmillRecipe> type) {
 
-        super(guiHelper, icon, uid);
+        super(guiHelper, icon, type);
 
         background = guiHelper.drawableBuilder(MachineSawmillScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)
                 .build();
-        name = getTextComponent(MACHINE_SAWMILL_BLOCK.getDescriptionId());
+        name = getTextComponent(BLOCKS.get(ID_MACHINE_SAWMILL).getDescriptionId());
 
         progressBackground = Drawables.getDrawables(guiHelper).getProgress(Drawables.PROGRESS_ARROW);
         speedBackground = Drawables.getDrawables(guiHelper).getScale(Drawables.SCALE_SAW);
@@ -43,9 +44,9 @@ public class SawmillRecipeCategory extends ThermalRecipeCategory<SawmillRecipe> 
     }
 
     @Override
-    public Class<? extends SawmillRecipe> getRecipeClass() {
+    public RecipeType<SawmillRecipe> getRecipeType() {
 
-        return SawmillRecipe.class;
+        return type;
     }
 
     @Override

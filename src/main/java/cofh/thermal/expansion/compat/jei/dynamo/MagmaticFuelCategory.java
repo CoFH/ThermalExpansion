@@ -1,6 +1,6 @@
 package cofh.thermal.expansion.compat.jei.dynamo;
 
-import cofh.lib.fluid.FluidIngredient;
+import cofh.lib.content.fluid.FluidIngredient;
 import cofh.thermal.core.util.recipes.dynamo.MagmaticFuel;
 import cofh.thermal.expansion.client.gui.dynamo.DynamoMagmaticScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
@@ -14,30 +14,31 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
-import net.minecraft.resources.ResourceLocation;
+import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 
-import static cofh.lib.util.constants.Constants.TANK_MEDIUM;
+import static cofh.lib.util.Constants.TANK_MEDIUM;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.defaultFluidTooltip;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.tankSize;
-import static cofh.thermal.expansion.init.TExpReferences.DYNAMO_MAGMATIC_BLOCK;
+import static cofh.thermal.lib.common.ThermalIDs.ID_DYNAMO_NUMISMATIC;
 
 public class MagmaticFuelCategory extends ThermalFuelCategory<MagmaticFuel> {
 
     protected IDrawableStatic tankBackground;
     protected IDrawableStatic tankOverlay;
 
-    public MagmaticFuelCategory(IGuiHelper guiHelper, ItemStack icon, ResourceLocation uid) {
+    public MagmaticFuelCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<MagmaticFuel> type) {
 
-        super(guiHelper, icon, uid);
+        super(guiHelper, icon, type);
 
         background = guiHelper.drawableBuilder(DynamoMagmaticScreen.TEXTURE, 26, 11, 70, 62)
                 .addPadding(0, 0, 16, 78)
                 .build();
-        name = getTextComponent(DYNAMO_MAGMATIC_BLOCK.getDescriptionId());
+        name = getTextComponent(BLOCKS.get(ID_DYNAMO_NUMISMATIC).getDescriptionId());
 
         durationBackground = Drawables.getDrawables(guiHelper).getScale(Drawables.SCALE_FLAME);
         tankBackground = Drawables.getDrawables(guiHelper).getTank(Drawables.TANK_MEDIUM);
@@ -46,9 +47,9 @@ public class MagmaticFuelCategory extends ThermalFuelCategory<MagmaticFuel> {
     }
 
     @Override
-    public Class<? extends MagmaticFuel> getRecipeClass() {
+    public RecipeType<MagmaticFuel> getRecipeType() {
 
-        return MagmaticFuel.class;
+        return type;
     }
 
     @Override
@@ -64,9 +65,9 @@ public class MagmaticFuelCategory extends ThermalFuelCategory<MagmaticFuel> {
     }
 
     @Override
-    public void draw(MagmaticFuel fuel, IRecipeSlotsView recipeSlotsView, PoseStack matrixStack, double mouseX, double mouseY) {
+    public void draw(MagmaticFuel recipe, IRecipeSlotsView recipeSlotsView, PoseStack matrixStack, double mouseX, double mouseY) {
 
-        super.draw(fuel, recipeSlotsView, matrixStack, mouseX, mouseY);
+        super.draw(recipe, recipeSlotsView, matrixStack, mouseX, mouseY);
         tankBackground.draw(matrixStack, 33, 10);
     }
 

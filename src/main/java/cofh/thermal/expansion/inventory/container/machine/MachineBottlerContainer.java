@@ -1,16 +1,16 @@
 package cofh.thermal.expansion.inventory.container.machine;
 
-import cofh.core.inventory.container.TileContainer;
-import cofh.lib.inventory.container.slot.SlotCoFH;
-import cofh.lib.inventory.container.slot.SlotRemoveOnly;
-import cofh.lib.inventory.wrapper.InvWrapperCoFH;
+import cofh.core.content.inventory.container.TileContainer;
+import cofh.lib.content.inventory.container.slot.SlotCoFH;
+import cofh.lib.content.inventory.container.slot.SlotRemoveOnly;
+import cofh.lib.content.inventory.wrapper.InvWrapperCoFH;
 import cofh.thermal.lib.tileentity.ReconfigurableTile4Way;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_BOTTLER_CONTAINER;
+import static cofh.thermal.expansion.init.TExpContainers.MACHINE_BOTTLER_CONTAINER;
 
 public class MachineBottlerContainer extends TileContainer {
 
@@ -18,7 +18,7 @@ public class MachineBottlerContainer extends TileContainer {
 
     public MachineBottlerContainer(int windowId, Level level, BlockPos pos, Inventory inventory, Player player) {
 
-        super(MACHINE_BOTTLER_CONTAINER, windowId, level, pos, inventory, player);
+        super(MACHINE_BOTTLER_CONTAINER.get(), windowId, level, pos, inventory, player);
         this.tile = (ReconfigurableTile4Way) level.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 

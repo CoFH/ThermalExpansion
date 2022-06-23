@@ -11,26 +11,27 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
-import net.minecraft.resources.ResourceLocation;
+import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.List;
 
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.defaultOutputTooltip;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_FURNACE_BLOCK;
+import static cofh.thermal.lib.common.ThermalIDs.ID_MACHINE_FURNACE;
 
 public class FurnaceRecipeCategory extends ThermalRecipeCategory<FurnaceRecipe> {
 
-    public FurnaceRecipeCategory(IGuiHelper guiHelper, ItemStack icon, ResourceLocation uid) {
+    public FurnaceRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<FurnaceRecipe> type) {
 
-        super(guiHelper, icon, uid);
+        super(guiHelper, icon, type);
 
         background = guiHelper.drawableBuilder(MachineFurnaceScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)
                 .build();
-        name = getTextComponent(MACHINE_FURNACE_BLOCK.getDescriptionId());
+        name = getTextComponent(BLOCKS.get(ID_MACHINE_FURNACE).getDescriptionId());
 
         progressBackground = Drawables.getDrawables(guiHelper).getProgress(Drawables.PROGRESS_ARROW);
         speedBackground = Drawables.getDrawables(guiHelper).getScale(Drawables.SCALE_FLAME);
@@ -40,9 +41,9 @@ public class FurnaceRecipeCategory extends ThermalRecipeCategory<FurnaceRecipe> 
     }
 
     @Override
-    public Class<? extends FurnaceRecipe> getRecipeClass() {
+    public RecipeType<FurnaceRecipe> getRecipeType() {
 
-        return FurnaceRecipe.class;
+        return type;
     }
 
     @Override

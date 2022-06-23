@@ -11,8 +11,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
 import static cofh.core.util.helpers.GuiHelper.*;
-import static cofh.lib.util.constants.Constants.ID_COFH_CORE;
-import static cofh.lib.util.constants.Constants.ID_THERMAL;
+import static cofh.lib.util.constants.ModIds.ID_COFH_CORE;
+import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.lib.util.helpers.SoundHelper.playClickSound;
 
 public class MachineCrafterScreen extends MachineScreenReconfigurable<MachineCrafterContainer> {
@@ -46,28 +46,18 @@ public class MachineCrafterScreen extends MachineScreenReconfigurable<MachineCra
         addElement(ThermalGuiHelper.createDefaultFluidProgress(this, 110, 22, PROG_ARROW_FLUID_RIGHT, tile));
         addElement(ThermalGuiHelper.createDefaultProgress(this, 110, 22, PROG_ARROW_RIGHT, tile));
 
-        ElementBase setRecipe = new ElementButton(this, 142, 52)
-                .setName("SetRecipe")
-                .setSize(18, 18)
-                .setTexture(TEX_ACCEPT, 54, 18)
-                .setEnabled(menu.tile::hasRecipeChanges);
+        ElementBase setRecipe = new ElementButton(this, 142, 52) {
 
-        addElement(setRecipe);
-    }
+            @Override
+            public boolean mouseClicked(double mouseX, double mouseY, int mouseButton) {
 
-    @Override
-    public boolean handleElementButtonClick(String buttonName, int mouseButton) {
-
-        if (buttonName.equalsIgnoreCase("SetRecipe")) {
-            menu.setRecipe();
-            playClickSound(menu.hasValidRecipe() ? 0.8F : 0.6F);
+                if (enabled()) {
+                    menu.setRecipe();
+                    playClickSound(menu.hasValidRecipe() ? 0.8F : 0.6F);
+                }
+                return enabled();
+            }
         }
-        return true;
-    }
-
-    protected void addButton() {
-
-        ElementBase setRecipe = new ElementButton(this, 95, 47)
                 .setName("SetRecipe")
                 .setSize(18, 18)
                 .setTexture(TEX_ACCEPT, 54, 18)

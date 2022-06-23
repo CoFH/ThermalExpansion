@@ -1,8 +1,8 @@
 package cofh.thermal.expansion.block.entity.machine;
 
 import cofh.core.util.helpers.FluidHelper;
-import cofh.lib.fluid.FluidStorageCoFH;
-import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.lib.content.fluid.FluidStorageCoFH;
+import cofh.lib.content.inventory.ItemStorageCoFH;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.machine.RefineryRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineRefineryContainer;
@@ -17,9 +17,9 @@ import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
 
-import static cofh.lib.util.StorageGroup.*;
-import static cofh.lib.util.constants.Constants.*;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_REFINERY_TILE;
+import static cofh.lib.api.StorageGroup.*;
+import static cofh.lib.util.Constants.*;
+import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_REFINERY_TILE;
 
 public class MachineRefineryTile extends MachineTileBase {
 
@@ -30,7 +30,7 @@ public class MachineRefineryTile extends MachineTileBase {
 
     public MachineRefineryTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_REFINERY_TILE, pos, state);
+        super(MACHINE_REFINERY_TILE.get(), pos, state);
 
         inventory.addSlot(outputSlot, OUTPUT);
         inventory.addSlot(chargeSlot, INTERNAL);

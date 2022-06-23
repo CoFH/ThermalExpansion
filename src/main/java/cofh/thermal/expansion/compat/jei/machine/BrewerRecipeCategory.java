@@ -1,7 +1,7 @@
 package cofh.thermal.expansion.compat.jei.machine;
 
 import cofh.core.util.helpers.RenderHelper;
-import cofh.lib.fluid.FluidIngredient;
+import cofh.lib.content.fluid.FluidIngredient;
 import cofh.thermal.core.util.recipes.machine.BrewerRecipe;
 import cofh.thermal.expansion.client.gui.machine.MachineBrewerScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
@@ -15,18 +15,19 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
-import net.minecraft.resources.ResourceLocation;
+import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.fluids.FluidStack;
 
 import java.util.List;
 
-import static cofh.lib.util.constants.Constants.TANK_MEDIUM;
+import static cofh.lib.util.Constants.TANK_MEDIUM;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.defaultFluidTooltip;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.tankSize;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_BREWER_BLOCK;
+import static cofh.thermal.lib.common.ThermalIDs.ID_MACHINE_BREWER;
 
 public class BrewerRecipeCategory extends ThermalRecipeCategory<BrewerRecipe> {
 
@@ -36,14 +37,14 @@ public class BrewerRecipeCategory extends ThermalRecipeCategory<BrewerRecipe> {
     protected IDrawableStatic inputOverlay;
     protected IDrawableStatic outputOverlay;
 
-    public BrewerRecipeCategory(IGuiHelper guiHelper, ItemStack icon, ResourceLocation uid) {
+    public BrewerRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<BrewerRecipe> type) {
 
-        super(guiHelper, icon, uid);
+        super(guiHelper, icon, type);
 
         background = guiHelper.drawableBuilder(MachineBrewerScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)
                 .build();
-        name = getTextComponent(MACHINE_BREWER_BLOCK.getDescriptionId());
+        name = getTextComponent(BLOCKS.get(ID_MACHINE_BREWER).getDescriptionId());
 
         progressBackground = Drawables.getDrawables(guiHelper).getProgress(Drawables.PROGRESS_DROP);
         progressFluidBackground = Drawables.getDrawables(guiHelper).getProgressFill(Drawables.PROGRESS_DROP);
@@ -61,9 +62,9 @@ public class BrewerRecipeCategory extends ThermalRecipeCategory<BrewerRecipe> {
     }
 
     @Override
-    public Class<? extends BrewerRecipe> getRecipeClass() {
+    public RecipeType<BrewerRecipe> getRecipeType() {
 
-        return BrewerRecipe.class;
+        return type;
     }
 
     @Override

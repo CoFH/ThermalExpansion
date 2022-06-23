@@ -13,29 +13,30 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
-import net.minecraft.resources.ResourceLocation;
+import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static cofh.lib.util.helpers.ItemHelper.cloneStack;
+import static cofh.core.util.helpers.ItemHelper.cloneStack;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.catalystTooltip;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.catalyzedOutputTooltip;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_SMELTER_BLOCK;
+import static cofh.thermal.lib.common.ThermalIDs.ID_MACHINE_SMELTER;
 
 public class SmelterRecipeCategory extends ThermalRecipeCategory<SmelterRecipe> {
 
-    public SmelterRecipeCategory(IGuiHelper guiHelper, ItemStack icon, ResourceLocation uid) {
+    public SmelterRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<SmelterRecipe> type) {
 
-        super(guiHelper, icon, uid);
+        super(guiHelper, icon, type);
 
         background = guiHelper.drawableBuilder(MachineSmelterScreen.TEXTURE, 26, 11, 140, 62)
                 .addPadding(0, 0, 16, 8)
                 .build();
-        name = getTextComponent(MACHINE_SMELTER_BLOCK.getDescriptionId());
+        name = getTextComponent(BLOCKS.get(ID_MACHINE_SMELTER).getDescriptionId());
 
         progressBackground = Drawables.getDrawables(guiHelper).getProgress(Drawables.PROGRESS_ARROW);
         speedBackground = Drawables.getDrawables(guiHelper).getScale(Drawables.SCALE_FLAME);
@@ -45,9 +46,9 @@ public class SmelterRecipeCategory extends ThermalRecipeCategory<SmelterRecipe> 
     }
 
     @Override
-    public Class<? extends SmelterRecipe> getRecipeClass() {
+    public RecipeType<SmelterRecipe> getRecipeType() {
 
-        return SmelterRecipe.class;
+        return type;
     }
 
     @Override

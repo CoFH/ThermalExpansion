@@ -1,10 +1,9 @@
 package cofh.thermal.expansion.compat.jei.machine;
 
-import cofh.core.fluid.PotionFluid;
-import cofh.lib.fluid.FluidIngredient;
+import cofh.core.content.fluid.PotionFluid;
+import cofh.lib.content.fluid.FluidIngredient;
 import cofh.thermal.core.util.managers.machine.BottlerRecipeManager;
 import cofh.thermal.core.util.recipes.machine.BottlerRecipe;
-import cofh.thermal.expansion.compat.jei.TExpJeiPlugin;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.forge.ForgeTypes;
 import mezz.jei.api.recipe.IFocus;
@@ -25,16 +24,17 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-import static cofh.lib.util.constants.Constants.BOTTLE_VOLUME;
-import static cofh.lib.util.constants.Constants.ID_THERMAL;
-import static cofh.lib.util.references.CoreReferences.FLUID_POTION;
+import static cofh.core.init.CoreFluids.POTION_FLUID;
+import static cofh.lib.util.Constants.BOTTLE_VOLUME;
+import static cofh.lib.util.constants.ModIds.ID_THERMAL;
+import static cofh.thermal.expansion.compat.jei.TExpJeiPlugin.BOTTLER_TYPE;
 
 public class PotionFluidRecipeManagerPlugin implements IRecipeManagerPlugin {
 
     @Override
     public <V> List<RecipeType<?>> getRecipeTypes(IFocus<V> focus) {
 
-        return List.of(TExpJeiPlugin.BOTTLER);
+        return List.of(BOTTLER_TYPE);
     }
 
     @Override
@@ -44,7 +44,7 @@ public class PotionFluidRecipeManagerPlugin implements IRecipeManagerPlugin {
             List<BottlerRecipe> retList = new ArrayList<>();
             if (focus.getRole() == RecipeIngredientRole.INPUT) {
                 var fluidIngredient = focus.getTypedValue().getIngredient(ForgeTypes.FLUID_STACK);
-                if (fluidIngredient.isPresent() && fluidIngredient.get().getFluid() == FLUID_POTION) {
+                if (fluidIngredient.isPresent() && fluidIngredient.get().getFluid() == POTION_FLUID.get()) {
                     FluidStack fluid = fluidIngredient.get();
                     if (fluid.hasTag()) {
                         ItemStack item = new ItemStack(Items.POTION);
@@ -53,7 +53,7 @@ public class PotionFluidRecipeManagerPlugin implements IRecipeManagerPlugin {
                     }
                 }
             } else if (focus.getRole() == RecipeIngredientRole.OUTPUT) {
-                var ingredient = focus.getTypedValue().getIngredient(VanillaTypes.ITEM);
+                var ingredient = focus.getTypedValue().getIngredient(VanillaTypes.ITEM_STACK);
                 if (ingredient.isPresent() && ingredient.get().getItem() == Items.POTION) {
                     ItemStack item = ingredient.get();
                     if (item.hasTag()) {
@@ -87,12 +87,6 @@ public class PotionFluidRecipeManagerPlugin implements IRecipeManagerPlugin {
             return (List<T>) bottlerRecipes;
         }
         return List.of();
-    }
-
-    @Override
-    public <V> List<ResourceLocation> getRecipeCategoryUids(IFocus<V> focus) {
-
-        return List.of(TExpJeiPlugin.BOTTLER.getUid());
     }
 
     // region HELPERS

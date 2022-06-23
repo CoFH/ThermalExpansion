@@ -1,7 +1,7 @@
 package cofh.thermal.expansion.compat.jei.machine;
 
 import cofh.core.util.helpers.RenderHelper;
-import cofh.lib.fluid.FluidIngredient;
+import cofh.lib.content.fluid.FluidIngredient;
 import cofh.thermal.core.util.recipes.machine.BottlerRecipe;
 import cofh.thermal.expansion.client.gui.machine.MachineBottlerScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
@@ -15,30 +15,31 @@ import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
-import net.minecraft.resources.ResourceLocation;
+import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.List;
 
-import static cofh.lib.util.constants.Constants.TANK_MEDIUM;
+import static cofh.lib.util.Constants.TANK_MEDIUM;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.*;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_BOTTLER_BLOCK;
+import static cofh.thermal.lib.common.ThermalIDs.ID_MACHINE_BOTTLER;
 
 public class BottlerRecipeCategory extends ThermalRecipeCategory<BottlerRecipe> {
 
     protected IDrawableStatic tankBackground;
     protected IDrawableStatic tankOverlay;
 
-    public BottlerRecipeCategory(IGuiHelper guiHelper, ItemStack icon, ResourceLocation uid) {
+    public BottlerRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<BottlerRecipe> type) {
 
-        super(guiHelper, icon, uid);
+        super(guiHelper, icon, type);
 
         background = guiHelper.drawableBuilder(MachineBottlerScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)
                 .build();
-        name = getTextComponent(MACHINE_BOTTLER_BLOCK.getDescriptionId());
+        name = getTextComponent(BLOCKS.get(ID_MACHINE_BOTTLER).getDescriptionId());
 
         progressBackground = Drawables.getDrawables(guiHelper).getProgress(Drawables.PROGRESS_ARROW);
         progressFluidBackground = Drawables.getDrawables(guiHelper).getProgressFill(Drawables.PROGRESS_ARROW_FLUID);
@@ -53,9 +54,9 @@ public class BottlerRecipeCategory extends ThermalRecipeCategory<BottlerRecipe> 
     }
 
     @Override
-    public Class<? extends BottlerRecipe> getRecipeClass() {
+    public RecipeType<BottlerRecipe> getRecipeType() {
 
-        return BottlerRecipe.class;
+        return type;
     }
 
     @Override

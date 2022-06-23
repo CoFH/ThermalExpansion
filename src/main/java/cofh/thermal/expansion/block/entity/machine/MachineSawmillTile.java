@@ -1,7 +1,7 @@
 package cofh.thermal.expansion.block.entity.machine;
 
-import cofh.lib.client.audio.ConditionalSound;
-import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.lib.client.sounds.ConditionalSoundInstance;
+import cofh.lib.content.inventory.ItemStorageCoFH;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.machine.SawmillRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineSawmillContainer;
@@ -15,9 +15,9 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 
-import static cofh.lib.util.StorageGroup.*;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_SAWMILL_TILE;
+import static cofh.lib.api.StorageGroup.*;
 import static cofh.thermal.expansion.init.TExpSounds.SOUND_MACHINE_SAWMILL;
+import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_SAWMILL_TILE;
 
 public class MachineSawmillTile extends MachineTileBase {
 
@@ -25,7 +25,7 @@ public class MachineSawmillTile extends MachineTileBase {
 
     public MachineSawmillTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_SAWMILL_TILE, pos, state);
+        super(MACHINE_SAWMILL_TILE.get(), pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
         inventory.addSlots(OUTPUT, 4);
@@ -61,7 +61,7 @@ public class MachineSawmillTile extends MachineTileBase {
     @Override
     protected Object getSound() {
 
-        return new ConditionalSound(SOUND_MACHINE_SAWMILL, SoundSource.AMBIENT, this, () -> !remove && isActive);
+        return new ConditionalSoundInstance(SOUND_MACHINE_SAWMILL.get(), SoundSource.AMBIENT, this, () -> !remove && isActive);
     }
 
     // region OPTIMIZATION

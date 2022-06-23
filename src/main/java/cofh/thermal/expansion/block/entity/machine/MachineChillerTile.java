@@ -1,10 +1,10 @@
 package cofh.thermal.expansion.block.entity.machine;
 
 import cofh.core.util.helpers.FluidHelper;
-import cofh.lib.fluid.FluidStorageCoFH;
-import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.lib.content.fluid.FluidStorageCoFH;
+import cofh.lib.content.inventory.ItemStorageCoFH;
 import cofh.thermal.core.config.ThermalCoreConfig;
-import cofh.thermal.core.item.SlotSealItem;
+import cofh.thermal.core.content.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.ChillerRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineChillerContainer;
 import cofh.thermal.lib.tileentity.MachineTileBase;
@@ -17,10 +17,10 @@ import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
 
-import static cofh.lib.util.StorageGroup.*;
-import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
-import static cofh.lib.util.constants.Constants.TANK_MEDIUM;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_CHILLER_TILE;
+import static cofh.lib.api.StorageGroup.*;
+import static cofh.lib.util.Constants.BUCKET_VOLUME;
+import static cofh.lib.util.Constants.TANK_MEDIUM;
+import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_CHILLER_TILE;
 import static cofh.thermal.lib.util.references.ThermalTags.Items.MACHINE_CASTS;
 
 public class MachineChillerTile extends MachineTileBase {
@@ -31,7 +31,7 @@ public class MachineChillerTile extends MachineTileBase {
 
     public MachineChillerTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_CHILLER_TILE, pos, state);
+        super(MACHINE_CHILLER_TILE.get(), pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
         inventory.addSlot(outputSlot, OUTPUT);

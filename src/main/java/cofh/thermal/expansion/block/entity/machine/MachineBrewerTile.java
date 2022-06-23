@@ -1,8 +1,8 @@
 package cofh.thermal.expansion.block.entity.machine;
 
 import cofh.core.util.helpers.FluidHelper;
-import cofh.lib.fluid.FluidStorageCoFH;
-import cofh.lib.inventory.ItemStorageCoFH;
+import cofh.lib.content.fluid.FluidStorageCoFH;
+import cofh.lib.content.inventory.ItemStorageCoFH;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.machine.BrewerRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineBrewerContainer;
@@ -17,9 +17,9 @@ import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
 
-import static cofh.lib.util.StorageGroup.*;
-import static cofh.lib.util.constants.Constants.*;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_BREWER_TILE;
+import static cofh.lib.api.StorageGroup.*;
+import static cofh.lib.util.Constants.*;
+import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_BREWER_TILE;
 
 public class MachineBrewerTile extends MachineTileBase {
 
@@ -29,7 +29,7 @@ public class MachineBrewerTile extends MachineTileBase {
 
     public MachineBrewerTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_BREWER_TILE, pos, state);
+        super(MACHINE_BREWER_TILE.get(), pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
         inventory.addSlot(chargeSlot, INTERNAL);

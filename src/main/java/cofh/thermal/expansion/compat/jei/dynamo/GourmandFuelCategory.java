@@ -9,34 +9,35 @@ import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
-import net.minecraft.resources.ResourceLocation;
+import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.List;
 
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
-import static cofh.thermal.expansion.init.TExpReferences.DYNAMO_GOURMAND_BLOCK;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
+import static cofh.thermal.lib.common.ThermalIDs.ID_DYNAMO_GOURMAND;
 
 public class GourmandFuelCategory extends ThermalFuelCategory<GourmandFuel> {
 
-    public GourmandFuelCategory(IGuiHelper guiHelper, ItemStack icon, ResourceLocation uid) {
+    public GourmandFuelCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<GourmandFuel> type) {
 
-        super(guiHelper, icon, uid);
+        super(guiHelper, icon, type);
 
         background = guiHelper.drawableBuilder(DynamoGourmandScreen.TEXTURE, 26, 11, 70, 62)
                 .addPadding(0, 0, 16, 78)
                 .build();
-        name = getTextComponent(DYNAMO_GOURMAND_BLOCK.getDescriptionId());
+        name = getTextComponent(BLOCKS.get(ID_DYNAMO_GOURMAND).getDescriptionId());
 
         durationBackground = Drawables.getDrawables(guiHelper).getScale(Drawables.SCALE_ALCHEMY);
         duration = guiHelper.createAnimatedDrawable(Drawables.getDrawables(guiHelper).getScaleFill(Drawables.SCALE_ALCHEMY), 400, IDrawableAnimated.StartDirection.TOP, true);
     }
 
     @Override
-    public Class<? extends GourmandFuel> getRecipeClass() {
+    public RecipeType<GourmandFuel> getRecipeType() {
 
-        return GourmandFuel.class;
+        return type;
     }
 
     @Override
