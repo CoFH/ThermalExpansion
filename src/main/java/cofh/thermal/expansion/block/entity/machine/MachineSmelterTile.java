@@ -1,10 +1,10 @@
 package cofh.thermal.expansion.block.entity.machine;
 
 import cofh.lib.client.sounds.ConditionalSoundInstance;
-import cofh.lib.content.inventory.ItemStorageCoFH;
+import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.helpers.MathHelper;
 import cofh.thermal.core.config.ThermalCoreConfig;
-import cofh.thermal.core.content.item.SlotSealItem;
+import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.SmelterRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineSmelterContainer;
 import cofh.thermal.lib.tileentity.MachineTileBase;

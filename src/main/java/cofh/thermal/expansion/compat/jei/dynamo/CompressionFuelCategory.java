@@ -1,6 +1,6 @@
 package cofh.thermal.expansion.compat.jei.dynamo;
 
-import cofh.lib.content.fluid.FluidIngredient;
+import cofh.lib.fluid.FluidIngredient;
 import cofh.thermal.core.util.recipes.dynamo.CompressionFuel;
 import cofh.thermal.expansion.client.gui.dynamo.DynamoCompressionScreen;
 import cofh.thermal.lib.compat.jei.Drawables;

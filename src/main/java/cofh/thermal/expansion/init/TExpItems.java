@@ -1,7 +1,7 @@
 package cofh.thermal.expansion.init;
 
-import cofh.core.content.item.ItemCoFH;
-import cofh.thermal.core.content.item.SlotSealItem;
+import cofh.core.item.ItemCoFH;
+import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.lib.common.ThermalItemGroups;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;

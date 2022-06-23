@@ -1,6 +1,6 @@
 package cofh.thermal.expansion.block.entity.dynamo;
 
-import cofh.lib.content.inventory.ItemStorageCoFH;
+import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.dynamo.DisenchantmentFuelManager;
 import cofh.thermal.expansion.inventory.container.dynamo.DynamoDisenchantmentContainer;

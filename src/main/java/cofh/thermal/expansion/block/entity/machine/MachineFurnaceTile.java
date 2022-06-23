@@ -1,7 +1,7 @@
 package cofh.thermal.expansion.block.entity.machine;
 
 import cofh.lib.client.sounds.ConditionalSoundInstance;
-import cofh.lib.content.inventory.ItemStorageCoFH;
+import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.machine.FurnaceRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineFurnaceContainer;

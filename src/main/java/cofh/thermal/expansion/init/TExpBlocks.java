@@ -1,6 +1,6 @@
 package cofh.thermal.expansion.init;
 
-import cofh.core.content.block.TileBlockActive4Way;
+import cofh.core.block.TileBlockActive4Way;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.expansion.block.entity.dynamo.*;
 import cofh.thermal.expansion.block.entity.machine.*;

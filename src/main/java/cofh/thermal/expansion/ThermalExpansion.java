@@ -134,7 +134,7 @@ public class ThermalExpansion {
         MenuScreens.register(MACHINE_BOTTLER_CONTAINER.get(), MachineBottlerScreen::new);
         MenuScreens.register(MACHINE_CRAFTER_CONTAINER.get(), MachineCrafterScreen::new);
         MenuScreens.register(DYNAMO_STIRLING_CONTAINER.get(), DynamoStirlingScreen::new);
-        
+
         MenuScreens.register(DYNAMO_COMPRESSION_CONTAINER.get(), DynamoCompressionScreen::new);
         MenuScreens.register(DYNAMO_MAGMATIC_CONTAINER.get(), DynamoMagmaticScreen::new);
         MenuScreens.register(DYNAMO_NUMISMATIC_CONTAINER.get(), DynamoNumismaticScreen::new);

@@ -2,7 +2,7 @@ package cofh.thermal.expansion.block.entity.dynamo;
 
 import cofh.core.network.packet.client.TileStatePacket;
 import cofh.core.util.helpers.FluidHelper;
-import cofh.lib.content.fluid.FluidStorageCoFH;
+import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.dynamo.CompressionFuelManager;
 import cofh.thermal.expansion.inventory.container.dynamo.DynamoCompressionContainer;
