@@ -1,0 +1,18 @@
+{
+  "type": "thermal:crystallizer",
+  "ingredients": [
+    {
+      "fluid": "minecraft:water",
+      "amount": 500
+    },
+    {
+      "tag": "forge:dusts/cinnabar"
+    }
+  ],
+  "result": [
+    {
+      "item": "thermal:cinnabar"
+    }
+  ],
+  "energy": 5000
+}

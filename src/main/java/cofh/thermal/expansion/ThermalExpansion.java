@@ -90,6 +90,7 @@ public class ThermalExpansion {
         setFlag(ID_MACHINE_PYROLYZER, true);
         setFlag(ID_MACHINE_BOTTLER, true);
         setFlag(ID_MACHINE_BREWER, true);
+        setFlag(ID_MACHINE_CRYSTALLIZER, true);
         setFlag(ID_MACHINE_CRAFTER, true);
 
         setFlag(ID_ENERGY_CELL_FRAME, true);
@@ -132,9 +133,10 @@ public class ThermalExpansion {
         MenuScreens.register(MACHINE_PYROLYZER_CONTAINER.get(), MachinePyrolyzerScreen::new);
         MenuScreens.register(MACHINE_BREWER_CONTAINER.get(), MachineBrewerScreen::new);
         MenuScreens.register(MACHINE_BOTTLER_CONTAINER.get(), MachineBottlerScreen::new);
+        MenuScreens.register(MACHINE_CRYSTALLIZER_CONTAINER.get(), MachineCrystallizerScreen::new);
         MenuScreens.register(MACHINE_CRAFTER_CONTAINER.get(), MachineCrafterScreen::new);
-        MenuScreens.register(DYNAMO_STIRLING_CONTAINER.get(), DynamoStirlingScreen::new);
 
+        MenuScreens.register(DYNAMO_STIRLING_CONTAINER.get(), DynamoStirlingScreen::new);
         MenuScreens.register(DYNAMO_COMPRESSION_CONTAINER.get(), DynamoCompressionScreen::new);
         MenuScreens.register(DYNAMO_MAGMATIC_CONTAINER.get(), DynamoMagmaticScreen::new);
         MenuScreens.register(DYNAMO_NUMISMATIC_CONTAINER.get(), DynamoNumismaticScreen::new);
@@ -160,6 +162,7 @@ public class ThermalExpansion {
         ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_PYROLYZER), cutout);
         ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_BREWER), cutout);
         ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_BOTTLER), cutout);
+        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_CRYSTALLIZER), cutout);
         ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_CRAFTER), cutout);
 
         ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_DYNAMO_STIRLING), cutout);

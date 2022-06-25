@@ -38,8 +38,8 @@ public class MachineCentrifugeScreen extends MachineScreenReconfigurable<Machine
 
         addElement(setClearable(createMediumOutputFluidStorage(this, 151, 22, tile.getTank(0), tile), tile, 0));
 
-        addElement(ThermalGuiHelper.createDefaultFluidProgress(this, 72, 34, PROG_ARROW_FLUID_RIGHT, tile));
-        addElement(ThermalGuiHelper.createDefaultProgress(this, 72, 34, PROG_ARROW_RIGHT, tile));
+        addElement(ThermalGuiHelper.createDefaultFluidProgress(this, 72, 35, PROG_ARROW_FLUID_RIGHT, tile));
+        addElement(ThermalGuiHelper.createDefaultProgress(this, 72, 35, PROG_ARROW_RIGHT, tile));
         addElement(ThermalGuiHelper.createDefaultSpeed(this, 44, 44, SCALE_SPIN, tile));
     }
 

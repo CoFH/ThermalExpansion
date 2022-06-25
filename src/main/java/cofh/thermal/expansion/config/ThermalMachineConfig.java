@@ -4,6 +4,8 @@ import cofh.core.config.IBaseConfig;
 import cofh.thermal.core.util.managers.machine.*;
 import net.minecraftforge.common.ForgeConfigSpec;
 
+import java.util.function.Supplier;
+
 import static cofh.thermal.lib.common.ThermalFlags.getFlag;
 import static cofh.thermal.lib.common.ThermalIDs.*;
 
@@ -131,6 +133,15 @@ public class ThermalMachineConfig implements IBaseConfig {
 
             builder.pop();
         }
+        if (getFlag(ID_MACHINE_CRYSTALLIZER).getAsBoolean()) {
+            builder.push("Brewer");
+
+            machineCrystallizerPower = builder
+                    .comment("This sets the base power consumption (RF/t) for the Crystallizer.")
+                    .defineInRange("Base Power", CrystallizerRecipeManager.instance().getBasePower(), CrystallizerRecipeManager.instance().getMinPower(), CrystallizerRecipeManager.instance().getMaxPower());
+
+            builder.pop();
+        }
         if (getFlag(ID_MACHINE_CRAFTER).getAsBoolean()) {
             builder.push("Crafter");
 
@@ -185,25 +196,29 @@ public class ThermalMachineConfig implements IBaseConfig {
         if (machineBrewerPower != null) {
             BrewerRecipeManager.instance().setBasePower(machineBrewerPower.get());
         }
+        if (machineCrystallizerPower != null) {
+            CrystallizerRecipeManager.instance().setBasePower(machineCrystallizerPower.get());
+        }
         if (machineCrafterPower != null) {
             CrafterRecipeManager.instance().setBasePower(machineCrafterPower.get());
         }
     }
 
     // region CONFIG VARIABLES
-    private ForgeConfigSpec.IntValue machineFurnacePower;
-    private ForgeConfigSpec.IntValue machineSawmillPower;
-    private ForgeConfigSpec.IntValue machinePulverizerPower;
-    private ForgeConfigSpec.IntValue machineSmelterPower;
-    private ForgeConfigSpec.IntValue machineInsolatorPower;
-    private ForgeConfigSpec.IntValue machineCentrifugePower;
-    private ForgeConfigSpec.IntValue machinePressPower;
-    private ForgeConfigSpec.IntValue machineCruciblePower;
-    private ForgeConfigSpec.IntValue machineChillerPower;
-    private ForgeConfigSpec.IntValue machineRefineryPower;
-    private ForgeConfigSpec.IntValue machinePyrolyzerPower;
-    private ForgeConfigSpec.IntValue machineBottlerPower;
-    private ForgeConfigSpec.IntValue machineBrewerPower;
-    private ForgeConfigSpec.IntValue machineCrafterPower;
+    private Supplier<Integer> machineFurnacePower;
+    private Supplier<Integer> machineSawmillPower;
+    private Supplier<Integer> machinePulverizerPower;
+    private Supplier<Integer> machineSmelterPower;
+    private Supplier<Integer> machineInsolatorPower;
+    private Supplier<Integer> machineCentrifugePower;
+    private Supplier<Integer> machinePressPower;
+    private Supplier<Integer> machineCruciblePower;
+    private Supplier<Integer> machineChillerPower;
+    private Supplier<Integer> machineRefineryPower;
+    private Supplier<Integer> machinePyrolyzerPower;
+    private Supplier<Integer> machineBottlerPower;
+    private Supplier<Integer> machineBrewerPower;
+    private Supplier<Integer> machineCrystallizerPower;
+    private Supplier<Integer> machineCrafterPower;
     // endregion
 }

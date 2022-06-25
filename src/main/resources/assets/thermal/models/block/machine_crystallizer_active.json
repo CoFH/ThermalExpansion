@@ -1,0 +1,6 @@
+{
+  "parent": "thermal:block/machine_chiller",
+  "textures": {
+    "north": "thermal:block/machines/machine_crystallizer_active"
+  }
+}

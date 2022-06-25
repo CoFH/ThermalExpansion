@@ -99,10 +99,10 @@ public class SmelterRecipeCategory extends ThermalRecipeCategory<SmelterRecipe> 
 
         super.draw(recipe, recipeSlotsView, matrixStack, mouseX, mouseY);
 
-        progressBackground.draw(matrixStack, 84, 23);
+        progressBackground.draw(matrixStack, 84, 24);
         speedBackground.draw(matrixStack, 43, 24);
 
-        progress.draw(matrixStack, 84, 23);
+        progress.draw(matrixStack, 84, 24);
         speed.draw(matrixStack, 43, 24);
     }
 

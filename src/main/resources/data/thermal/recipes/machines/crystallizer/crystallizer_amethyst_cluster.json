@@ -1,0 +1,17 @@
+{
+  "type": "thermal:crystallizer",
+  "ingredients": [
+    {
+      "fluid": "minecraft:water",
+      "amount": 2000
+    },
+    {
+      "item": "minecraft:amethyst_shard"
+    }
+  ],
+  "result": [
+    {
+      "item": "minecraft:amethyst_cluster"
+    }
+  ]
+}

@@ -1,5 +1,4 @@
 {
-  "replace": false,
   "values": [
     "thermal:chiller_ball_cast",
     "thermal:chiller_ingot_cast",

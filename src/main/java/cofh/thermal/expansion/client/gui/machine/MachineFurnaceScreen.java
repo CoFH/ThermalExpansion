@@ -33,7 +33,7 @@ public class MachineFurnaceScreen extends MachineScreenReconfigurable<MachineFur
 
         addElement(createLargeOutputSlot(this, 116, 35, tile));
 
-        addElement(ThermalGuiHelper.createDefaultProgress(this, 79, 34, PROG_ARROW_RIGHT, tile));
+        addElement(ThermalGuiHelper.createDefaultProgress(this, 79, 35, PROG_ARROW_RIGHT, tile));
         addElement(ThermalGuiHelper.createDefaultSpeed(this, 53, 44, SCALE_FLAME, tile));
     }
 

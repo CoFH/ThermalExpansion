@@ -4,6 +4,8 @@ import cofh.core.config.IBaseConfig;
 import cofh.thermal.core.util.managers.dynamo.*;
 import net.minecraftforge.common.ForgeConfigSpec;
 
+import java.util.function.Supplier;
+
 import static cofh.thermal.lib.common.ThermalFlags.getFlag;
 import static cofh.thermal.lib.common.ThermalIDs.*;
 
@@ -107,12 +109,12 @@ public class ThermalDynamoConfig implements IBaseConfig {
     }
 
     // region CONFIG VARIABLES
-    private ForgeConfigSpec.IntValue dynamoStirlingPower;
-    private ForgeConfigSpec.IntValue dynamoCompressionPower;
-    private ForgeConfigSpec.IntValue dynamoMagmaticPower;
-    private ForgeConfigSpec.IntValue dynamoNumismaticPower;
-    private ForgeConfigSpec.IntValue dynamoLapidaryPower;
-    private ForgeConfigSpec.IntValue dynamoDisenchantmentPower;
-    private ForgeConfigSpec.IntValue dynamoGourmandPower;
+    private Supplier<Integer> dynamoStirlingPower;
+    private Supplier<Integer> dynamoCompressionPower;
+    private Supplier<Integer> dynamoMagmaticPower;
+    private Supplier<Integer> dynamoNumismaticPower;
+    private Supplier<Integer> dynamoLapidaryPower;
+    private Supplier<Integer> dynamoDisenchantmentPower;
+    private Supplier<Integer> dynamoGourmandPower;
     // endregion
 }

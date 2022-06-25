@@ -60,6 +60,7 @@ public class TExpItemModelProvider extends ItemModelProviderCoFH {
         blockItem(reg.getSup(ID_MACHINE_BREWER));
         blockItem(reg.getSup(ID_MACHINE_BOTTLER));
         blockItem(reg.getSup(ID_MACHINE_BREWER));
+        blockItem(reg.getSup(ID_MACHINE_CRYSTALLIZER));
         blockItem(reg.getSup(ID_MACHINE_CRAFTER));
 
         blockItem(reg.getSup(ID_DYNAMO_STIRLING));

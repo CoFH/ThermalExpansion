@@ -5,6 +5,7 @@ import cofh.thermal.core.util.managers.dynamo.GourmandFuelManager;
 import cofh.thermal.core.util.managers.dynamo.StirlingFuelManager;
 import cofh.thermal.core.util.managers.machine.BottlerRecipeManager;
 import cofh.thermal.core.util.managers.machine.BrewerRecipeManager;
+import cofh.thermal.core.util.managers.machine.CrystallizerRecipeManager;
 import cofh.thermal.core.util.managers.machine.FurnaceRecipeManager;
 import cofh.thermal.core.util.recipes.dynamo.*;
 import cofh.thermal.core.util.recipes.machine.*;
@@ -55,10 +56,11 @@ public class TExpJeiPlugin implements IModPlugin {
         registration.addRecipes(CHILLER_TYPE, recipeManager.getAllRecipesFor(CHILLER_RECIPE.get()));
         registration.addRecipes(REFINERY_TYPE, recipeManager.getAllRecipesFor(REFINERY_RECIPE.get()));
         registration.addRecipes(PYROLYZER_TYPE, recipeManager.getAllRecipesFor(PYROLYZER_RECIPE.get()));
-        registration.addRecipes(BREWER_TYPE, recipeManager.getAllRecipesFor(BREWER_RECIPE.get()));
-        registration.addRecipes(BREWER_TYPE, BrewerRecipeManager.instance().getConvertedRecipes());
         registration.addRecipes(BOTTLER_TYPE, recipeManager.getAllRecipesFor(BOTTLER_RECIPE.get()));
         registration.addRecipes(BOTTLER_TYPE, BottlerRecipeManager.instance().getConvertedRecipes());
+        registration.addRecipes(BREWER_TYPE, recipeManager.getAllRecipesFor(BREWER_RECIPE.get()));
+        registration.addRecipes(BREWER_TYPE, BrewerRecipeManager.instance().getConvertedRecipes());
+        registration.addRecipes(CRYSTALLIZER_TYPE, recipeManager.getAllRecipesFor(CRYSTALLIZER_RECIPE.get()));
 
         registration.addRecipes(PULVERIZER_CATALYST_TYPE, recipeManager.getAllRecipesFor(PULVERIZER_CATALYST.get()));
         registration.addRecipes(SMELTER_CATALYST_TYPE, recipeManager.getAllRecipesFor(SMELTER_CATALYST.get()));
@@ -90,8 +92,9 @@ public class TExpJeiPlugin implements IModPlugin {
         registration.addRecipeCategories(new ChillerRecipeCategory(registration.getJeiHelpers().getGuiHelper(), new ItemStack(BLOCKS.get(ID_MACHINE_CHILLER)), CHILLER_TYPE));
         registration.addRecipeCategories(new RefineryRecipeCategory(registration.getJeiHelpers().getGuiHelper(), new ItemStack(BLOCKS.get(ID_MACHINE_REFINERY)), REFINERY_TYPE));
         registration.addRecipeCategories(new PyrolyzerRecipeCategory(registration.getJeiHelpers().getGuiHelper(), new ItemStack(BLOCKS.get(ID_MACHINE_PYROLYZER)), PYROLYZER_TYPE));
-        registration.addRecipeCategories(new BrewerRecipeCategory(registration.getJeiHelpers().getGuiHelper(), new ItemStack(BLOCKS.get(ID_MACHINE_BREWER)), BREWER_TYPE));
         registration.addRecipeCategories(new BottlerRecipeCategory(registration.getJeiHelpers().getGuiHelper(), new ItemStack(BLOCKS.get(ID_MACHINE_BOTTLER)), BOTTLER_TYPE));
+        registration.addRecipeCategories(new BrewerRecipeCategory(registration.getJeiHelpers().getGuiHelper(), new ItemStack(BLOCKS.get(ID_MACHINE_BREWER)), BREWER_TYPE));
+        registration.addRecipeCategories(new CrystallizerRecipeCategory(registration.getJeiHelpers().getGuiHelper(), new ItemStack(BLOCKS.get(ID_MACHINE_CRYSTALLIZER)), CRYSTALLIZER_TYPE));
 
         registration.addRecipeCategories(new PulverizerCatalystCategory(registration.getJeiHelpers().getGuiHelper(), new ItemStack(ITEMS.get("basalz_powder")), PULVERIZER_CATALYST_TYPE));
         registration.addRecipeCategories(new SmelterCatalystCategory(registration.getJeiHelpers().getGuiHelper(), new ItemStack(ITEMS.get("cinnabar")), SMELTER_CATALYST_TYPE));
@@ -109,7 +112,7 @@ public class TExpJeiPlugin implements IModPlugin {
     @Override
     public void registerGuiHandlers(IGuiHandlerRegistration registration) {
 
-        int progressY = 34;
+        int progressY = 35;
         int progressW = 24;
         int progressH = 16;
 
@@ -124,8 +127,9 @@ public class TExpJeiPlugin implements IModPlugin {
         registration.addRecipeClickArea(MachineChillerScreen.class, 88, progressY, progressW, progressH, CHILLER_TYPE);
         registration.addRecipeClickArea(MachineRefineryScreen.class, 65, progressY, progressW, progressH, REFINERY_TYPE);
         registration.addRecipeClickArea(MachinePyrolyzerScreen.class, 72, progressY, progressW, progressH, PYROLYZER_TYPE);
-        registration.addRecipeClickArea(MachineBrewerScreen.class, 88, progressY, progressW, progressH, BREWER_TYPE);
         registration.addRecipeClickArea(MachineBottlerScreen.class, 88, progressY, progressW, progressH, BOTTLER_TYPE);
+        registration.addRecipeClickArea(MachineBrewerScreen.class, 88, progressY, progressW, progressH, BREWER_TYPE);
+        registration.addRecipeClickArea(MachineCrystallizerScreen.class, 105, progressY, progressW, progressH, CRYSTALLIZER_TYPE);
 
         registration.addRecipeClickArea(MachinePulverizerScreen.class, 72, progressY, progressW, progressH, PULVERIZER_CATALYST_TYPE);
         registration.addRecipeClickArea(MachineSmelterScreen.class, 94, progressY, progressW, progressH, SMELTER_CATALYST_TYPE);
@@ -154,8 +158,8 @@ public class TExpJeiPlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(BLOCKS.get(ID_MACHINE_CHILLER)), CHILLER_TYPE);
         registration.addRecipeCatalyst(new ItemStack(BLOCKS.get(ID_MACHINE_REFINERY)), REFINERY_TYPE);
         registration.addRecipeCatalyst(new ItemStack(BLOCKS.get(ID_MACHINE_PYROLYZER)), PYROLYZER_TYPE);
-        registration.addRecipeCatalyst(new ItemStack(BLOCKS.get(ID_MACHINE_BREWER)), BREWER_TYPE);
         registration.addRecipeCatalyst(new ItemStack(BLOCKS.get(ID_MACHINE_BOTTLER)), BOTTLER_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(BLOCKS.get(ID_MACHINE_BREWER)), BREWER_TYPE);
 
         registration.addRecipeCatalyst(new ItemStack(BLOCKS.get(ID_MACHINE_PULVERIZER)), PULVERIZER_CATALYST_TYPE);
         registration.addRecipeCatalyst(new ItemStack(BLOCKS.get(ID_MACHINE_SMELTER)), SMELTER_CATALYST_TYPE);
@@ -208,6 +212,7 @@ public class TExpJeiPlugin implements IModPlugin {
     public static final RecipeType<PyrolyzerRecipe> PYROLYZER_TYPE = new RecipeType<>(PYROLYZER_RECIPE.getId(), PyrolyzerRecipe.class);
     public static final RecipeType<BottlerRecipe> BOTTLER_TYPE = new RecipeType<>(BOTTLER_RECIPE.getId(), BottlerRecipe.class);
     public static final RecipeType<BrewerRecipe> BREWER_TYPE = new RecipeType<>(BREWER_RECIPE.getId(), BrewerRecipe.class);
+    public static final RecipeType<CrystallizerRecipe> CRYSTALLIZER_TYPE = new RecipeType<>(CRYSTALLIZER_RECIPE.getId(), CrystallizerRecipe.class);
 
     public static final RecipeType<PulverizerCatalyst> PULVERIZER_CATALYST_TYPE = new RecipeType<>(PULVERIZER_CATALYST.getId(), PulverizerCatalyst.class);
     public static final RecipeType<SmelterCatalyst> SMELTER_CATALYST_TYPE = new RecipeType<>(SMELTER_CATALYST.getId(), SmelterCatalyst.class);

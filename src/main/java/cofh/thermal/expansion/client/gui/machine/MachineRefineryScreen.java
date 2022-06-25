@@ -36,8 +36,8 @@ public class MachineRefineryScreen extends MachineScreenReconfigurable<MachineRe
         addElement(setClearable(createMediumOutputFluidStorage(this, 133, 22, tile.getTank(1), tile), tile, 1));
         addElement(setClearable(createMediumOutputFluidStorage(this, 151, 22, tile.getTank(2), tile), tile, 2));
 
-        addElement(ThermalGuiHelper.createDefaultFluidProgress(this, 65, 34, PROG_DROP_RIGHT, tile));
-        addElement(ThermalGuiHelper.createDefaultProgress(this, 65, 34, PROG_DROP_RIGHT, tile));
+        addElement(ThermalGuiHelper.createDefaultFluidProgress(this, 65, 35, PROG_DROP_RIGHT, tile));
+        addElement(ThermalGuiHelper.createDefaultProgress(this, 65, 35, PROG_DROP_RIGHT, tile));
         addElement(ThermalGuiHelper.createDefaultSpeed(this, 35, 53, SCALE_FLAME, tile));
     }
 

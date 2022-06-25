@@ -1,5 +1,4 @@
 {
-  "replace": false,
   "values": [
     "thermal:dynamo_stirling",
     "thermal:dynamo_compression",

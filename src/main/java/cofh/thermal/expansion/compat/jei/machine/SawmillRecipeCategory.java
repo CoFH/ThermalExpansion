@@ -85,10 +85,10 @@ public class SawmillRecipeCategory extends ThermalRecipeCategory<SawmillRecipe> 
 
         super.draw(recipe, recipeSlotsView, matrixStack, mouseX, mouseY);
 
-        progressBackground.draw(matrixStack, 62, 23);
+        progressBackground.draw(matrixStack, 62, 24);
         speedBackground.draw(matrixStack, 34, 33);
 
-        progress.draw(matrixStack, 62, 23);
+        progress.draw(matrixStack, 62, 24);
         speed.draw(matrixStack, 34, 33);
     }
 

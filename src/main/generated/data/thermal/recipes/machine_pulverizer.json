@@ -1,10 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    " X ",
-    "YCY",
-    "IPI"
-  ],
   "key": {
     "C": {
       "item": "thermal:machine_frame"
@@ -22,6 +17,11 @@
       "item": "minecraft:flint"
     }
   },
+  "pattern": [
+    " X ",
+    "YCY",
+    "IPI"
+  ],
   "result": {
     "item": "thermal:machine_pulverizer"
   }

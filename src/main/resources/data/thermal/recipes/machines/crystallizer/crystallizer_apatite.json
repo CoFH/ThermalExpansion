@@ -1,0 +1,18 @@
+{
+  "type": "thermal:crystallizer",
+  "ingredients": [
+    {
+      "fluid": "minecraft:water",
+      "amount": 500
+    },
+    {
+      "tag": "forge:dusts/apatite"
+    }
+  ],
+  "result": [
+    {
+      "item": "thermal:apatite"
+    }
+  ],
+  "energy": 5000
+}

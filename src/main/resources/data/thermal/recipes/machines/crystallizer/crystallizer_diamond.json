@@ -1,0 +1,17 @@
+{
+  "type": "thermal:crystallizer",
+  "ingredients": [
+    {
+      "fluid": "minecraft:water",
+      "amount": 2000
+    },
+    {
+      "tag": "forge:dusts/diamond"
+    }
+  ],
+  "result": [
+    {
+      "item": "minecraft:diamond"
+    }
+  ]
+}

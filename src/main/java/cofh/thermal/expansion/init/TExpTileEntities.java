@@ -32,6 +32,7 @@ public class TExpTileEntities {
     public static final RegistryObject<BlockEntityType<?>> MACHINE_PYROLYZER_TILE = TILE_ENTITIES.register(ID_MACHINE_PYROLYZER, () -> BlockEntityType.Builder.of(MachinePyrolyzerTile::new, BLOCKS.get(ID_MACHINE_PYROLYZER)).build(null));
     public static final RegistryObject<BlockEntityType<?>> MACHINE_BOTTLER_TILE = TILE_ENTITIES.register(ID_MACHINE_BOTTLER, () -> BlockEntityType.Builder.of(MachineBottlerTile::new, BLOCKS.get(ID_MACHINE_BOTTLER)).build(null));
     public static final RegistryObject<BlockEntityType<?>> MACHINE_BREWER_TILE = TILE_ENTITIES.register(ID_MACHINE_BREWER, () -> BlockEntityType.Builder.of(MachineBrewerTile::new, BLOCKS.get(ID_MACHINE_BREWER)).build(null));
+    public static final RegistryObject<BlockEntityType<?>> MACHINE_CRYSTALLIZER_TILE = TILE_ENTITIES.register(ID_MACHINE_CRYSTALLIZER, () -> BlockEntityType.Builder.of(MachineCrystallizerTile::new, BLOCKS.get(ID_MACHINE_CRYSTALLIZER)).build(null));
     public static final RegistryObject<BlockEntityType<?>> MACHINE_CRAFTER_TILE = TILE_ENTITIES.register(ID_MACHINE_CRAFTER, () -> BlockEntityType.Builder.of(MachineCrafterTile::new, BLOCKS.get(ID_MACHINE_CRAFTER)).build(null));
 
     public static final RegistryObject<BlockEntityType<?>> DYNAMO_STIRLING_TILE = TILE_ENTITIES.register(ID_DYNAMO_STIRLING, () -> BlockEntityType.Builder.of(DynamoStirlingTile::new, BLOCKS.get(ID_DYNAMO_STIRLING)).build(null));

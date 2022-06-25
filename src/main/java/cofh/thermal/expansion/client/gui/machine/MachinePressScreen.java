@@ -37,8 +37,8 @@ public class MachinePressScreen extends MachineScreenReconfigurable<MachinePress
 
         addElement(setClearable(createMediumOutputFluidStorage(this, 151, 22, tile.getTank(0), tile), tile, 0));
 
-        addElement(ThermalGuiHelper.createDefaultFluidProgress(this, 79, 34, PROG_ARROW_FLUID_RIGHT, tile));
-        addElement(ThermalGuiHelper.createDefaultProgress(this, 79, 34, PROG_ARROW_RIGHT, tile));
+        addElement(ThermalGuiHelper.createDefaultFluidProgress(this, 79, 35, PROG_ARROW_FLUID_RIGHT, tile));
+        addElement(ThermalGuiHelper.createDefaultProgress(this, 79, 35, PROG_ARROW_RIGHT, tile));
         addElement(ThermalGuiHelper.createDefaultSpeed(this, 53, 35, SCALE_COMPACT, tile));
     }
 

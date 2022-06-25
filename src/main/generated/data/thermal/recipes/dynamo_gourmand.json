@@ -1,19 +1,14 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    " C ",
-    "IGI",
-    "YXY"
-  ],
   "key": {
     "C": {
       "item": "thermal:rf_coil"
     },
-    "I": {
-      "tag": "forge:ingots/iron"
-    },
     "G": {
       "tag": "forge:gears/copper"
+    },
+    "I": {
+      "tag": "forge:ingots/iron"
     },
     "X": {
       "tag": "forge:dusts/redstone"
@@ -22,6 +17,11 @@
       "tag": "forge:ingots/tin"
     }
   },
+  "pattern": [
+    " C ",
+    "IGI",
+    "YXY"
+  ],
   "result": {
     "item": "thermal:dynamo_gourmand"
   }
