@@ -2,7 +2,7 @@ package cofh.thermal.expansion.compat.jei.machine;
 
 import cofh.core.util.helpers.RenderHelper;
 import cofh.lib.fluid.FluidIngredient;
-import cofh.thermal.core.util.managers.machine.PulverizerRecipeManager;
+import cofh.thermal.core.util.managers.machine.InsolatorRecipeManager;
 import cofh.thermal.core.util.recipes.machine.InsolatorRecipe;
 import cofh.thermal.expansion.client.gui.machine.MachineInsolatorScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
@@ -69,7 +69,7 @@ public class InsolatorRecipeCategory extends ThermalRecipeCategory<InsolatorReci
         List<Ingredient> inputs = recipe.getInputItems();
         List<FluidIngredient> inputFluids = recipe.getInputFluids();
         List<ItemStack> outputs = new ArrayList<>(recipe.getOutputItems().size());
-        List<ItemStack> catalysts = PulverizerRecipeManager.instance().getCatalysts();
+        List<ItemStack> catalysts = InsolatorRecipeManager.instance().getCatalysts();
 
         for (ItemStack stack : recipe.getOutputItems()) {
             outputs.add(cloneStack(stack));

@@ -5,7 +5,6 @@ import cofh.thermal.core.util.managers.dynamo.GourmandFuelManager;
 import cofh.thermal.core.util.managers.dynamo.StirlingFuelManager;
 import cofh.thermal.core.util.managers.machine.BottlerRecipeManager;
 import cofh.thermal.core.util.managers.machine.BrewerRecipeManager;
-import cofh.thermal.core.util.managers.machine.CrystallizerRecipeManager;
 import cofh.thermal.core.util.managers.machine.FurnaceRecipeManager;
 import cofh.thermal.core.util.recipes.dynamo.*;
 import cofh.thermal.core.util.recipes.machine.*;
