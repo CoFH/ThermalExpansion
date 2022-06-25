@@ -35,8 +35,8 @@ public class MachineBottlerScreen extends MachineScreenReconfigurable<MachineBot
 
         addElement(setClearable(createMediumInputFluidStorage(this, 34, 22, tile.getTank(0), tile), tile, 0));
 
-        addElement(ThermalGuiHelper.createDefaultFluidProgress(this, 88, 34, PROG_ARROW_FLUID_RIGHT, tile));
-        addElement(ThermalGuiHelper.createDefaultProgress(this, 88, 34, PROG_ARROW_RIGHT, tile));
+        addElement(ThermalGuiHelper.createDefaultFluidProgress(this, 88, 35, PROG_ARROW_FLUID_RIGHT, tile));
+        addElement(ThermalGuiHelper.createDefaultProgress(this, 88, 35, PROG_ARROW_RIGHT, tile));
         addElement(ThermalGuiHelper.createDefaultSpeed(this, 62, 44, SCALE_BUBBLE, tile));
     }
 

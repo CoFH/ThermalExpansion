@@ -64,10 +64,10 @@ public class FurnaceRecipeCategory extends ThermalRecipeCategory<FurnaceRecipe> 
 
         super.draw(recipe, recipeSlotsView, matrixStack, mouseX, mouseY);
 
-        progressBackground.draw(matrixStack, 69, 23);
+        progressBackground.draw(matrixStack, 69, 24);
         speedBackground.draw(matrixStack, 43, 33);
 
-        progress.draw(matrixStack, 69, 23);
+        progress.draw(matrixStack, 69, 24);
         speed.draw(matrixStack, 43, 33);
     }
 

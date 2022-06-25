@@ -122,7 +122,7 @@ public class TExpJeiPlugin implements IModPlugin {
     @Override
     public void registerGuiHandlers(IGuiHandlerRegistration registration) {
 
-        int progressY = 34;
+        int progressY = 35;
         int progressW = 24;
         int progressH = 16;
 

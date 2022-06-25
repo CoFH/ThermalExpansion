@@ -40,8 +40,8 @@ public class MachineInsolatorScreen extends MachineScreenReconfigurable<MachineI
 
         addElement(setClearable(createMediumInputFluidStorage(this, 34, 22, tile.getTank(0), tile), tile, 0));
 
-        addElement(ThermalGuiHelper.createDefaultFluidProgress(this, 85, 34, PROG_ARROW_FLUID_RIGHT, tile));
-        addElement(ThermalGuiHelper.createDefaultProgress(this, 85, 34, PROG_ARROW_RIGHT, tile));
+        addElement(ThermalGuiHelper.createDefaultFluidProgress(this, 85, 35, PROG_ARROW_FLUID_RIGHT, tile));
+        addElement(ThermalGuiHelper.createDefaultProgress(this, 85, 35, PROG_ARROW_RIGHT, tile));
         addElement(ThermalGuiHelper.createDefaultSpeed(this, 62, 35, SCALE_SUN, tile));
     }
 

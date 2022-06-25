@@ -65,15 +65,4 @@ public class MachineCrafterScreen extends MachineScreenReconfigurable<MachineCra
         return true;
     }
 
-    protected void addButton() {
-
-        ElementBase setRecipe = new ElementButton(this, 95, 47)
-                .setName("SetRecipe")
-                .setSize(18, 18)
-                .setTexture(TEX_ACCEPT, 54, 18)
-                .setEnabled(menu.tile::hasRecipeChanges);
-
-        addElement(setRecipe);
-    }
-
 }

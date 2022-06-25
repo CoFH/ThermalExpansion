@@ -40,7 +40,7 @@ public class MachineSmelterScreen extends MachineScreenReconfigurable<MachineSme
         addElement(createOutputSlot(this, 125, 44, tile));
         addElement(createOutputSlot(this, 143, 44, tile));
 
-        addElement(ThermalGuiHelper.createDefaultProgress(this, 94, 34, PROG_ARROW_RIGHT, tile));
+        addElement(ThermalGuiHelper.createDefaultProgress(this, 94, 35, PROG_ARROW_RIGHT, tile));
         addElement(ThermalGuiHelper.createDefaultSpeed(this, 53, 35, SCALE_FLAME, tile));
     }
 

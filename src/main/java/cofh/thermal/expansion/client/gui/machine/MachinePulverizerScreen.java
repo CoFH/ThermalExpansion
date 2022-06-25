@@ -38,7 +38,7 @@ public class MachinePulverizerScreen extends MachineScreenReconfigurable<Machine
         addElement(createOutputSlot(this, 107, 44, tile));
         addElement(createOutputSlot(this, 125, 44, tile));
 
-        addElement(ThermalGuiHelper.createDefaultProgress(this, 72, 34, PROG_ARROW_RIGHT, tile));
+        addElement(ThermalGuiHelper.createDefaultProgress(this, 72, 35, PROG_ARROW_RIGHT, tile));
         addElement(ThermalGuiHelper.createDefaultSpeed(this, 44, 35, SCALE_CRUSH, tile));
     }
 

@@ -72,7 +72,7 @@ public class BottlerRecipeCategory extends ThermalRecipeCategory<BottlerRecipe> 
                 .addItemStack(outputs.get(0))
                 .addTooltipCallback(defaultOutputTooltip(recipe.getOutputItemChances().get(0)));
 
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 25, 11)
+        builder.addSlot(RecipeIngredientRole.INPUT, 25, 11)
                 .addIngredients(ForgeTypes.FLUID_STACK, List.of(inputFluids.get(0).getFluids()))
                 .setFluidRenderer(tankSize(TANK_MEDIUM), false, 16, 40)
                 .setOverlay(tankOverlay, 0, 0)
@@ -84,16 +84,16 @@ public class BottlerRecipeCategory extends ThermalRecipeCategory<BottlerRecipe> 
 
         super.draw(recipe, recipeSlotsView, matrixStack, mouseX, mouseY);
 
-        progressBackground.draw(matrixStack, 78, 23);
+        progressBackground.draw(matrixStack, 78, 24);
         tankBackground.draw(matrixStack, 24, 10);
         speedBackground.draw(matrixStack, 52, 34);
 
         if (!recipe.getInputFluids().isEmpty()) {
             RenderHelper.drawFluid(matrixStack, 78, 23, recipe.getInputFluids().get(0).getFluids()[0], 24, 16);
-            progressFluidBackground.draw(matrixStack, 78, 23);
-            progressFluid.draw(matrixStack, 78, 23);
+            progressFluidBackground.draw(matrixStack, 78, 24);
+            progressFluid.draw(matrixStack, 78, 24);
         } else {
-            progress.draw(matrixStack, 78, 23);
+            progress.draw(matrixStack, 78, 24);
         }
         speed.draw(matrixStack, 52, 34);
     }

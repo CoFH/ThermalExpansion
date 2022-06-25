@@ -94,17 +94,17 @@ public class BrewerRecipeCategory extends ThermalRecipeCategory<BrewerRecipe> {
 
         super.draw(recipe, recipeSlotsView, matrixStack, mouseX, mouseY);
 
-        progressBackground.draw(matrixStack, 78, 23);
+        progressBackground.draw(matrixStack, 78, 24);
         tankInput.draw(matrixStack, 24, 10);
         tankOutput.draw(matrixStack, 115, 10);
         speedBackground.draw(matrixStack, 52, 34);
 
         if (!recipe.getInputFluids().isEmpty()) {
             RenderHelper.drawFluid(matrixStack, 78, 23, recipe.getInputFluids().get(0).getFluids()[0], 24, 16);
-            progressFluidBackground.draw(matrixStack, 78, 23);
-            progressFluid.draw(matrixStack, 78, 23);
+            progressFluidBackground.draw(matrixStack, 78, 24);
+            progressFluid.draw(matrixStack, 78, 24);
         } else {
-            progress.draw(matrixStack, 78, 23);
+            progress.draw(matrixStack, 78, 24);
         }
         speed.draw(matrixStack, 52, 34);
     }
