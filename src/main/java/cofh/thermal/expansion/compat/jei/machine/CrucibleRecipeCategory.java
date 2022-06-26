@@ -85,7 +85,7 @@ public class CrucibleRecipeCategory extends ThermalRecipeCategory<CrucibleRecipe
         speedBackground.draw(matrixStack, 43, 33);
 
         if (!recipe.getOutputFluids().isEmpty()) {
-            RenderHelper.drawFluid(matrixStack, 74, 23, recipe.getOutputFluids().get(0), 24, 16);
+            RenderHelper.drawFluid(matrixStack, 74, 24, recipe.getOutputFluids().get(0), 24, 16);
             progressFluidBackground.draw(matrixStack, 74, 24);
             progressFluid.draw(matrixStack, 74, 24);
         } else {

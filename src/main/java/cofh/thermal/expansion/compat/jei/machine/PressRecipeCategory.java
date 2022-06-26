@@ -107,7 +107,7 @@ public class PressRecipeCategory extends ThermalRecipeCategory<PressRecipe> {
         speedBackground.draw(matrixStack, 43, 24);
 
         if (!recipe.getOutputFluids().isEmpty()) {
-            RenderHelper.drawFluid(matrixStack, 69, 23, recipe.getOutputFluids().get(0), 24, 16);
+            RenderHelper.drawFluid(matrixStack, 69, 24, recipe.getOutputFluids().get(0), 24, 16);
             progressFluidBackground.draw(matrixStack, 69, 24);
             progressFluid.draw(matrixStack, 69, 24);
         } else {

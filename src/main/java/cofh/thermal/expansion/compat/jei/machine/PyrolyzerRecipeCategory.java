@@ -110,7 +110,7 @@ public class PyrolyzerRecipeCategory extends ThermalRecipeCategory<PyrolyzerReci
         speedBackground.draw(matrixStack, 34, 33);
 
         if (!recipe.getOutputFluids().isEmpty()) {
-            RenderHelper.drawFluid(matrixStack, 62, 23, recipe.getOutputFluids().get(0), 24, 16);
+            RenderHelper.drawFluid(matrixStack, 62, 24, recipe.getOutputFluids().get(0), 24, 16);
             progressFluidBackground.draw(matrixStack, 62, 24);
             progressFluid.draw(matrixStack, 62, 24);
         } else {
