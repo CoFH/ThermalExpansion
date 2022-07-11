@@ -29,6 +29,7 @@ public class TExpTileEntities {
         TILE_ENTITIES.register(ID_MACHINE_PYROLYZER, () -> BlockEntityType.Builder.of(MachinePyrolyzerTile::new, MACHINE_PYROLYZER_BLOCK).build(null));
         TILE_ENTITIES.register(ID_MACHINE_BOTTLER, () -> BlockEntityType.Builder.of(MachineBottlerTile::new, MACHINE_BOTTLER_BLOCK).build(null));
         TILE_ENTITIES.register(ID_MACHINE_BREWER, () -> BlockEntityType.Builder.of(MachineBrewerTile::new, MACHINE_BREWER_BLOCK).build(null));
+        TILE_ENTITIES.register(ID_MACHINE_CRYSTALLIZER, () -> BlockEntityType.Builder.of(MachineCrystallizerTile::new, MACHINE_CRYSTALLIZER_BLOCK).build(null));
         TILE_ENTITIES.register(ID_MACHINE_CRAFTER, () -> BlockEntityType.Builder.of(MachineCrafterTile::new, MACHINE_CRAFTER_BLOCK).build(null));
 
         TILE_ENTITIES.register(ID_DYNAMO_STIRLING, () -> BlockEntityType.Builder.of(DynamoStirlingTile::new, DYNAMO_STIRLING_BLOCK).build(null));

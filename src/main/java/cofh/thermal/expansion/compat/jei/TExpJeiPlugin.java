@@ -69,6 +69,7 @@ public class TExpJeiPlugin implements IModPlugin {
         registration.addRecipes(BOTTLER, recipeManager.getAllRecipesFor(RECIPE_BOTTLER));
         registration.addRecipes(BOTTLER, BottlerRecipeManager.instance().getConvertedRecipes());
 
+        registration.addRecipes(CRYSTALLIZER, recipeManager.getAllRecipesFor(RECIPE_CRYSTALLIZER));
 
         registration.addRecipes(STIRLING_FUEL, recipeManager.getAllRecipesFor(FUEL_STIRLING));
         registration.addRecipes(STIRLING_FUEL, StirlingFuelManager.instance().getConvertedFuels());
@@ -108,6 +109,7 @@ public class TExpJeiPlugin implements IModPlugin {
         registration.addRecipeCategories(new PyrolyzerRecipeCategory(registration.getJeiHelpers().getGuiHelper(), new ItemStack(MACHINE_PYROLYZER_BLOCK), ID_RECIPE_PYROLYZER));
         registration.addRecipeCategories(new BrewerRecipeCategory(registration.getJeiHelpers().getGuiHelper(), new ItemStack(MACHINE_BREWER_BLOCK), ID_RECIPE_BREWER));
         registration.addRecipeCategories(new BottlerRecipeCategory(registration.getJeiHelpers().getGuiHelper(), new ItemStack(MACHINE_BOTTLER_BLOCK), ID_RECIPE_BOTTLER));
+        registration.addRecipeCategories(new CrystallizerRecipeCategory(registration.getJeiHelpers().getGuiHelper(), new ItemStack(MACHINE_CRYSTALLIZER_BLOCK), ID_RECIPE_CRYSTALLIZER));
 
         registration.addRecipeCategories(new StirlingFuelCategory(registration.getJeiHelpers().getGuiHelper(), new ItemStack(DYNAMO_STIRLING_BLOCK), ID_FUEL_STIRLING));
         registration.addRecipeCategories(new CompressionFuelCategory(registration.getJeiHelpers().getGuiHelper(), new ItemStack(DYNAMO_COMPRESSION_BLOCK), ID_FUEL_COMPRESSION));
@@ -146,6 +148,7 @@ public class TExpJeiPlugin implements IModPlugin {
         registration.addRecipeClickArea(MachinePyrolyzerScreen.class, 72, progressY, progressW, progressH, PYROLYZER);
         registration.addRecipeClickArea(MachineBrewerScreen.class, 88, progressY, progressW, progressH, BREWER);
         registration.addRecipeClickArea(MachineBottlerScreen.class, 88, progressY, progressW, progressH, BOTTLER);
+        registration.addRecipeClickArea(MachineCrystallizerScreen.class, 105, progressY, progressW, progressH, CRYSTALLIZER);
 
         registration.addRecipeClickArea(DynamoStirlingScreen.class, 80, progressY, progressH, progressH, STIRLING_FUEL);
         registration.addRecipeClickArea(DynamoCompressionScreen.class, 80, progressY, progressH, progressH, COMPRESSION_FUEL);
@@ -179,6 +182,7 @@ public class TExpJeiPlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(MACHINE_PYROLYZER_BLOCK), PYROLYZER);
         registration.addRecipeCatalyst(new ItemStack(MACHINE_BREWER_BLOCK), BREWER);
         registration.addRecipeCatalyst(new ItemStack(MACHINE_BOTTLER_BLOCK), BOTTLER);
+        registration.addRecipeCatalyst(new ItemStack(MACHINE_CRYSTALLIZER_BLOCK), CRYSTALLIZER);
 
         registration.addRecipeCatalyst(new ItemStack(DYNAMO_STIRLING_BLOCK), STIRLING_FUEL);
         registration.addRecipeCatalyst(new ItemStack(DYNAMO_COMPRESSION_BLOCK), COMPRESSION_FUEL);
@@ -226,6 +230,7 @@ public class TExpJeiPlugin implements IModPlugin {
     public static final RecipeType<RefineryRecipe> REFINERY = new RecipeType<>(ID_RECIPE_REFINERY, RefineryRecipe.class);
     public static final RecipeType<PyrolyzerRecipe> PYROLYZER = new RecipeType<>(ID_RECIPE_PYROLYZER, PyrolyzerRecipe.class);
     public static final RecipeType<BottlerRecipe> BOTTLER = new RecipeType<>(ID_RECIPE_BOTTLER, BottlerRecipe.class);
+    public static final RecipeType<CrystallizerRecipe> CRYSTALLIZER = new RecipeType<>(ID_RECIPE_CRYSTALLIZER, CrystallizerRecipe.class);
     public static final RecipeType<BrewerRecipe> BREWER = new RecipeType<>(ID_RECIPE_BREWER, BrewerRecipe.class);
 
     public static final RecipeType<PulverizerCatalyst> PULVERIZER_CATALYST = new RecipeType<>(ID_CATALYST_PULVERIZER, PulverizerCatalyst.class);

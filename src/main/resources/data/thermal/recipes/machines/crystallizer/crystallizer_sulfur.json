@@ -1,0 +1,18 @@
+{
+  "type": "thermal:crystallizer",
+  "ingredients": [
+    {
+      "fluid": "minecraft:water",
+      "amount": 500
+    },
+    {
+      "tag": "forge:dusts/sulfur"
+    }
+  ],
+  "result": [
+    {
+      "item": "thermal:sulfur"
+    }
+  ],
+  "energy": 5000
+}

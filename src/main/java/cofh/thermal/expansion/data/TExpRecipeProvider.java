@@ -3,6 +3,7 @@ package cofh.thermal.expansion.data;
 import cofh.lib.data.RecipeProviderCoFH;
 import cofh.lib.util.references.CoFHTags;
 import cofh.thermal.lib.common.ThermalFlags;
+import cofh.thermal.lib.util.references.ThermalTags;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
@@ -198,6 +199,18 @@ public class TExpRecipeProvider extends RecipeProviderCoFH {
                 .define('P', rfCoil)
                 .define('X', Items.BUCKET)
                 .define('Y', Tags.Items.GLASS)
+                .pattern(" X ")
+                .pattern("YCY")
+                .pattern("IPI")
+                .unlockedBy("has_machine_frame", has(machineFrame))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(reg.get(ID_MACHINE_CRYSTALLIZER))
+                .define('C', machineFrame)
+                .define('I', CoFHTags.Items.GEARS_CONSTANTAN)
+                .define('P', rfCoil)
+                .define('X', ThermalTags.Items.HARDENED_GLASS)
+                .define('Y', CoFHTags.Items.PLATES_SIGNALUM)
                 .pattern(" X ")
                 .pattern("YCY")
                 .pattern("IPI")

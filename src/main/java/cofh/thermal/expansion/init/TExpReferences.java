@@ -168,5 +168,12 @@ public class TExpReferences {
     public static final BlockEntityType<MachineCrafterTile> MACHINE_CRAFTER_TILE = null;
     @ObjectHolder (ID_MACHINE_CRAFTER)
     public static final MenuType<MachineCrafterContainer> MACHINE_CRAFTER_CONTAINER = null;
+
+    @ObjectHolder (ID_MACHINE_CRYSTALLIZER)
+    public static final Block MACHINE_CRYSTALLIZER_BLOCK = null;
+    @ObjectHolder (ID_MACHINE_CRYSTALLIZER)
+    public static final BlockEntityType<MachineCrystallizerTile> MACHINE_CRYSTALLIZER_TILE = null;
+    @ObjectHolder (ID_MACHINE_CRYSTALLIZER)
+    public static final MenuType<MachineCrystallizerContainer> MACHINE_CRYSTALLIZER_CONTAINER = null;
     // endregion
 }

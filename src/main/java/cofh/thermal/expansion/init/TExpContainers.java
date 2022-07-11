@@ -30,6 +30,7 @@ public class TExpContainers {
         CONTAINERS.register(ID_MACHINE_PYROLYZER, () -> IForgeMenuType.create((windowId, inv, data) -> new MachinePyrolyzerContainer(windowId, getClientWorld(), data.readBlockPos(), inv, getClientPlayer())));
         CONTAINERS.register(ID_MACHINE_BOTTLER, () -> IForgeMenuType.create((windowId, inv, data) -> new MachineBottlerContainer(windowId, getClientWorld(), data.readBlockPos(), inv, getClientPlayer())));
         CONTAINERS.register(ID_MACHINE_BREWER, () -> IForgeMenuType.create((windowId, inv, data) -> new MachineBrewerContainer(windowId, getClientWorld(), data.readBlockPos(), inv, getClientPlayer())));
+        CONTAINERS.register(ID_MACHINE_CRYSTALLIZER, () -> IForgeMenuType.create((windowId, inv, data) -> new MachineCrystallizerContainer(windowId, getClientWorld(), data.readBlockPos(), inv, getClientPlayer())));
         CONTAINERS.register(ID_MACHINE_CRAFTER, () -> IForgeMenuType.create((windowId, inv, data) -> new MachineCrafterContainer(windowId, getClientWorld(), data.readBlockPos(), inv, getClientPlayer())));
 
         CONTAINERS.register(ID_DYNAMO_STIRLING, () -> IForgeMenuType.create((windowId, inv, data) -> new DynamoStirlingContainer(windowId, getClientWorld(), data.readBlockPos(), inv, getClientPlayer())));

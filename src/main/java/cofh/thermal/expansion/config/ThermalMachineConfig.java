@@ -131,6 +131,15 @@ public class ThermalMachineConfig implements IBaseConfig {
 
             builder.pop();
         }
+        if (getFlag(ID_MACHINE_CRYSTALLIZER).getAsBoolean()) {
+            builder.push("Crystallizer");
+
+            machineCrystallizerPower = builder
+                    .comment("This sets the base power consumption (RF/t) for the Crystallizer.")
+                    .defineInRange("Base Power", CrystallizerRecipeManager.instance().getBasePower(), CrystallizerRecipeManager.instance().getMinPower(), CrystallizerRecipeManager.instance().getMaxPower());
+
+            builder.pop();
+        }
         if (getFlag(ID_MACHINE_CRAFTER).getAsBoolean()) {
             builder.push("Crafter");
 
@@ -185,6 +194,9 @@ public class ThermalMachineConfig implements IBaseConfig {
         if (machineBrewerPower != null) {
             BrewerRecipeManager.instance().setBasePower(machineBrewerPower.get());
         }
+        if (machineCrystallizerPower != null) {
+            CrystallizerRecipeManager.instance().setBasePower(machineCrystallizerPower.get());
+        }
         if (machineCrafterPower != null) {
             CrafterRecipeManager.instance().setBasePower(machineCrafterPower.get());
         }
@@ -204,6 +216,7 @@ public class ThermalMachineConfig implements IBaseConfig {
     private ForgeConfigSpec.IntValue machinePyrolyzerPower;
     private ForgeConfigSpec.IntValue machineBottlerPower;
     private ForgeConfigSpec.IntValue machineBrewerPower;
+    private ForgeConfigSpec.IntValue machineCrystallizerPower;
     private ForgeConfigSpec.IntValue machineCrafterPower;
     // endregion
 }
