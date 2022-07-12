@@ -3,7 +3,6 @@ package cofh.thermal.expansion.compat.jei.machine;
 import cofh.core.util.helpers.RenderHelper;
 import cofh.lib.fluid.FluidIngredient;
 import cofh.thermal.core.util.managers.machine.InsolatorRecipeManager;
-import cofh.thermal.core.util.managers.machine.PulverizerRecipeManager;
 import cofh.thermal.core.util.recipes.machine.InsolatorRecipe;
 import cofh.thermal.expansion.client.gui.machine.MachineInsolatorScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
