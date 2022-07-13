@@ -14,8 +14,8 @@ plugins {
     id 'maven-publish'
     id 'net.covers1624.signing' version '1.1.4'
 }
-
 apply plugin: 'net.minecraftforge.gradle'
+apply from: 'https://raw.githubusercontent.com/SizableShrimp/ForgeUpdatesRemapper/main/remapper.gradle'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
