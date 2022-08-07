@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[34,)"
+loaderVersion = "[41,)"
 issueTrackerURL = "https://github.com/cofh/feedback"
 license = "CoFH - Don't Be A Jerk (Learn, Don't Steal)"
 
@@ -28,7 +28,7 @@ side = "BOTH"
 [[dependencies.thermal_expansion]]
 modId = "forge"
 mandatory = true
-versionRange = "[41.0.43,)"
+versionRange = "[41.1.0,)"
 ordering = "AFTER"
 side = "BOTH"
 
