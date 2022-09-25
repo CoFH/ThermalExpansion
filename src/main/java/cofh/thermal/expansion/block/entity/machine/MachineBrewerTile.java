@@ -17,8 +17,8 @@ import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
 
-import static cofh.lib.util.StorageGroup.*;
-import static cofh.lib.util.constants.Constants.*;
+import static cofh.lib.api.StorageGroup.*;
+import static cofh.lib.util.Constants.*;
 import static cofh.thermal.expansion.init.TExpReferences.MACHINE_BREWER_TILE;
 
 public class MachineBrewerTile extends MachineTileBase {

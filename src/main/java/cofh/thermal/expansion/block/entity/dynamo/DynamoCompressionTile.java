@@ -21,9 +21,9 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import static cofh.core.client.renderer.model.ModelUtils.FLUID;
-import static cofh.lib.util.StorageGroup.INPUT;
-import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
-import static cofh.lib.util.constants.Constants.TANK_SMALL;
+import static cofh.lib.api.StorageGroup.INPUT;
+import static cofh.lib.util.Constants.BUCKET_VOLUME;
+import static cofh.lib.util.Constants.TANK_SMALL;
 import static cofh.thermal.expansion.init.TExpReferences.DYNAMO_COMPRESSION_TILE;
 import static cofh.thermal.lib.util.managers.SingleFluidFuelManager.FLUID_FUEL_AMOUNT;
 

@@ -10,8 +10,8 @@ import net.minecraft.world.level.material.Material;
 
 import java.util.function.IntSupplier;
 
-import static cofh.lib.util.constants.Constants.ACTIVE;
-import static cofh.lib.util.constants.Constants.ID_THERMAL_EXPANSION;
+import static cofh.lib.util.constants.BlockStatePropertiesCoFH.ACTIVE;
+import static cofh.lib.util.constants.ModIds.ID_THERMAL_EXPANSION;
 import static cofh.lib.util.helpers.BlockHelper.lightValue;
 import static cofh.thermal.core.util.RegistrationHelper.registerAugmentableBlock;
 import static cofh.thermal.expansion.init.TExpReferences.*;

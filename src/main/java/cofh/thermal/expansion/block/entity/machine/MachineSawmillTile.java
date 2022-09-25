@@ -15,7 +15,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 
-import static cofh.lib.util.StorageGroup.*;
+import static cofh.lib.api.StorageGroup.*;
 import static cofh.thermal.expansion.init.TExpReferences.MACHINE_SAWMILL_TILE;
 import static cofh.thermal.expansion.init.TExpSounds.SOUND_MACHINE_SAWMILL;
 

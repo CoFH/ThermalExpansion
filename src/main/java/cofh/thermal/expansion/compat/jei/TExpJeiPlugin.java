@@ -24,7 +24,7 @@ import net.minecraft.world.item.crafting.RecipeManager;
 
 import java.util.ArrayList;
 
-import static cofh.lib.util.constants.Constants.ID_THERMAL;
+import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.thermal.core.ThermalCore.ITEMS;
 import static cofh.thermal.core.init.TCoreRecipeTypes.*;
 import static cofh.thermal.expansion.init.TExpReferences.*;

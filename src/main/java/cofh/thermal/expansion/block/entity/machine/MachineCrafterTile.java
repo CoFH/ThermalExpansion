@@ -31,9 +31,9 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Optional;
 
-import static cofh.lib.util.StorageGroup.*;
-import static cofh.lib.util.constants.Constants.BUCKET_VOLUME;
-import static cofh.lib.util.constants.Constants.TANK_MEDIUM;
+import static cofh.lib.api.StorageGroup.*;
+import static cofh.lib.util.Constants.BUCKET_VOLUME;
+import static cofh.lib.util.Constants.TANK_MEDIUM;
 import static cofh.thermal.expansion.init.TExpReferences.MACHINE_CRAFTER_TILE;
 
 public class MachineCrafterTile extends MachineTileBase {

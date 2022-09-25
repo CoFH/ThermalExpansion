@@ -13,7 +13,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nullable;
 
-import static cofh.lib.util.StorageGroup.INPUT;
+import static cofh.lib.api.StorageGroup.INPUT;
 import static cofh.thermal.expansion.init.TExpReferences.DYNAMO_GOURMAND_TILE;
 
 public class DynamoGourmandTile extends DynamoTileBase {
