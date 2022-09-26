@@ -25,9 +25,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import static cofh.core.util.references.CoreReferences.FLUID_POTION;
 import static cofh.lib.util.Constants.BOTTLE_VOLUME;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
-import static cofh.lib.util.references.CoreReferences.FLUID_POTION;
 
 public class PotionFluidRecipeManagerPlugin implements IRecipeManagerPlugin {
 
