@@ -159,6 +159,7 @@ public class TExpJeiPlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(BLOCKS.get(ID_MACHINE_PYROLYZER)), PYROLYZER_TYPE);
         registration.addRecipeCatalyst(new ItemStack(BLOCKS.get(ID_MACHINE_BOTTLER)), BOTTLER_TYPE);
         registration.addRecipeCatalyst(new ItemStack(BLOCKS.get(ID_MACHINE_BREWER)), BREWER_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(BLOCKS.get(ID_MACHINE_CRYSTALLIZER)), CRYSTALLIZER_TYPE);
 
         registration.addRecipeCatalyst(new ItemStack(BLOCKS.get(ID_MACHINE_PULVERIZER)), PULVERIZER_CATALYST_TYPE);
         registration.addRecipeCatalyst(new ItemStack(BLOCKS.get(ID_MACHINE_SMELTER)), SMELTER_CATALYST_TYPE);
