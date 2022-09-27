@@ -8,7 +8,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
-import static cofh.thermal.expansion.init.TExpReferences.DYNAMO_MAGMATIC_CONTAINER;
+import static cofh.thermal.expansion.init.TExpContainers.DYNAMO_MAGMATIC_CONTAINER;
 
 public class DynamoMagmaticContainer extends TileContainer {
 
@@ -16,7 +16,7 @@ public class DynamoMagmaticContainer extends TileContainer {
 
     public DynamoMagmaticContainer(int windowId, Level level, BlockPos pos, Inventory inventory, Player player) {
 
-        super(DYNAMO_MAGMATIC_CONTAINER, windowId, level, pos, inventory, player);
+        super(DYNAMO_MAGMATIC_CONTAINER.get(), windowId, level, pos, inventory, player);
         this.tile = (DynamoTileBase) level.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 

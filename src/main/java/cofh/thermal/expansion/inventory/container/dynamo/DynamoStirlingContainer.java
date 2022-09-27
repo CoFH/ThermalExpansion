@@ -9,7 +9,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
-import static cofh.thermal.expansion.init.TExpReferences.DYNAMO_STIRLING_CONTAINER;
+import static cofh.thermal.expansion.init.TExpContainers.DYNAMO_STIRLING_CONTAINER;
 
 public class DynamoStirlingContainer extends TileContainer {
 
@@ -17,7 +17,7 @@ public class DynamoStirlingContainer extends TileContainer {
 
     public DynamoStirlingContainer(int windowId, Level level, BlockPos pos, Inventory inventory, Player player) {
 
-        super(DYNAMO_STIRLING_CONTAINER, windowId, level, pos, inventory, player);
+        super(DYNAMO_STIRLING_CONTAINER.get(), windowId, level, pos, inventory, player);
         this.tile = (DynamoTileBase) level.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 

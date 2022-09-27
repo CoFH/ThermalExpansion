@@ -10,7 +10,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_CRYSTALLIZER_CONTAINER;
+import static cofh.thermal.expansion.init.TExpContainers.MACHINE_CRYSTALLIZER_CONTAINER;
 
 public class MachineCrystallizerContainer extends TileContainer {
 
@@ -18,7 +18,7 @@ public class MachineCrystallizerContainer extends TileContainer {
 
     public MachineCrystallizerContainer(int windowId, Level level, BlockPos pos, Inventory inventory, Player player) {
 
-        super(MACHINE_CRYSTALLIZER_CONTAINER, windowId, level, pos, inventory, player);
+        super(MACHINE_CRYSTALLIZER_CONTAINER.get(), windowId, level, pos, inventory, player);
         this.tile = (ReconfigurableTile4Way) level.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 

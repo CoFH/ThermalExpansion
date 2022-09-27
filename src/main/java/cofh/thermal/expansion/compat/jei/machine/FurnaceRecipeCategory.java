@@ -18,8 +18,9 @@ import net.minecraft.world.item.crafting.Ingredient;
 import java.util.List;
 
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.defaultOutputTooltip;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_FURNACE_BLOCK;
+import static cofh.thermal.lib.common.ThermalIDs.ID_MACHINE_FURNACE;
 
 public class FurnaceRecipeCategory extends ThermalRecipeCategory<FurnaceRecipe> {
 
@@ -30,7 +31,7 @@ public class FurnaceRecipeCategory extends ThermalRecipeCategory<FurnaceRecipe> 
         background = guiHelper.drawableBuilder(MachineFurnaceScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)
                 .build();
-        name = getTextComponent(MACHINE_FURNACE_BLOCK.getDescriptionId());
+        name = getTextComponent(BLOCKS.get(ID_MACHINE_FURNACE).getDescriptionId());
 
         progressBackground = Drawables.getDrawables(guiHelper).getProgress(Drawables.PROGRESS_ARROW);
         speedBackground = Drawables.getDrawables(guiHelper).getScale(Drawables.SCALE_FLAME);

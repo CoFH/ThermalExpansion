@@ -7,7 +7,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_SMELTER_BLOCK;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
+import static cofh.thermal.lib.common.ThermalIDs.ID_MACHINE_SMELTER;
 
 public class SmelterCatalystCategory extends ThermalCatalystCategory<SmelterCatalyst> {
 
@@ -15,7 +16,7 @@ public class SmelterCatalystCategory extends ThermalCatalystCategory<SmelterCata
 
         super(guiHelper, icon, uid);
 
-        name = getTextComponent(MACHINE_SMELTER_BLOCK.getDescriptionId()).append(": ").append(getTextComponent("info.thermal.catalysts"));
+        name = getTextComponent(BLOCKS.get(ID_MACHINE_SMELTER).getDescriptionId()).append(": ").append(getTextComponent("info.thermal.catalysts"));
     }
 
     @Override

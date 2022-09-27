@@ -25,7 +25,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-import static cofh.core.util.references.CoreReferences.FLUID_POTION;
+import static cofh.core.init.CoreFluids.POTION_FLUID;
 import static cofh.lib.util.Constants.BOTTLE_VOLUME;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 
@@ -44,7 +44,7 @@ public class PotionFluidRecipeManagerPlugin implements IRecipeManagerPlugin {
             List<BottlerRecipe> retList = new ArrayList<>();
             if (focus.getRole() == RecipeIngredientRole.INPUT) {
                 var fluidIngredient = focus.getTypedValue().getIngredient(ForgeTypes.FLUID_STACK);
-                if (fluidIngredient.isPresent() && fluidIngredient.get().getFluid() == FLUID_POTION) {
+                if (fluidIngredient.isPresent() && fluidIngredient.get().getFluid() == POTION_FLUID.get()) {
                     FluidStack fluid = fluidIngredient.get();
                     if (fluid.hasTag()) {
                         ItemStack item = new ItemStack(Items.POTION);

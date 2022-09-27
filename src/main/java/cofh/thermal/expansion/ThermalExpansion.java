@@ -17,7 +17,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL_EXPANSION;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.ThermalCore.CONFIG_MANAGER;
-import static cofh.thermal.expansion.init.TExpReferences.*;
+import static cofh.thermal.expansion.init.TExpContainers.*;
 import static cofh.thermal.lib.common.ThermalFlags.*;
 import static cofh.thermal.lib.common.ThermalIDs.*;
 
@@ -120,29 +120,29 @@ public class ThermalExpansion {
     // region HELPERS
     private void registerGuiFactories() {
 
-        MenuScreens.register(MACHINE_FURNACE_CONTAINER, MachineFurnaceScreen::new);
-        MenuScreens.register(MACHINE_SAWMILL_CONTAINER, MachineSawmillScreen::new);
-        MenuScreens.register(MACHINE_PULVERIZER_CONTAINER, MachinePulverizerScreen::new);
-        MenuScreens.register(MACHINE_SMELTER_CONTAINER, MachineSmelterScreen::new);
-        MenuScreens.register(MACHINE_INSOLATOR_CONTAINER, MachineInsolatorScreen::new);
-        MenuScreens.register(MACHINE_CENTRIFUGE_CONTAINER, MachineCentrifugeScreen::new);
-        MenuScreens.register(MACHINE_PRESS_CONTAINER, MachinePressScreen::new);
-        MenuScreens.register(MACHINE_CRUCIBLE_CONTAINER, MachineCrucibleScreen::new);
-        MenuScreens.register(MACHINE_CHILLER_CONTAINER, MachineChillerScreen::new);
-        MenuScreens.register(MACHINE_REFINERY_CONTAINER, MachineRefineryScreen::new);
-        MenuScreens.register(MACHINE_PYROLYZER_CONTAINER, MachinePyrolyzerScreen::new);
-        MenuScreens.register(MACHINE_BREWER_CONTAINER, MachineBrewerScreen::new);
-        MenuScreens.register(MACHINE_BOTTLER_CONTAINER, MachineBottlerScreen::new);
-        MenuScreens.register(MACHINE_CRYSTALLIZER_CONTAINER, MachineCrystallizerScreen::new);
-        MenuScreens.register(MACHINE_CRAFTER_CONTAINER, MachineCrafterScreen::new);
+        MenuScreens.register(MACHINE_FURNACE_CONTAINER.get(), MachineFurnaceScreen::new);
+        MenuScreens.register(MACHINE_SAWMILL_CONTAINER.get(), MachineSawmillScreen::new);
+        MenuScreens.register(MACHINE_PULVERIZER_CONTAINER.get(), MachinePulverizerScreen::new);
+        MenuScreens.register(MACHINE_SMELTER_CONTAINER.get(), MachineSmelterScreen::new);
+        MenuScreens.register(MACHINE_INSOLATOR_CONTAINER.get(), MachineInsolatorScreen::new);
+        MenuScreens.register(MACHINE_CENTRIFUGE_CONTAINER.get(), MachineCentrifugeScreen::new);
+        MenuScreens.register(MACHINE_PRESS_CONTAINER.get(), MachinePressScreen::new);
+        MenuScreens.register(MACHINE_CRUCIBLE_CONTAINER.get(), MachineCrucibleScreen::new);
+        MenuScreens.register(MACHINE_CHILLER_CONTAINER.get(), MachineChillerScreen::new);
+        MenuScreens.register(MACHINE_REFINERY_CONTAINER.get(), MachineRefineryScreen::new);
+        MenuScreens.register(MACHINE_PYROLYZER_CONTAINER.get(), MachinePyrolyzerScreen::new);
+        MenuScreens.register(MACHINE_BREWER_CONTAINER.get(), MachineBrewerScreen::new);
+        MenuScreens.register(MACHINE_BOTTLER_CONTAINER.get(), MachineBottlerScreen::new);
+        MenuScreens.register(MACHINE_CRYSTALLIZER_CONTAINER.get(), MachineCrystallizerScreen::new);
+        MenuScreens.register(MACHINE_CRAFTER_CONTAINER.get(), MachineCrafterScreen::new);
 
-        MenuScreens.register(DYNAMO_STIRLING_CONTAINER, DynamoStirlingScreen::new);
-        MenuScreens.register(DYNAMO_COMPRESSION_CONTAINER, DynamoCompressionScreen::new);
-        MenuScreens.register(DYNAMO_MAGMATIC_CONTAINER, DynamoMagmaticScreen::new);
-        MenuScreens.register(DYNAMO_NUMISMATIC_CONTAINER, DynamoNumismaticScreen::new);
-        MenuScreens.register(DYNAMO_LAPIDARY_CONTAINER, DynamoLapidaryScreen::new);
-        MenuScreens.register(DYNAMO_DISENCHANTMENT_CONTAINER, DynamoDisenchantmentScreen::new);
-        MenuScreens.register(DYNAMO_GOURMAND_CONTAINER, DynamoGourmandScreen::new);
+        MenuScreens.register(DYNAMO_STIRLING_CONTAINER.get(), DynamoStirlingScreen::new);
+        MenuScreens.register(DYNAMO_COMPRESSION_CONTAINER.get(), DynamoCompressionScreen::new);
+        MenuScreens.register(DYNAMO_MAGMATIC_CONTAINER.get(), DynamoMagmaticScreen::new);
+        MenuScreens.register(DYNAMO_NUMISMATIC_CONTAINER.get(), DynamoNumismaticScreen::new);
+        MenuScreens.register(DYNAMO_LAPIDARY_CONTAINER.get(), DynamoLapidaryScreen::new);
+        MenuScreens.register(DYNAMO_DISENCHANTMENT_CONTAINER.get(), DynamoDisenchantmentScreen::new);
+        MenuScreens.register(DYNAMO_GOURMAND_CONTAINER.get(), DynamoGourmandScreen::new);
     }
 
     private void registerRenderLayers() {

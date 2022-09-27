@@ -22,9 +22,10 @@ import java.util.List;
 
 import static cofh.core.util.helpers.ItemHelper.cloneStack;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.catalystTooltip;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.catalyzedOutputTooltip;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_SMELTER_BLOCK;
+import static cofh.thermal.lib.common.ThermalIDs.ID_MACHINE_SMELTER;
 
 public class SmelterRecipeCategory extends ThermalRecipeCategory<SmelterRecipe> {
 
@@ -35,7 +36,7 @@ public class SmelterRecipeCategory extends ThermalRecipeCategory<SmelterRecipe> 
         background = guiHelper.drawableBuilder(MachineSmelterScreen.TEXTURE, 26, 11, 140, 62)
                 .addPadding(0, 0, 16, 8)
                 .build();
-        name = getTextComponent(MACHINE_SMELTER_BLOCK.getDescriptionId());
+        name = getTextComponent(BLOCKS.get(ID_MACHINE_SMELTER).getDescriptionId());
 
         progressBackground = Drawables.getDrawables(guiHelper).getProgress(Drawables.PROGRESS_ARROW);
         speedBackground = Drawables.getDrawables(guiHelper).getScale(Drawables.SCALE_FLAME);

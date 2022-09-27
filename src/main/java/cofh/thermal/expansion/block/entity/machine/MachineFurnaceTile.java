@@ -1,6 +1,6 @@
 package cofh.thermal.expansion.block.entity.machine;
 
-import cofh.lib.client.audio.ConditionalSound;
+import cofh.lib.client.sounds.ConditionalSoundInstance;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.machine.FurnaceRecipeManager;
@@ -18,8 +18,8 @@ import javax.annotation.Nullable;
 
 import static cofh.core.util.helpers.ItemHelper.itemsEqualWithTags;
 import static cofh.lib.api.StorageGroup.*;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_FURNACE_TILE;
 import static cofh.thermal.expansion.init.TExpSounds.SOUND_MACHINE_FURNACE;
+import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_FURNACE_TILE;
 
 public class MachineFurnaceTile extends MachineTileBase {
 
@@ -28,7 +28,7 @@ public class MachineFurnaceTile extends MachineTileBase {
 
     public MachineFurnaceTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_FURNACE_TILE, pos, state);
+        super(MACHINE_FURNACE_TILE.get(), pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
         inventory.addSlot(outputSlot, OUTPUT);
@@ -64,7 +64,7 @@ public class MachineFurnaceTile extends MachineTileBase {
     @Override
     protected Object getSound() {
 
-        return new ConditionalSound(SOUND_MACHINE_FURNACE, SoundSource.AMBIENT, this, () -> !remove && isActive);
+        return new ConditionalSoundInstance(SOUND_MACHINE_FURNACE.get(), SoundSource.AMBIENT, this, () -> !remove && isActive);
     }
 
     // region OPTIMIZATION

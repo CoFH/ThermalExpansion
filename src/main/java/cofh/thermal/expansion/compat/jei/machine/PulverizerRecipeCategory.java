@@ -22,9 +22,10 @@ import java.util.List;
 
 import static cofh.core.util.helpers.ItemHelper.cloneStack;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.catalystTooltip;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.catalyzedOutputTooltip;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_PULVERIZER_BLOCK;
+import static cofh.thermal.lib.common.ThermalIDs.ID_MACHINE_PULVERIZER;
 
 public class PulverizerRecipeCategory extends ThermalRecipeCategory<PulverizerRecipe> {
 
@@ -35,7 +36,7 @@ public class PulverizerRecipeCategory extends ThermalRecipeCategory<PulverizerRe
         background = guiHelper.drawableBuilder(MachinePulverizerScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)
                 .build();
-        name = getTextComponent(MACHINE_PULVERIZER_BLOCK.getDescriptionId());
+        name = getTextComponent(BLOCKS.get(ID_MACHINE_PULVERIZER).getDescriptionId());
 
         progressBackground = Drawables.getDrawables(guiHelper).getProgress(Drawables.PROGRESS_ARROW);
         speedBackground = Drawables.getDrawables(guiHelper).getScale(Drawables.SCALE_CRUSH);

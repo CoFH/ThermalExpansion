@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import javax.annotation.Nullable;
 
 import static cofh.lib.api.StorageGroup.INPUT;
-import static cofh.thermal.expansion.init.TExpReferences.DYNAMO_NUMISMATIC_TILE;
+import static cofh.thermal.expansion.init.TExpTileEntities.DYNAMO_NUMISMATIC_TILE;
 
 public class DynamoNumismaticTile extends DynamoTileBase {
 
@@ -22,7 +22,7 @@ public class DynamoNumismaticTile extends DynamoTileBase {
 
     public DynamoNumismaticTile(BlockPos pos, BlockState state) {
 
-        super(DYNAMO_NUMISMATIC_TILE, pos, state);
+        super(DYNAMO_NUMISMATIC_TILE.get(), pos, state);
 
         inventory.addSlot(fuelSlot, INPUT);
 

@@ -9,7 +9,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
-import static cofh.thermal.expansion.init.TExpReferences.DYNAMO_NUMISMATIC_CONTAINER;
+import static cofh.thermal.expansion.init.TExpContainers.DYNAMO_NUMISMATIC_CONTAINER;
 
 public class DynamoNumismaticContainer extends TileContainer {
 
@@ -17,7 +17,7 @@ public class DynamoNumismaticContainer extends TileContainer {
 
     public DynamoNumismaticContainer(int windowId, Level level, BlockPos pos, Inventory inventory, Player player) {
 
-        super(DYNAMO_NUMISMATIC_CONTAINER, windowId, level, pos, inventory, player);
+        super(DYNAMO_NUMISMATIC_CONTAINER.get(), windowId, level, pos, inventory, player);
         this.tile = (DynamoTileBase) level.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 

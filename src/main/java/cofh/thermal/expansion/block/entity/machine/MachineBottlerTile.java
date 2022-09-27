@@ -1,7 +1,7 @@
 package cofh.thermal.expansion.block.entity.machine;
 
 import cofh.core.util.helpers.FluidHelper;
-import cofh.lib.client.audio.ConditionalSound;
+import cofh.lib.client.sounds.ConditionalSoundInstance;
 import cofh.lib.fluid.FluidStorageCoFH;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.core.config.ThermalCoreConfig;
@@ -21,8 +21,8 @@ import javax.annotation.Nullable;
 import static cofh.lib.api.StorageGroup.*;
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.Constants.TANK_MEDIUM;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_BOTTLER_TILE;
 import static cofh.thermal.expansion.init.TExpSounds.SOUND_MACHINE_BOTTLER;
+import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_BOTTLER_TILE;
 
 public class MachineBottlerTile extends MachineTileBase {
 
@@ -32,7 +32,7 @@ public class MachineBottlerTile extends MachineTileBase {
 
     public MachineBottlerTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_BOTTLER_TILE, pos, state);
+        super(MACHINE_BOTTLER_TILE.get(), pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
         inventory.addSlot(outputSlot, OUTPUT);
@@ -86,7 +86,7 @@ public class MachineBottlerTile extends MachineTileBase {
     @Override
     protected Object getSound() {
 
-        return new ConditionalSound(SOUND_MACHINE_BOTTLER, SoundSource.AMBIENT, this, () -> !remove && isActive);
+        return new ConditionalSoundInstance(SOUND_MACHINE_BOTTLER.get(), SoundSource.AMBIENT, this, () -> !remove && isActive);
     }
 
 }

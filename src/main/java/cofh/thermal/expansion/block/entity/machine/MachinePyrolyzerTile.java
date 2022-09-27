@@ -20,7 +20,7 @@ import java.util.List;
 import static cofh.lib.api.StorageGroup.*;
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.Constants.TANK_SMALL;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_PYROLYZER_TILE;
+import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_PYROLYZER_TILE;
 
 public class MachinePyrolyzerTile extends MachineTileBase {
 
@@ -29,7 +29,7 @@ public class MachinePyrolyzerTile extends MachineTileBase {
 
     public MachinePyrolyzerTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_PYROLYZER_TILE, pos, state);
+        super(MACHINE_PYROLYZER_TILE.get(), pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
         inventory.addSlots(OUTPUT, 4);

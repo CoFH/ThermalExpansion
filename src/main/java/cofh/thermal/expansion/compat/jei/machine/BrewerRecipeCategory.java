@@ -24,9 +24,10 @@ import java.util.List;
 
 import static cofh.lib.util.Constants.TANK_MEDIUM;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.defaultFluidTooltip;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.tankSize;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_BREWER_BLOCK;
+import static cofh.thermal.lib.common.ThermalIDs.ID_MACHINE_BREWER;
 
 public class BrewerRecipeCategory extends ThermalRecipeCategory<BrewerRecipe> {
 
@@ -43,7 +44,7 @@ public class BrewerRecipeCategory extends ThermalRecipeCategory<BrewerRecipe> {
         background = guiHelper.drawableBuilder(MachineBrewerScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)
                 .build();
-        name = getTextComponent(MACHINE_BREWER_BLOCK.getDescriptionId());
+        name = getTextComponent(BLOCKS.get(ID_MACHINE_BREWER).getDescriptionId());
 
         progressBackground = Drawables.getDrawables(guiHelper).getProgress(Drawables.PROGRESS_DROP);
         progressFluidBackground = Drawables.getDrawables(guiHelper).getProgressFill(Drawables.PROGRESS_DROP);

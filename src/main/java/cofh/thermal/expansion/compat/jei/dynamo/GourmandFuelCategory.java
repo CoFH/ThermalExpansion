@@ -16,7 +16,8 @@ import net.minecraft.world.item.crafting.Ingredient;
 import java.util.List;
 
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
-import static cofh.thermal.expansion.init.TExpReferences.DYNAMO_GOURMAND_BLOCK;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
+import static cofh.thermal.lib.common.ThermalIDs.ID_DYNAMO_GOURMAND;
 
 public class GourmandFuelCategory extends ThermalFuelCategory<GourmandFuel> {
 
@@ -27,7 +28,7 @@ public class GourmandFuelCategory extends ThermalFuelCategory<GourmandFuel> {
         background = guiHelper.drawableBuilder(DynamoGourmandScreen.TEXTURE, 26, 11, 70, 62)
                 .addPadding(0, 0, 16, 78)
                 .build();
-        name = getTextComponent(DYNAMO_GOURMAND_BLOCK.getDescriptionId());
+        name = getTextComponent(BLOCKS.get(ID_DYNAMO_GOURMAND).getDescriptionId());
 
         durationBackground = Drawables.getDrawables(guiHelper).getScale(Drawables.SCALE_ALCHEMY);
         duration = guiHelper.createAnimatedDrawable(Drawables.getDrawables(guiHelper).getScaleFill(Drawables.SCALE_ALCHEMY), 400, IDrawableAnimated.StartDirection.TOP, true);

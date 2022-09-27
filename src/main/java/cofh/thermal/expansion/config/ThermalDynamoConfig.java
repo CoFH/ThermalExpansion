@@ -1,6 +1,6 @@
 package cofh.thermal.expansion.config;
 
-import cofh.lib.config.IBaseConfig;
+import cofh.core.config.IBaseConfig;
 import cofh.thermal.core.util.managers.dynamo.*;
 import net.minecraftforge.common.ForgeConfigSpec;
 

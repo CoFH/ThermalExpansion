@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 
 import static cofh.lib.api.StorageGroup.*;
 import static cofh.lib.util.Constants.*;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_BREWER_TILE;
+import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_BREWER_TILE;
 
 public class MachineBrewerTile extends MachineTileBase {
 
@@ -29,7 +29,7 @@ public class MachineBrewerTile extends MachineTileBase {
 
     public MachineBrewerTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_BREWER_TILE, pos, state);
+        super(MACHINE_BREWER_TILE.get(), pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
         inventory.addSlot(chargeSlot, INTERNAL);

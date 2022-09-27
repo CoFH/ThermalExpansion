@@ -23,8 +23,9 @@ import java.util.List;
 
 import static cofh.lib.util.Constants.TANK_MEDIUM;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.*;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_CHILLER_BLOCK;
+import static cofh.thermal.lib.common.ThermalIDs.ID_MACHINE_CHILLER;
 
 public class ChillerRecipeCategory extends ThermalRecipeCategory<ChillerRecipe> {
 
@@ -38,7 +39,7 @@ public class ChillerRecipeCategory extends ThermalRecipeCategory<ChillerRecipe> 
         background = guiHelper.drawableBuilder(MachineChillerScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)
                 .build();
-        name = getTextComponent(MACHINE_CHILLER_BLOCK.getDescriptionId());
+        name = getTextComponent(BLOCKS.get(ID_MACHINE_CHILLER).getDescriptionId());
 
         progressBackground = Drawables.getDrawables(guiHelper).getProgress(Drawables.PROGRESS_ARROW);
         progressFluidBackground = Drawables.getDrawables(guiHelper).getProgressFill(Drawables.PROGRESS_ARROW_FLUID);

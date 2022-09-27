@@ -27,8 +27,9 @@ import java.util.List;
 import static cofh.core.util.helpers.ItemHelper.cloneStack;
 import static cofh.lib.util.Constants.TANK_SMALL;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.*;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_CENTRIFUGE_BLOCK;
+import static cofh.thermal.lib.common.ThermalIDs.ID_MACHINE_CENTRIFUGE;
 
 public class CentrifugeRecipeCategory extends ThermalRecipeCategory<CentrifugeRecipe> {
 
@@ -42,7 +43,7 @@ public class CentrifugeRecipeCategory extends ThermalRecipeCategory<CentrifugeRe
         background = guiHelper.drawableBuilder(MachineCentrifugeScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)
                 .build();
-        name = getTextComponent(MACHINE_CENTRIFUGE_BLOCK.getDescriptionId());
+        name = getTextComponent(BLOCKS.get(ID_MACHINE_CENTRIFUGE).getDescriptionId());
 
         progressBackground = Drawables.getDrawables(guiHelper).getProgress(Drawables.PROGRESS_ARROW);
         progressFluidBackground = Drawables.getDrawables(guiHelper).getProgressFill(Drawables.PROGRESS_ARROW_FLUID);

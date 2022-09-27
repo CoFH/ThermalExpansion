@@ -16,7 +16,8 @@ import net.minecraft.world.item.crafting.Ingredient;
 import java.util.List;
 
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
-import static cofh.thermal.expansion.init.TExpReferences.DYNAMO_NUMISMATIC_BLOCK;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
+import static cofh.thermal.lib.common.ThermalIDs.ID_DYNAMO_NUMISMATIC;
 
 public class NumismaticFuelCategory extends ThermalFuelCategory<NumismaticFuel> {
 
@@ -27,7 +28,7 @@ public class NumismaticFuelCategory extends ThermalFuelCategory<NumismaticFuel> 
         background = guiHelper.drawableBuilder(DynamoNumismaticScreen.TEXTURE, 26, 11, 70, 62)
                 .addPadding(0, 0, 16, 78)
                 .build();
-        name = getTextComponent(DYNAMO_NUMISMATIC_BLOCK.getDescriptionId());
+        name = getTextComponent(BLOCKS.get(ID_DYNAMO_NUMISMATIC).getDescriptionId());
 
         durationBackground = Drawables.getDrawables(guiHelper).getScale(Drawables.SCALE_FLAME_GREEN);
         duration = guiHelper.createAnimatedDrawable(Drawables.getDrawables(guiHelper).getScaleFill(Drawables.SCALE_FLAME_GREEN), 400, IDrawableAnimated.StartDirection.TOP, true);

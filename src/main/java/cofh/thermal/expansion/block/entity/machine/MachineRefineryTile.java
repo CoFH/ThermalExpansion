@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 
 import static cofh.lib.api.StorageGroup.*;
 import static cofh.lib.util.Constants.*;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_REFINERY_TILE;
+import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_REFINERY_TILE;
 
 public class MachineRefineryTile extends MachineTileBase {
 
@@ -30,7 +30,7 @@ public class MachineRefineryTile extends MachineTileBase {
 
     public MachineRefineryTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_REFINERY_TILE, pos, state);
+        super(MACHINE_REFINERY_TILE.get(), pos, state);
 
         inventory.addSlot(outputSlot, OUTPUT);
         inventory.addSlot(chargeSlot, INTERNAL);

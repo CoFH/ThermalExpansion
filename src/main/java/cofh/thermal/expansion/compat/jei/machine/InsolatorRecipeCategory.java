@@ -27,8 +27,9 @@ import java.util.List;
 import static cofh.core.util.helpers.ItemHelper.cloneStack;
 import static cofh.lib.util.Constants.TANK_MEDIUM;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.*;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_INSOLATOR_BLOCK;
+import static cofh.thermal.lib.common.ThermalIDs.ID_MACHINE_INSOLATOR;
 
 public class InsolatorRecipeCategory extends ThermalRecipeCategory<InsolatorRecipe> {
 
@@ -42,7 +43,7 @@ public class InsolatorRecipeCategory extends ThermalRecipeCategory<InsolatorReci
         background = guiHelper.drawableBuilder(MachineInsolatorScreen.TEXTURE, 26, 11, 130, 62)
                 .addPadding(0, 0, 16, 18)
                 .build();
-        name = getTextComponent(MACHINE_INSOLATOR_BLOCK.getDescriptionId());
+        name = getTextComponent(BLOCKS.get(ID_MACHINE_INSOLATOR).getDescriptionId());
 
         progressBackground = Drawables.getDrawables(guiHelper).getProgress(Drawables.PROGRESS_ARROW);
         progressFluidBackground = Drawables.getDrawables(guiHelper).getProgressFill(Drawables.PROGRESS_ARROW_FLUID);

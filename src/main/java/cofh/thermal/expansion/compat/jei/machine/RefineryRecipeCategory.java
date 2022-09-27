@@ -28,8 +28,9 @@ import static cofh.core.util.helpers.ItemHelper.cloneStack;
 import static cofh.lib.util.Constants.TANK_MEDIUM;
 import static cofh.lib.util.Constants.TANK_SMALL;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.*;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_REFINERY_BLOCK;
+import static cofh.thermal.lib.common.ThermalIDs.ID_MACHINE_REFINERY;
 
 public class RefineryRecipeCategory extends ThermalRecipeCategory<RefineryRecipe> {
 
@@ -48,7 +49,7 @@ public class RefineryRecipeCategory extends ThermalRecipeCategory<RefineryRecipe
         background = guiHelper.drawableBuilder(MachineRefineryScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)
                 .build();
-        name = getTextComponent(MACHINE_REFINERY_BLOCK.getDescriptionId());
+        name = getTextComponent(BLOCKS.get(ID_MACHINE_REFINERY).getDescriptionId());
 
         progressBackground = Drawables.getDrawables(guiHelper).getProgress(Drawables.PROGRESS_DROP);
         progressFluidBackground = Drawables.getDrawables(guiHelper).getProgressFill(Drawables.PROGRESS_DROP);

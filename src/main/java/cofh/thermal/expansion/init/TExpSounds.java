@@ -2,7 +2,7 @@ package cofh.thermal.expansion.init;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraftforge.registries.ObjectHolder;
+import net.minecraftforge.registries.RegistryObject;
 
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.thermal.core.ThermalCore.SOUND_EVENTS;
@@ -15,45 +15,28 @@ public class TExpSounds {
 
     public static void register() {
 
-        registerSound(ID_SOUND_MACHINE_BOTTLER);
-        registerSound(ID_SOUND_MACHINE_CRUCIBLE);
-        registerSound(ID_SOUND_MACHINE_FURNACE);
-        registerSound(ID_SOUND_MACHINE_PULVERIZER);
-        registerSound(ID_SOUND_MACHINE_SAWMILL);
-        registerSound(ID_SOUND_MACHINE_SMELTER);
+
     }
 
-    public static void registerSound(String soundID) {
+    public static RegistryObject<SoundEvent> registerSound(String soundID) {
 
-        SOUND_EVENTS.register(soundID, () -> new SoundEvent(new ResourceLocation(soundID)));
+        return SOUND_EVENTS.register(soundID, () -> new SoundEvent(new ResourceLocation(ID_THERMAL, soundID)));
     }
 
     // region IDs
-    public static final String ID_SOUND_MACHINE_BOTTLER = ID_THERMAL + ":block.machine_bottler";
-    public static final String ID_SOUND_MACHINE_CRUCIBLE = ID_THERMAL + ":block.machine_crucible";
-    public static final String ID_SOUND_MACHINE_FURNACE = ID_THERMAL + ":block.machine_furnace";
-    public static final String ID_SOUND_MACHINE_PULVERIZER = ID_THERMAL + ":block.machine_pulverizer";
-    public static final String ID_SOUND_MACHINE_SAWMILL = ID_THERMAL + ":block.machine_sawmill";
-    public static final String ID_SOUND_MACHINE_SMELTER = ID_THERMAL + ":block.machine_smelter";
+    public static final String ID_SOUND_MACHINE_BOTTLER = "block.machine_bottler";
+    public static final String ID_SOUND_MACHINE_CRUCIBLE = "block.machine_crucible";
+    public static final String ID_SOUND_MACHINE_FURNACE = "block.machine_furnace";
+    public static final String ID_SOUND_MACHINE_PULVERIZER = "block.machine_pulverizer";
+    public static final String ID_SOUND_MACHINE_SAWMILL = "block.machine_sawmill";
+    public static final String ID_SOUND_MACHINE_SMELTER = "block.machine_smelter";
     // endregion
 
-    // region REFERENCES
-    @ObjectHolder (ID_SOUND_MACHINE_BOTTLER)
-    public static final SoundEvent SOUND_MACHINE_BOTTLER = null;
+    public static RegistryObject<SoundEvent> SOUND_MACHINE_BOTTLER = registerSound(ID_SOUND_MACHINE_BOTTLER);
+    public static RegistryObject<SoundEvent> SOUND_MACHINE_CRUCIBLE = registerSound(ID_SOUND_MACHINE_CRUCIBLE);
+    public static RegistryObject<SoundEvent> SOUND_MACHINE_FURNACE = registerSound(ID_SOUND_MACHINE_FURNACE);
+    public static RegistryObject<SoundEvent> SOUND_MACHINE_PULVERIZER = registerSound(ID_SOUND_MACHINE_PULVERIZER);
+    public static RegistryObject<SoundEvent> SOUND_MACHINE_SAWMILL = registerSound(ID_SOUND_MACHINE_SAWMILL);
+    public static RegistryObject<SoundEvent> SOUND_MACHINE_SMELTER = registerSound(ID_SOUND_MACHINE_SMELTER);
 
-    @ObjectHolder (ID_SOUND_MACHINE_CRUCIBLE)
-    public static final SoundEvent SOUND_MACHINE_CRUCIBLE = null;
-
-    @ObjectHolder (ID_SOUND_MACHINE_FURNACE)
-    public static final SoundEvent SOUND_MACHINE_FURNACE = null;
-
-    @ObjectHolder (ID_SOUND_MACHINE_PULVERIZER)
-    public static final SoundEvent SOUND_MACHINE_PULVERIZER = null;
-
-    @ObjectHolder (ID_SOUND_MACHINE_SAWMILL)
-    public static final SoundEvent SOUND_MACHINE_SAWMILL = null;
-
-    @ObjectHolder (ID_SOUND_MACHINE_SMELTER)
-    public static final SoundEvent SOUND_MACHINE_SMELTER = null;
-    // endregion
 }

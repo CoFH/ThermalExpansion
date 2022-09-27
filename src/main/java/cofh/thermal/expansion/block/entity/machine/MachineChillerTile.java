@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 import static cofh.lib.api.StorageGroup.*;
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.Constants.TANK_MEDIUM;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_CHILLER_TILE;
+import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_CHILLER_TILE;
 import static cofh.thermal.lib.util.references.ThermalTags.Items.MACHINE_CASTS;
 
 public class MachineChillerTile extends MachineTileBase {
@@ -31,7 +31,7 @@ public class MachineChillerTile extends MachineTileBase {
 
     public MachineChillerTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_CHILLER_TILE, pos, state);
+        super(MACHINE_CHILLER_TILE.get(), pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
         inventory.addSlot(outputSlot, OUTPUT);

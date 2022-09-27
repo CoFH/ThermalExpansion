@@ -21,7 +21,7 @@ import java.util.List;
 import static cofh.lib.api.StorageGroup.*;
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.Constants.TANK_SMALL;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_PRESS_TILE;
+import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_PRESS_TILE;
 import static cofh.thermal.lib.util.references.ThermalTags.Items.MACHINE_DIES;
 
 public class MachinePressTile extends MachineTileBase {
@@ -33,7 +33,7 @@ public class MachinePressTile extends MachineTileBase {
 
     public MachinePressTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_PRESS_TILE, pos, state);
+        super(MACHINE_PRESS_TILE.get(), pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
         inventory.addSlot(dieSlot, INPUT);

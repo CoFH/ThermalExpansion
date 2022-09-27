@@ -21,7 +21,7 @@ import static cofh.core.util.helpers.ItemHelper.itemsEqual;
 import static cofh.lib.api.StorageGroup.*;
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.Constants.TANK_MEDIUM;
-import static cofh.thermal.expansion.init.TExpReferences.MACHINE_CRYSTALLIZER_TILE;
+import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_CRYSTALLIZER_TILE;
 
 public class MachineCrystallizerTile extends MachineTileBase {
 
@@ -31,7 +31,7 @@ public class MachineCrystallizerTile extends MachineTileBase {
 
     public MachineCrystallizerTile(BlockPos pos, BlockState state) {
 
-        super(MACHINE_CRYSTALLIZER_TILE, pos, state);
+        super(MACHINE_CRYSTALLIZER_TILE.get(), pos, state);
 
         inputSlots[0] = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || filter.valid(item) && CrystallizerRecipeManager.instance().validItem(item) && !itemsEqual(item, inputSlots[1].getItemStack()));
         inputSlots[1] = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || filter.valid(item) && CrystallizerRecipeManager.instance().validItem(item) && !itemsEqual(item, inputSlots[0].getItemStack()));

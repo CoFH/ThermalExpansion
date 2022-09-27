@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import javax.annotation.Nullable;
 
 import static cofh.lib.api.StorageGroup.INPUT;
-import static cofh.thermal.expansion.init.TExpReferences.DYNAMO_DISENCHANTMENT_TILE;
+import static cofh.thermal.expansion.init.TExpTileEntities.DYNAMO_DISENCHANTMENT_TILE;
 
 public class DynamoDisenchantmentTile extends DynamoTileBase {
 
@@ -22,7 +22,7 @@ public class DynamoDisenchantmentTile extends DynamoTileBase {
 
     public DynamoDisenchantmentTile(BlockPos pos, BlockState state) {
 
-        super(DYNAMO_DISENCHANTMENT_TILE, pos, state);
+        super(DYNAMO_DISENCHANTMENT_TILE.get(), pos, state);
 
         inventory.addSlot(fuelSlot, INPUT);
         addAugmentSlots(ThermalCoreConfig.dynamoAugments);

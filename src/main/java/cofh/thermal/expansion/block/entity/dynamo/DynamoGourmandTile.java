@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import javax.annotation.Nullable;
 
 import static cofh.lib.api.StorageGroup.INPUT;
-import static cofh.thermal.expansion.init.TExpReferences.DYNAMO_GOURMAND_TILE;
+import static cofh.thermal.expansion.init.TExpTileEntities.DYNAMO_GOURMAND_TILE;
 
 public class DynamoGourmandTile extends DynamoTileBase {
 
@@ -22,7 +22,7 @@ public class DynamoGourmandTile extends DynamoTileBase {
 
     public DynamoGourmandTile(BlockPos pos, BlockState state) {
 
-        super(DYNAMO_GOURMAND_TILE, pos, state);
+        super(DYNAMO_GOURMAND_TILE.get(), pos, state);
 
         inventory.addSlot(fuelSlot, INPUT);
         addAugmentSlots(ThermalCoreConfig.dynamoAugments);

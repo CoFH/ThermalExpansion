@@ -21,9 +21,10 @@ import java.util.List;
 
 import static cofh.lib.util.Constants.TANK_MEDIUM;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
+import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.defaultFluidTooltip;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.tankSize;
-import static cofh.thermal.expansion.init.TExpReferences.DYNAMO_COMPRESSION_BLOCK;
+import static cofh.thermal.lib.common.ThermalIDs.ID_DYNAMO_COMPRESSION;
 
 public class CompressionFuelCategory extends ThermalFuelCategory<CompressionFuel> {
 
@@ -37,7 +38,7 @@ public class CompressionFuelCategory extends ThermalFuelCategory<CompressionFuel
         background = guiHelper.drawableBuilder(DynamoCompressionScreen.TEXTURE, 26, 11, 70, 62)
                 .addPadding(0, 0, 16, 78)
                 .build();
-        name = getTextComponent(DYNAMO_COMPRESSION_BLOCK.getDescriptionId());
+        name = getTextComponent(BLOCKS.get(ID_DYNAMO_COMPRESSION).getDescriptionId());
 
         durationBackground = Drawables.getDrawables(guiHelper).getScale(Drawables.SCALE_FLAME);
         tankBackground = Drawables.getDrawables(guiHelper).getTank(Drawables.TANK_MEDIUM);
