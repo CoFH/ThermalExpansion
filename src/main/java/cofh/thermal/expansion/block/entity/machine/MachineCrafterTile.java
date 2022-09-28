@@ -137,12 +137,12 @@ public class MachineCrafterTile extends MachineTileBase {
     @Override
     public void onReplaced(BlockState state, Level levelIn, BlockPos pos, BlockState newState) {
 
-        if (!ThermalCoreConfig.keepItems) {
+        if (!ThermalCoreConfig.keepItems.get()) {
             for (int i = 0; i < invSize() - augSize() - 9 - 1; ++i) {
                 Containers.dropItemStack(levelIn, pos.getX(), pos.getY(), pos.getZ(), inventory.getStackInSlot(i));
             }
         }
-        if (!ThermalCoreConfig.keepAugments) {
+        if (!ThermalCoreConfig.keepAugments.get()) {
             for (int i = invSize() - augSize(); i < invSize(); ++i) {
                 Utils.dropItemStackIntoWorldWithRandomness(inventory.getStackInSlot(i), levelIn, pos);
             }
