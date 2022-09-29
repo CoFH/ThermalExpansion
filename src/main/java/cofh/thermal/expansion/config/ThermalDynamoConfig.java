@@ -16,7 +16,7 @@ public class ThermalDynamoConfig implements IBaseConfig {
 
         builder.push("Dynamos");
 
-        if (getFlag(ID_DYNAMO_STIRLING).getAsBoolean()) {
+        if (getFlag(ID_DYNAMO_STIRLING).get()) {
             builder.push("Stirling");
 
             dynamoStirlingPower = builder
@@ -25,7 +25,7 @@ public class ThermalDynamoConfig implements IBaseConfig {
 
             builder.pop();
         }
-        if (getFlag(ID_DYNAMO_COMPRESSION).getAsBoolean()) {
+        if (getFlag(ID_DYNAMO_COMPRESSION).get()) {
             builder.push("Compression");
 
             dynamoCompressionPower = builder
@@ -34,7 +34,7 @@ public class ThermalDynamoConfig implements IBaseConfig {
 
             builder.pop();
         }
-        if (getFlag(ID_DYNAMO_MAGMATIC).getAsBoolean()) {
+        if (getFlag(ID_DYNAMO_MAGMATIC).get()) {
             builder.push("Magmatic");
 
             dynamoMagmaticPower = builder
@@ -43,7 +43,7 @@ public class ThermalDynamoConfig implements IBaseConfig {
 
             builder.pop();
         }
-        if (getFlag(ID_DYNAMO_NUMISMATIC).getAsBoolean()) {
+        if (getFlag(ID_DYNAMO_NUMISMATIC).get()) {
             builder.push("Numismatic");
 
             dynamoNumismaticPower = builder
@@ -52,7 +52,7 @@ public class ThermalDynamoConfig implements IBaseConfig {
 
             builder.pop();
         }
-        if (getFlag(ID_DYNAMO_LAPIDARY).getAsBoolean()) {
+        if (getFlag(ID_DYNAMO_LAPIDARY).get()) {
             builder.push("Lapidary");
 
             dynamoLapidaryPower = builder
@@ -61,7 +61,7 @@ public class ThermalDynamoConfig implements IBaseConfig {
 
             builder.pop();
         }
-        if (getFlag(ID_DYNAMO_DISENCHANTMENT).getAsBoolean()) {
+        if (getFlag(ID_DYNAMO_DISENCHANTMENT).get()) {
             builder.push("Disenchantment");
 
             dynamoDisenchantmentPower = builder
@@ -70,7 +70,7 @@ public class ThermalDynamoConfig implements IBaseConfig {
 
             builder.pop();
         }
-        if (getFlag(ID_DYNAMO_GOURMAND).getAsBoolean()) {
+        if (getFlag(ID_DYNAMO_GOURMAND).get()) {
             builder.push("Gourmand");
 
             dynamoGourmandPower = builder

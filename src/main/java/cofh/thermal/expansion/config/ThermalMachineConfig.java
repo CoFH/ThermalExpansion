@@ -16,7 +16,7 @@ public class ThermalMachineConfig implements IBaseConfig {
 
         builder.push("Machines");
 
-        if (getFlag(ID_MACHINE_FURNACE).getAsBoolean()) {
+        if (getFlag(ID_MACHINE_FURNACE).get()) {
             builder.push("Furnace");
 
             machineFurnacePower = builder
@@ -25,7 +25,7 @@ public class ThermalMachineConfig implements IBaseConfig {
 
             builder.pop();
         }
-        if (getFlag(ID_MACHINE_SAWMILL).getAsBoolean()) {
+        if (getFlag(ID_MACHINE_SAWMILL).get()) {
             builder.push("Sawmill");
 
             machineSawmillPower = builder
@@ -34,7 +34,7 @@ public class ThermalMachineConfig implements IBaseConfig {
 
             builder.pop();
         }
-        if (getFlag(ID_MACHINE_PULVERIZER).getAsBoolean()) {
+        if (getFlag(ID_MACHINE_PULVERIZER).get()) {
             builder.push("Pulverizer");
 
             machinePulverizerPower = builder
@@ -43,7 +43,7 @@ public class ThermalMachineConfig implements IBaseConfig {
 
             builder.pop();
         }
-        if (getFlag(ID_MACHINE_SMELTER).getAsBoolean()) {
+        if (getFlag(ID_MACHINE_SMELTER).get()) {
             builder.push("Smelter");
 
             machineSmelterPower = builder
@@ -52,7 +52,7 @@ public class ThermalMachineConfig implements IBaseConfig {
 
             builder.pop();
         }
-        if (getFlag(ID_MACHINE_INSOLATOR).getAsBoolean()) {
+        if (getFlag(ID_MACHINE_INSOLATOR).get()) {
             builder.push("Insolator");
 
             machineInsolatorPower = builder
@@ -61,7 +61,7 @@ public class ThermalMachineConfig implements IBaseConfig {
 
             builder.pop();
         }
-        if (getFlag(ID_MACHINE_CENTRIFUGE).getAsBoolean()) {
+        if (getFlag(ID_MACHINE_CENTRIFUGE).get()) {
             builder.push("Centrifuge");
 
             machineCentrifugePower = builder
@@ -70,7 +70,7 @@ public class ThermalMachineConfig implements IBaseConfig {
 
             builder.pop();
         }
-        if (getFlag(ID_MACHINE_PRESS).getAsBoolean()) {
+        if (getFlag(ID_MACHINE_PRESS).get()) {
             builder.push("Press");
 
             machinePressPower = builder
@@ -79,7 +79,7 @@ public class ThermalMachineConfig implements IBaseConfig {
 
             builder.pop();
         }
-        if (getFlag(ID_MACHINE_CRUCIBLE).getAsBoolean()) {
+        if (getFlag(ID_MACHINE_CRUCIBLE).get()) {
             builder.push("Crucible");
 
             machineCruciblePower = builder
@@ -88,7 +88,7 @@ public class ThermalMachineConfig implements IBaseConfig {
 
             builder.pop();
         }
-        if (getFlag(ID_MACHINE_CHILLER).getAsBoolean()) {
+        if (getFlag(ID_MACHINE_CHILLER).get()) {
             builder.push("Chiller");
 
             machineChillerPower = builder
@@ -97,7 +97,7 @@ public class ThermalMachineConfig implements IBaseConfig {
 
             builder.pop();
         }
-        if (getFlag(ID_MACHINE_FURNACE).getAsBoolean()) {
+        if (getFlag(ID_MACHINE_FURNACE).get()) {
             builder.push("Refinery");
 
             machineRefineryPower = builder
@@ -106,7 +106,7 @@ public class ThermalMachineConfig implements IBaseConfig {
 
             builder.pop();
         }
-        if (getFlag(ID_MACHINE_PYROLYZER).getAsBoolean()) {
+        if (getFlag(ID_MACHINE_PYROLYZER).get()) {
             builder.push("Pyrolyzer");
 
             machinePyrolyzerPower = builder
@@ -115,7 +115,7 @@ public class ThermalMachineConfig implements IBaseConfig {
 
             builder.pop();
         }
-        if (getFlag(ID_MACHINE_BOTTLER).getAsBoolean()) {
+        if (getFlag(ID_MACHINE_BOTTLER).get()) {
             builder.push("Bottler");
 
             machineBottlerPower = builder
@@ -124,7 +124,7 @@ public class ThermalMachineConfig implements IBaseConfig {
 
             builder.pop();
         }
-        if (getFlag(ID_MACHINE_BREWER).getAsBoolean()) {
+        if (getFlag(ID_MACHINE_BREWER).get()) {
             builder.push("Brewer");
 
             machineBrewerPower = builder
@@ -133,7 +133,7 @@ public class ThermalMachineConfig implements IBaseConfig {
 
             builder.pop();
         }
-        if (getFlag(ID_MACHINE_CRYSTALLIZER).getAsBoolean()) {
+        if (getFlag(ID_MACHINE_CRYSTALLIZER).get()) {
             builder.push("Brewer");
 
             machineCrystallizerPower = builder
@@ -142,7 +142,7 @@ public class ThermalMachineConfig implements IBaseConfig {
 
             builder.pop();
         }
-        if (getFlag(ID_MACHINE_CRAFTER).getAsBoolean()) {
+        if (getFlag(ID_MACHINE_CRAFTER).get()) {
             builder.push("Crafter");
 
             machineCrafterPower = builder
