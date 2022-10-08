@@ -28,7 +28,7 @@ side = "BOTH"
 [[dependencies.thermal_expansion]]
 modId = "forge"
 mandatory = true
-versionRange = "[40.1.0,)"
+versionRange = "[40.1.76,)"
 ordering = "AFTER"
 side = "BOTH"
 
