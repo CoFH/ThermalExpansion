@@ -1,4 +1,4 @@
-// 1.19	2022-06-25T09:07:09.8402812	Thermal Expansion: Recipes
+// 1.19.2	2022-10-10T12:17:17.1681632	Thermal Expansion: Recipes
 457a0b7aff05b4569d8e3a962c83611e49dec305 data/thermal/recipes/chiller_ball_cast.json
 291607d6e52ee0a1dc6f9d33f86e4f0148dac6e3 data/thermal/recipes/chiller_ingot_cast.json
 cd9afee04f13e12fd6ac17fd2098a2ad0501d9ab data/thermal/recipes/chiller_rod_cast.json
@@ -15,6 +15,7 @@ fc2ec4b4c7daf3cdc5637fd3610b3c5a05641ef0 data/thermal/recipes/machine_brewer.jso
 ce49724821c45965d39002c9a61e9b5e53bcb236 data/thermal/recipes/machine_chiller.json
 6f5be1046e8f50af7bbfbc8de091ec5103157dcb data/thermal/recipes/machine_crafter.json
 f1c3ce3e8e095f14464256f596613e621fa40d09 data/thermal/recipes/machine_crucible.json
+49f52a5cb7cf530257b10aa18323c8658c3a1223 data/thermal/recipes/machine_crystallizer.json
 b97edb23147b09e750674f01b0dcae6398671d23 data/thermal/recipes/machine_furnace.json
 ff53e71fe0c49595f06924fb4a9e20f0c4cfe339 data/thermal/recipes/machine_insolator.json
 f8900d5ec899fa9dbb809c85b6e4867bd2b2740b data/thermal/recipes/machine_press.json

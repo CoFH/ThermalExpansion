@@ -1,4 +1,4 @@
-// 1.19	2022-06-25T09:07:09.8412831	Thermal Expansion: Loot Tables
+// 1.19.2	2022-10-10T12:17:17.1691595	Thermal Expansion: Loot Tables
 96e38cb554e3b038d9324a84eb7013e0f9ff2382 data/thermal/loot_tables/blocks/dynamo_compression.json
 6aaccbafa126c7029000c60557067eb5c83ff0eb data/thermal/loot_tables/blocks/dynamo_disenchantment.json
 1cd27fc4ca7fd15afa17ef44484b23a6a48d0e3d data/thermal/loot_tables/blocks/dynamo_gourmand.json
@@ -12,6 +12,7 @@ f3d332edd4adc9c6d2fadf1190b95d1409632644 data/thermal/loot_tables/blocks/dynamo_
 725758e51bcce62da50fb7f80d3026e08c28c972 data/thermal/loot_tables/blocks/machine_chiller.json
 08a4b006ba242d541bde23015abb6ffe8dab5f14 data/thermal/loot_tables/blocks/machine_crafter.json
 a1196b2a6c04b3c5adfb586ac73a148140a20531 data/thermal/loot_tables/blocks/machine_crucible.json
+7c69e49cd9fbbe953030b54f2f1fe7ac108031f0 data/thermal/loot_tables/blocks/machine_crystallizer.json
 b9491fd2ebee22d03c00a23bbb01c90cc3bfaa6c data/thermal/loot_tables/blocks/machine_furnace.json
 d99bc38a683d90736246ed4031cc20ef4a2274a1 data/thermal/loot_tables/blocks/machine_insolator.json
 a0de9b3bb741d16562c6c70087d74e9e4654b4b0 data/thermal/loot_tables/blocks/machine_press.json

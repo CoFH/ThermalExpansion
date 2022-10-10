@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "cofh_core:nbt_sync"
+            }
+          ],
+          "name": "thermal:machine_crystallizer"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
+}

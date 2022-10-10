@@ -20,6 +20,7 @@
     "thermal:machine_pyrolyzer",
     "thermal:machine_bottler",
     "thermal:machine_brewer",
+    "thermal:machine_crystallizer",
     "thermal:machine_crafter"
   ]
 }

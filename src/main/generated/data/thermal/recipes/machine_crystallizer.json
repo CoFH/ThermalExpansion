@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "C": {
+      "item": "thermal:machine_frame"
+    },
+    "I": {
+      "tag": "forge:gears/constantan"
+    },
+    "P": {
+      "item": "thermal:rf_coil"
+    },
+    "X": {
+      "tag": "thermal:glass/hardened"
+    },
+    "Y": {
+      "tag": "forge:plates/signalum"
+    }
+  },
+  "pattern": [
+    " X ",
+    "YCY",
+    "IPI"
+  ],
+  "result": {
+    "item": "thermal:machine_crystallizer"
+  }
+}
