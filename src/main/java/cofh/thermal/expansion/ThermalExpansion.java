@@ -6,8 +6,6 @@ import cofh.thermal.expansion.config.ThermalDynamoConfig;
 import cofh.thermal.expansion.config.ThermalMachineConfig;
 import cofh.thermal.expansion.init.*;
 import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -15,7 +13,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import static cofh.lib.util.constants.ModIds.ID_THERMAL_EXPANSION;
-import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.ThermalCore.CONFIG_MANAGER;
 import static cofh.thermal.expansion.init.TExpContainers.*;
 import static cofh.thermal.lib.common.ThermalFlags.*;
@@ -50,6 +47,7 @@ public class ThermalExpansion {
         setFlag(FLAG_RESOURCE_CINNABAR, true);
         setFlag(FLAG_RESOURCE_OIL, true);
 
+        setFlag(FLAG_AREA_AUGMENTS, true);
         setFlag(FLAG_DYNAMO_AUGMENTS, true);
         setFlag(FLAG_MACHINE_AUGMENTS, true);
 
@@ -113,7 +111,6 @@ public class ThermalExpansion {
     private void clientSetup(final FMLClientSetupEvent event) {
 
         event.enqueueWork(this::registerGuiFactories);
-        event.enqueueWork(this::registerRenderLayers);
     }
     // endregion
 
@@ -143,35 +140,6 @@ public class ThermalExpansion {
         MenuScreens.register(DYNAMO_LAPIDARY_CONTAINER.get(), DynamoLapidaryScreen::new);
         MenuScreens.register(DYNAMO_DISENCHANTMENT_CONTAINER.get(), DynamoDisenchantmentScreen::new);
         MenuScreens.register(DYNAMO_GOURMAND_CONTAINER.get(), DynamoGourmandScreen::new);
-    }
-
-    private void registerRenderLayers() {
-
-        RenderType cutout = RenderType.cutout();
-
-        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_FURNACE), cutout);
-        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_SAWMILL), cutout);
-        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_PULVERIZER), cutout);
-        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_SMELTER), cutout);
-        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_INSOLATOR), cutout);
-        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_CENTRIFUGE), cutout);
-        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_PRESS), cutout);
-        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_CRUCIBLE), cutout);
-        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_CHILLER), cutout);
-        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_REFINERY), cutout);
-        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_PYROLYZER), cutout);
-        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_BREWER), cutout);
-        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_BOTTLER), cutout);
-        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_CRYSTALLIZER), cutout);
-        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_MACHINE_CRAFTER), cutout);
-
-        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_DYNAMO_STIRLING), cutout);
-        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_DYNAMO_COMPRESSION), cutout);
-        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_DYNAMO_MAGMATIC), cutout);
-        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_DYNAMO_NUMISMATIC), cutout);
-        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_DYNAMO_LAPIDARY), cutout);
-        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_DYNAMO_DISENCHANTMENT), cutout);
-        ItemBlockRenderTypes.setRenderLayer(BLOCKS.get(ID_DYNAMO_GOURMAND), cutout);
     }
     // endregion
 }
