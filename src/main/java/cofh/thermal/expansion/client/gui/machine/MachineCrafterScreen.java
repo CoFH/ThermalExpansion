@@ -2,7 +2,6 @@ package cofh.thermal.expansion.client.gui.machine;
 
 import cofh.core.client.gui.element.ElementBase;
 import cofh.core.client.gui.element.ElementButton;
-import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
 import cofh.thermal.expansion.inventory.container.machine.MachineCrafterContainer;
 import cofh.thermal.lib.client.gui.MachineScreenReconfigurable;
@@ -24,7 +23,7 @@ public class MachineCrafterScreen extends MachineScreenReconfigurable<MachineCra
 
     public MachineCrafterScreen(MachineCrafterContainer container, Inventory inv, Component titleIn) {
 
-        super(container, inv, container.tile, StringHelper.getTextComponent("block.thermal.machine_crafter"));
+        super(container, inv, container.tile, titleIn);
         texture = TEXTURE;
         info = generatePanelInfo("info.thermal.machine_crafter");
         name = "crafter";

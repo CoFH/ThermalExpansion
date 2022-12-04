@@ -1,6 +1,5 @@
 package cofh.thermal.expansion.client.gui.machine;
 
-import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
 import cofh.thermal.expansion.inventory.container.machine.MachinePulverizerContainer;
 import cofh.thermal.lib.client.gui.MachineScreenReconfigurable;
@@ -18,7 +17,7 @@ public class MachinePulverizerScreen extends MachineScreenReconfigurable<Machine
 
     public MachinePulverizerScreen(MachinePulverizerContainer container, Inventory inv, Component titleIn) {
 
-        super(container, inv, container.tile, StringHelper.getTextComponent("block.thermal.machine_pulverizer"));
+        super(container, inv, container.tile, titleIn);
         texture = TEXTURE;
         info = generatePanelInfo("info.thermal.machine_pulverizer");
         name = "pulverizer";

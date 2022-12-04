@@ -1,6 +1,5 @@
 package cofh.thermal.expansion.client.gui.machine;
 
-import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
 import cofh.thermal.expansion.inventory.container.machine.MachineBottlerContainer;
 import cofh.thermal.lib.client.gui.MachineScreenReconfigurable;
@@ -18,7 +17,7 @@ public class MachineBottlerScreen extends MachineScreenReconfigurable<MachineBot
 
     public MachineBottlerScreen(MachineBottlerContainer container, Inventory inv, Component titleIn) {
 
-        super(container, inv, container.tile, StringHelper.getTextComponent("block.thermal.machine_bottler"));
+        super(container, inv, container.tile, titleIn);
         texture = TEXTURE;
         info = generatePanelInfo("info.thermal.machine_bottler");
         name = "bottler";
