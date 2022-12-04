@@ -1,6 +1,5 @@
 package cofh.thermal.expansion.client.gui.dynamo;
 
-import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
 import cofh.thermal.expansion.inventory.container.dynamo.DynamoGourmandContainer;
 import cofh.thermal.lib.client.gui.DynamoScreenBase;
@@ -18,7 +17,7 @@ public class DynamoGourmandScreen extends DynamoScreenBase<DynamoGourmandContain
 
     public DynamoGourmandScreen(DynamoGourmandContainer container, Inventory inv, Component titleIn) {
 
-        super(container, inv, container.tile, StringHelper.getTextComponent("block.thermal.dynamo_gourmand"));
+        super(container, inv, container.tile, titleIn);
         texture = TEXTURE;
         info = appendLine(generatePanelInfo("info.thermal.dynamo_gourmand"), "info.thermal.dynamo.throttle");
     }

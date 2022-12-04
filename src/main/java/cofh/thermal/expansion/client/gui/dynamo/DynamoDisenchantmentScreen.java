@@ -1,6 +1,5 @@
 package cofh.thermal.expansion.client.gui.dynamo;
 
-import cofh.lib.util.helpers.StringHelper;
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
 import cofh.thermal.expansion.inventory.container.dynamo.DynamoDisenchantmentContainer;
 import cofh.thermal.lib.client.gui.DynamoScreenBase;
@@ -18,7 +17,7 @@ public class DynamoDisenchantmentScreen extends DynamoScreenBase<DynamoDisenchan
 
     public DynamoDisenchantmentScreen(DynamoDisenchantmentContainer container, Inventory inv, Component titleIn) {
 
-        super(container, inv, container.tile, StringHelper.getTextComponent("block.thermal.dynamo_disenchantment"));
+        super(container, inv, container.tile, titleIn);
         texture = TEXTURE;
         info = appendLine(generatePanelInfo("info.thermal.dynamo_disenchantment"), "info.thermal.dynamo.throttle");
     }
