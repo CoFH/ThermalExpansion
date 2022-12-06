@@ -1,0 +1,17 @@
+{
+  "type": "thermal:bottler",
+  "ingredients": [
+    {
+      "item": "minecraft:dirt"
+    },
+    {
+      "fluid": "minecraft:water",
+      "amount": 250
+    }
+  ],
+  "result": [
+    {
+      "item": "minecraft:mud"
+    }
+  ]
+}

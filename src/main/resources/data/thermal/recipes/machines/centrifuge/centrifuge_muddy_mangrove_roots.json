@@ -1,0 +1,14 @@
+{
+  "type": "thermal:centrifuge",
+  "ingredient": {
+    "item": "minecraft:muddy_mangrove_roots"
+  },
+  "result": [
+    {
+      "item": "minecraft:mud"
+    },
+    {
+      "item": "minecraft:mangrove_roots"
+    }
+  ]
+}
