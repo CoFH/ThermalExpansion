@@ -83,5 +83,9 @@ b80606a300529e75bc8ec498f1f7ef9a2d3ea9d4 data/thermal/recipes/machine_smelter.js
 25de15bde9e2fe05ff25704c5cb9a7201451b84e data/thermal/recipes/press_packing_3x3_die.json
 a548a73e3d60c8c81d2445eeb7e150793eddfda4 data/thermal/recipes/press_unpacking_die.json
 e2665ddb20301e4e3a19dcc3a25e69e5239f06f1 data/thermal/recipes/slot_seal.json
+9e671e3532c64be8a8c9c953ccf22898f6bbdd4e data/thermal/tags/blocks/dynamos.json
+f3ea68bc724ba9f2788e7d83ed53c9618f1c9629 data/thermal/tags/blocks/machines.json
 568fab354180be33fc430bd87889edd55a16bca7 data/thermal/tags/items/crafting/casts.json
 c1910feaf7eb749622877f5e98dad2379fbcc05b data/thermal/tags/items/crafting/dies.json
+9e671e3532c64be8a8c9c953ccf22898f6bbdd4e data/thermal/tags/items/dynamos.json
+f3ea68bc724ba9f2788e7d83ed53c9618f1c9629 data/thermal/tags/items/machines.json
