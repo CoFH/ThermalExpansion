@@ -10,7 +10,7 @@ import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.CrafterRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineCrafterContainer;
-import cofh.thermal.lib.tileentity.MachineTileBase;
+import cofh.thermal.lib.block.entity.MachineBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.Containers;
@@ -36,7 +36,7 @@ import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.Constants.TANK_MEDIUM;
 import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_CRAFTER_TILE;
 
-public class MachineCrafterTile extends MachineTileBase {
+public class MachineCrafterTile extends MachineBlockEntity {
 
     public static final int SLOT_CRAFTING_START = 11;
 

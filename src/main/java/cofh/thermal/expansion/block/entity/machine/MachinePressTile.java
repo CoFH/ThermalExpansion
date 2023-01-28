@@ -7,7 +7,7 @@ import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.PressRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachinePressContainer;
-import cofh.thermal.lib.tileentity.MachineTileBase;
+import cofh.thermal.lib.block.entity.MachineBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -24,7 +24,7 @@ import static cofh.lib.util.Constants.TANK_SMALL;
 import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_PRESS_TILE;
 import static cofh.thermal.lib.util.references.ThermalTags.Items.MACHINE_DIES;
 
-public class MachinePressTile extends MachineTileBase {
+public class MachinePressTile extends MachineBlockEntity {
 
     protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && PressRecipeManager.instance().validInput(item));
     protected ItemStorageCoFH dieSlot = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || filter.valid(item) && PressRecipeManager.instance().validDie(item));

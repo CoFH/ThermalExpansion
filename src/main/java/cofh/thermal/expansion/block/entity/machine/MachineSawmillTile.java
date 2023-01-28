@@ -5,7 +5,7 @@ import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.machine.SawmillRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineSawmillContainer;
-import cofh.thermal.lib.tileentity.MachineTileBase;
+import cofh.thermal.lib.block.entity.MachineBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Inventory;
@@ -19,7 +19,7 @@ import static cofh.lib.api.StorageGroup.*;
 import static cofh.thermal.expansion.init.TExpSounds.SOUND_MACHINE_SAWMILL;
 import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_SAWMILL_TILE;
 
-public class MachineSawmillTile extends MachineTileBase {
+public class MachineSawmillTile extends MachineBlockEntity {
 
     protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && SawmillRecipeManager.instance().validRecipe(item));
 

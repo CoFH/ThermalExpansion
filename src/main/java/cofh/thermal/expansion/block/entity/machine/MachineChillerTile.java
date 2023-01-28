@@ -7,7 +7,7 @@ import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.ChillerRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineChillerContainer;
-import cofh.thermal.lib.tileentity.MachineTileBase;
+import cofh.thermal.lib.block.entity.MachineBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -23,7 +23,7 @@ import static cofh.lib.util.Constants.TANK_MEDIUM;
 import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_CHILLER_TILE;
 import static cofh.thermal.lib.util.references.ThermalTags.Items.MACHINE_CASTS;
 
-public class MachineChillerTile extends MachineTileBase {
+public class MachineChillerTile extends MachineBlockEntity {
 
     protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || filter.valid(item) && ChillerRecipeManager.instance().validItem(item));
     protected ItemStorageCoFH outputSlot = new ItemStorageCoFH();

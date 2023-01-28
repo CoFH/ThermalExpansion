@@ -4,7 +4,7 @@ import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.dynamo.StirlingFuelManager;
 import cofh.thermal.expansion.inventory.container.dynamo.DynamoStirlingContainer;
-import cofh.thermal.lib.tileentity.DynamoTileBase;
+import cofh.thermal.lib.block.entity.DynamoBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 import static cofh.lib.api.StorageGroup.INPUT;
 import static cofh.thermal.expansion.init.TExpTileEntities.DYNAMO_STIRLING_TILE;
 
-public class DynamoStirlingTile extends DynamoTileBase {
+public class DynamoStirlingTile extends DynamoBlockEntity {
 
     protected ItemStorageCoFH fuelSlot = new ItemStorageCoFH(item -> filter.valid(item) && StirlingFuelManager.instance().validFuel(item));
 
