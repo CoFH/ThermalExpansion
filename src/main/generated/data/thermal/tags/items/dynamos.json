@@ -1,0 +1,11 @@
+{
+  "values": [
+    "thermal:dynamo_stirling",
+    "thermal:dynamo_compression",
+    "thermal:dynamo_magmatic",
+    "thermal:dynamo_numismatic",
+    "thermal:dynamo_lapidary",
+    "thermal:dynamo_disenchantment",
+    "thermal:dynamo_gourmand"
+  ]
+}

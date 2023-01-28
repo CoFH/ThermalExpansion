@@ -1,3 +1,5 @@
-// 1.19.2	2022-10-10T12:17:17.1681632	Thermal Expansion: Item Tags
+// 1.19.2	2023-01-27T22:05:53.0091362	Thermal Expansion: Item Tags
 3c33f7fb04e9e714118b26a2cb83651296335919 data/thermal/tags/items/crafting/casts.json
 497e9c7a1cba7422ba6877efad0df2ff6672ee0d data/thermal/tags/items/crafting/dies.json
+bb0fa3bf28fca09411ec87060e12154e27e786e3 data/thermal/tags/items/dynamos.json
+8990d18b45f2b2240090730fb9ac00d20b0a9393 data/thermal/tags/items/machines.json
