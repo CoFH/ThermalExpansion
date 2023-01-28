@@ -4,7 +4,7 @@ import cofh.core.inventory.container.TileContainer;
 import cofh.lib.inventory.container.slot.SlotCoFH;
 import cofh.lib.inventory.container.slot.SlotRemoveOnly;
 import cofh.lib.inventory.wrapper.InvWrapperCoFH;
-import cofh.thermal.lib.tileentity.ReconfigurableTile4Way;
+import cofh.thermal.lib.block.entity.Reconfigurable4WayBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -14,12 +14,12 @@ import static cofh.thermal.expansion.init.TExpContainers.MACHINE_CRYSTALLIZER_CO
 
 public class MachineCrystallizerContainer extends TileContainer {
 
-    public final ReconfigurableTile4Way tile;
+    public final Reconfigurable4WayBlockEntity tile;
 
     public MachineCrystallizerContainer(int windowId, Level level, BlockPos pos, Inventory inventory, Player player) {
 
         super(MACHINE_CRYSTALLIZER_CONTAINER.get(), windowId, level, pos, inventory, player);
-        this.tile = (ReconfigurableTile4Way) level.getBlockEntity(pos);
+        this.tile = (Reconfigurable4WayBlockEntity) level.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 
         addSlot(new SlotCoFH(tileInv, 0, 62, 26));

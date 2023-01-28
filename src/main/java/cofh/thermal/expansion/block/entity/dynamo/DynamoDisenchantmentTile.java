@@ -4,7 +4,7 @@ import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.dynamo.DisenchantmentFuelManager;
 import cofh.thermal.expansion.inventory.container.dynamo.DynamoDisenchantmentContainer;
-import cofh.thermal.lib.tileentity.DynamoTileBase;
+import cofh.thermal.lib.block.entity.DynamoBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 import static cofh.lib.api.StorageGroup.INPUT;
 import static cofh.thermal.expansion.init.TExpTileEntities.DYNAMO_DISENCHANTMENT_TILE;
 
-public class DynamoDisenchantmentTile extends DynamoTileBase {
+public class DynamoDisenchantmentTile extends DynamoBlockEntity {
 
     protected ItemStorageCoFH fuelSlot = new ItemStorageCoFH(item -> filter.valid(item) && DisenchantmentFuelManager.instance().validFuel(item));
 

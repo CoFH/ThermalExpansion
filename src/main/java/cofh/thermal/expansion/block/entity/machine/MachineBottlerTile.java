@@ -7,7 +7,7 @@ import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.machine.BottlerRecipeManager;
 import cofh.thermal.expansion.inventory.container.machine.MachineBottlerContainer;
-import cofh.thermal.lib.tileentity.MachineTileBase;
+import cofh.thermal.lib.block.entity.MachineBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Inventory;
@@ -24,7 +24,7 @@ import static cofh.lib.util.Constants.TANK_MEDIUM;
 import static cofh.thermal.expansion.init.TExpSounds.SOUND_MACHINE_BOTTLER;
 import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_BOTTLER_TILE;
 
-public class MachineBottlerTile extends MachineTileBase {
+public class MachineBottlerTile extends MachineBlockEntity {
 
     protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && BottlerRecipeManager.instance().validItem(item));
     protected ItemStorageCoFH outputSlot = new ItemStorageCoFH();

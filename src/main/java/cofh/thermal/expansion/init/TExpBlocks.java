@@ -4,7 +4,7 @@ import cofh.core.block.TileBlockActive4Way;
 import cofh.thermal.core.config.ThermalCoreConfig;
 import cofh.thermal.expansion.block.entity.dynamo.*;
 import cofh.thermal.expansion.block.entity.machine.*;
-import cofh.thermal.lib.block.TileBlockDynamo;
+import cofh.thermal.lib.block.DynamoBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.Material;
 
@@ -48,13 +48,13 @@ public class TExpBlocks {
 
         IntSupplier dynamoAugs = () -> ThermalCoreConfig.dynamoAugments;
 
-        registerAugmentableBlock(ID_DYNAMO_STIRLING, () -> new TileBlockDynamo(of(Material.METAL).sound(SoundType.NETHERITE_BLOCK).strength(2.0F).lightLevel(lightValue(ACTIVE, 7)), DynamoStirlingTile.class, DYNAMO_STIRLING_TILE), dynamoAugs, DYNAMO_NO_FLUID_VALIDATOR, getFlag(ID_DYNAMO_STIRLING), ID_THERMAL_EXPANSION);
-        registerAugmentableBlock(ID_DYNAMO_COMPRESSION, () -> new TileBlockDynamo(of(Material.METAL).sound(SoundType.NETHERITE_BLOCK).strength(2.0F).lightLevel(lightValue(ACTIVE, 7)), DynamoCompressionTile.class, DYNAMO_COMPRESSION_TILE), dynamoAugs, DYNAMO_VALIDATOR, getFlag(ID_DYNAMO_COMPRESSION), ID_THERMAL_EXPANSION);
-        registerAugmentableBlock(ID_DYNAMO_MAGMATIC, () -> new TileBlockDynamo(of(Material.METAL).sound(SoundType.NETHERITE_BLOCK).strength(2.0F).lightLevel(lightValue(ACTIVE, 7)), DynamoMagmaticTile.class, DYNAMO_MAGMATIC_TILE), dynamoAugs, DYNAMO_VALIDATOR, getFlag(ID_DYNAMO_MAGMATIC), ID_THERMAL_EXPANSION);
-        registerAugmentableBlock(ID_DYNAMO_NUMISMATIC, () -> new TileBlockDynamo(of(Material.METAL).sound(SoundType.NETHERITE_BLOCK).strength(2.0F).lightLevel(lightValue(ACTIVE, 7)), DynamoNumismaticTile.class, DYNAMO_NUMISMATIC_TILE), dynamoAugs, DYNAMO_NO_FLUID_VALIDATOR, getFlag(ID_DYNAMO_NUMISMATIC), ID_THERMAL_EXPANSION);
-        registerAugmentableBlock(ID_DYNAMO_LAPIDARY, () -> new TileBlockDynamo(of(Material.METAL).sound(SoundType.NETHERITE_BLOCK).strength(2.0F).lightLevel(lightValue(ACTIVE, 7)), DynamoLapidaryTile.class, DYNAMO_LAPIDARY_TILE), dynamoAugs, DYNAMO_NO_FLUID_VALIDATOR, getFlag(ID_DYNAMO_LAPIDARY), ID_THERMAL_EXPANSION);
-        registerAugmentableBlock(ID_DYNAMO_DISENCHANTMENT, () -> new TileBlockDynamo(of(Material.METAL).sound(SoundType.NETHERITE_BLOCK).strength(2.0F).lightLevel(lightValue(ACTIVE, 7)), DynamoDisenchantmentTile.class, DYNAMO_DISENCHANTMENT_TILE), dynamoAugs, DYNAMO_NO_FLUID_VALIDATOR, getFlag(ID_DYNAMO_DISENCHANTMENT), ID_THERMAL_EXPANSION);
-        registerAugmentableBlock(ID_DYNAMO_GOURMAND, () -> new TileBlockDynamo(of(Material.METAL).sound(SoundType.NETHERITE_BLOCK).strength(2.0F).lightLevel(lightValue(ACTIVE, 7)), DynamoGourmandTile.class, DYNAMO_GOURMAND_TILE), dynamoAugs, DYNAMO_NO_FLUID_VALIDATOR, getFlag(ID_DYNAMO_GOURMAND), ID_THERMAL_EXPANSION);
+        registerAugmentableBlock(ID_DYNAMO_STIRLING, () -> new DynamoBlock(of(Material.METAL).sound(SoundType.NETHERITE_BLOCK).strength(2.0F).lightLevel(lightValue(ACTIVE, 7)), DynamoStirlingTile.class, DYNAMO_STIRLING_TILE), dynamoAugs, DYNAMO_NO_FLUID_VALIDATOR, getFlag(ID_DYNAMO_STIRLING), ID_THERMAL_EXPANSION);
+        registerAugmentableBlock(ID_DYNAMO_COMPRESSION, () -> new DynamoBlock(of(Material.METAL).sound(SoundType.NETHERITE_BLOCK).strength(2.0F).lightLevel(lightValue(ACTIVE, 7)), DynamoCompressionTile.class, DYNAMO_COMPRESSION_TILE), dynamoAugs, DYNAMO_VALIDATOR, getFlag(ID_DYNAMO_COMPRESSION), ID_THERMAL_EXPANSION);
+        registerAugmentableBlock(ID_DYNAMO_MAGMATIC, () -> new DynamoBlock(of(Material.METAL).sound(SoundType.NETHERITE_BLOCK).strength(2.0F).lightLevel(lightValue(ACTIVE, 7)), DynamoMagmaticTile.class, DYNAMO_MAGMATIC_TILE), dynamoAugs, DYNAMO_VALIDATOR, getFlag(ID_DYNAMO_MAGMATIC), ID_THERMAL_EXPANSION);
+        registerAugmentableBlock(ID_DYNAMO_NUMISMATIC, () -> new DynamoBlock(of(Material.METAL).sound(SoundType.NETHERITE_BLOCK).strength(2.0F).lightLevel(lightValue(ACTIVE, 7)), DynamoNumismaticTile.class, DYNAMO_NUMISMATIC_TILE), dynamoAugs, DYNAMO_NO_FLUID_VALIDATOR, getFlag(ID_DYNAMO_NUMISMATIC), ID_THERMAL_EXPANSION);
+        registerAugmentableBlock(ID_DYNAMO_LAPIDARY, () -> new DynamoBlock(of(Material.METAL).sound(SoundType.NETHERITE_BLOCK).strength(2.0F).lightLevel(lightValue(ACTIVE, 7)), DynamoLapidaryTile.class, DYNAMO_LAPIDARY_TILE), dynamoAugs, DYNAMO_NO_FLUID_VALIDATOR, getFlag(ID_DYNAMO_LAPIDARY), ID_THERMAL_EXPANSION);
+        registerAugmentableBlock(ID_DYNAMO_DISENCHANTMENT, () -> new DynamoBlock(of(Material.METAL).sound(SoundType.NETHERITE_BLOCK).strength(2.0F).lightLevel(lightValue(ACTIVE, 7)), DynamoDisenchantmentTile.class, DYNAMO_DISENCHANTMENT_TILE), dynamoAugs, DYNAMO_NO_FLUID_VALIDATOR, getFlag(ID_DYNAMO_DISENCHANTMENT), ID_THERMAL_EXPANSION);
+        registerAugmentableBlock(ID_DYNAMO_GOURMAND, () -> new DynamoBlock(of(Material.METAL).sound(SoundType.NETHERITE_BLOCK).strength(2.0F).lightLevel(lightValue(ACTIVE, 7)), DynamoGourmandTile.class, DYNAMO_GOURMAND_TILE), dynamoAugs, DYNAMO_NO_FLUID_VALIDATOR, getFlag(ID_DYNAMO_GOURMAND), ID_THERMAL_EXPANSION);
     }
 
 }

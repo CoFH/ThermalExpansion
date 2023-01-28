@@ -4,7 +4,7 @@ import cofh.core.client.gui.element.ElementBase;
 import cofh.core.client.gui.element.ElementButton;
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
 import cofh.thermal.expansion.inventory.container.machine.MachineCrafterContainer;
-import cofh.thermal.lib.client.gui.MachineScreenReconfigurable;
+import cofh.thermal.lib.client.gui.MachineScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
@@ -14,7 +14,7 @@ import static cofh.lib.util.constants.ModIds.ID_COFH_CORE;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.lib.util.helpers.SoundHelper.playClickSound;
 
-public class MachineCrafterScreen extends MachineScreenReconfigurable<MachineCrafterContainer> {
+public class MachineCrafterScreen extends MachineScreen<MachineCrafterContainer> {
 
     public static final String TEX_PATH = ID_THERMAL + ":textures/gui/container/crafter.png";
     public static final ResourceLocation TEXTURE = new ResourceLocation(TEX_PATH);
