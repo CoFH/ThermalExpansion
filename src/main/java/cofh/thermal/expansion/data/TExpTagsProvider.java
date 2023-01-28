@@ -39,6 +39,14 @@ public class TExpTagsProvider {
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_DYNAMO_DISENCHANTMENT));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_DYNAMO_GOURMAND));
 
+            tag(ThermalTags.Blocks.DYNAMOS).add(BLOCKS.get(ID_DYNAMO_STIRLING));
+            tag(ThermalTags.Blocks.DYNAMOS).add(BLOCKS.get(ID_DYNAMO_COMPRESSION));
+            tag(ThermalTags.Blocks.DYNAMOS).add(BLOCKS.get(ID_DYNAMO_MAGMATIC));
+            tag(ThermalTags.Blocks.DYNAMOS).add(BLOCKS.get(ID_DYNAMO_NUMISMATIC));
+            tag(ThermalTags.Blocks.DYNAMOS).add(BLOCKS.get(ID_DYNAMO_LAPIDARY));
+            tag(ThermalTags.Blocks.DYNAMOS).add(BLOCKS.get(ID_DYNAMO_DISENCHANTMENT));
+            tag(ThermalTags.Blocks.DYNAMOS).add(BLOCKS.get(ID_DYNAMO_GOURMAND));
+
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_MACHINE_FURNACE));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_MACHINE_SAWMILL));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_MACHINE_PULVERIZER));
@@ -53,8 +61,23 @@ public class TExpTagsProvider {
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_MACHINE_BOTTLER));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_MACHINE_BREWER));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_MACHINE_CRYSTALLIZER));
-            // tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_MACHINE_ENCHANTER));
             tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BLOCKS.get(ID_MACHINE_CRAFTER));
+
+            tag(ThermalTags.Blocks.MACHINES).add(BLOCKS.get(ID_MACHINE_FURNACE));
+            tag(ThermalTags.Blocks.MACHINES).add(BLOCKS.get(ID_MACHINE_SAWMILL));
+            tag(ThermalTags.Blocks.MACHINES).add(BLOCKS.get(ID_MACHINE_PULVERIZER));
+            tag(ThermalTags.Blocks.MACHINES).add(BLOCKS.get(ID_MACHINE_SMELTER));
+            tag(ThermalTags.Blocks.MACHINES).add(BLOCKS.get(ID_MACHINE_INSOLATOR));
+            tag(ThermalTags.Blocks.MACHINES).add(BLOCKS.get(ID_MACHINE_CENTRIFUGE));
+            tag(ThermalTags.Blocks.MACHINES).add(BLOCKS.get(ID_MACHINE_PRESS));
+            tag(ThermalTags.Blocks.MACHINES).add(BLOCKS.get(ID_MACHINE_CRUCIBLE));
+            tag(ThermalTags.Blocks.MACHINES).add(BLOCKS.get(ID_MACHINE_CHILLER));
+            tag(ThermalTags.Blocks.MACHINES).add(BLOCKS.get(ID_MACHINE_REFINERY));
+            tag(ThermalTags.Blocks.MACHINES).add(BLOCKS.get(ID_MACHINE_PYROLYZER));
+            tag(ThermalTags.Blocks.MACHINES).add(BLOCKS.get(ID_MACHINE_BOTTLER));
+            tag(ThermalTags.Blocks.MACHINES).add(BLOCKS.get(ID_MACHINE_BREWER));
+            tag(ThermalTags.Blocks.MACHINES).add(BLOCKS.get(ID_MACHINE_CRYSTALLIZER));
+            tag(ThermalTags.Blocks.MACHINES).add(BLOCKS.get(ID_MACHINE_CRAFTER));
             // endregion
         }
 
@@ -75,6 +98,9 @@ public class TExpTagsProvider {
 
         @Override
         protected void addTags() {
+
+            copy(ThermalTags.Blocks.DYNAMOS, ThermalTags.Items.DYNAMOS);
+            copy(ThermalTags.Blocks.MACHINES, ThermalTags.Items.MACHINES);
 
             tag(ThermalTags.Items.MACHINE_DIES).add(ITEMS.get("press_coin_die"));
             tag(ThermalTags.Items.MACHINE_DIES).add(ITEMS.get("press_gear_die"));

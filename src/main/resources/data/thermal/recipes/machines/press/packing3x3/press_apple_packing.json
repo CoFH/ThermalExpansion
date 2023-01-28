@@ -14,11 +14,5 @@
       "item": "thermal:apple_block"
     }
   ],
-  "energy": 400,
-  "conditions": [
-    {
-      "flag": "vanilla_blocks",
-      "type": "thermal:flag"
-    }
-  ]
+  "energy": 400
 }
