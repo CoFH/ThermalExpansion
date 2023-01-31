@@ -207,6 +207,7 @@ public class MachineCrafterTile extends MachineBlockEntity {
             inventory.set(i, buffer.readItem());
         }
         setRecipe();
+        markChunkUnsaved();
     }
 
     // GUI
