@@ -1,0 +1,13 @@
+{
+  "type": "thermal:smelter",
+  "ingredient": {
+    "tag": "forge:plates/gold"
+  },
+  "result": [
+    {
+      "item": "minecraft:gold_ingot",
+      "count": 1
+    }
+  ],
+  "energy_mod": 0.5
+}
