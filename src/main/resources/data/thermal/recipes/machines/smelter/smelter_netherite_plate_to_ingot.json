@@ -1,0 +1,13 @@
+{
+  "type": "thermal:smelter",
+  "ingredient": {
+    "tag": "forge:plates/netherite"
+  },
+  "result": [
+    {
+      "item": "minecraft:netherite_ingot",
+      "count": 1
+    }
+  ],
+  "energy_mod": 0.5
+}
