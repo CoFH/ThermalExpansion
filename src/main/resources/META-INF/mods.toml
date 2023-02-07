@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[34,)"
+loaderVersion = "[${forge_major_version},)"
 issueTrackerURL = "https://github.com/cofh/feedback"
 license = "CoFH - Don't Be A Jerk (Learn, Don't Steal)"
 
@@ -7,7 +7,7 @@ license = "CoFH - Don't Be A Jerk (Learn, Don't Steal)"
 modId = "thermal_expansion"
 version = "${file.jarVersion}"
 displayName = "Thermal Expansion"
-updateJSONURL = "https://raw.github.com/cofh/version/master/thermal/update_expansion.json"
+updateJSONURL = "https://raw.github.com/cofh/version/main/thermal/update_expansion.json"
 displayURL = "https://teamcofh.com/"
 logoFile = "thermal_expansion.png"
 itemIcon = "thermal:machine_furnace"
@@ -21,27 +21,27 @@ Contains the "factory" of the Thermal Series - Dynamos and Machines to both prod
 [[dependencies.thermal_expansion]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.19,)"
+versionRange = "[${mc_version},)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.thermal_expansion]]
 modId = "forge"
 mandatory = true
-versionRange = "[43.1.0,)"
+versionRange = "[${forge_version},)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.thermal_expansion]]
 modId = "cofh_core"
 mandatory = true
-versionRange = "[10.2, 10.3]"
+versionRange = "[${cofh_core_version}, {$cofh_core_max_version}]"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.thermal_expansion]]
 modId = "thermal"
 mandatory = true
-versionRange = "[10.2, 10.3]"
+versionRange = "[${thermal_core_version}, {$thermal_core_max_version}]"
 ordering = "AFTER"
 side = "BOTH"

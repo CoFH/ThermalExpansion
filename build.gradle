@@ -1,24 +1,23 @@
-buildscript {
-    repositories {
-        mavenLocal()
-        jcenter()
-        maven { url 'https://maven.minecraftforge.net/' }
-    }
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
-    }
-}
-
 plugins {
     id 'java'
     id 'maven-publish'
-    id 'net.covers1624.signing' version '1.1.4'
-}
-apply plugin: 'net.minecraftforge.gradle'
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+    id 'com.matthewprenger.cursegradle' version '1.4.0'
+    id 'com.modrinth.minotaur' version "2.+"
+
+    id 'net.covers1624.signing' version '1.1.4'
+    id 'net.minecraftforge.gradle' version '5.1.+'
+    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of("${java_version}")
 
 sourceSets.main.resources.srcDirs += "src/main/generated"
+
+group = 'com.teamcofh'
+archivesBaseName = "${mod_id}"
+def buildVersion = "${mod_version}." + (System.getenv("BUILD_NUMBER") ?: '0')
+version = "${mc_version}-${buildVersion}"
 
 def signProps = [:]
 if (System.getenv('KEY_STORE')) {
@@ -39,60 +38,81 @@ if (System.getenv('KEY_STORE')) {
     println 'No signing secrets found, build will not be signed.'
 }
 
-mod_version = "${mod_version}." + (System.getenv("BUILD_NUMBER") ?: "1")
+if (System.getenv('CURSEFORGE_KEY') || project.hasProperty('curseforgeKey')) {
+    println "Enabling CurseForge config."
+    tasks.named('curseforge').configure { dependsOn(jar) }
 
-version = "${mc_version}-${mod_version}"
-group = 'com.teamcofh'
-archivesBaseName = "${mod_id}"
+    curseforge {
+        apiKey = System.getenv("CURSEFORGE_KEY") ?: project.findProperty("curseforgeKey")
 
-repositories {
-    mavenLocal()
-    maven {
-        url 'https://maven.covers1624.net/'
+        project {
+            id = '69163'
+            changelogType = 'markdown'
+            changelog = "[Changelog on GitHub - ${version}](https://raw.githubusercontent.com/cofh/version/main/${mod_id}/changelog.md)"
+            releaseType = "${release_type}"
+            mainArtifact(jar)
+            addGameVersion "Java ${java_version}"
+            addGameVersion "${mc_version}"
+        }
     }
-    maven { // TOP
-        url 'https://maven.tterrag.com/'
-    }
-    maven { // JEI
-        url 'https://dvs1.progwml6.com/files/maven/'
-    }
-    maven { // Patchouli
-        url 'https://maven.blamejared.com/'
+}
+
+if (System.getenv('MODRINTH_TOKEN') || project.hasProperty('modrinthToken')) {
+    println "Enabling Modrinth config."
+    tasks.named('modrinth').configure { dependsOn(jar) }
+
+    modrinth {
+        token = System.getenv("MODRINTH_TOKEN") ?: project.findProperty("modrinthToken")
+        projectId = 'hmD6rrUJ'
+        versionNumber = "${mod_version}"
+        versionType = "${release_type}"
+        changelog = "[Changelog on GitHub - ${version}](https://raw.githubusercontent.com/cofh/version/main/${mod_id}/changelog.md)"
+        uploadFile = jar
+        gameVersions = ["${mc_version}"]
     }
 }
 
 minecraft {
     mappings channel: 'official', version: "${mc_version}"
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+}
 
-    runs {
-        data {
-            workingDirectory project.file('run')
-            ideaModule "${rootProject.name}.${project.name}.main"
-
-            args '--all', '--output', file('src/main/generated/'),
-                    '--mod', archivesBaseName,
-                    '--existing', sourceSets.main.resources.srcDirs[0],
-                    '--existing-mod', 'thermal'
-
-            mods {
-                ThermalExpansion {
-                    source sourceSets.main
-                }
-            }
-        }
+processResources {
+    filesMatching('META-INF/mods.toml') {
+        expand 'file': ['jarVersion': mod_version],
+                'mc_version': mc_version,
+                'forge_version': forge_version,
+                'forge_major_version': forge_version.split('\\.')[0],
+                'cofh_core_version': cofh_core_version,
+                'cofh_core_max_version': cofh_core_max_version,
+                'thermal_core_version': thermal_core_version,
+                'thermal_core_max_version': thermal_core_max_version
     }
+}
+
+configurations {
+    annotationProcessor.extendsFrom minecraft
+}
+
+repositories {
+    mavenLocal()
+    maven { url 'https://maven.covers1624.net/' }
+    maven { url 'https://maven.tterrag.com/' }
+    maven { url 'https://dvs1.progwml6.com/files/maven/' }
+    maven { url 'https://maven.blamejared.com/' }
+    maven { url 'https://maven.theillusivec4.top/' }
 }
 
 dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
 
-    implementation fg.deobf("com.teamcofh:cofh_core:${mc_version}-${cofh_core_version}")
-    implementation fg.deobf("com.teamcofh:thermal_core:${mc_version}-${thermal_core_version}")
+    implementation fg.deobf("com.teamcofh:cofh_core:${mc_version}-${cofh_core_version}.+")
+    implementation fg.deobf("com.teamcofh:thermal_core:${mc_version}-${thermal_core_version}.+")
 
     // compile against the JEI API but do not include it at runtime
     compileOnly fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
     compileOnly fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
+
     // at runtime, use the full JEI
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-common:${jei_version}")
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
