@@ -142,6 +142,11 @@ jar {
                 'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
+
+    doFirst {
+        exclude 'cofh/thermal/expansion/data/**'
+        exclude '.cache/**'
+    }
 }
 
 task srcJar(type: Jar) {
