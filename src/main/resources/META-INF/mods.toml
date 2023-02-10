@@ -35,13 +35,13 @@ side = "BOTH"
 [[dependencies.thermal_expansion]]
 modId = "cofh_core"
 mandatory = true
-versionRange = "[${cofh_core_version}, {$cofh_core_max_version}]"
+versionRange = "[${cofh_core_version}, ${cofh_core_max_version}]"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.thermal_expansion]]
 modId = "thermal"
 mandatory = true
-versionRange = "[${thermal_core_version}, {$thermal_core_max_version}]"
+versionRange = "[${thermal_core_version}, ${thermal_core_max_version}]"
 ordering = "AFTER"
 side = "BOTH"
