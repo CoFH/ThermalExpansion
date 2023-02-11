@@ -14,6 +14,7 @@ import cofh.thermal.expansion.compat.jei.dynamo.*;
 import cofh.thermal.expansion.compat.jei.machine.*;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.constants.RecipeTypes;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.*;
 import net.minecraft.client.Minecraft;
@@ -139,6 +140,7 @@ public class TExpJeiPlugin implements IModPlugin {
         registration.addRecipeClickArea(MachineBottlerScreen.class, 88, progressY, progressW, progressH, BOTTLER);
         registration.addRecipeClickArea(MachineBrewerScreen.class, 88, progressY, progressW, progressH, BREWER);
         registration.addRecipeClickArea(MachineCrystallizerScreen.class, 105, progressY, progressW, progressH, CRYSTALLIZER);
+        registration.addRecipeClickArea(MachineCrystallizerScreen.class, 110, 22, progressW, progressH, RecipeTypes.CRAFTING);
 
         registration.addRecipeClickArea(MachinePulverizerScreen.class, 72, progressY, progressW, progressH, PULVERIZER_CATALYST);
         registration.addRecipeClickArea(MachineSmelterScreen.class, 94, progressY, progressW, progressH, SMELTER_CATALYST);
@@ -177,6 +179,7 @@ public class TExpJeiPlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(BLOCKS.get(ID_MACHINE_BOTTLER)), BOTTLER);
         registration.addRecipeCatalyst(new ItemStack(BLOCKS.get(ID_MACHINE_BREWER)), BREWER);
         registration.addRecipeCatalyst(new ItemStack(BLOCKS.get(ID_MACHINE_CRYSTALLIZER)), CRYSTALLIZER);
+        registration.addRecipeCatalyst(new ItemStack(BLOCKS.get(ID_MACHINE_CRAFTER)), RecipeTypes.CRAFTING);
 
         registration.addRecipeCatalyst(new ItemStack(BLOCKS.get(ID_DYNAMO_STIRLING)), STIRLING_FUEL);
         registration.addRecipeCatalyst(new ItemStack(BLOCKS.get(ID_DYNAMO_COMPRESSION)), COMPRESSION_FUEL);
