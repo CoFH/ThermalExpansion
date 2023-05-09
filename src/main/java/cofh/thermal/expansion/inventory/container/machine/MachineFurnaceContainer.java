@@ -2,7 +2,6 @@ package cofh.thermal.expansion.inventory.container.machine;
 
 import cofh.core.inventory.container.TileContainer;
 import cofh.lib.inventory.container.slot.SlotCoFH;
-import cofh.lib.inventory.container.slot.SlotRemoveOnly;
 import cofh.lib.inventory.wrapper.InvWrapperCoFH;
 import cofh.thermal.lib.block.entity.Reconfigurable4WayBlockEntity;
 import net.minecraft.core.BlockPos;
