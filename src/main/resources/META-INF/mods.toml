@@ -40,7 +40,7 @@ ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.thermal_expansion]]
-modId = "thermal"
+modId = "thermal_foundation"
 mandatory = true
 versionRange = "[${thermal_core_version}, ${thermal_core_max_version}]"
 ordering = "AFTER"
