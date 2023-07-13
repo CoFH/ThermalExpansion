@@ -30,8 +30,8 @@ public class NumismaticFuelCategory extends ThermalFuelCategory<NumismaticFuel> 
                 .build();
         name = getTextComponent(BLOCKS.get(ID_DYNAMO_NUMISMATIC).getDescriptionId());
 
-        durationBackground = Drawables.getDrawables(guiHelper).getScale(Drawables.SCALE_ALCHEMY);
-        duration = guiHelper.createAnimatedDrawable(Drawables.getDrawables(guiHelper).getScaleFill(Drawables.SCALE_ALCHEMY), 400, IDrawableAnimated.StartDirection.TOP, true);
+        durationBackground = Drawables.getDrawables(guiHelper).getScale(Drawables.SCALE_FLAME_GREEN);
+        duration = guiHelper.createAnimatedDrawable(Drawables.getDrawables(guiHelper).getScaleFill(Drawables.SCALE_FLAME_GREEN), 400, IDrawableAnimated.StartDirection.TOP, true);
     }
 
     @Override

@@ -30,8 +30,8 @@ public class StirlingFuelCategory extends ThermalFuelCategory<StirlingFuel> {
                 .build();
         name = getTextComponent(BLOCKS.get(ID_DYNAMO_STIRLING).getDescriptionId());
 
-        durationBackground = Drawables.getDrawables(guiHelper).getScale(Drawables.SCALE_ALCHEMY);
-        duration = guiHelper.createAnimatedDrawable(Drawables.getDrawables(guiHelper).getScaleFill(Drawables.SCALE_ALCHEMY), 400, IDrawableAnimated.StartDirection.TOP, true);
+        durationBackground = Drawables.getDrawables(guiHelper).getScale(Drawables.SCALE_FLAME);
+        duration = guiHelper.createAnimatedDrawable(Drawables.getDrawables(guiHelper).getScaleFill(Drawables.SCALE_FLAME), 400, IDrawableAnimated.StartDirection.TOP, true);
     }
 
     @Override
