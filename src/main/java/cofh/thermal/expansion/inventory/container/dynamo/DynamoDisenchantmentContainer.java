@@ -1,6 +1,6 @@
 package cofh.thermal.expansion.inventory.container.dynamo;
 
-import cofh.core.inventory.container.TileContainer;
+import cofh.core.inventory.container.TileCoFHContainer;
 import cofh.lib.inventory.container.slot.SlotCoFH;
 import cofh.lib.inventory.wrapper.InvWrapperCoFH;
 import cofh.thermal.lib.block.entity.DynamoBlockEntity;
@@ -11,7 +11,7 @@ import net.minecraft.world.level.Level;
 
 import static cofh.thermal.expansion.init.TExpContainers.DYNAMO_DISENCHANTMENT_CONTAINER;
 
-public class DynamoDisenchantmentContainer extends TileContainer {
+public class DynamoDisenchantmentContainer extends TileCoFHContainer {
 
     public final DynamoBlockEntity tile;
 

@@ -1,6 +1,6 @@
 package cofh.thermal.expansion.inventory.container.machine;
 
-import cofh.core.inventory.container.TileContainer;
+import cofh.core.inventory.container.TileCoFHContainer;
 import cofh.lib.inventory.container.slot.SlotCoFH;
 import cofh.lib.inventory.container.slot.SlotRemoveOnly;
 import cofh.lib.inventory.wrapper.InvWrapperCoFH;
@@ -12,7 +12,7 @@ import net.minecraft.world.level.Level;
 
 import static cofh.thermal.expansion.init.TExpContainers.MACHINE_PYROLYZER_CONTAINER;
 
-public class MachinePyrolyzerContainer extends TileContainer {
+public class MachinePyrolyzerContainer extends TileCoFHContainer {
 
     public final Reconfigurable4WayBlockEntity tile;
 

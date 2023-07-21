@@ -1,6 +1,6 @@
 package cofh.thermal.expansion.inventory.container.machine;
 
-import cofh.core.inventory.container.TileContainer;
+import cofh.core.inventory.container.TileCoFHContainer;
 import cofh.lib.inventory.container.slot.SlotCoFH;
 import cofh.lib.inventory.wrapper.InvWrapperCoFH;
 import cofh.thermal.lib.block.entity.Reconfigurable4WayBlockEntity;
@@ -11,7 +11,7 @@ import net.minecraft.world.level.Level;
 
 import static cofh.thermal.expansion.init.TExpContainers.MACHINE_CRUCIBLE_CONTAINER;
 
-public class MachineCrucibleContainer extends TileContainer {
+public class MachineCrucibleContainer extends TileCoFHContainer {
 
     public final Reconfigurable4WayBlockEntity tile;
 

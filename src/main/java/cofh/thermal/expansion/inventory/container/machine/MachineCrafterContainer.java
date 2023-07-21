@@ -1,6 +1,6 @@
 package cofh.thermal.expansion.inventory.container.machine;
 
-import cofh.core.inventory.container.TileContainer;
+import cofh.core.inventory.container.TileCoFHContainer;
 import cofh.core.network.packet.server.TileConfigPacket;
 import cofh.lib.inventory.container.slot.SlotCoFH;
 import cofh.lib.inventory.container.slot.SlotFalseCopy;
@@ -26,7 +26,7 @@ import java.util.Optional;
 
 import static cofh.thermal.expansion.init.TExpContainers.MACHINE_CRAFTER_CONTAINER;
 
-public class MachineCrafterContainer extends TileContainer {
+public class MachineCrafterContainer extends TileCoFHContainer {
 
     public final MachineCrafterTile tile;
     private final CraftingContainer craftMatrix = new CraftingContainer(this, 3, 3);

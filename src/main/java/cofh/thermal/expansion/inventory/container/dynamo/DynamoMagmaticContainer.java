@@ -1,6 +1,6 @@
 package cofh.thermal.expansion.inventory.container.dynamo;
 
-import cofh.core.inventory.container.TileContainer;
+import cofh.core.inventory.container.TileCoFHContainer;
 import cofh.lib.inventory.wrapper.InvWrapperCoFH;
 import cofh.thermal.lib.block.entity.DynamoBlockEntity;
 import net.minecraft.core.BlockPos;
@@ -10,7 +10,7 @@ import net.minecraft.world.level.Level;
 
 import static cofh.thermal.expansion.init.TExpContainers.DYNAMO_MAGMATIC_CONTAINER;
 
-public class DynamoMagmaticContainer extends TileContainer {
+public class DynamoMagmaticContainer extends TileCoFHContainer {
 
     public final DynamoBlockEntity tile;
 
