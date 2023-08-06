@@ -133,7 +133,7 @@ public class MachineCrafterTile extends MachineBlockEntity {
 
         if (!ThermalCoreConfig.keepItems.get()) {
             for (int i = 0; i < invSize() - augSize() - 9 - 1; ++i) {
-                Containers.dropItemStack(levelIn, pos.getX(), pos.getY(), pos.getZ(), inventory.getStackInSlot(i));
+                Utils.dropItemStackIntoWorldWithRandomness(inventory.getStackInSlot(i), levelIn, pos);
             }
         }
         if (!ThermalCoreConfig.keepAugments.get()) {
