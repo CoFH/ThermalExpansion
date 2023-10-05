@@ -158,11 +158,13 @@ public class MachineCrafterTile extends MachineBlockEntity {
     protected boolean cacheRecipe() {
 
         curRecipe = CrafterRecipeManager.instance().getRecipe(craftResult.getRecipeUsed());
-        if (curRecipe != null) {
-            Pair<List<Integer>, List<Integer>> inputCounts = curRecipe.getInputItemAndFluidCounts(this);
-            itemInputCounts = inputCounts.getLeft();
-            fluidInputCounts = inputCounts.getRight();
+        if (curRecipe == null) {
+            return false;
         }
+        Pair<List<Integer>, List<Integer>> inputCounts = curRecipe.getInputItemAndFluidCounts(this);
+        itemInputCounts = inputCounts.getLeft();
+        fluidInputCounts = inputCounts.getRight();
+
         validRecipe = !(itemInputCounts.isEmpty() && fluidInputCounts.isEmpty());
         return validRecipe;
     }
