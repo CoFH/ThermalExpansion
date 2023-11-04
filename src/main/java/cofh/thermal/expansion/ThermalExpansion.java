@@ -39,7 +39,7 @@ public class ThermalExpansion {
 
         TExpContainers.register();
         TExpSounds.register();
-        TExpTileEntities.register();
+        TExpBlockEntities.register();
     }
 
     private void setFeatureFlags() {

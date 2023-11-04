@@ -6,7 +6,6 @@ import cofh.thermal.core.util.recipes.machine.RefineryRecipe;
 import cofh.thermal.expansion.client.gui.machine.MachineRefineryScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
 import cofh.thermal.lib.compat.jei.ThermalRecipeCategory;
-import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.forge.ForgeTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.builder.IRecipeSlotBuilder;
@@ -17,6 +16,7 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -116,24 +116,24 @@ public class RefineryRecipeCategory extends ThermalRecipeCategory<RefineryRecipe
     }
 
     @Override
-    public void draw(RefineryRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack matrixStack, double mouseX, double mouseY) {
+    public void draw(RefineryRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
 
-        super.draw(recipe, recipeSlotsView, matrixStack, mouseX, mouseY);
+        super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
 
-        progressBackground.draw(matrixStack, 57, 22);
-        tankInput.draw(matrixStack, 28, 5);
-        tankOutputA.draw(matrixStack, 125, 11);
-        tankOutputB.draw(matrixStack, 143, 11);
-        speedBackground.draw(matrixStack, 29, 40);
+        progressBackground.draw(guiGraphics, 57, 22);
+        tankInput.draw(guiGraphics, 28, 5);
+        tankOutputA.draw(guiGraphics, 125, 11);
+        tankOutputB.draw(guiGraphics, 143, 11);
+        speedBackground.draw(guiGraphics, 29, 40);
 
         if (!recipe.getInputFluids().isEmpty()) {
-            RenderHelper.drawFluid(matrixStack, 57, 22, recipe.getInputFluids().get(0).getFluids()[0], 24, 16);
-            progressFluidBackground.draw(matrixStack, 57, 22);
-            progressFluid.draw(matrixStack, 57, 22);
+            RenderHelper.drawFluid(guiGraphics, 57, 22, recipe.getInputFluids().get(0).getFluids()[0], 24, 16);
+            progressFluidBackground.draw(guiGraphics, 57, 22);
+            progressFluid.draw(guiGraphics, 57, 22);
         } else {
-            progress.draw(matrixStack, 57, 22);
+            progress.draw(guiGraphics, 57, 22);
         }
-        speed.draw(matrixStack, 29, 40);
+        speed.draw(guiGraphics, 29, 40);
     }
 
 }

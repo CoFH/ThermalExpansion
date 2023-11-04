@@ -17,6 +17,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.inventory.ResultContainer;
 import net.minecraft.world.inventory.ResultSlot;
+import net.minecraft.world.inventory.TransientCraftingContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -29,7 +30,7 @@ import static cofh.thermal.expansion.init.TExpContainers.MACHINE_CRAFTER_CONTAIN
 public class MachineCrafterContainer extends TileCoFHContainer {
 
     public final MachineCrafterTile tile;
-    private final CraftingContainer craftMatrix = new CraftingContainer(this, 3, 3);
+    private final CraftingContainer craftMatrix = new TransientCraftingContainer(this, 3, 3);
     private final ResultContainer craftResult = new ResultContainer();
     private final Player player;
 
@@ -120,7 +121,7 @@ public class MachineCrafterContainer extends TileCoFHContainer {
             ItemStack stack = ItemStack.EMPTY;
             Optional<CraftingRecipe> possibleRecipe = level.getRecipeManager().getRecipeFor(RecipeType.CRAFTING, craftMatrix, level);
             if (possibleRecipe.isPresent()) {
-                stack = possibleRecipe.get().assemble(craftMatrix);
+                stack = possibleRecipe.get().assemble(craftMatrix, level.registryAccess());
                 craftResult.setRecipeUsed(craftResult.getRecipeUsed());
             }
             tile.markRecipeChanges();
@@ -140,7 +141,7 @@ public class MachineCrafterContainer extends TileCoFHContainer {
             Optional<CraftingRecipe> possibleRecipe = level.getRecipeManager().getRecipeFor(RecipeType.CRAFTING, craftMatrix, level);
             if (possibleRecipe.isPresent()) {
                 craftResult.setRecipeUsed(possibleRecipe.get());
-                stack = possibleRecipe.get().assemble(craftMatrix);
+                stack = possibleRecipe.get().assemble(craftMatrix, level.registryAccess());
             }
         }
         craftResult.setItem(0, stack);

@@ -9,9 +9,9 @@ import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.ThermalCore.TILE_ENTITIES;
 import static cofh.thermal.lib.common.ThermalIDs.*;
 
-public class TExpTileEntities {
+public class TExpBlockEntities {
 
-    private TExpTileEntities() {
+    private TExpBlockEntities() {
 
     }
 

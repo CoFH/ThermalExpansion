@@ -21,7 +21,7 @@ import static cofh.core.util.helpers.ItemHelper.itemsEqual;
 import static cofh.lib.api.StorageGroup.*;
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.Constants.TANK_MEDIUM;
-import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_CRYSTALLIZER_TILE;
+import static cofh.thermal.expansion.init.TExpBlockEntities.MACHINE_CRYSTALLIZER_TILE;
 
 public class MachineCrystallizerTile extends MachineBlockEntity {
 

@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import javax.annotation.Nullable;
 
 import static cofh.lib.api.StorageGroup.INPUT;
-import static cofh.thermal.expansion.init.TExpTileEntities.DYNAMO_LAPIDARY_TILE;
+import static cofh.thermal.expansion.init.TExpBlockEntities.DYNAMO_LAPIDARY_TILE;
 
 public class DynamoLapidaryTile extends DynamoBlockEntity {
 

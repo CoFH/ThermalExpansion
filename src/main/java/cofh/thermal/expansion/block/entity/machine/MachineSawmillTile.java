@@ -16,8 +16,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import javax.annotation.Nullable;
 
 import static cofh.lib.api.StorageGroup.*;
+import static cofh.thermal.expansion.init.TExpBlockEntities.MACHINE_SAWMILL_TILE;
 import static cofh.thermal.expansion.init.TExpSounds.SOUND_MACHINE_SAWMILL;
-import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_SAWMILL_TILE;
 
 public class MachineSawmillTile extends MachineBlockEntity {
 

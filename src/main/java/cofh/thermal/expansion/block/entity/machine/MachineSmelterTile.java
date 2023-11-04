@@ -25,8 +25,8 @@ import static cofh.core.util.helpers.ItemHelper.itemsEqual;
 import static cofh.core.util.helpers.ItemHelper.itemsEqualWithTags;
 import static cofh.lib.api.StorageGroup.*;
 import static cofh.lib.util.constants.NBTTags.TAG_AUGMENT_FEATURE_CYCLE_PROCESS;
+import static cofh.thermal.expansion.init.TExpBlockEntities.MACHINE_SMELTER_TILE;
 import static cofh.thermal.expansion.init.TExpSounds.SOUND_MACHINE_SMELTER;
-import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_SMELTER_TILE;
 
 public class MachineSmelterTile extends MachineBlockEntity {
 

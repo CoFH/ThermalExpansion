@@ -18,8 +18,8 @@ import javax.annotation.Nullable;
 
 import static cofh.core.util.helpers.ItemHelper.itemsEqualWithTags;
 import static cofh.lib.api.StorageGroup.*;
+import static cofh.thermal.expansion.init.TExpBlockEntities.MACHINE_FURNACE_TILE;
 import static cofh.thermal.expansion.init.TExpSounds.SOUND_MACHINE_FURNACE;
-import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_FURNACE_TILE;
 
 public class MachineFurnaceTile extends MachineBlockEntity {
 

@@ -2,7 +2,7 @@ package cofh.thermal.expansion.block.entity.machine;
 
 import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.fluid.FluidStorageCoFH;
-import cofh.lib.inventory.FalseCraftingInventory;
+import cofh.lib.inventory.FalseCraftingContainer;
 import cofh.lib.inventory.ItemStorageCoFH;
 import cofh.lib.util.Utils;
 import cofh.lib.xp.EmptyXpStorage;
@@ -33,13 +33,13 @@ import java.util.Optional;
 import static cofh.lib.api.StorageGroup.*;
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.Constants.TANK_MEDIUM;
-import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_CRAFTER_TILE;
+import static cofh.thermal.expansion.init.TExpBlockEntities.MACHINE_CRAFTER_TILE;
 
 public class MachineCrafterTile extends MachineBlockEntity {
 
     public static final int SLOT_CRAFTING_START = 11;
 
-    protected FalseCraftingInventory craftMatrix = new FalseCraftingInventory(3, 3);
+    protected FalseCraftingContainer craftMatrix = new FalseCraftingContainer(3, 3);
     protected ResultContainer craftResult = new ResultContainer();
     protected boolean hasRecipeChanges;
     protected boolean validRecipe;
@@ -101,7 +101,7 @@ public class MachineCrafterTile extends MachineBlockEntity {
         Optional<CraftingRecipe> possibleRecipe = level.getRecipeManager().getRecipeFor(RecipeType.CRAFTING, craftMatrix, level);
         if (possibleRecipe.isPresent()) {
             craftRecipe = possibleRecipe.get();
-            craftResult.setItem(0, craftRecipe.assemble(craftMatrix));
+            craftResult.setItem(0, craftRecipe.assemble(craftMatrix, level.registryAccess()));
         } else {
             craftRecipe = null;
             craftResult.setItem(0, ItemStack.EMPTY);
@@ -110,7 +110,7 @@ public class MachineCrafterTile extends MachineBlockEntity {
             }
         }
         craftResult.setRecipeUsed(craftRecipe);
-        curRecipe = CrafterRecipeManager.instance().getRecipe(craftRecipe);
+        curRecipe = CrafterRecipeManager.instance().getRecipe(craftRecipe, level.registryAccess());
         resultSlot.setItemStack(craftResult.getItem(0));
         clearRecipeChanges();
     }
@@ -157,7 +157,7 @@ public class MachineCrafterTile extends MachineBlockEntity {
     @Override
     protected boolean cacheRecipe() {
 
-        curRecipe = CrafterRecipeManager.instance().getRecipe(craftResult.getRecipeUsed());
+        curRecipe = CrafterRecipeManager.instance().getRecipe(craftResult.getRecipeUsed(), level.registryAccess());
         if (curRecipe == null) {
             return false;
         }
@@ -238,7 +238,7 @@ public class MachineCrafterTile extends MachineBlockEntity {
 
         if (buffer.readBoolean() && level != null) {
             Optional<? extends Recipe<?>> possibleRecipe = level.getRecipeManager().byKey(buffer.readResourceLocation());
-            possibleRecipe.ifPresent(recipe -> curRecipe = CrafterRecipeManager.instance().getRecipe(recipe));
+            possibleRecipe.ifPresent(recipe -> curRecipe = CrafterRecipeManager.instance().getRecipe(recipe, level.registryAccess()));
         } else {
             curRecipe = null;
         }

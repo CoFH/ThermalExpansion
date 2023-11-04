@@ -27,7 +27,7 @@ import static cofh.lib.api.StorageGroup.*;
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.Constants.TANK_SMALL;
 import static cofh.lib.util.constants.NBTTags.TAG_AUGMENT_FEATURE_CYCLE_PROCESS;
-import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_INSOLATOR_TILE;
+import static cofh.thermal.expansion.init.TExpBlockEntities.MACHINE_INSOLATOR_TILE;
 
 public class MachineInsolatorTile extends MachineBlockEntity {
 

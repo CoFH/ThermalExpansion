@@ -21,8 +21,8 @@ import javax.annotation.Nullable;
 import static cofh.lib.api.StorageGroup.*;
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.Constants.TANK_MEDIUM;
+import static cofh.thermal.expansion.init.TExpBlockEntities.MACHINE_CRUCIBLE_TILE;
 import static cofh.thermal.expansion.init.TExpSounds.SOUND_MACHINE_CRUCIBLE;
-import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_CRUCIBLE_TILE;
 
 public class MachineCrucibleTile extends MachineBlockEntity {
 

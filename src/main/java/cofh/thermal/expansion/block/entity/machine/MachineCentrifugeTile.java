@@ -20,7 +20,7 @@ import java.util.List;
 import static cofh.lib.api.StorageGroup.*;
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.Constants.TANK_SMALL;
-import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_CENTRIFUGE_TILE;
+import static cofh.thermal.expansion.init.TExpBlockEntities.MACHINE_CENTRIFUGE_TILE;
 
 public class MachineCentrifugeTile extends MachineBlockEntity {
 

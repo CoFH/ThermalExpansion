@@ -20,7 +20,7 @@ public class TExpSounds {
 
     public static RegistryObject<SoundEvent> registerSound(String soundID) {
 
-        return SOUND_EVENTS.register(soundID, () -> new SoundEvent(new ResourceLocation(ID_THERMAL, soundID)));
+        return SOUND_EVENTS.register(soundID, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(ID_THERMAL, soundID)));
     }
 
     // region IDs

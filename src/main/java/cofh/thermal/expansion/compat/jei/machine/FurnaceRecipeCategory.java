@@ -4,7 +4,6 @@ import cofh.thermal.core.util.recipes.machine.FurnaceRecipe;
 import cofh.thermal.expansion.client.gui.machine.MachineFurnaceScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
 import cofh.thermal.lib.compat.jei.ThermalRecipeCategory;
-import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
@@ -12,6 +11,7 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 
@@ -61,15 +61,15 @@ public class FurnaceRecipeCategory extends ThermalRecipeCategory<FurnaceRecipe> 
     }
 
     @Override
-    public void draw(FurnaceRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack matrixStack, double mouseX, double mouseY) {
+    public void draw(FurnaceRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
 
-        super.draw(recipe, recipeSlotsView, matrixStack, mouseX, mouseY);
+        super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
 
-        progressBackground.draw(matrixStack, 69, 24);
-        speedBackground.draw(matrixStack, 43, 33);
+        progressBackground.draw(guiGraphics, 69, 24);
+        speedBackground.draw(guiGraphics, 43, 33);
 
-        progress.draw(matrixStack, 69, 24);
-        speed.draw(matrixStack, 43, 33);
+        progress.draw(guiGraphics, 69, 24);
+        speed.draw(guiGraphics, 43, 33);
     }
 
 }

@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 
 import static cofh.lib.api.StorageGroup.*;
 import static cofh.lib.util.Constants.*;
-import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_REFINERY_TILE;
+import static cofh.thermal.expansion.init.TExpBlockEntities.MACHINE_REFINERY_TILE;
 
 public class MachineRefineryTile extends MachineBlockEntity {
 

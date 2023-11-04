@@ -23,7 +23,7 @@ import static cofh.core.client.renderer.model.ModelUtils.FLUID;
 import static cofh.lib.api.StorageGroup.INPUT;
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.Constants.TANK_SMALL;
-import static cofh.thermal.expansion.init.TExpTileEntities.DYNAMO_MAGMATIC_TILE;
+import static cofh.thermal.expansion.init.TExpBlockEntities.DYNAMO_MAGMATIC_TILE;
 import static cofh.thermal.lib.util.managers.SingleFluidFuelManager.FLUID_FUEL_AMOUNT;
 
 public class DynamoMagmaticTile extends DynamoBlockEntity {

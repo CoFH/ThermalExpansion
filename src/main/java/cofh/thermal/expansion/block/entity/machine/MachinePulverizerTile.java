@@ -23,8 +23,8 @@ import static cofh.core.util.helpers.AugmentableHelper.getAttributeMod;
 import static cofh.core.util.helpers.ItemHelper.itemsEqualWithTags;
 import static cofh.lib.api.StorageGroup.*;
 import static cofh.lib.util.constants.NBTTags.TAG_AUGMENT_FEATURE_CYCLE_PROCESS;
+import static cofh.thermal.expansion.init.TExpBlockEntities.MACHINE_PULVERIZER_TILE;
 import static cofh.thermal.expansion.init.TExpSounds.SOUND_MACHINE_PULVERIZER;
-import static cofh.thermal.expansion.init.TExpTileEntities.MACHINE_PULVERIZER_TILE;
 
 public class MachinePulverizerTile extends MachineBlockEntity {
 
