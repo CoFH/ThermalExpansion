@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "P": {
       "tag": "forge:plates/iron"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "thermal:slot_seal"
-  }
+  },
+  "show_notification": true
 }

@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "P": {
       "tag": "forge:plates/invar"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "thermal:press_coin_die"
-  }
+  },
+  "show_notification": true
 }

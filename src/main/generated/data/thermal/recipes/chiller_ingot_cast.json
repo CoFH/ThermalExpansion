@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "P": {
       "tag": "forge:plates/bronze"
@@ -15,5 +16,6 @@
   ],
   "result": {
     "item": "thermal:chiller_ingot_cast"
-  }
+  },
+  "show_notification": true
 }

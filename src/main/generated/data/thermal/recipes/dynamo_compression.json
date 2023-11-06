@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "building",
   "key": {
     "C": {
       "item": "thermal:rf_coil"
@@ -24,5 +25,6 @@
   ],
   "result": {
     "item": "thermal:dynamo_compression"
-  }
+  },
+  "show_notification": true
 }

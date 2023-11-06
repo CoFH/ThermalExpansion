@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "key": {
     "C": {
       "tag": "forge:plates/constantan"
@@ -18,5 +19,6 @@
   ],
   "result": {
     "item": "thermal:press_packing_2x2_die"
-  }
+  },
+  "show_notification": true
 }
