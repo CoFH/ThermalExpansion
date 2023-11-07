@@ -4,8 +4,9 @@ import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.common.fluid.FluidStorageCoFH;
 import cofh.lib.common.inventory.ItemStorageCoFH;
 import cofh.thermal.core.common.config.ThermalCoreConfig;
-import cofh.thermal.core.util.managers.machine.CentrifugeRecipeManager;
-import cofh.thermal.expansion.common.inventory.machine.MachineCentrifugeContainer;
+import cofh.thermal.core.common.item.SlotSealItem;
+import cofh.thermal.core.util.managers.machine.PressRecipeManager;
+import cofh.thermal.expansion.common.inventory.machine.MachinePressContainer;
 import cofh.thermal.lib.common.block.entity.MachineBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -20,19 +21,23 @@ import java.util.List;
 import static cofh.lib.api.StorageGroup.*;
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.Constants.TANK_SMALL;
-import static cofh.thermal.expansion.init.registries.TExpBlockEntities.MACHINE_CENTRIFUGE_TILE;
+import static cofh.thermal.expansion.init.registries.TExpBlockEntities.MACHINE_PRESS_TILE;
+import static cofh.thermal.lib.util.references.ThermalTags.Items.MACHINE_DIES;
 
-public class MachineCentrifugeTile extends MachineBlockEntity {
+public class MachinePressBlockEntity extends MachineBlockEntity {
 
-    protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && CentrifugeRecipeManager.instance().validRecipe(item));
+    protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && PressRecipeManager.instance().validInput(item));
+    protected ItemStorageCoFH dieSlot = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || filter.valid(item) && PressRecipeManager.instance().validDie(item));
+    protected ItemStorageCoFH outputSlot = new ItemStorageCoFH();
     protected FluidStorageCoFH outputTank = new FluidStorageCoFH(TANK_SMALL);
 
-    public MachineCentrifugeTile(BlockPos pos, BlockState state) {
+    public MachinePressBlockEntity(BlockPos pos, BlockState state) {
 
-        super(MACHINE_CENTRIFUGE_TILE.get(), pos, state);
+        super(MACHINE_PRESS_TILE.get(), pos, state);
 
         inventory.addSlot(inputSlot, INPUT);
-        inventory.addSlots(OUTPUT, 4);
+        inventory.addSlot(dieSlot, INPUT);
+        inventory.addSlot(outputSlot, OUTPUT);
         inventory.addSlot(chargeSlot, INTERNAL);
 
         tankInv.addTank(outputTank, OUTPUT);
@@ -44,13 +49,13 @@ public class MachineCentrifugeTile extends MachineBlockEntity {
     @Override
     protected int getBaseProcessTick() {
 
-        return CentrifugeRecipeManager.instance().getBasePower();
+        return PressRecipeManager.instance().getBasePower();
     }
 
     @Override
     protected boolean cacheRecipe() {
 
-        curRecipe = CentrifugeRecipeManager.instance().getRecipe(this);
+        curRecipe = PressRecipeManager.instance().getRecipe(this);
         if (curRecipe != null) {
             itemInputCounts = curRecipe.getInputItemCounts(this);
         }
@@ -69,21 +74,22 @@ public class MachineCentrifugeTile extends MachineBlockEntity {
         return !FluidHelper.fluidsEqual(renderFluid, prevFluid);
     }
 
+    @Override
+    protected void resolveInputs() {
+
+        // Input Items
+        inputSlot.modify(-itemInputCounts.get(0));
+
+        if (itemInputCounts.size() > 1 && !dieSlot.getItemStack().is(MACHINE_DIES)) {
+            dieSlot.modify(-itemInputCounts.get(1));
+        }
+    }
+
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
-        return new MachineCentrifugeContainer(i, level, worldPosition, inventory, player);
+        return new MachinePressContainer(i, level, worldPosition, inventory, player);
     }
 
-    // region OPTIMIZATION
-    @Override
-    protected boolean validateInputs() {
-
-        if (!cacheRecipe()) {
-            return false;
-        }
-        return inputSlot.getCount() >= itemInputCounts.get(0);
-    }
-    // endregion
 }

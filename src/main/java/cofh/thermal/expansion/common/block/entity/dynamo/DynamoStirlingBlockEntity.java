@@ -16,11 +16,11 @@ import javax.annotation.Nullable;
 import static cofh.lib.api.StorageGroup.INPUT;
 import static cofh.thermal.expansion.init.registries.TExpBlockEntities.DYNAMO_STIRLING_TILE;
 
-public class DynamoStirlingTile extends DynamoBlockEntity {
+public class DynamoStirlingBlockEntity extends DynamoBlockEntity {
 
     protected ItemStorageCoFH fuelSlot = new ItemStorageCoFH(item -> filter.valid(item) && StirlingFuelManager.instance().validFuel(item));
 
-    public DynamoStirlingTile(BlockPos pos, BlockState state) {
+    public DynamoStirlingBlockEntity(BlockPos pos, BlockState state) {
 
         super(DYNAMO_STIRLING_TILE.get(), pos, state);
 

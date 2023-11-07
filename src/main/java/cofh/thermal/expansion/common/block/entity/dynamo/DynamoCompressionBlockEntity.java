@@ -26,11 +26,11 @@ import static cofh.lib.util.Constants.TANK_SMALL;
 import static cofh.thermal.expansion.init.registries.TExpBlockEntities.DYNAMO_COMPRESSION_TILE;
 import static cofh.thermal.lib.util.managers.SingleFluidFuelManager.FLUID_FUEL_AMOUNT;
 
-public class DynamoCompressionTile extends DynamoBlockEntity {
+public class DynamoCompressionBlockEntity extends DynamoBlockEntity {
 
     protected FluidStorageCoFH fuelTank = new FluidStorageCoFH(TANK_SMALL, fluid -> filter.valid(fluid) && CompressionFuelManager.instance().validFuel(fluid));
 
-    public DynamoCompressionTile(BlockPos pos, BlockState state) {
+    public DynamoCompressionBlockEntity(BlockPos pos, BlockState state) {
 
         super(DYNAMO_COMPRESSION_TILE.get(), pos, state);
 

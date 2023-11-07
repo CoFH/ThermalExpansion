@@ -29,13 +29,13 @@ import static cofh.lib.util.Constants.TANK_SMALL;
 import static cofh.lib.util.constants.NBTTags.TAG_AUGMENT_FEATURE_CYCLE_PROCESS;
 import static cofh.thermal.expansion.init.registries.TExpBlockEntities.MACHINE_INSOLATOR_TILE;
 
-public class MachineInsolatorTile extends MachineBlockEntity {
+public class MachineInsolatorBlockEntity extends MachineBlockEntity {
 
     protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && InsolatorRecipeManager.instance().validRecipe(item));
     protected ItemStorageCoFH catalystSlot = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || InsolatorRecipeManager.instance().validCatalyst(item));
     protected FluidStorageCoFH waterTank = new FluidStorageCoFH(TANK_SMALL, FluidHelper.IS_WATER);
 
-    public MachineInsolatorTile(BlockPos pos, BlockState state) {
+    public MachineInsolatorBlockEntity(BlockPos pos, BlockState state) {
 
         super(MACHINE_INSOLATOR_TILE.get(), pos, state);
 

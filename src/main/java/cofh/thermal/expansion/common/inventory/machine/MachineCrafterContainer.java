@@ -7,7 +7,7 @@ import cofh.lib.common.inventory.SlotFalseCopy;
 import cofh.lib.common.inventory.SlotRemoveOnly;
 import cofh.lib.common.inventory.wrapper.InvWrapperCoFH;
 import cofh.lib.util.Utils;
-import cofh.thermal.expansion.common.block.entity.machine.MachineCrafterTile;
+import cofh.thermal.expansion.common.block.entity.machine.MachineCrafterBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
 import net.minecraft.server.level.ServerPlayer;
@@ -29,7 +29,7 @@ import static cofh.thermal.expansion.init.registries.TExpContainers.MACHINE_CRAF
 
 public class MachineCrafterContainer extends TileCoFHContainer {
 
-    public final MachineCrafterTile tile;
+    public final MachineCrafterBlockEntity tile;
     private final CraftingContainer craftMatrix = new TransientCraftingContainer(this, 3, 3);
     private final ResultContainer craftResult = new ResultContainer();
     private final Player player;
@@ -39,7 +39,7 @@ public class MachineCrafterContainer extends TileCoFHContainer {
     public MachineCrafterContainer(int windowId, Level level, BlockPos pos, Inventory inventory, Player player) {
 
         super(MACHINE_CRAFTER_CONTAINER.get(), windowId, level, pos, inventory, player);
-        this.tile = (MachineCrafterTile) level.getBlockEntity(pos);
+        this.tile = (MachineCrafterBlockEntity) level.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
         this.player = inventory.player;
 
@@ -69,7 +69,7 @@ public class MachineCrafterContainer extends TileCoFHContainer {
 
         if (Utils.isServerWorld(level)) {
             for (int i = 0; i < 9; ++i) {
-                craftMatrix.setItem(i, tile.getItemInv().get(MachineCrafterTile.SLOT_CRAFTING_START + i));
+                craftMatrix.setItem(i, tile.getItemInv().get(MachineCrafterBlockEntity.SLOT_CRAFTING_START + i));
             }
             calcCraftingGrid();
         }
@@ -104,7 +104,7 @@ public class MachineCrafterContainer extends TileCoFHContainer {
     public void setRecipe() {
 
         for (int i = 0; i < craftMatrix.getContainerSize(); ++i) {
-            tile.getItemInv().set(MachineCrafterTile.SLOT_CRAFTING_START + i, craftMatrix.getItem(i));
+            tile.getItemInv().set(MachineCrafterBlockEntity.SLOT_CRAFTING_START + i, craftMatrix.getItem(i));
         }
         TileConfigPacket.sendToServer(tile);
         tile.clearRecipeChanges();

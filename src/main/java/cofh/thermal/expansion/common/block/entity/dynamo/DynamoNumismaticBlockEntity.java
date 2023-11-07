@@ -16,11 +16,11 @@ import javax.annotation.Nullable;
 import static cofh.lib.api.StorageGroup.INPUT;
 import static cofh.thermal.expansion.init.registries.TExpBlockEntities.DYNAMO_NUMISMATIC_TILE;
 
-public class DynamoNumismaticTile extends DynamoBlockEntity {
+public class DynamoNumismaticBlockEntity extends DynamoBlockEntity {
 
     protected ItemStorageCoFH fuelSlot = new ItemStorageCoFH(item -> filter.valid(item) && NumismaticFuelManager.instance().validFuel(item));
 
-    public DynamoNumismaticTile(BlockPos pos, BlockState state) {
+    public DynamoNumismaticBlockEntity(BlockPos pos, BlockState state) {
 
         super(DYNAMO_NUMISMATIC_TILE.get(), pos, state);
 

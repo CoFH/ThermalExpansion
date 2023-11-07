@@ -24,12 +24,12 @@ import static cofh.lib.util.Constants.TANK_MEDIUM;
 import static cofh.thermal.expansion.init.registries.TExpBlockEntities.MACHINE_CRUCIBLE_TILE;
 import static cofh.thermal.expansion.init.registries.TExpSounds.SOUND_MACHINE_CRUCIBLE;
 
-public class MachineCrucibleTile extends MachineBlockEntity {
+public class MachineCrucibleBlockEntity extends MachineBlockEntity {
 
     protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && CrucibleRecipeManager.instance().validRecipe(item));
     protected FluidStorageCoFH outputTank = new FluidStorageCoFH(TANK_MEDIUM);
 
-    public MachineCrucibleTile(BlockPos pos, BlockState state) {
+    public MachineCrucibleBlockEntity(BlockPos pos, BlockState state) {
 
         super(MACHINE_CRUCIBLE_TILE.get(), pos, state);
 

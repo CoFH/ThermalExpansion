@@ -21,12 +21,12 @@ import static cofh.lib.api.StorageGroup.*;
 import static cofh.thermal.expansion.init.registries.TExpBlockEntities.MACHINE_FURNACE_TILE;
 import static cofh.thermal.expansion.init.registries.TExpSounds.SOUND_MACHINE_FURNACE;
 
-public class MachineFurnaceTile extends MachineBlockEntity {
+public class MachineFurnaceBlockEntity extends MachineBlockEntity {
 
     protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && FurnaceRecipeManager.instance().validRecipe(item));
     protected ItemStorageCoFH outputSlot = new ItemStorageCoFH();
 
-    public MachineFurnaceTile(BlockPos pos, BlockState state) {
+    public MachineFurnaceBlockEntity(BlockPos pos, BlockState state) {
 
         super(MACHINE_FURNACE_TILE.get(), pos, state);
 

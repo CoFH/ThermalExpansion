@@ -35,7 +35,7 @@ import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.Constants.TANK_MEDIUM;
 import static cofh.thermal.expansion.init.registries.TExpBlockEntities.MACHINE_CRAFTER_TILE;
 
-public class MachineCrafterTile extends MachineBlockEntity {
+public class MachineCrafterBlockEntity extends MachineBlockEntity {
 
     public static final int SLOT_CRAFTING_START = 11;
 
@@ -49,7 +49,7 @@ public class MachineCrafterTile extends MachineBlockEntity {
 
     protected FluidStorageCoFH inputTank = new FluidStorageCoFH(TANK_MEDIUM, fluid -> filter.valid(fluid) && CrafterRecipeManager.instance().validFluid(fluid, curRecipe));
 
-    public MachineCrafterTile(BlockPos pos, BlockState state) {
+    public MachineCrafterBlockEntity(BlockPos pos, BlockState state) {
 
         super(MACHINE_CRAFTER_TILE.get(), pos, state);
 

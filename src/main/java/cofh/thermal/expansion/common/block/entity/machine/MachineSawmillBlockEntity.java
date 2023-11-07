@@ -19,11 +19,11 @@ import static cofh.lib.api.StorageGroup.*;
 import static cofh.thermal.expansion.init.registries.TExpBlockEntities.MACHINE_SAWMILL_TILE;
 import static cofh.thermal.expansion.init.registries.TExpSounds.SOUND_MACHINE_SAWMILL;
 
-public class MachineSawmillTile extends MachineBlockEntity {
+public class MachineSawmillBlockEntity extends MachineBlockEntity {
 
     protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && SawmillRecipeManager.instance().validRecipe(item));
 
-    public MachineSawmillTile(BlockPos pos, BlockState state) {
+    public MachineSawmillBlockEntity(BlockPos pos, BlockState state) {
 
         super(MACHINE_SAWMILL_TILE.get(), pos, state);
 

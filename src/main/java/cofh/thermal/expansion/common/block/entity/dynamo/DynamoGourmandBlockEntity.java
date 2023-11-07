@@ -16,11 +16,11 @@ import javax.annotation.Nullable;
 import static cofh.lib.api.StorageGroup.INPUT;
 import static cofh.thermal.expansion.init.registries.TExpBlockEntities.DYNAMO_GOURMAND_TILE;
 
-public class DynamoGourmandTile extends DynamoBlockEntity {
+public class DynamoGourmandBlockEntity extends DynamoBlockEntity {
 
     protected ItemStorageCoFH fuelSlot = new ItemStorageCoFH(item -> filter.valid(item) && GourmandFuelManager.instance().validFuel(item));
 
-    public DynamoGourmandTile(BlockPos pos, BlockState state) {
+    public DynamoGourmandBlockEntity(BlockPos pos, BlockState state) {
 
         super(DYNAMO_GOURMAND_TILE.get(), pos, state);
 

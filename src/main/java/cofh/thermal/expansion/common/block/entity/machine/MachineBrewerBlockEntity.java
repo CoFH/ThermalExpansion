@@ -21,13 +21,13 @@ import static cofh.lib.api.StorageGroup.*;
 import static cofh.lib.util.Constants.*;
 import static cofh.thermal.expansion.init.registries.TExpBlockEntities.MACHINE_BREWER_TILE;
 
-public class MachineBrewerTile extends MachineBlockEntity {
+public class MachineBrewerBlockEntity extends MachineBlockEntity {
 
     protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && BrewerRecipeManager.instance().validItem(item));
     protected FluidStorageCoFH inputTank = new FluidStorageCoFH(TANK_SMALL, fluid -> filter.valid(fluid) && BrewerRecipeManager.instance().validFluid(fluid));
     protected FluidStorageCoFH outputTank = new FluidStorageCoFH(TANK_MEDIUM);
 
-    public MachineBrewerTile(BlockPos pos, BlockState state) {
+    public MachineBrewerBlockEntity(BlockPos pos, BlockState state) {
 
         super(MACHINE_BREWER_TILE.get(), pos, state);
 

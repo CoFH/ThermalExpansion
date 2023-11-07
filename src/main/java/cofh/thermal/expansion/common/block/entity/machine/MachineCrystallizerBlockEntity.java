@@ -1,15 +1,14 @@
 package cofh.thermal.expansion.common.block.entity.machine;
 
 import cofh.core.util.helpers.FluidHelper;
-import cofh.lib.client.sounds.ConditionalSoundInstance;
 import cofh.lib.common.fluid.FluidStorageCoFH;
 import cofh.lib.common.inventory.ItemStorageCoFH;
 import cofh.thermal.core.common.config.ThermalCoreConfig;
-import cofh.thermal.core.util.managers.machine.BottlerRecipeManager;
-import cofh.thermal.expansion.common.inventory.machine.MachineBottlerContainer;
+import cofh.thermal.core.common.item.SlotSealItem;
+import cofh.thermal.core.util.managers.machine.CrystallizerRecipeManager;
+import cofh.thermal.expansion.common.inventory.machine.MachineCrystallizerContainer;
 import cofh.thermal.lib.common.block.entity.MachineBlockEntity;
 import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -18,23 +17,28 @@ import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
 
+import static cofh.core.util.helpers.ItemHelper.itemsEqual;
 import static cofh.lib.api.StorageGroup.*;
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.Constants.TANK_MEDIUM;
-import static cofh.thermal.expansion.init.registries.TExpBlockEntities.MACHINE_BOTTLER_TILE;
-import static cofh.thermal.expansion.init.registries.TExpSounds.SOUND_MACHINE_BOTTLER;
+import static cofh.thermal.expansion.init.registries.TExpBlockEntities.MACHINE_CRYSTALLIZER_TILE;
 
-public class MachineBottlerTile extends MachineBlockEntity {
+public class MachineCrystallizerBlockEntity extends MachineBlockEntity {
 
-    protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> filter.valid(item) && BottlerRecipeManager.instance().validItem(item));
+    protected ItemStorageCoFH[] inputSlots = new ItemStorageCoFH[2];
     protected ItemStorageCoFH outputSlot = new ItemStorageCoFH();
-    protected FluidStorageCoFH inputTank = new FluidStorageCoFH(TANK_MEDIUM, fluid -> filter.valid(fluid) && BottlerRecipeManager.instance().validFluid(fluid));
+    protected FluidStorageCoFH inputTank = new FluidStorageCoFH(TANK_MEDIUM, fluid -> filter.valid(fluid) && CrystallizerRecipeManager.instance().validFluid(fluid));
 
-    public MachineBottlerTile(BlockPos pos, BlockState state) {
+    public MachineCrystallizerBlockEntity(BlockPos pos, BlockState state) {
 
-        super(MACHINE_BOTTLER_TILE.get(), pos, state);
+        super(MACHINE_CRYSTALLIZER_TILE.get(), pos, state);
 
-        inventory.addSlot(inputSlot, INPUT);
+        inputSlots[0] = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || filter.valid(item) && CrystallizerRecipeManager.instance().validItem(item) && !itemsEqual(item, inputSlots[1].getItemStack()));
+        inputSlots[1] = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || filter.valid(item) && CrystallizerRecipeManager.instance().validItem(item) && !itemsEqual(item, inputSlots[0].getItemStack()));
+
+        for (int i = 0; i < 2; ++i) {
+            inventory.addSlot(inputSlots[i], INPUT);
+        }
         inventory.addSlot(outputSlot, OUTPUT);
         inventory.addSlot(chargeSlot, INTERNAL);
 
@@ -47,13 +51,13 @@ public class MachineBottlerTile extends MachineBlockEntity {
     @Override
     protected int getBaseProcessTick() {
 
-        return BottlerRecipeManager.instance().getBasePower();
+        return CrystallizerRecipeManager.instance().getBasePower();
     }
 
     @Override
     protected boolean cacheRecipe() {
 
-        curRecipe = BottlerRecipeManager.instance().getRecipe(this);
+        curRecipe = CrystallizerRecipeManager.instance().getRecipe(this);
         if (curRecipe != null) {
             itemInputCounts = curRecipe.getInputItemCounts(this);
             fluidInputCounts = curRecipe.getInputFluidCounts(this);
@@ -80,13 +84,13 @@ public class MachineBottlerTile extends MachineBlockEntity {
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
-        return new MachineBottlerContainer(i, level, worldPosition, inventory, player);
+        return new MachineCrystallizerContainer(i, level, worldPosition, inventory, player);
     }
 
-    @Override
-    protected Object getSound() {
-
-        return new ConditionalSoundInstance(SOUND_MACHINE_BOTTLER.get(), SoundSource.AMBIENT, this, () -> !remove && isActive);
-    }
+    //    @Override
+    //    protected Object getSound() {
+    //
+    //        return new ConditionalSoundInstance(SOUND_MACHINE_CRYSTALLIZER.get(), SoundSource.AMBIENT, this, () -> !remove && isActive);
+    //    }
 
 }

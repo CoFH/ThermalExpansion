@@ -5,8 +5,8 @@ import cofh.lib.common.fluid.FluidStorageCoFH;
 import cofh.lib.common.inventory.ItemStorageCoFH;
 import cofh.thermal.core.common.config.ThermalCoreConfig;
 import cofh.thermal.core.common.item.SlotSealItem;
-import cofh.thermal.core.util.managers.machine.CrystallizerRecipeManager;
-import cofh.thermal.expansion.common.inventory.machine.MachineCrystallizerContainer;
+import cofh.thermal.core.util.managers.machine.ChillerRecipeManager;
+import cofh.thermal.expansion.common.inventory.machine.MachineChillerContainer;
 import cofh.thermal.lib.common.block.entity.MachineBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -17,28 +17,23 @@ import net.minecraftforge.fluids.FluidStack;
 
 import javax.annotation.Nullable;
 
-import static cofh.core.util.helpers.ItemHelper.itemsEqual;
 import static cofh.lib.api.StorageGroup.*;
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.Constants.TANK_MEDIUM;
-import static cofh.thermal.expansion.init.registries.TExpBlockEntities.MACHINE_CRYSTALLIZER_TILE;
+import static cofh.thermal.expansion.init.registries.TExpBlockEntities.MACHINE_CHILLER_TILE;
+import static cofh.thermal.lib.util.references.ThermalTags.Items.MACHINE_CASTS;
 
-public class MachineCrystallizerTile extends MachineBlockEntity {
+public class MachineChillerBlockEntity extends MachineBlockEntity {
 
-    protected ItemStorageCoFH[] inputSlots = new ItemStorageCoFH[2];
+    protected ItemStorageCoFH inputSlot = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || filter.valid(item) && ChillerRecipeManager.instance().validItem(item));
     protected ItemStorageCoFH outputSlot = new ItemStorageCoFH();
-    protected FluidStorageCoFH inputTank = new FluidStorageCoFH(TANK_MEDIUM, fluid -> filter.valid(fluid) && CrystallizerRecipeManager.instance().validFluid(fluid));
+    protected FluidStorageCoFH inputTank = new FluidStorageCoFH(TANK_MEDIUM, fluid -> filter.valid(fluid) && ChillerRecipeManager.instance().validFluid(fluid));
 
-    public MachineCrystallizerTile(BlockPos pos, BlockState state) {
+    public MachineChillerBlockEntity(BlockPos pos, BlockState state) {
 
-        super(MACHINE_CRYSTALLIZER_TILE.get(), pos, state);
+        super(MACHINE_CHILLER_TILE.get(), pos, state);
 
-        inputSlots[0] = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || filter.valid(item) && CrystallizerRecipeManager.instance().validItem(item) && !itemsEqual(item, inputSlots[1].getItemStack()));
-        inputSlots[1] = new ItemStorageCoFH(item -> item.getItem() instanceof SlotSealItem || filter.valid(item) && CrystallizerRecipeManager.instance().validItem(item) && !itemsEqual(item, inputSlots[0].getItemStack()));
-
-        for (int i = 0; i < 2; ++i) {
-            inventory.addSlot(inputSlots[i], INPUT);
-        }
+        inventory.addSlot(inputSlot, INPUT);
         inventory.addSlot(outputSlot, OUTPUT);
         inventory.addSlot(chargeSlot, INTERNAL);
 
@@ -51,13 +46,13 @@ public class MachineCrystallizerTile extends MachineBlockEntity {
     @Override
     protected int getBaseProcessTick() {
 
-        return CrystallizerRecipeManager.instance().getBasePower();
+        return ChillerRecipeManager.instance().getBasePower();
     }
 
     @Override
     protected boolean cacheRecipe() {
 
-        curRecipe = CrystallizerRecipeManager.instance().getRecipe(this);
+        curRecipe = ChillerRecipeManager.instance().getRecipe(this);
         if (curRecipe != null) {
             itemInputCounts = curRecipe.getInputItemCounts(this);
             fluidInputCounts = curRecipe.getInputFluidCounts(this);
@@ -71,26 +66,29 @@ public class MachineCrystallizerTile extends MachineBlockEntity {
         if (curRecipe == null) {
             return false;
         }
-        if (inputTank.isEmpty()) {
-            // This should definitely never happen, but who knows.
-            return false;
-        }
         FluidStack prevFluid = renderFluid;
         renderFluid = new FluidStack(inputTank.getFluidStack(), BUCKET_VOLUME);
         return !FluidHelper.fluidsEqual(renderFluid, prevFluid);
+    }
+
+    @Override
+    protected void resolveInputs() {
+
+        // Input Items
+        if (!itemInputCounts.isEmpty() && !inputSlot.getItemStack().is(MACHINE_CASTS)) {
+            inputSlot.modify(-itemInputCounts.get(0));
+        }
+        // Input Fluids
+        for (int i = 0; i < fluidInputCounts.size(); ++i) {
+            inputTanks().get(i).modify(-fluidInputCounts.get(i));
+        }
     }
 
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
-        return new MachineCrystallizerContainer(i, level, worldPosition, inventory, player);
+        return new MachineChillerContainer(i, level, worldPosition, inventory, player);
     }
-
-    //    @Override
-    //    protected Object getSound() {
-    //
-    //        return new ConditionalSoundInstance(SOUND_MACHINE_CRYSTALLIZER.get(), SoundSource.AMBIENT, this, () -> !remove && isActive);
-    //    }
 
 }

@@ -21,14 +21,14 @@ import static cofh.lib.api.StorageGroup.*;
 import static cofh.lib.util.Constants.*;
 import static cofh.thermal.expansion.init.registries.TExpBlockEntities.MACHINE_REFINERY_TILE;
 
-public class MachineRefineryTile extends MachineBlockEntity {
+public class MachineRefineryBlockEntity extends MachineBlockEntity {
 
     protected ItemStorageCoFH outputSlot = new ItemStorageCoFH();
     protected FluidStorageCoFH inputTank = new FluidStorageCoFH(TANK_SMALL, fluid -> filter.valid(fluid) && RefineryRecipeManager.instance().validRecipe(fluid));
     protected FluidStorageCoFH outputTankA = new FluidStorageCoFH(TANK_MEDIUM);
     protected FluidStorageCoFH outputTankB = new FluidStorageCoFH(TANK_MEDIUM);
 
-    public MachineRefineryTile(BlockPos pos, BlockState state) {
+    public MachineRefineryBlockEntity(BlockPos pos, BlockState state) {
 
         super(MACHINE_REFINERY_TILE.get(), pos, state);
 
