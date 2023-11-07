@@ -1,6 +1,6 @@
 package cofh.thermal.expansion.common.inventory.machine;
 
-import cofh.core.common.inventory.TileCoFHContainer;
+import cofh.core.common.inventory.BlockEntityCoFHMenu;
 import cofh.lib.common.inventory.SlotCoFH;
 import cofh.lib.common.inventory.SlotRemoveOnly;
 import cofh.lib.common.inventory.wrapper.InvWrapperCoFH;
@@ -10,26 +10,25 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
-import static cofh.thermal.expansion.init.registries.TExpContainers.MACHINE_CRYSTALLIZER_CONTAINER;
+import static cofh.thermal.expansion.init.registries.TExpContainers.MACHINE_CHILLER_CONTAINER;
 
-public class MachineCrystallizerContainer extends TileCoFHContainer {
+public class MachineChillerMenu extends BlockEntityCoFHMenu {
 
     public final Reconfigurable4WayBlockEntity tile;
 
-    public MachineCrystallizerContainer(int windowId, Level level, BlockPos pos, Inventory inventory, Player player) {
+    public MachineChillerMenu(int windowId, Level level, BlockPos pos, Inventory inventory, Player player) {
 
-        super(MACHINE_CRYSTALLIZER_CONTAINER.get(), windowId, level, pos, inventory, player);
+        super(MACHINE_CHILLER_CONTAINER.get(), windowId, level, pos, inventory, player);
         this.tile = (Reconfigurable4WayBlockEntity) level.getBlockEntity(pos);
         InvWrapperCoFH tileInv = new InvWrapperCoFH(this.tile.getItemInv());
 
         addSlot(new SlotCoFH(tileInv, 0, 62, 26));
-        addSlot(new SlotCoFH(tileInv, 1, 80, 26));
 
-        addSlot(new SlotRemoveOnly(tileInv, 2, 143, 35));
+        addSlot(new SlotRemoveOnly(tileInv, 1, 125, 35));
 
-        addSlot(new SlotCoFH(tileInv, 3, 8, 53));
+        addSlot(new SlotCoFH(tileInv, 2, 8, 53));
 
-        bindAugmentSlots(tileInv, 4, this.tile.augSize());
+        bindAugmentSlots(tileInv, 3, this.tile.augSize());
         bindPlayerInventory(inventory);
     }
 

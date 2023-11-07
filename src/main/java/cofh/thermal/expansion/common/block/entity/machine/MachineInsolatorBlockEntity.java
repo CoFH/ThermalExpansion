@@ -7,7 +7,7 @@ import cofh.lib.util.helpers.MathHelper;
 import cofh.thermal.core.common.config.ThermalCoreConfig;
 import cofh.thermal.core.common.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.InsolatorRecipeManager;
-import cofh.thermal.expansion.common.inventory.machine.MachineInsolatorContainer;
+import cofh.thermal.expansion.common.inventory.machine.MachineInsolatorMenu;
 import cofh.thermal.lib.common.block.entity.MachineBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -111,7 +111,7 @@ public class MachineInsolatorBlockEntity extends MachineBlockEntity {
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
-        return new MachineInsolatorContainer(i, level, worldPosition, inventory, player);
+        return new MachineInsolatorMenu(i, level, worldPosition, inventory, player);
     }
 
     // region OPTIMIZATION

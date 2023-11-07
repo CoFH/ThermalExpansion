@@ -5,7 +5,7 @@ import cofh.lib.common.fluid.FluidStorageCoFH;
 import cofh.lib.common.inventory.ItemStorageCoFH;
 import cofh.thermal.core.common.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.machine.CentrifugeRecipeManager;
-import cofh.thermal.expansion.common.inventory.machine.MachineCentrifugeContainer;
+import cofh.thermal.expansion.common.inventory.machine.MachineCentrifugeMenu;
 import cofh.thermal.lib.common.block.entity.MachineBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -73,7 +73,7 @@ public class MachineCentrifugeBlockEntity extends MachineBlockEntity {
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
-        return new MachineCentrifugeContainer(i, level, worldPosition, inventory, player);
+        return new MachineCentrifugeMenu(i, level, worldPosition, inventory, player);
     }
 
     // region OPTIMIZATION

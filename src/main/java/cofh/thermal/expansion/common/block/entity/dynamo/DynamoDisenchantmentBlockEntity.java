@@ -3,7 +3,7 @@ package cofh.thermal.expansion.common.block.entity.dynamo;
 import cofh.lib.common.inventory.ItemStorageCoFH;
 import cofh.thermal.core.common.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.dynamo.DisenchantmentFuelManager;
-import cofh.thermal.expansion.common.inventory.dynamo.DynamoDisenchantmentContainer;
+import cofh.thermal.expansion.common.inventory.dynamo.DynamoDisenchantmentMenu;
 import cofh.thermal.lib.common.block.entity.DynamoBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -54,7 +54,7 @@ public class DynamoDisenchantmentBlockEntity extends DynamoBlockEntity {
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
-        return new DynamoDisenchantmentContainer(i, level, worldPosition, inventory, player);
+        return new DynamoDisenchantmentMenu(i, level, worldPosition, inventory, player);
     }
 
 }

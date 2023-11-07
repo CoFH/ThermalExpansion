@@ -9,7 +9,7 @@ import cofh.lib.util.Utils;
 import cofh.thermal.core.common.config.ThermalCoreConfig;
 import cofh.thermal.core.common.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.CrafterRecipeManager;
-import cofh.thermal.expansion.common.inventory.machine.MachineCrafterContainer;
+import cofh.thermal.expansion.common.inventory.machine.MachineCrafterMenu;
 import cofh.thermal.lib.common.block.entity.MachineBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
@@ -188,7 +188,7 @@ public class MachineCrafterBlockEntity extends MachineBlockEntity {
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
-        return new MachineCrafterContainer(i, level, worldPosition, inventory, player);
+        return new MachineCrafterMenu(i, level, worldPosition, inventory, player);
     }
 
     // region NETWORK

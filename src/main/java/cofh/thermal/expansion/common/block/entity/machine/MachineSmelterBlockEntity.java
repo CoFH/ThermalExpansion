@@ -6,7 +6,7 @@ import cofh.lib.util.helpers.MathHelper;
 import cofh.thermal.core.common.config.ThermalCoreConfig;
 import cofh.thermal.core.common.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.SmelterRecipeManager;
-import cofh.thermal.expansion.common.inventory.machine.MachineSmelterContainer;
+import cofh.thermal.expansion.common.inventory.machine.MachineSmelterMenu;
 import cofh.thermal.lib.common.block.entity.MachineBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -102,7 +102,7 @@ public class MachineSmelterBlockEntity extends MachineBlockEntity {
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
-        return new MachineSmelterContainer(i, level, worldPosition, inventory, player);
+        return new MachineSmelterMenu(i, level, worldPosition, inventory, player);
     }
 
     @Override

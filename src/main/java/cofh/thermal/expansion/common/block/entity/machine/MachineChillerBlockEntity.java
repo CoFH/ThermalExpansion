@@ -6,7 +6,7 @@ import cofh.lib.common.inventory.ItemStorageCoFH;
 import cofh.thermal.core.common.config.ThermalCoreConfig;
 import cofh.thermal.core.common.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.ChillerRecipeManager;
-import cofh.thermal.expansion.common.inventory.machine.MachineChillerContainer;
+import cofh.thermal.expansion.common.inventory.machine.MachineChillerMenu;
 import cofh.thermal.lib.common.block.entity.MachineBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -88,7 +88,7 @@ public class MachineChillerBlockEntity extends MachineBlockEntity {
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
-        return new MachineChillerContainer(i, level, worldPosition, inventory, player);
+        return new MachineChillerMenu(i, level, worldPosition, inventory, player);
     }
 
 }

@@ -1,7 +1,8 @@
 {
-    "pack": {
-        "description": "CoFH - Thermal Expansion Resources",
-        "pack_format": 10,
-        "_comment": ""
-    }
+  "pack": {
+    "description": {
+      "translate": "pack.thermal_expansion.description"
+    },
+    "pack_format": 15
+  }
 }

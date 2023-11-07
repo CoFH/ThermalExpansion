@@ -5,7 +5,7 @@ import cofh.lib.common.fluid.FluidStorageCoFH;
 import cofh.lib.common.inventory.ItemStorageCoFH;
 import cofh.thermal.core.common.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.machine.BrewerRecipeManager;
-import cofh.thermal.expansion.common.inventory.machine.MachineBrewerContainer;
+import cofh.thermal.expansion.common.inventory.machine.MachineBrewerMenu;
 import cofh.thermal.lib.common.block.entity.MachineBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -75,7 +75,7 @@ public class MachineBrewerBlockEntity extends MachineBlockEntity {
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
-        return new MachineBrewerContainer(i, level, worldPosition, inventory, player);
+        return new MachineBrewerMenu(i, level, worldPosition, inventory, player);
     }
 
     // region OPTIMIZATION

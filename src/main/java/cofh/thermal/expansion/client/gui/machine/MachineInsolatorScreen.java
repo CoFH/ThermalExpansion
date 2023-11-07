@@ -1,7 +1,7 @@
 package cofh.thermal.expansion.client.gui.machine;
 
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
-import cofh.thermal.expansion.common.inventory.machine.MachineInsolatorContainer;
+import cofh.thermal.expansion.common.inventory.machine.MachineInsolatorMenu;
 import cofh.thermal.lib.client.gui.MachineScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -10,12 +10,12 @@ import net.minecraft.world.entity.player.Inventory;
 import static cofh.core.util.helpers.GuiHelper.*;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 
-public class MachineInsolatorScreen extends MachineScreen<MachineInsolatorContainer> {
+public class MachineInsolatorScreen extends MachineScreen<MachineInsolatorMenu> {
 
     public static final String TEX_PATH = ID_THERMAL + ":textures/gui/container/insolator.png";
     public static final ResourceLocation TEXTURE = new ResourceLocation(TEX_PATH);
 
-    public MachineInsolatorScreen(MachineInsolatorContainer container, Inventory inv, Component titleIn) {
+    public MachineInsolatorScreen(MachineInsolatorMenu container, Inventory inv, Component titleIn) {
 
         super(container, inv, container.tile, titleIn);
         texture = TEXTURE;

@@ -6,7 +6,7 @@ import cofh.lib.util.helpers.MathHelper;
 import cofh.thermal.core.common.config.ThermalCoreConfig;
 import cofh.thermal.core.common.item.SlotSealItem;
 import cofh.thermal.core.util.managers.machine.PulverizerRecipeManager;
-import cofh.thermal.expansion.common.inventory.machine.MachinePulverizerContainer;
+import cofh.thermal.expansion.common.inventory.machine.MachinePulverizerMenu;
 import cofh.thermal.lib.common.block.entity.MachineBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -93,7 +93,7 @@ public class MachinePulverizerBlockEntity extends MachineBlockEntity {
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
-        return new MachinePulverizerContainer(i, level, worldPosition, inventory, player);
+        return new MachinePulverizerMenu(i, level, worldPosition, inventory, player);
     }
 
     @Override

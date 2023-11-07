@@ -3,7 +3,7 @@ package cofh.thermal.expansion.common.block.entity.dynamo;
 import cofh.lib.common.inventory.ItemStorageCoFH;
 import cofh.thermal.core.common.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.dynamo.StirlingFuelManager;
-import cofh.thermal.expansion.common.inventory.dynamo.DynamoStirlingContainer;
+import cofh.thermal.expansion.common.inventory.dynamo.DynamoStirlingMenu;
 import cofh.thermal.lib.common.block.entity.DynamoBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -55,7 +55,7 @@ public class DynamoStirlingBlockEntity extends DynamoBlockEntity {
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
-        return new DynamoStirlingContainer(i, level, worldPosition, inventory, player);
+        return new DynamoStirlingMenu(i, level, worldPosition, inventory, player);
     }
 
 }

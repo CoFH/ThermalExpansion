@@ -1,6 +1,6 @@
 package cofh.thermal.expansion.common.inventory.machine;
 
-import cofh.core.common.inventory.TileCoFHContainer;
+import cofh.core.common.inventory.BlockEntityCoFHMenu;
 import cofh.core.common.network.packet.server.TileConfigPacket;
 import cofh.lib.common.inventory.SlotCoFH;
 import cofh.lib.common.inventory.SlotFalseCopy;
@@ -27,7 +27,7 @@ import java.util.Optional;
 
 import static cofh.thermal.expansion.init.registries.TExpContainers.MACHINE_CRAFTER_CONTAINER;
 
-public class MachineCrafterContainer extends TileCoFHContainer {
+public class MachineCrafterMenu extends BlockEntityCoFHMenu {
 
     public final MachineCrafterBlockEntity tile;
     private final CraftingContainer craftMatrix = new TransientCraftingContainer(this, 3, 3);
@@ -36,7 +36,7 @@ public class MachineCrafterContainer extends TileCoFHContainer {
 
     private final boolean initialized;
 
-    public MachineCrafterContainer(int windowId, Level level, BlockPos pos, Inventory inventory, Player player) {
+    public MachineCrafterMenu(int windowId, Level level, BlockPos pos, Inventory inventory, Player player) {
 
         super(MACHINE_CRAFTER_CONTAINER.get(), windowId, level, pos, inventory, player);
         this.tile = (MachineCrafterBlockEntity) level.getBlockEntity(pos);

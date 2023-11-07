@@ -1,7 +1,7 @@
 package cofh.thermal.expansion.client.gui.machine;
 
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
-import cofh.thermal.expansion.common.inventory.machine.MachineSmelterContainer;
+import cofh.thermal.expansion.common.inventory.machine.MachineSmelterMenu;
 import cofh.thermal.lib.client.gui.MachineScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -10,12 +10,12 @@ import net.minecraft.world.entity.player.Inventory;
 import static cofh.core.util.helpers.GuiHelper.*;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 
-public class MachineSmelterScreen extends MachineScreen<MachineSmelterContainer> {
+public class MachineSmelterScreen extends MachineScreen<MachineSmelterMenu> {
 
     public static final String TEX_PATH = ID_THERMAL + ":textures/gui/container/smelter.png";
     public static final ResourceLocation TEXTURE = new ResourceLocation(TEX_PATH);
 
-    public MachineSmelterScreen(MachineSmelterContainer container, Inventory inv, Component titleIn) {
+    public MachineSmelterScreen(MachineSmelterMenu container, Inventory inv, Component titleIn) {
 
         super(container, inv, container.tile, titleIn);
         texture = TEXTURE;

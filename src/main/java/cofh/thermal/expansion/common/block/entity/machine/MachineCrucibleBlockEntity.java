@@ -6,7 +6,7 @@ import cofh.lib.common.fluid.FluidStorageCoFH;
 import cofh.lib.common.inventory.ItemStorageCoFH;
 import cofh.thermal.core.common.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.machine.CrucibleRecipeManager;
-import cofh.thermal.expansion.common.inventory.machine.MachineCrucibleContainer;
+import cofh.thermal.expansion.common.inventory.machine.MachineCrucibleMenu;
 import cofh.thermal.lib.common.block.entity.MachineBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
@@ -73,7 +73,7 @@ public class MachineCrucibleBlockEntity extends MachineBlockEntity {
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
-        return new MachineCrucibleContainer(i, level, worldPosition, inventory, player);
+        return new MachineCrucibleMenu(i, level, worldPosition, inventory, player);
     }
 
     @Override

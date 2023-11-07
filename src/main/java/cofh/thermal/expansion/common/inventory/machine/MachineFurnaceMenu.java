@@ -1,6 +1,6 @@
 package cofh.thermal.expansion.common.inventory.machine;
 
-import cofh.core.common.inventory.TileCoFHContainer;
+import cofh.core.common.inventory.BlockEntityCoFHMenu;
 import cofh.lib.common.inventory.SlotCoFH;
 import cofh.lib.common.inventory.wrapper.InvWrapperCoFH;
 import cofh.thermal.lib.common.block.entity.Reconfigurable4WayBlockEntity;
@@ -12,11 +12,11 @@ import net.minecraft.world.level.Level;
 
 import static cofh.thermal.expansion.init.registries.TExpContainers.MACHINE_FURNACE_CONTAINER;
 
-public class MachineFurnaceContainer extends TileCoFHContainer {
+public class MachineFurnaceMenu extends BlockEntityCoFHMenu {
 
     public final Reconfigurable4WayBlockEntity tile;
 
-    public MachineFurnaceContainer(int windowId, Level level, BlockPos pos, Inventory inventory, Player player) {
+    public MachineFurnaceMenu(int windowId, Level level, BlockPos pos, Inventory inventory, Player player) {
 
         super(MACHINE_FURNACE_CONTAINER.get(), windowId, level, pos, inventory, player);
         this.tile = (Reconfigurable4WayBlockEntity) level.getBlockEntity(pos);

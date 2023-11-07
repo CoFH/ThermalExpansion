@@ -1,6 +1,6 @@
 package cofh.thermal.expansion.common.inventory.machine;
 
-import cofh.core.common.inventory.TileCoFHContainer;
+import cofh.core.common.inventory.BlockEntityCoFHMenu;
 import cofh.lib.common.inventory.SlotCoFH;
 import cofh.lib.common.inventory.SlotRemoveOnly;
 import cofh.lib.common.inventory.wrapper.InvWrapperCoFH;
@@ -12,11 +12,11 @@ import net.minecraft.world.level.Level;
 
 import static cofh.thermal.expansion.init.registries.TExpContainers.MACHINE_PULVERIZER_CONTAINER;
 
-public class MachinePulverizerContainer extends TileCoFHContainer {
+public class MachinePulverizerMenu extends BlockEntityCoFHMenu {
 
     public final Reconfigurable4WayBlockEntity tile;
 
-    public MachinePulverizerContainer(int windowId, Level level, BlockPos pos, Inventory inventory, Player player) {
+    public MachinePulverizerMenu(int windowId, Level level, BlockPos pos, Inventory inventory, Player player) {
 
         super(MACHINE_PULVERIZER_CONTAINER.get(), windowId, level, pos, inventory, player);
         this.tile = (Reconfigurable4WayBlockEntity) level.getBlockEntity(pos);

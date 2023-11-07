@@ -1,6 +1,6 @@
 package cofh.thermal.expansion.common.inventory.dynamo;
 
-import cofh.core.common.inventory.TileCoFHContainer;
+import cofh.core.common.inventory.BlockEntityCoFHMenu;
 import cofh.lib.common.inventory.SlotCoFH;
 import cofh.lib.common.inventory.wrapper.InvWrapperCoFH;
 import cofh.thermal.lib.common.block.entity.DynamoBlockEntity;
@@ -11,11 +11,11 @@ import net.minecraft.world.level.Level;
 
 import static cofh.thermal.expansion.init.registries.TExpContainers.DYNAMO_NUMISMATIC_CONTAINER;
 
-public class DynamoNumismaticContainer extends TileCoFHContainer {
+public class DynamoNumismaticMenu extends BlockEntityCoFHMenu {
 
     public final DynamoBlockEntity tile;
 
-    public DynamoNumismaticContainer(int windowId, Level level, BlockPos pos, Inventory inventory, Player player) {
+    public DynamoNumismaticMenu(int windowId, Level level, BlockPos pos, Inventory inventory, Player player) {
 
         super(DYNAMO_NUMISMATIC_CONTAINER.get(), windowId, level, pos, inventory, player);
         this.tile = (DynamoBlockEntity) level.getBlockEntity(pos);

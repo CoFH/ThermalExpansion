@@ -4,7 +4,7 @@ import cofh.lib.client.sounds.ConditionalSoundInstance;
 import cofh.lib.common.inventory.ItemStorageCoFH;
 import cofh.thermal.core.common.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.machine.FurnaceRecipeManager;
-import cofh.thermal.expansion.common.inventory.machine.MachineFurnaceContainer;
+import cofh.thermal.expansion.common.inventory.machine.MachineFurnaceMenu;
 import cofh.thermal.lib.common.block.entity.MachineBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
@@ -58,7 +58,7 @@ public class MachineFurnaceBlockEntity extends MachineBlockEntity {
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
-        return new MachineFurnaceContainer(i, level, worldPosition, inventory, player);
+        return new MachineFurnaceMenu(i, level, worldPosition, inventory, player);
     }
 
     @Override

@@ -1,7 +1,7 @@
 package cofh.thermal.expansion.client.gui.machine;
 
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
-import cofh.thermal.expansion.common.inventory.machine.MachinePulverizerContainer;
+import cofh.thermal.expansion.common.inventory.machine.MachinePulverizerMenu;
 import cofh.thermal.lib.client.gui.MachineScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -10,12 +10,12 @@ import net.minecraft.world.entity.player.Inventory;
 import static cofh.core.util.helpers.GuiHelper.*;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 
-public class MachinePulverizerScreen extends MachineScreen<MachinePulverizerContainer> {
+public class MachinePulverizerScreen extends MachineScreen<MachinePulverizerMenu> {
 
     public static final String TEX_PATH = ID_THERMAL + ":textures/gui/container/pulverizer.png";
     public static final ResourceLocation TEXTURE = new ResourceLocation(TEX_PATH);
 
-    public MachinePulverizerScreen(MachinePulverizerContainer container, Inventory inv, Component titleIn) {
+    public MachinePulverizerScreen(MachinePulverizerMenu container, Inventory inv, Component titleIn) {
 
         super(container, inv, container.tile, titleIn);
         texture = TEXTURE;

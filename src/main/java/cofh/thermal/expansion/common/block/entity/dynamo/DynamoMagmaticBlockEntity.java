@@ -5,7 +5,7 @@ import cofh.core.util.helpers.FluidHelper;
 import cofh.lib.common.fluid.FluidStorageCoFH;
 import cofh.thermal.core.common.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.dynamo.MagmaticFuelManager;
-import cofh.thermal.expansion.common.inventory.dynamo.DynamoMagmaticContainer;
+import cofh.thermal.expansion.common.inventory.dynamo.DynamoMagmaticMenu;
 import cofh.thermal.lib.common.block.entity.DynamoBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Inventory;
@@ -78,7 +78,7 @@ public class DynamoMagmaticBlockEntity extends DynamoBlockEntity {
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
-        return new DynamoMagmaticContainer(i, level, worldPosition, inventory, player);
+        return new DynamoMagmaticMenu(i, level, worldPosition, inventory, player);
     }
 
     @Nonnull

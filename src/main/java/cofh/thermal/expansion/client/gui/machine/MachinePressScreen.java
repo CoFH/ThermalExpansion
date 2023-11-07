@@ -1,7 +1,7 @@
 package cofh.thermal.expansion.client.gui.machine;
 
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
-import cofh.thermal.expansion.common.inventory.machine.MachinePressContainer;
+import cofh.thermal.expansion.common.inventory.machine.MachinePressMenu;
 import cofh.thermal.lib.client.gui.MachineScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -10,12 +10,12 @@ import net.minecraft.world.entity.player.Inventory;
 import static cofh.core.util.helpers.GuiHelper.*;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 
-public class MachinePressScreen extends MachineScreen<MachinePressContainer> {
+public class MachinePressScreen extends MachineScreen<MachinePressMenu> {
 
     public static final String TEX_PATH = ID_THERMAL + ":textures/gui/container/press.png";
     public static final ResourceLocation TEXTURE = new ResourceLocation(TEX_PATH);
 
-    public MachinePressScreen(MachinePressContainer container, Inventory inv, Component titleIn) {
+    public MachinePressScreen(MachinePressMenu container, Inventory inv, Component titleIn) {
 
         super(container, inv, container.tile, titleIn);
         texture = TEXTURE;

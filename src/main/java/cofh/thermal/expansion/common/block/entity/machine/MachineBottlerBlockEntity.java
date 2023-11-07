@@ -6,7 +6,7 @@ import cofh.lib.common.fluid.FluidStorageCoFH;
 import cofh.lib.common.inventory.ItemStorageCoFH;
 import cofh.thermal.core.common.config.ThermalCoreConfig;
 import cofh.thermal.core.util.managers.machine.BottlerRecipeManager;
-import cofh.thermal.expansion.common.inventory.machine.MachineBottlerContainer;
+import cofh.thermal.expansion.common.inventory.machine.MachineBottlerMenu;
 import cofh.thermal.lib.common.block.entity.MachineBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
@@ -80,7 +80,7 @@ public class MachineBottlerBlockEntity extends MachineBlockEntity {
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
 
-        return new MachineBottlerContainer(i, level, worldPosition, inventory, player);
+        return new MachineBottlerMenu(i, level, worldPosition, inventory, player);
     }
 
     @Override
