@@ -25,7 +25,7 @@ import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.catalystTooltip;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.catalyzedOutputTooltip;
-import static cofh.thermal.lib.common.ThermalIDs.ID_MACHINE_SMELTER;
+import static cofh.thermal.lib.init.ThermalIDs.ID_MACHINE_SMELTER;
 
 public class SmelterRecipeCategory extends ThermalRecipeCategory<SmelterRecipe> {
 

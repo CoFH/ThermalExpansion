@@ -28,8 +28,8 @@ import java.util.ArrayList;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
-import static cofh.thermal.core.init.TCoreRecipeTypes.*;
-import static cofh.thermal.lib.common.ThermalIDs.*;
+import static cofh.thermal.core.init.registries.TCoreRecipeTypes.*;
+import static cofh.thermal.lib.init.ThermalIDs.*;
 
 @JeiPlugin
 public class TExpJeiPlugin implements IModPlugin {

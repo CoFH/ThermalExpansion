@@ -1,7 +1,7 @@
 package cofh.thermal.expansion.client.gui.dynamo;
 
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
-import cofh.thermal.expansion.inventory.container.dynamo.DynamoNumismaticContainer;
+import cofh.thermal.expansion.common.inventory.dynamo.DynamoNumismaticContainer;
 import cofh.thermal.lib.client.gui.DynamoScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;

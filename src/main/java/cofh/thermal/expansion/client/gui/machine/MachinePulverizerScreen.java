@@ -1,7 +1,7 @@
 package cofh.thermal.expansion.client.gui.machine;
 
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
-import cofh.thermal.expansion.inventory.container.machine.MachinePulverizerContainer;
+import cofh.thermal.expansion.common.inventory.machine.MachinePulverizerContainer;
 import cofh.thermal.lib.client.gui.MachineScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;

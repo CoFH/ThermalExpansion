@@ -17,7 +17,7 @@ import java.util.List;
 
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
-import static cofh.thermal.lib.common.ThermalIDs.ID_DYNAMO_LAPIDARY;
+import static cofh.thermal.lib.init.ThermalIDs.ID_DYNAMO_LAPIDARY;
 
 public class LapidaryFuelCategory extends ThermalFuelCategory<LapidaryFuel> {
 

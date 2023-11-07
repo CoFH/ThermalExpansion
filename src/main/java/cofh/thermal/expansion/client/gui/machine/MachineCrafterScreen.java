@@ -3,7 +3,7 @@ package cofh.thermal.expansion.client.gui.machine;
 import cofh.core.client.gui.element.ElementBase;
 import cofh.core.client.gui.element.ElementButton;
 import cofh.thermal.core.client.gui.ThermalGuiHelper;
-import cofh.thermal.expansion.inventory.container.machine.MachineCrafterContainer;
+import cofh.thermal.expansion.common.inventory.machine.MachineCrafterContainer;
 import cofh.thermal.lib.client.gui.MachineScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;

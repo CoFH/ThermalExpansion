@@ -1,7 +1,7 @@
 package cofh.thermal.expansion.compat.jei.machine;
 
 import cofh.core.util.helpers.RenderHelper;
-import cofh.lib.fluid.FluidIngredient;
+import cofh.lib.common.fluid.FluidIngredient;
 import cofh.thermal.core.util.recipes.machine.BrewerRecipe;
 import cofh.thermal.expansion.client.gui.machine.MachineBrewerScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
@@ -27,7 +27,7 @@ import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.defaultFluidTooltip;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.tankSize;
-import static cofh.thermal.lib.common.ThermalIDs.ID_MACHINE_BREWER;
+import static cofh.thermal.lib.init.ThermalIDs.ID_MACHINE_BREWER;
 
 public class BrewerRecipeCategory extends ThermalRecipeCategory<BrewerRecipe> {
 

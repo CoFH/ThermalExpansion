@@ -1,7 +1,7 @@
 package cofh.thermal.expansion.compat.jei.machine;
 
-import cofh.core.fluid.PotionFluid;
-import cofh.lib.fluid.FluidIngredient;
+import cofh.core.common.fluid.PotionFluid;
+import cofh.lib.common.fluid.FluidIngredient;
 import cofh.thermal.core.util.managers.machine.BottlerRecipeManager;
 import cofh.thermal.core.util.recipes.machine.BottlerRecipe;
 import mezz.jei.api.constants.VanillaTypes;

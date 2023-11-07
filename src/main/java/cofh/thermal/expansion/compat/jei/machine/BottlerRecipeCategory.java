@@ -1,7 +1,7 @@
 package cofh.thermal.expansion.compat.jei.machine;
 
 import cofh.core.util.helpers.RenderHelper;
-import cofh.lib.fluid.FluidIngredient;
+import cofh.lib.common.fluid.FluidIngredient;
 import cofh.thermal.core.util.recipes.machine.BottlerRecipe;
 import cofh.thermal.expansion.client.gui.machine.MachineBottlerScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
@@ -25,7 +25,7 @@ import static cofh.lib.util.Constants.TANK_MEDIUM;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.*;
-import static cofh.thermal.lib.common.ThermalIDs.ID_MACHINE_BOTTLER;
+import static cofh.thermal.lib.init.ThermalIDs.ID_MACHINE_BOTTLER;
 
 public class BottlerRecipeCategory extends ThermalRecipeCategory<BottlerRecipe> {
 

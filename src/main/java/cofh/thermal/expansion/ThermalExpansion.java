@@ -2,9 +2,9 @@ package cofh.thermal.expansion;
 
 import cofh.thermal.expansion.client.gui.dynamo.*;
 import cofh.thermal.expansion.client.gui.machine.*;
-import cofh.thermal.expansion.config.ThermalDynamoConfig;
-import cofh.thermal.expansion.config.ThermalMachineConfig;
-import cofh.thermal.expansion.init.*;
+import cofh.thermal.expansion.common.config.ThermalDynamoConfig;
+import cofh.thermal.expansion.common.config.ThermalMachineConfig;
+import cofh.thermal.expansion.init.registries.*;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -14,9 +14,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import static cofh.lib.util.constants.ModIds.ID_THERMAL_EXPANSION;
 import static cofh.thermal.core.ThermalCore.CONFIG_MANAGER;
-import static cofh.thermal.expansion.init.TExpContainers.*;
-import static cofh.thermal.lib.common.ThermalFlags.*;
-import static cofh.thermal.lib.common.ThermalIDs.*;
+import static cofh.thermal.expansion.init.registries.TExpContainers.*;
+import static cofh.thermal.lib.init.ThermalFlags.*;
+import static cofh.thermal.lib.init.ThermalIDs.*;
 
 @Mod (ID_THERMAL_EXPANSION)
 public class ThermalExpansion {

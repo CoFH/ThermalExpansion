@@ -23,7 +23,7 @@ import static cofh.core.util.helpers.ItemHelper.cloneStack;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.defaultOutputTooltip;
-import static cofh.thermal.lib.common.ThermalIDs.ID_MACHINE_SAWMILL;
+import static cofh.thermal.lib.init.ThermalIDs.ID_MACHINE_SAWMILL;
 
 public class SawmillRecipeCategory extends ThermalRecipeCategory<SawmillRecipe> {
 

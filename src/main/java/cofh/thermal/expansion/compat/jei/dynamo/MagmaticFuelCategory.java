@@ -1,6 +1,6 @@
 package cofh.thermal.expansion.compat.jei.dynamo;
 
-import cofh.lib.fluid.FluidIngredient;
+import cofh.lib.common.fluid.FluidIngredient;
 import cofh.thermal.core.util.recipes.dynamo.MagmaticFuel;
 import cofh.thermal.expansion.client.gui.dynamo.DynamoMagmaticScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
@@ -24,7 +24,7 @@ import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.defaultFluidTooltip;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.tankSize;
-import static cofh.thermal.lib.common.ThermalIDs.ID_DYNAMO_MAGMATIC;
+import static cofh.thermal.lib.init.ThermalIDs.ID_DYNAMO_MAGMATIC;
 
 public class MagmaticFuelCategory extends ThermalFuelCategory<MagmaticFuel> {
 
