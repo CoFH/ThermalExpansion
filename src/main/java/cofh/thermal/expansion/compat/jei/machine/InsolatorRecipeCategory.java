@@ -29,7 +29,7 @@ import static cofh.lib.util.Constants.TANK_MEDIUM;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.*;
-import static cofh.thermal.lib.init.ThermalIDs.ID_MACHINE_INSOLATOR;
+import static cofh.thermal.lib.util.ThermalIDs.ID_MACHINE_INSOLATOR;
 
 public class InsolatorRecipeCategory extends ThermalRecipeCategory<InsolatorRecipe> {
 

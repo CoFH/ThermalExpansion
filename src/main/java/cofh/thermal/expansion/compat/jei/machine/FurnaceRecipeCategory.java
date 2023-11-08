@@ -20,7 +20,7 @@ import java.util.List;
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.defaultOutputTooltip;
-import static cofh.thermal.lib.init.ThermalIDs.ID_MACHINE_FURNACE;
+import static cofh.thermal.lib.util.ThermalIDs.ID_MACHINE_FURNACE;
 
 public class FurnaceRecipeCategory extends ThermalRecipeCategory<FurnaceRecipe> {
 

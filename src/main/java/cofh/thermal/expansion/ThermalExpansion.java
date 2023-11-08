@@ -15,8 +15,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL_EXPANSION;
 import static cofh.thermal.core.ThermalCore.CONFIG_MANAGER;
 import static cofh.thermal.expansion.init.registries.TExpContainers.*;
-import static cofh.thermal.lib.init.ThermalFlags.*;
-import static cofh.thermal.lib.init.ThermalIDs.*;
+import static cofh.thermal.lib.util.ThermalFlags.*;
+import static cofh.thermal.lib.util.ThermalIDs.*;
 
 @Mod (ID_THERMAL_EXPANSION)
 public class ThermalExpansion {

@@ -8,7 +8,7 @@ import net.minecraft.world.item.ItemStack;
 
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
-import static cofh.thermal.lib.init.ThermalIDs.ID_MACHINE_INSOLATOR;
+import static cofh.thermal.lib.util.ThermalIDs.ID_MACHINE_INSOLATOR;
 
 public class InsolatorCatalystCategory extends ThermalCatalystCategory<InsolatorCatalyst> {
 

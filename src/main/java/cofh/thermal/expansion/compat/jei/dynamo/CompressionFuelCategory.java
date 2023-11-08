@@ -24,7 +24,7 @@ import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.defaultFluidTooltip;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.tankSize;
-import static cofh.thermal.lib.init.ThermalIDs.ID_DYNAMO_COMPRESSION;
+import static cofh.thermal.lib.util.ThermalIDs.ID_DYNAMO_COMPRESSION;
 
 public class CompressionFuelCategory extends ThermalFuelCategory<CompressionFuel> {
 

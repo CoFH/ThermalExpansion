@@ -4,7 +4,7 @@ import cofh.lib.init.data.loot.BlockLootSubProviderCoFH;
 
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
-import static cofh.thermal.lib.init.ThermalIDs.*;
+import static cofh.thermal.lib.util.ThermalIDs.*;
 
 public class TExpBlockLootTables extends BlockLootSubProviderCoFH {
 

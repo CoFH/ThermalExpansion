@@ -27,7 +27,7 @@ import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.defaultFluidTooltip;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.tankSize;
-import static cofh.thermal.lib.init.ThermalIDs.ID_MACHINE_BREWER;
+import static cofh.thermal.lib.util.ThermalIDs.ID_MACHINE_BREWER;
 
 public class BrewerRecipeCategory extends ThermalRecipeCategory<BrewerRecipe> {
 

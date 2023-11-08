@@ -6,8 +6,8 @@ import net.minecraftforge.common.ForgeConfigSpec;
 
 import java.util.function.Supplier;
 
-import static cofh.thermal.lib.init.ThermalFlags.getFlag;
-import static cofh.thermal.lib.init.ThermalIDs.*;
+import static cofh.thermal.lib.util.ThermalFlags.getFlag;
+import static cofh.thermal.lib.util.ThermalIDs.*;
 
 public class ThermalMachineConfig implements IBaseConfig {
 

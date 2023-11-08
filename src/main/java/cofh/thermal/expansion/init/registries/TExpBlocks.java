@@ -12,11 +12,11 @@ import java.util.function.IntSupplier;
 import static cofh.lib.util.constants.BlockStatePropertiesCoFH.ACTIVE;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL_EXPANSION;
 import static cofh.lib.util.helpers.BlockHelper.lightValue;
+import static cofh.thermal.core.init.registries.ThermalCreativeTabs.devicesTab;
 import static cofh.thermal.core.util.RegistrationHelper.registerAugmentableBlock;
 import static cofh.thermal.expansion.init.registries.TExpBlockEntities.*;
-import static cofh.thermal.lib.init.ThermalCreativeTabs.devicesTab;
-import static cofh.thermal.lib.init.ThermalIDs.*;
 import static cofh.thermal.lib.util.ThermalAugmentRules.*;
+import static cofh.thermal.lib.util.ThermalIDs.*;
 import static net.minecraft.world.level.block.state.BlockBehaviour.Properties.of;
 
 public class TExpBlocks {
