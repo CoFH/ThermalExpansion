@@ -2,7 +2,6 @@ package cofh.thermal.expansion.init.registries;
 
 import cofh.core.common.item.ItemCoFH;
 import cofh.thermal.core.common.item.SlotSealItem;
-import net.minecraft.world.item.Item;
 
 import static cofh.lib.util.Utils.itemProperties;
 import static cofh.lib.util.constants.ModIds.ID_THERMAL_EXPANSION;
