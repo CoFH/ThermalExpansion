@@ -97,7 +97,7 @@ public class ThermalMachineConfig implements IBaseConfig {
 
             builder.pop();
         }
-        if (getFlag(ID_MACHINE_FURNACE).get()) {
+        if (getFlag(ID_MACHINE_REFINERY).get()) {
             builder.push("Refinery");
 
             machineRefineryPower = builder

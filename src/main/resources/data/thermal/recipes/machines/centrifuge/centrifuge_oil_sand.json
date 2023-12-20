@@ -22,5 +22,6 @@
       "amount": 100
     }
   ],
-  "energy": 20000
+  "energy": 20000,
+  "experience": 1.0
 }

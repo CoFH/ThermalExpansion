@@ -2,6 +2,7 @@ package cofh.thermal.expansion.compat.jei.machine;
 
 import cofh.core.util.helpers.RenderHelper;
 import cofh.lib.common.fluid.FluidIngredient;
+import cofh.thermal.core.util.managers.machine.RefineryRecipeManager;
 import cofh.thermal.core.util.recipes.machine.RefineryRecipe;
 import cofh.thermal.expansion.client.gui.machine.MachineRefineryScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
@@ -45,6 +46,7 @@ public class RefineryRecipeCategory extends ThermalRecipeCategory<RefineryRecipe
     public RefineryRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<RefineryRecipe> type) {
 
         super(guiHelper, icon, type);
+        energyMod = () -> RefineryRecipeManager.instance().getDefaultScale();
 
         background = guiHelper.drawableBuilder(MachineRefineryScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)

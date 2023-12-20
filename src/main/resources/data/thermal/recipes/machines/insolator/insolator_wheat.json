@@ -13,5 +13,6 @@
       "chance": 1.1
     }
   ],
-  "water_mod": 0.5
+  "water_mod": 0.5,
+  "experience": 0.15
 }

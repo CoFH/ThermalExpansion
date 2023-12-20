@@ -1,0 +1,18 @@
+{
+  "type": "thermal:insolator",
+  "ingredient": {
+    "item": "minecraft:cherry_sapling"
+  },
+  "result": [
+    {
+      "item": "minecraft:cherry_log",
+      "chance": 6.0
+    },
+    {
+      "item": "minecraft:cherry_sapling",
+      "chance": 1.1
+    }
+  ],
+  "energy_mod": 3.0,
+  "water_mod": 3.0
+}

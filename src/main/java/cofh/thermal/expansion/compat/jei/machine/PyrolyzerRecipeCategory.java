@@ -1,6 +1,7 @@
 package cofh.thermal.expansion.compat.jei.machine;
 
 import cofh.core.util.helpers.RenderHelper;
+import cofh.thermal.core.util.managers.machine.PyrolyzerRecipeManager;
 import cofh.thermal.core.util.recipes.machine.PyrolyzerRecipe;
 import cofh.thermal.expansion.client.gui.machine.MachinePyrolyzerScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
@@ -39,6 +40,7 @@ public class PyrolyzerRecipeCategory extends ThermalRecipeCategory<PyrolyzerReci
     public PyrolyzerRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<PyrolyzerRecipe> type) {
 
         super(guiHelper, icon, type);
+        energyMod = () -> PyrolyzerRecipeManager.instance().getDefaultScale();
 
         background = guiHelper.drawableBuilder(MachinePyrolyzerScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)

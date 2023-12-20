@@ -2,6 +2,7 @@ package cofh.thermal.expansion.compat.jei.machine;
 
 import cofh.core.util.helpers.RenderHelper;
 import cofh.lib.common.fluid.FluidIngredient;
+import cofh.thermal.core.util.managers.machine.CrystallizerRecipeManager;
 import cofh.thermal.core.util.recipes.machine.CrystallizerRecipe;
 import cofh.thermal.expansion.client.gui.machine.MachineCrystallizerScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
@@ -35,6 +36,7 @@ public class CrystallizerRecipeCategory extends ThermalRecipeCategory<Crystalliz
     public CrystallizerRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<CrystallizerRecipe> type) {
 
         super(guiHelper, icon, type);
+        energyMod = () -> CrystallizerRecipeManager.instance().getDefaultScale();
 
         background = guiHelper.drawableBuilder(MachineCrystallizerScreen.TEXTURE, 26, 11, 144, 62)
                 .addPadding(0, 0, 16, 4)

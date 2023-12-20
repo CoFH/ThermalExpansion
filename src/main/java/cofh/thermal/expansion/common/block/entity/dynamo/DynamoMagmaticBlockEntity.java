@@ -61,7 +61,9 @@ public class DynamoMagmaticBlockEntity extends DynamoBlockEntity {
         if (cacheRenderFluid()) {
             TileStatePacket.sendToClient(this);
         }
-        fuel += fuelMax = Math.round(MagmaticFuelManager.instance().getEnergy(fuelTank.getFluidStack()) * energyMod);
+        int fuelVal = Math.round(MagmaticFuelManager.instance().getEnergy(fuelTank.getFluidStack()) * energyMod);
+        processTick = Math.min(baseProcessTick, fuelVal);
+        fuel += fuelMax = fuelVal;
         fuelTank.modify(-FLUID_FUEL_AMOUNT);
     }
 

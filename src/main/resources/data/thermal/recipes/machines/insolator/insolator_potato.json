@@ -12,5 +12,6 @@
       "item": "minecraft:poisonous_potato",
       "chance": 0.05
     }
-  ]
+  ],
+  "experience": 0.15
 }

@@ -14,5 +14,6 @@
       "item": "minecraft:mossy_cobblestone"
     }
   ],
-  "energy": 2000
+  "energy": 2000,
+  "experience": 0.1
 }

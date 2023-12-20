@@ -32,6 +32,7 @@ public class PulverizerRecipeCategory extends ThermalRecipeCategory<PulverizerRe
     public PulverizerRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<PulverizerRecipe> type) {
 
         super(guiHelper, icon, type);
+        energyMod = () -> PulverizerRecipeManager.instance().getDefaultScale();
 
         background = guiHelper.drawableBuilder(MachinePulverizerScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)

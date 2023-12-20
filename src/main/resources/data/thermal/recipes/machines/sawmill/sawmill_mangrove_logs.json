@@ -13,5 +13,6 @@
       "chance": 1.25
     }
   ],
-  "energy": 1000
+  "energy": 1000,
+  "experience": 0.15
 }

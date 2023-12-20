@@ -45,7 +45,9 @@ public class DynamoGourmandBlockEntity extends DynamoBlockEntity {
     @Override
     protected void processStart() {
 
-        fuel += fuelMax = Math.round(GourmandFuelManager.instance().getEnergy(fuelSlot.getItemStack()) * energyMod);
+        int fuelVal = Math.round(GourmandFuelManager.instance().getEnergy(fuelSlot.getItemStack()) * energyMod);
+        processTick = Math.min(baseProcessTick, fuelVal);
+        fuel += fuelMax = fuelVal;
         fuelSlot.consume(1);
     }
     // endregion

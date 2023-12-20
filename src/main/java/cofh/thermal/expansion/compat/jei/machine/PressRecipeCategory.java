@@ -1,6 +1,7 @@
 package cofh.thermal.expansion.compat.jei.machine;
 
 import cofh.core.util.helpers.RenderHelper;
+import cofh.thermal.core.util.managers.machine.PressRecipeManager;
 import cofh.thermal.core.util.recipes.machine.PressRecipe;
 import cofh.thermal.expansion.client.gui.machine.MachinePressScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
@@ -39,6 +40,7 @@ public class PressRecipeCategory extends ThermalRecipeCategory<PressRecipe> {
     public PressRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<PressRecipe> type) {
 
         super(guiHelper, icon, type);
+        energyMod = () -> PressRecipeManager.instance().getDefaultScale();
 
         background = guiHelper.drawableBuilder(MachinePressScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)

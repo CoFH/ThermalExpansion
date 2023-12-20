@@ -45,7 +45,9 @@ public class DynamoDisenchantmentBlockEntity extends DynamoBlockEntity {
     @Override
     protected void processStart() {
 
-        fuel += fuelMax = Math.round(DisenchantmentFuelManager.instance().getEnergy(fuelSlot.getItemStack()) * energyMod);
+        int fuelVal = Math.round(DisenchantmentFuelManager.instance().getEnergy(fuelSlot.getItemStack()) * energyMod);
+        processTick = Math.min(baseProcessTick, fuelVal);
+        fuel += fuelMax = fuelVal;
         fuelSlot.consume(1);
     }
     // endregion

@@ -1,5 +1,6 @@
 package cofh.thermal.expansion.compat.jei.machine;
 
+import cofh.thermal.core.util.managers.machine.FurnaceRecipeManager;
 import cofh.thermal.core.util.recipes.machine.FurnaceRecipe;
 import cofh.thermal.expansion.client.gui.machine.MachineFurnaceScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
@@ -27,6 +28,7 @@ public class FurnaceRecipeCategory extends ThermalRecipeCategory<FurnaceRecipe> 
     public FurnaceRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<FurnaceRecipe> type) {
 
         super(guiHelper, icon, type);
+        energyMod = () -> FurnaceRecipeManager.instance().getDefaultScale();
 
         background = guiHelper.drawableBuilder(MachineFurnaceScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)

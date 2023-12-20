@@ -2,6 +2,7 @@ package cofh.thermal.expansion.compat.jei.machine;
 
 import cofh.core.util.helpers.RenderHelper;
 import cofh.lib.common.fluid.FluidIngredient;
+import cofh.thermal.core.util.managers.machine.ChillerRecipeManager;
 import cofh.thermal.core.util.recipes.machine.ChillerRecipe;
 import cofh.thermal.expansion.client.gui.machine.MachineChillerScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
@@ -35,6 +36,7 @@ public class ChillerRecipeCategory extends ThermalRecipeCategory<ChillerRecipe> 
     public ChillerRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<ChillerRecipe> type) {
 
         super(guiHelper, icon, type);
+        energyMod = () -> ChillerRecipeManager.instance().getDefaultScale();
 
         background = guiHelper.drawableBuilder(MachineChillerScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)

@@ -46,7 +46,9 @@ public class DynamoLapidaryBlockEntity extends DynamoBlockEntity {
     @Override
     protected void processStart() {
 
-        fuel += fuelMax = Math.round(LapidaryFuelManager.instance().getEnergy(fuelSlot.getItemStack()) * energyMod);
+        int fuelVal = Math.round(LapidaryFuelManager.instance().getEnergy(fuelSlot.getItemStack()) * energyMod);
+        processTick = Math.min(baseProcessTick, fuelVal);
+        fuel += fuelMax = fuelVal;
         fuelSlot.consume(1);
     }
     // endregion

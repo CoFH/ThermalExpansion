@@ -1,6 +1,7 @@
 package cofh.thermal.expansion.compat.jei.machine;
 
 import cofh.core.util.helpers.RenderHelper;
+import cofh.thermal.core.util.managers.machine.CentrifugeRecipeManager;
 import cofh.thermal.core.util.recipes.machine.CentrifugeRecipe;
 import cofh.thermal.expansion.client.gui.machine.MachineCentrifugeScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
@@ -39,6 +40,7 @@ public class CentrifugeRecipeCategory extends ThermalRecipeCategory<CentrifugeRe
     public CentrifugeRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<CentrifugeRecipe> type) {
 
         super(guiHelper, icon, type);
+        energyMod = () -> CentrifugeRecipeManager.instance().getDefaultScale();
 
         background = guiHelper.drawableBuilder(MachineCentrifugeScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)

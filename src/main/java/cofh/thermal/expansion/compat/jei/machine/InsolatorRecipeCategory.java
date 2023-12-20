@@ -39,6 +39,7 @@ public class InsolatorRecipeCategory extends ThermalRecipeCategory<InsolatorReci
     public InsolatorRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<InsolatorRecipe> type) {
 
         super(guiHelper, icon, type);
+        energyMod = () -> InsolatorRecipeManager.instance().getDefaultScale();
 
         background = guiHelper.drawableBuilder(MachineInsolatorScreen.TEXTURE, 26, 11, 130, 62)
                 .addPadding(0, 0, 16, 18)

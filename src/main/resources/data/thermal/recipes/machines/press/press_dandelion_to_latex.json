@@ -11,5 +11,6 @@
       "amount": 50
     }
   ],
-  "energy": 400
+  "energy": 400,
+  "experience": 0.15
 }

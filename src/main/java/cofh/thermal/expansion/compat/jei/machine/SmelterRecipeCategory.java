@@ -32,6 +32,7 @@ public class SmelterRecipeCategory extends ThermalRecipeCategory<SmelterRecipe> 
     public SmelterRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<SmelterRecipe> type) {
 
         super(guiHelper, icon, type);
+        energyMod = () -> SmelterRecipeManager.instance().getDefaultScale();
 
         background = guiHelper.drawableBuilder(MachineSmelterScreen.TEXTURE, 26, 11, 140, 62)
                 .addPadding(0, 0, 16, 8)

@@ -1,6 +1,7 @@
 package cofh.thermal.expansion.compat.jei.machine;
 
 import cofh.core.util.helpers.RenderHelper;
+import cofh.thermal.core.util.managers.machine.CrucibleRecipeManager;
 import cofh.thermal.core.util.recipes.machine.CrucibleRecipe;
 import cofh.thermal.expansion.client.gui.machine.MachineCrucibleScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
@@ -36,6 +37,7 @@ public class CrucibleRecipeCategory extends ThermalRecipeCategory<CrucibleRecipe
     public CrucibleRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<CrucibleRecipe> type) {
 
         super(guiHelper, icon, type);
+        energyMod = () -> CrucibleRecipeManager.instance().getDefaultScale();
 
         background = guiHelper.drawableBuilder(MachineCrucibleScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)

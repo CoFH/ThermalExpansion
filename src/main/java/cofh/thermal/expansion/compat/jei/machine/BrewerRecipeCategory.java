@@ -2,6 +2,7 @@ package cofh.thermal.expansion.compat.jei.machine;
 
 import cofh.core.util.helpers.RenderHelper;
 import cofh.lib.common.fluid.FluidIngredient;
+import cofh.thermal.core.util.managers.machine.BrewerRecipeManager;
 import cofh.thermal.core.util.recipes.machine.BrewerRecipe;
 import cofh.thermal.expansion.client.gui.machine.MachineBrewerScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
@@ -40,6 +41,7 @@ public class BrewerRecipeCategory extends ThermalRecipeCategory<BrewerRecipe> {
     public BrewerRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<BrewerRecipe> type) {
 
         super(guiHelper, icon, type);
+        energyMod = () -> BrewerRecipeManager.instance().getDefaultScale();
 
         background = guiHelper.drawableBuilder(MachineBrewerScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)

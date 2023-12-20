@@ -1,5 +1,6 @@
 package cofh.thermal.expansion.compat.jei.machine;
 
+import cofh.thermal.core.util.managers.machine.SawmillRecipeManager;
 import cofh.thermal.core.util.recipes.machine.SawmillRecipe;
 import cofh.thermal.expansion.client.gui.machine.MachineSawmillScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
@@ -30,6 +31,7 @@ public class SawmillRecipeCategory extends ThermalRecipeCategory<SawmillRecipe> 
     public SawmillRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<SawmillRecipe> type) {
 
         super(guiHelper, icon, type);
+        energyMod = () -> SawmillRecipeManager.instance().getDefaultScale();
 
         background = guiHelper.drawableBuilder(MachineSawmillScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)

@@ -2,6 +2,7 @@ package cofh.thermal.expansion.compat.jei.machine;
 
 import cofh.core.util.helpers.RenderHelper;
 import cofh.lib.common.fluid.FluidIngredient;
+import cofh.thermal.core.util.managers.machine.BottlerRecipeManager;
 import cofh.thermal.core.util.recipes.machine.BottlerRecipe;
 import cofh.thermal.expansion.client.gui.machine.MachineBottlerScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
@@ -35,6 +36,7 @@ public class BottlerRecipeCategory extends ThermalRecipeCategory<BottlerRecipe> 
     public BottlerRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<BottlerRecipe> type) {
 
         super(guiHelper, icon, type);
+        energyMod = () -> BottlerRecipeManager.instance().getDefaultScale();
 
         background = guiHelper.drawableBuilder(MachineBottlerScreen.TEXTURE, 26, 11, 124, 62)
                 .addPadding(0, 0, 16, 24)
