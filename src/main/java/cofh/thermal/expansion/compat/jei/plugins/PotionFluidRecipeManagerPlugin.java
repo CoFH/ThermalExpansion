@@ -1,9 +1,10 @@
-package cofh.thermal.expansion.compat.jei.machine;
+package cofh.thermal.expansion.compat.jei.plugins;
 
 import cofh.core.common.fluid.PotionFluid;
 import cofh.lib.common.fluid.FluidIngredient;
 import cofh.thermal.core.util.managers.machine.BottlerRecipeManager;
 import cofh.thermal.core.util.recipes.machine.BottlerRecipe;
+import cofh.thermal.expansion.compat.jei.machine.BottlerRecipeCategory;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.forge.ForgeTypes;
 import mezz.jei.api.recipe.IFocus;
@@ -30,6 +31,12 @@ import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.thermal.expansion.compat.jei.TExpJeiPlugin.BOTTLER_TYPE;
 
 public class PotionFluidRecipeManagerPlugin implements IRecipeManagerPlugin {
+
+    public static final PotionFluidRecipeManagerPlugin INSTANCE = new PotionFluidRecipeManagerPlugin();
+
+    private PotionFluidRecipeManagerPlugin() {
+
+    }
 
     @Override
     public <V> List<RecipeType<?>> getRecipeTypes(IFocus<V> focus) {

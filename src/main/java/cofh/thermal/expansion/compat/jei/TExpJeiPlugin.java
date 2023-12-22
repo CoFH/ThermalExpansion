@@ -12,6 +12,7 @@ import cofh.thermal.expansion.client.gui.dynamo.*;
 import cofh.thermal.expansion.client.gui.machine.*;
 import cofh.thermal.expansion.compat.jei.dynamo.*;
 import cofh.thermal.expansion.compat.jei.machine.*;
+import cofh.thermal.expansion.compat.jei.plugins.PotionFluidRecipeManagerPlugin;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.RecipeTypes;
@@ -180,7 +181,7 @@ public class TExpJeiPlugin implements IModPlugin {
     @Override
     public void registerAdvanced(IAdvancedRegistration registration) {
 
-        registration.addRecipeManagerPlugin(new PotionFluidRecipeManagerPlugin());
+        registration.addRecipeManagerPlugin(PotionFluidRecipeManagerPlugin.INSTANCE);
     }
 
     @Override
