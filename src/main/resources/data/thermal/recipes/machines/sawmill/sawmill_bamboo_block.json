@@ -1,0 +1,14 @@
+{
+  "type": "thermal:sawmill",
+  "ingredient": {
+    "item": "minecraft:bamboo_block"
+  },
+  "result": [
+    {
+      "item": "minecraft:bamboo_planks",
+      "count": 3
+    }
+  ],
+  "energy": 1000,
+  "experience": 0.15
+}
