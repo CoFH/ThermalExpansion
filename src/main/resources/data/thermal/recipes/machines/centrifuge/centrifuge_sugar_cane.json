@@ -1,0 +1,13 @@
+{
+  "type": "thermal:centrifuge",
+  "ingredient": {
+    "item": "minecraft:sugar_cane"
+  },
+  "result": [
+    {
+      "item": "minecraft:sugar",
+      "chance": 1.5
+    }
+  ],
+  "energy": 1600
+}

@@ -1,6 +1,7 @@
 package cofh.thermal.expansion.common.block.entity.machine;
 
 import cofh.core.util.helpers.FluidHelper;
+import cofh.core.util.helpers.InventoryHelper;
 import cofh.lib.common.fluid.FluidStorageCoFH;
 import cofh.lib.common.inventory.FalseCraftingContainer;
 import cofh.lib.common.inventory.ItemStorageCoFH;
@@ -30,6 +31,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Optional;
 
+import static cofh.core.util.helpers.ItemHelper.cloneStack;
 import static cofh.lib.api.StorageGroup.*;
 import static cofh.lib.util.Constants.BUCKET_VOLUME;
 import static cofh.lib.util.Constants.TANK_MEDIUM;
@@ -183,6 +185,46 @@ public class MachineCrafterBlockEntity extends MachineBlockEntity {
         }
         return !FluidHelper.fluidsEqual(renderFluid, prevFluid);
     }
+
+    // region HELPERS
+    @Override
+    protected boolean validateInputs() {
+
+        if (skipValidate) {
+            return true;
+        }
+        return super.validateInputs();
+    }
+
+    @Override
+    protected void resolveInputs() {
+
+        // Input Items
+        for (int i = 0; i < itemInputCounts.size(); ++i) {
+            ItemStack stackInSlot = inputSlots().get(i).getItemStack();
+            ItemStack toAdd = ItemStack.EMPTY;
+
+            // If max stack size is 1, normal consume behavior will work
+            if (stackInSlot.getMaxStackSize() > 1 && stackInSlot.hasCraftingRemainingItem()) {
+                toAdd = cloneStack(stackInSlot.getCraftingRemainingItem(), itemInputCounts.get(i));
+            }
+            inputSlots().get(i).consume(itemInputCounts.get(i));
+
+            // Add crafting remainder items to input slots
+            if (!toAdd.isEmpty()) {
+                skipValidate = true;
+                InventoryHelper.insertStackIntoInventory(inventory.getHandler(INPUT), toAdd, false);
+                skipValidate = false;
+            }
+        }
+        // Input Fluids
+        for (int i = 0; i < fluidInputCounts.size(); ++i) {
+            inputTanks().get(i).modify(-fluidInputCounts.get(i));
+        }
+    }
+
+    private boolean skipValidate = false; // Used specifically to prevent input validation during remaining item addition
+    // endregion
 
     @Nullable
     @Override

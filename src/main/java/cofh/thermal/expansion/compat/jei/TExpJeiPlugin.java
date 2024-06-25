@@ -134,9 +134,9 @@ public class TExpJeiPlugin implements IModPlugin {
         registration.addRecipeClickArea(MachineCrystallizerScreen.class, 105, progressY, progressW, progressH, CRYSTALLIZER_TYPE);
         registration.addRecipeClickArea(MachineCrystallizerScreen.class, 110, 22, progressW, progressH, RecipeTypes.CRAFTING);
 
-        registration.addRecipeClickArea(MachinePulverizerScreen.class, 72, progressY, progressW, progressH, PULVERIZER_CATALYST_TYPE);
-        registration.addRecipeClickArea(MachineSmelterScreen.class, 94, progressY, progressW, progressH, SMELTER_CATALYST_TYPE);
-        registration.addRecipeClickArea(MachineInsolatorScreen.class, 85, progressY, progressW, progressH, INSOLATOR_CATALYST_TYPE);
+        registration.addRecipeClickArea(MachinePulverizerScreen.class, 44, progressY, 16, 16, PULVERIZER_CATALYST_TYPE);
+        registration.addRecipeClickArea(MachineSmelterScreen.class, 53, progressY, 16, 16, SMELTER_CATALYST_TYPE);
+        registration.addRecipeClickArea(MachineInsolatorScreen.class, 62, progressY, 16, 16, INSOLATOR_CATALYST_TYPE);
 
         registration.addRecipeClickArea(DynamoStirlingScreen.class, 80, progressY, progressH, progressH, STIRLING_FUEL_TYPE);
         registration.addRecipeClickArea(DynamoCompressionScreen.class, 80, progressY, progressH, progressH, COMPRESSION_FUEL_TYPE);

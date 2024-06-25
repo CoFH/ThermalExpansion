@@ -1,0 +1,13 @@
+{
+  "type": "thermal:centrifuge",
+  "ingredient": {
+    "tag": "forge:crops/beetroot"
+  },
+  "result": [
+    {
+      "item": "minecraft:sugar",
+      "count": 1
+    }
+  ],
+  "energy": 1600
+}
