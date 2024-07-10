@@ -6,11 +6,11 @@ import cofh.thermal.expansion.common.config.ThermalDynamoConfig;
 import cofh.thermal.expansion.common.config.ThermalMachineConfig;
 import cofh.thermal.expansion.init.registries.*;
 import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import static cofh.lib.util.constants.ModIds.ID_THERMAL_EXPANSION;
 import static cofh.thermal.core.ThermalCore.CONFIG_MANAGER;

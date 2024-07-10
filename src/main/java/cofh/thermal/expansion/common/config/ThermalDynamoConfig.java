@@ -2,7 +2,7 @@ package cofh.thermal.expansion.common.config;
 
 import cofh.core.common.config.IBaseConfig;
 import cofh.thermal.core.util.managers.dynamo.*;
-import net.minecraftforge.common.ForgeConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
 import java.util.function.Supplier;
 
@@ -12,7 +12,7 @@ import static cofh.thermal.lib.util.ThermalIDs.*;
 public class ThermalDynamoConfig implements IBaseConfig {
 
     @Override
-    public void apply(ForgeConfigSpec.Builder builder) {
+    public void apply(ModConfigSpec.Builder builder) {
 
         builder.push("Dynamos");
 

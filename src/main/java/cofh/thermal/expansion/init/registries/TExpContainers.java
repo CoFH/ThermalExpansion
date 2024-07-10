@@ -3,8 +3,8 @@ package cofh.thermal.expansion.init.registries;
 import cofh.thermal.expansion.common.inventory.dynamo.*;
 import cofh.thermal.expansion.common.inventory.machine.*;
 import net.minecraft.world.inventory.MenuType;
-import net.minecraftforge.common.extensions.IForgeMenuType;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.common.extensions.IForgeMenuType;
+import net.neoforged.neoforge.registries.RegistryObject;
 
 import static cofh.core.util.ProxyUtils.getClientPlayer;
 import static cofh.core.util.ProxyUtils.getClientWorld;

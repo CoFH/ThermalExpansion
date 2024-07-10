@@ -3,7 +3,7 @@ package cofh.thermal.expansion.init.registries;
 import cofh.thermal.expansion.common.block.entity.dynamo.*;
 import cofh.thermal.expansion.common.block.entity.machine.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.RegistryObject;
 
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.ThermalCore.BLOCK_ENTITIES;
