@@ -3,10 +3,10 @@
   "category": "misc",
   "key": {
     "C": {
-      "tag": "forge:plates/constantan"
+      "tag": "c:plates/constantan"
     },
     "I": {
-      "tag": "forge:plates/invar"
+      "tag": "c:plates/invar"
     },
     "X": {
       "tag": "minecraft:planks"
@@ -19,6 +19,5 @@
   ],
   "result": {
     "item": "thermal:press_packing_2x2_die"
-  },
-  "show_notification": true
+  }
 }

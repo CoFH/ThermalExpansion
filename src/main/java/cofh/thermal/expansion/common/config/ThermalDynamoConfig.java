@@ -6,7 +6,7 @@ import net.neoforged.neoforge.common.ModConfigSpec;
 
 import java.util.function.Supplier;
 
-import static cofh.thermal.lib.util.ThermalFlags.getFlag;
+import static cofh.lib.util.FlagManager.getFlag;
 import static cofh.thermal.lib.util.ThermalIDs.*;
 
 public class ThermalDynamoConfig implements IBaseConfig {

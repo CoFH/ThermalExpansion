@@ -6,7 +6,7 @@
       "item": "thermal:machine_frame"
     },
     "I": {
-      "tag": "forge:gears/copper"
+      "tag": "c:gears/copper"
     },
     "P": {
       "item": "thermal:rf_coil"
@@ -25,6 +25,5 @@
   ],
   "result": {
     "item": "thermal:machine_bottler"
-  },
-  "show_notification": true
+  }
 }

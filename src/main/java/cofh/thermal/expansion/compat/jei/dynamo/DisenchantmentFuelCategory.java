@@ -12,6 +12,7 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeHolder;
 
 import java.util.List;
 
@@ -19,9 +20,9 @@ import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.lib.util.ThermalIDs.ID_DYNAMO_DISENCHANTMENT;
 
-public class DisenchantmentFuelCategory extends ThermalFuelCategory<DisenchantmentFuel> {
+public class DisenchantmentFuelCategory extends ThermalFuelCategory<RecipeHolder<DisenchantmentFuel>> {
 
-    public DisenchantmentFuelCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<DisenchantmentFuel> type) {
+    public DisenchantmentFuelCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<RecipeHolder<DisenchantmentFuel>> type) {
 
         super(guiHelper, icon, type);
 
@@ -35,15 +36,15 @@ public class DisenchantmentFuelCategory extends ThermalFuelCategory<Disenchantme
     }
 
     @Override
-    public RecipeType<DisenchantmentFuel> getRecipeType() {
+    public RecipeType<RecipeHolder<DisenchantmentFuel>> getRecipeType() {
 
         return type;
     }
 
     @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, DisenchantmentFuel fuel, IFocusGroup focuses) {
+    public void setRecipe(IRecipeLayoutBuilder builder, RecipeHolder<DisenchantmentFuel> fuel, IFocusGroup focuses) {
 
-        List<Ingredient> inputs = fuel.getInputItems();
+        List<Ingredient> inputs = fuel.value().getInputItems();
 
         builder.addSlot(RecipeIngredientRole.INPUT, 34, 24)
                 .addIngredients(inputs.get(0));

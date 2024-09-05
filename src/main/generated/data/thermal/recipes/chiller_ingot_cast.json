@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "P": {
-      "tag": "forge:plates/bronze"
+      "tag": "c:plates/bronze"
     },
     "X": {
       "item": "minecraft:nether_brick"
@@ -16,6 +16,5 @@
   ],
   "result": {
     "item": "thermal:chiller_ingot_cast"
-  },
-  "show_notification": true
+  }
 }

@@ -13,7 +13,7 @@ java {
         languageVersion = JavaLanguageVersion.of(17)
     }
     withSourcesJar()
-    withJavadocJar()
+    // withJavadocJar()
 }
 
 sourceSets.main.resources.srcDirs += "src/main/generated"
@@ -87,25 +87,23 @@ repositories {
 dependencies {
     implementation("net.neoforged:neoforge:${neo_version}")
 
-    implementation("com.teamcofh:cofh_core:1.20.1-${cofh_core_version}.+")
-    implementation("com.teamcofh:thermal_core:1.20.1-${thermal_core_version}.+")
+    implementation("com.teamcofh:cofh_core:${mc_version}-${cofh_core_version}+")
+    implementation("com.teamcofh:thermal_core:${mc_version}-${thermal_core_version}+")
 
-    // compile against the JEI API but do not include it at runtime
-    compileOnly("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
-    compileOnly("mezz.jei:jei-${mc_version}-neoforge-api:${jei_version}")
-    // at runtime, use the full JEI jar for NeoForge
-    runtimeOnly("mezz.jei:jei-${mc_version}-neoforge:${jei_version}")
+    implementation("mezz.jei:jei-${mc_version}-neoforge:${jei_version}") {
+        transitive false
+    }
 }
 
 def commonManifest = {
     attributes([
-                'Specification-Title'     : "${mod_name}",
-                'Specification-Vendor'    : 'Team CoFH',
-                'Specification-Version'   : "${mc_version}",
-                'Implementation-Title'    : "${mod_id}",
-                'Implementation-Vendor'   : 'Team CoFH',
-                'Implementation-Version'  : "${mod_version}",
-                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+            'Specification-Title'     : "${mod_name}",
+            'Specification-Vendor'    : 'Team CoFH',
+            'Specification-Version'   : "${mc_version}",
+            'Implementation-Title'    : "${mod_id}",
+            'Implementation-Vendor'   : 'Team CoFH',
+            'Implementation-Version'  : "${mod_version}",
+            'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
     ])
 }
 

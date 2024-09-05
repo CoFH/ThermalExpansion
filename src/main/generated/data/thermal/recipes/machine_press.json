@@ -6,7 +6,7 @@
       "item": "thermal:machine_frame"
     },
     "I": {
-      "tag": "forge:gears/constantan"
+      "tag": "c:gears/constantan"
     },
     "P": {
       "item": "thermal:rf_coil"
@@ -15,7 +15,7 @@
       "tag": "forge:storage_blocks/iron"
     },
     "Y": {
-      "tag": "forge:ingots/bronze"
+      "tag": "c:ingots/bronze"
     }
   },
   "pattern": [
@@ -25,6 +25,5 @@
   ],
   "result": {
     "item": "thermal:machine_press"
-  },
-  "show_notification": true
+  }
 }

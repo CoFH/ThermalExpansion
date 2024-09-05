@@ -3,10 +3,10 @@
   "category": "misc",
   "key": {
     "P": {
-      "tag": "forge:plates/invar"
+      "tag": "c:plates/invar"
     },
     "X": {
-      "tag": "forge:gears/diamond"
+      "tag": "c:gears/diamond"
     }
   },
   "pattern": [
@@ -16,6 +16,5 @@
   ],
   "result": {
     "item": "thermal:press_gear_die"
-  },
-  "show_notification": true
+  }
 }

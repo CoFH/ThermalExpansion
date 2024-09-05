@@ -12,6 +12,7 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeHolder;
 
 import java.util.List;
 
@@ -19,9 +20,9 @@ import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.lib.util.ThermalIDs.ID_DYNAMO_LAPIDARY;
 
-public class LapidaryFuelCategory extends ThermalFuelCategory<LapidaryFuel> {
+public class LapidaryFuelCategory extends ThermalFuelCategory<RecipeHolder<LapidaryFuel>> {
 
-    public LapidaryFuelCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<LapidaryFuel> type) {
+    public LapidaryFuelCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<RecipeHolder<LapidaryFuel>> type) {
 
         super(guiHelper, icon, type);
 
@@ -35,15 +36,15 @@ public class LapidaryFuelCategory extends ThermalFuelCategory<LapidaryFuel> {
     }
 
     @Override
-    public RecipeType<LapidaryFuel> getRecipeType() {
+    public RecipeType<RecipeHolder<LapidaryFuel>> getRecipeType() {
 
         return type;
     }
 
     @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, LapidaryFuel fuel, IFocusGroup focuses) {
+    public void setRecipe(IRecipeLayoutBuilder builder, RecipeHolder<LapidaryFuel> fuel, IFocusGroup focuses) {
 
-        List<Ingredient> inputs = fuel.getInputItems();
+        List<Ingredient> inputs = fuel.value().getInputItems();
 
         builder.addSlot(RecipeIngredientRole.INPUT, 34, 24)
                 .addIngredients(inputs.get(0));

@@ -15,6 +15,7 @@ import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeHolder;
 
 import java.util.List;
 
@@ -23,9 +24,9 @@ import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.defaultOutputTooltip;
 import static cofh.thermal.lib.util.ThermalIDs.ID_MACHINE_FURNACE;
 
-public class FurnaceRecipeCategory extends ThermalRecipeCategory<FurnaceRecipe> {
+public class FurnaceRecipeCategory extends ThermalRecipeCategory<RecipeHolder<FurnaceRecipe>> {
 
-    public FurnaceRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<FurnaceRecipe> type) {
+    public FurnaceRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<RecipeHolder<FurnaceRecipe>> type) {
 
         super(guiHelper, icon, type);
         energyMod = () -> FurnaceRecipeManager.instance().getDefaultScale();
@@ -43,27 +44,27 @@ public class FurnaceRecipeCategory extends ThermalRecipeCategory<FurnaceRecipe> 
     }
 
     @Override
-    public RecipeType<FurnaceRecipe> getRecipeType() {
+    public RecipeType<RecipeHolder<FurnaceRecipe>> getRecipeType() {
 
         return type;
     }
 
     @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, FurnaceRecipe recipe, IFocusGroup focuses) {
+    public void setRecipe(IRecipeLayoutBuilder builder, RecipeHolder<FurnaceRecipe> recipe, IFocusGroup focuses) {
 
-        List<Ingredient> inputs = recipe.getInputItems();
-        List<ItemStack> outputs = recipe.getOutputItems();
+        List<Ingredient> inputs = recipe.value().getInputItems();
+        List<ItemStack> outputs = recipe.value().getOutputItems();
 
         builder.addSlot(RecipeIngredientRole.INPUT, 43, 15)
                 .addIngredients(inputs.get(0));
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 106, 24)
                 .addItemStack(outputs.get(0))
-                .addTooltipCallback(defaultOutputTooltip(recipe.getOutputItemChances().get(0)));
+                .addTooltipCallback(defaultOutputTooltip(recipe.value().getOutputItemChances().get(0)));
     }
 
     @Override
-    public void draw(FurnaceRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+    public void draw(RecipeHolder<FurnaceRecipe> recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
 
         super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
 

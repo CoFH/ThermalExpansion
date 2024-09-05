@@ -6,7 +6,7 @@
       "item": "thermal:machine_frame"
     },
     "I": {
-      "tag": "forge:gears/copper"
+      "tag": "c:gears/copper"
     },
     "P": {
       "item": "thermal:rf_coil"
@@ -15,7 +15,7 @@
       "item": "minecraft:crafting_table"
     },
     "Y": {
-      "tag": "forge:ingots/tin"
+      "tag": "c:ingots/tin"
     }
   },
   "pattern": [
@@ -25,6 +25,5 @@
   ],
   "result": {
     "item": "thermal:machine_crafter"
-  },
-  "show_notification": true
+  }
 }

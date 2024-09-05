@@ -16,6 +16,7 @@ import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,9 +27,9 @@ import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.defaultOutputTooltip;
 import static cofh.thermal.lib.util.ThermalIDs.ID_MACHINE_SAWMILL;
 
-public class SawmillRecipeCategory extends ThermalRecipeCategory<SawmillRecipe> {
+public class SawmillRecipeCategory extends ThermalRecipeCategory<RecipeHolder<SawmillRecipe>> {
 
-    public SawmillRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<SawmillRecipe> type) {
+    public SawmillRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<RecipeHolder<SawmillRecipe>> type) {
 
         super(guiHelper, icon, type);
         energyMod = () -> SawmillRecipeManager.instance().getDefaultScale();
@@ -46,22 +47,22 @@ public class SawmillRecipeCategory extends ThermalRecipeCategory<SawmillRecipe> 
     }
 
     @Override
-    public RecipeType<SawmillRecipe> getRecipeType() {
+    public RecipeType<RecipeHolder<SawmillRecipe>> getRecipeType() {
 
         return type;
     }
 
     @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, SawmillRecipe recipe, IFocusGroup focuses) {
+    public void setRecipe(IRecipeLayoutBuilder builder, RecipeHolder<SawmillRecipe> recipe, IFocusGroup focuses) {
 
-        List<Ingredient> inputs = recipe.getInputItems();
-        List<ItemStack> outputs = new ArrayList<>(recipe.getOutputItems().size());
+        List<Ingredient> inputs = recipe.value().getInputItems();
+        List<ItemStack> outputs = new ArrayList<>(recipe.value().getOutputItems().size());
 
-        for (ItemStack stack : recipe.getOutputItems()) {
+        for (ItemStack stack : recipe.value().getOutputItems()) {
             outputs.add(cloneStack(stack));
         }
         for (int i = 0; i < outputs.size(); ++i) {
-            float chance = recipe.getOutputItemChances().get(i);
+            float chance = recipe.value().getOutputItemChances().get(i);
             if (chance > 1.0F) {
                 outputs.get(i).setCount((int) chance);
             }
@@ -78,12 +79,12 @@ public class SawmillRecipeCategory extends ThermalRecipeCategory<SawmillRecipe> 
 
         for (int i = 0; i < outputs.size(); ++i) {
             outputSlots[i].addItemStack(outputs.get(i))
-                    .addTooltipCallback(defaultOutputTooltip(recipe.getOutputItemChances().get(i)));
+                    .addTooltipCallback(defaultOutputTooltip(recipe.value().getOutputItemChances().get(i)));
         }
     }
 
     @Override
-    public void draw(SawmillRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+    public void draw(RecipeHolder<SawmillRecipe> recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
 
         super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
 

@@ -6,7 +6,7 @@
       "item": "thermal:rf_coil"
     },
     "G": {
-      "tag": "forge:gears/bronze"
+      "tag": "c:gears/bronze"
     },
     "I": {
       "tag": "forge:ingots/iron"
@@ -15,7 +15,7 @@
       "tag": "forge:dusts/redstone"
     },
     "Y": {
-      "tag": "forge:ingots/bronze"
+      "tag": "c:ingots/bronze"
     }
   },
   "pattern": [
@@ -25,6 +25,5 @@
   ],
   "result": {
     "item": "thermal:dynamo_compression"
-  },
-  "show_notification": true
+  }
 }

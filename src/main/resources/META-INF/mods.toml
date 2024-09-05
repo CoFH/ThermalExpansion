@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[${forge_major_version},)"
+loaderVersion = "[${lang_version},)"
 issueTrackerURL = "https://github.com/cofh/feedback"
 license = "CoFH - Don't Be A Jerk (Learn, Don't Steal)"
 
@@ -20,28 +20,28 @@ Contains the "factory" of the Thermal Series - Dynamos and Machines to both prod
 '''
 [[dependencies.thermal_expansion]]
 modId = "minecraft"
-mandatory = true
-versionRange = "1.20.1"
+type = "required"
+versionRange = "1.20.4"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.thermal_expansion]]
-modId = "forge"
-mandatory = true
+modId = "neoforge"
+type = "required"
 versionRange = "[${neo_version},)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.thermal_expansion]]
 modId = "cofh_core"
-mandatory = true
+required = true
 versionRange = "${cofh_core_version_range}"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.thermal_expansion]]
 modId = "thermal"
-mandatory = true
+required = true
 versionRange = "${thermal_core_version_range}"
 ordering = "AFTER"
 side = "BOTH"

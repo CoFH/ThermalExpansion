@@ -6,19 +6,20 @@ import cofh.thermal.core.util.recipes.machine.PressRecipe;
 import cofh.thermal.expansion.client.gui.machine.MachinePressScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
 import cofh.thermal.lib.compat.jei.ThermalRecipeCategory;
-import mezz.jei.api.forge.ForgeTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.builder.IRecipeSlotBuilder;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
+import mezz.jei.api.neoforge.NeoForgeTypes;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.neoforged.neoforge.fluids.FluidStack;
 
 import java.util.ArrayList;
@@ -32,12 +33,12 @@ import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.*;
 import static cofh.thermal.lib.util.ThermalIDs.ID_MACHINE_PRESS;
 
-public class PressRecipeCategory extends ThermalRecipeCategory<PressRecipe> {
+public class PressRecipeCategory extends ThermalRecipeCategory<RecipeHolder<PressRecipe>> {
 
     protected IDrawableStatic tankBackground;
     protected IDrawableStatic tankOverlay;
 
-    public PressRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<PressRecipe> type) {
+    public PressRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<RecipeHolder<PressRecipe>> type) {
 
         super(guiHelper, icon, type);
         energyMod = () -> PressRecipeManager.instance().getDefaultScale();
@@ -60,23 +61,23 @@ public class PressRecipeCategory extends ThermalRecipeCategory<PressRecipe> {
     }
 
     @Override
-    public RecipeType<PressRecipe> getRecipeType() {
+    public RecipeType<RecipeHolder<PressRecipe>> getRecipeType() {
 
         return type;
     }
 
     @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, PressRecipe recipe, IFocusGroup focuses) {
+    public void setRecipe(IRecipeLayoutBuilder builder, RecipeHolder<PressRecipe> recipe, IFocusGroup focuses) {
 
-        List<Ingredient> inputs = recipe.getInputItems();
-        List<ItemStack> outputs = new ArrayList<>(recipe.getOutputItems().size());
-        List<FluidStack> outputFluids = recipe.getOutputFluids();
+        List<Ingredient> inputs = recipe.value().getInputItems();
+        List<ItemStack> outputs = new ArrayList<>(recipe.value().getOutputItems().size());
+        List<FluidStack> outputFluids = recipe.value().getOutputFluids();
 
-        for (ItemStack stack : recipe.getOutputItems()) {
+        for (ItemStack stack : recipe.value().getOutputItems()) {
             outputs.add(cloneStack(stack));
         }
         for (int i = 0; i < outputs.size(); ++i) {
-            float chance = recipe.getOutputItemChances().get(i);
+            float chance = recipe.value().getOutputItemChances().get(i);
             if (chance > 1.0F) {
                 outputs.get(i).setCount((int) chance);
             }
@@ -90,18 +91,18 @@ public class PressRecipeCategory extends ThermalRecipeCategory<PressRecipe> {
         IRecipeSlotBuilder outputSlot = builder.addSlot(RecipeIngredientRole.OUTPUT, 106, 24);
         if (!outputs.isEmpty()) {
             outputSlot.addItemStack(outputs.get(0))
-                    .addTooltipCallback(defaultOutputTooltip(recipe.getOutputItemChances().get(0)));
+                    .addTooltipCallback(defaultOutputTooltip(recipe.value().getOutputItemChances().get(0)));
         }
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 141, 11)
-                .addIngredients(ForgeTypes.FLUID_STACK, outputFluids.isEmpty() ? Collections.emptyList() : List.of(outputFluids.get(0)))
+                .addIngredients(NeoForgeTypes.FLUID_STACK, outputFluids.isEmpty() ? Collections.emptyList() : List.of(outputFluids.get(0)))
                 .setFluidRenderer(tankSize(TANK_SMALL), false, 16, 40)
                 .setOverlay(tankOverlay, 0, 0)
                 .addTooltipCallback(defaultFluidTooltip());
     }
 
     @Override
-    public void draw(PressRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+    public void draw(RecipeHolder<PressRecipe> recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
 
         super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
 
@@ -109,8 +110,8 @@ public class PressRecipeCategory extends ThermalRecipeCategory<PressRecipe> {
         tankBackground.draw(guiGraphics, 140, 10);
         speedBackground.draw(guiGraphics, 43, 24);
 
-        if (!recipe.getOutputFluids().isEmpty()) {
-            RenderHelper.drawFluid(guiGraphics, 69, 24, recipe.getOutputFluids().get(0), 24, 16);
+        if (!recipe.value().getOutputFluids().isEmpty()) {
+            RenderHelper.drawFluid(guiGraphics, 69, 24, recipe.value().getOutputFluids().get(0), 24, 16);
             progressFluidBackground.draw(guiGraphics, 69, 24);
             progressFluid.draw(guiGraphics, 69, 24);
         } else {

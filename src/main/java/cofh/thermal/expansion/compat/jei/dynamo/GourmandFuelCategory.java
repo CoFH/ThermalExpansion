@@ -12,6 +12,7 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeHolder;
 
 import java.util.List;
 
@@ -19,9 +20,9 @@ import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.lib.util.ThermalIDs.ID_DYNAMO_GOURMAND;
 
-public class GourmandFuelCategory extends ThermalFuelCategory<GourmandFuel> {
+public class GourmandFuelCategory extends ThermalFuelCategory<RecipeHolder<GourmandFuel>> {
 
-    public GourmandFuelCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<GourmandFuel> type) {
+    public GourmandFuelCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<RecipeHolder<GourmandFuel>> type) {
 
         super(guiHelper, icon, type);
 
@@ -35,15 +36,15 @@ public class GourmandFuelCategory extends ThermalFuelCategory<GourmandFuel> {
     }
 
     @Override
-    public RecipeType<GourmandFuel> getRecipeType() {
+    public RecipeType<RecipeHolder<GourmandFuel>> getRecipeType() {
 
         return type;
     }
 
     @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, GourmandFuel fuel, IFocusGroup focuses) {
+    public void setRecipe(IRecipeLayoutBuilder builder, RecipeHolder<GourmandFuel> fuel, IFocusGroup focuses) {
 
-        List<Ingredient> inputs = fuel.getInputItems();
+        List<Ingredient> inputs = fuel.value().getInputItems();
 
         builder.addSlot(RecipeIngredientRole.INPUT, 34, 24)
                 .addIngredients(inputs.get(0));

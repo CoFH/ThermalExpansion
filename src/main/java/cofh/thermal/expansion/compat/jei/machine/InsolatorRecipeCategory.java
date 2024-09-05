@@ -7,19 +7,20 @@ import cofh.thermal.core.util.recipes.machine.InsolatorRecipe;
 import cofh.thermal.expansion.client.gui.machine.MachineInsolatorScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
 import cofh.thermal.lib.compat.jei.ThermalRecipeCategory;
-import mezz.jei.api.forge.ForgeTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.builder.IRecipeSlotBuilder;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
+import mezz.jei.api.neoforge.NeoForgeTypes;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,12 +32,12 @@ import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.*;
 import static cofh.thermal.lib.util.ThermalIDs.ID_MACHINE_INSOLATOR;
 
-public class InsolatorRecipeCategory extends ThermalRecipeCategory<InsolatorRecipe> {
+public class InsolatorRecipeCategory extends ThermalRecipeCategory<RecipeHolder<InsolatorRecipe>> {
 
     protected IDrawableStatic tankBackground;
     protected IDrawableStatic tankOverlay;
 
-    public InsolatorRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<InsolatorRecipe> type) {
+    public InsolatorRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<RecipeHolder<InsolatorRecipe>> type) {
 
         super(guiHelper, icon, type);
         energyMod = () -> InsolatorRecipeManager.instance().getDefaultScale();
@@ -59,24 +60,24 @@ public class InsolatorRecipeCategory extends ThermalRecipeCategory<InsolatorReci
     }
 
     @Override
-    public RecipeType<InsolatorRecipe> getRecipeType() {
+    public RecipeType<RecipeHolder<InsolatorRecipe>> getRecipeType() {
 
         return type;
     }
 
     @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, InsolatorRecipe recipe, IFocusGroup focuses) {
+    public void setRecipe(IRecipeLayoutBuilder builder, RecipeHolder<InsolatorRecipe> recipe, IFocusGroup focuses) {
 
-        List<Ingredient> inputs = recipe.getInputItems();
-        List<FluidIngredient> inputFluids = recipe.getInputFluids();
-        List<ItemStack> outputs = new ArrayList<>(recipe.getOutputItems().size());
+        List<Ingredient> inputs = recipe.value().getInputItems();
+        List<FluidIngredient> inputFluids = recipe.value().getInputFluids();
+        List<ItemStack> outputs = new ArrayList<>(recipe.value().getOutputItems().size());
         List<ItemStack> catalysts = InsolatorRecipeManager.instance().getCatalysts();
 
-        for (ItemStack stack : recipe.getOutputItems()) {
+        for (ItemStack stack : recipe.value().getOutputItems()) {
             outputs.add(cloneStack(stack));
         }
         for (int i = 0; i < outputs.size(); ++i) {
-            float chance = recipe.getOutputItemChances().get(i);
+            float chance = recipe.value().getOutputItemChances().get(i);
             if (chance > 1.0F) {
                 outputs.get(i).setCount((int) chance);
             }
@@ -88,7 +89,7 @@ public class InsolatorRecipeCategory extends ThermalRecipeCategory<InsolatorReci
                 .addIngredients(inputs.get(0));
         catalystSlot = builder.addSlot(RecipeIngredientRole.INPUT, 52, 42);
 
-        if (recipe.isCatalyzable()) {
+        if (recipe.value().isCatalyzable()) {
             catalystSlot.addItemStacks(catalysts)
                     .addTooltipCallback(catalystTooltip());
         }
@@ -99,17 +100,17 @@ public class InsolatorRecipeCategory extends ThermalRecipeCategory<InsolatorReci
 
         for (int i = 0; i < outputs.size(); ++i) {
             outputSlots[i].addItemStack(outputs.get(i))
-                    .addTooltipCallback(catalyzedOutputTooltip(recipe.getOutputItemChances().get(i), recipe.isCatalyzable()));
+                    .addTooltipCallback(catalyzedOutputTooltip(recipe.value().getOutputItemChances().get(i), recipe.value().isCatalyzable()));
         }
         builder.addSlot(RecipeIngredientRole.INPUT, 25, 11)
-                .addIngredients(ForgeTypes.FLUID_STACK, List.of(inputFluids.get(0).getFluids()))
+                .addIngredients(NeoForgeTypes.FLUID_STACK, List.of(inputFluids.get(0).getFluids()))
                 .setFluidRenderer(tankSize(TANK_MEDIUM), false, 16, 40)
                 .setOverlay(tankOverlay, 0, 0)
                 .addTooltipCallback(defaultFluidTooltip());
     }
 
     @Override
-    public void draw(InsolatorRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+    public void draw(RecipeHolder<InsolatorRecipe> recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
 
         super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
 
@@ -117,8 +118,8 @@ public class InsolatorRecipeCategory extends ThermalRecipeCategory<InsolatorReci
         tankBackground.draw(guiGraphics, 24, 10);
         speedBackground.draw(guiGraphics, 52, 24);
 
-        if (!recipe.getInputFluids().isEmpty()) {
-            RenderHelper.drawFluid(guiGraphics, 76, 24, recipe.getInputFluids().get(0).getFluids()[0], 24, 16);
+        if (!recipe.value().getInputFluids().isEmpty()) {
+            RenderHelper.drawFluid(guiGraphics, 76, 24, recipe.value().getInputFluids().get(0).getFluids()[0], 24, 16);
             progressFluidBackground.draw(guiGraphics, 76, 24);
             progressFluid.draw(guiGraphics, 76, 24);
         } else {

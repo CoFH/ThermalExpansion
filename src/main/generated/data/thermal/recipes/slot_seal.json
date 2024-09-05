@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "P": {
-      "tag": "forge:plates/iron"
+      "tag": "c:plates/iron"
     },
     "i": {
       "tag": "forge:nuggets/iron"
@@ -16,6 +16,5 @@
   ],
   "result": {
     "item": "thermal:slot_seal"
-  },
-  "show_notification": true
+  }
 }

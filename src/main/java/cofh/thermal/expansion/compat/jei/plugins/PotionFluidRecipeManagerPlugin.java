@@ -6,20 +6,19 @@ import cofh.thermal.core.util.managers.machine.BottlerRecipeManager;
 import cofh.thermal.core.util.recipes.machine.BottlerRecipe;
 import cofh.thermal.expansion.compat.jei.machine.BottlerRecipeCategory;
 import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.forge.ForgeTypes;
+import mezz.jei.api.neoforge.NeoForgeTypes;
 import mezz.jei.api.recipe.IFocus;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.advanced.IRecipeManagerPlugin;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.neoforge.fluids.FluidStack;
-import net.neoforged.neoforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -27,8 +26,7 @@ import java.util.List;
 
 import static cofh.core.init.CoreFluids.POTION_FLUID;
 import static cofh.lib.util.Constants.BOTTLE_VOLUME;
-import static cofh.lib.util.constants.ModIds.ID_THERMAL;
-import static cofh.thermal.expansion.compat.jei.TExpJeiPlugin.BOTTLER_TYPE;
+import static cofh.thermal.expansion.compat.jei.TExpJeiRecipeTypes.BOTTLER_TYPE;
 
 public class PotionFluidRecipeManagerPlugin implements IRecipeManagerPlugin {
 
@@ -50,7 +48,7 @@ public class PotionFluidRecipeManagerPlugin implements IRecipeManagerPlugin {
         if (recipeCategory instanceof BottlerRecipeCategory) {
             List<BottlerRecipe> retList = new ArrayList<>();
             if (focus.getRole() == RecipeIngredientRole.INPUT) {
-                var fluidIngredient = focus.getTypedValue().getIngredient(ForgeTypes.FLUID_STACK);
+                var fluidIngredient = focus.getTypedValue().getIngredient(NeoForgeTypes.FLUID_STACK);
                 if (fluidIngredient.isPresent() && fluidIngredient.get().getFluid() == POTION_FLUID.get()) {
                     FluidStack fluid = fluidIngredient.get();
                     if (fluid.hasTag()) {
@@ -79,7 +77,7 @@ public class PotionFluidRecipeManagerPlugin implements IRecipeManagerPlugin {
 
         if (recipeCategory instanceof BottlerRecipeCategory) {
             if (bottlerRecipes.isEmpty()) {
-                for (Potion potion : ForgeRegistries.POTIONS) {
+                for (Potion potion : BuiltInRegistries.POTION) {
                     if (potion != null && potion != Potions.WATER && potion != Potions.EMPTY) {
                         FluidStack fluid = PotionFluid.getPotionAsFluid(250, potion);
                         if (fluid.isEmpty()) {
@@ -102,8 +100,7 @@ public class PotionFluidRecipeManagerPlugin implements IRecipeManagerPlugin {
     @NotNull
     private BottlerRecipe getDynamicBottlerPotionRecipe(ItemStack item, FluidStack fluid) {
 
-        return new BottlerRecipe(new ResourceLocation(ID_THERMAL, "bottler_potion_" + item.hashCode()),
-                BottlerRecipeManager.instance().getDefaultEnergy(), 0.0F,
+        return new BottlerRecipe(BottlerRecipeManager.instance().getDefaultEnergy(), 0.0F,
                 List.of(Ingredient.of(Items.GLASS_BOTTLE)),
                 List.of(FluidIngredient.of(fluid).setAmount(BOTTLE_VOLUME)),
                 List.of(item),

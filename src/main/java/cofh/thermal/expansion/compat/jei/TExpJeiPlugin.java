@@ -4,8 +4,8 @@ import cofh.thermal.core.util.managers.dynamo.DisenchantmentFuelManager;
 import cofh.thermal.core.util.managers.dynamo.GourmandFuelManager;
 import cofh.thermal.core.util.managers.dynamo.StirlingFuelManager;
 import cofh.thermal.core.util.managers.machine.*;
-import cofh.thermal.core.util.recipes.dynamo.*;
-import cofh.thermal.core.util.recipes.machine.*;
+import cofh.thermal.core.util.recipes.machine.PulverizerRecipe;
+import cofh.thermal.core.util.recipes.machine.SmelterRecipe;
 import cofh.thermal.expansion.client.gui.dynamo.*;
 import cofh.thermal.expansion.client.gui.machine.*;
 import cofh.thermal.expansion.compat.jei.dynamo.*;
@@ -14,20 +14,21 @@ import cofh.thermal.expansion.compat.jei.plugins.PotionFluidRecipeManagerPlugin;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.RecipeTypes;
-import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
 import static cofh.thermal.core.init.registries.TCoreRecipeTypes.*;
+import static cofh.thermal.expansion.compat.jei.TExpJeiRecipeTypes.*;
 import static cofh.thermal.lib.util.ThermalIDs.*;
 
 @JeiPlugin
@@ -46,10 +47,10 @@ public class TExpJeiPlugin implements IModPlugin {
         registration.addRecipes(SAWMILL_TYPE, recipeManager.getAllRecipesFor(SAWMILL_RECIPE.get()));
         registration.addRecipes(SAWMILL_TYPE, SawmillRecipeManager.instance().getConvertedRecipes());
         registration.addRecipes(PULVERIZER_TYPE, recipeManager.getAllRecipesFor(PULVERIZER_RECIPE.get()));
-        registration.addRecipes(PULVERIZER_TYPE, new ArrayList<>(recipeManager.getAllRecipesFor(PULVERIZER_RECYCLE_RECIPE.get())));
+        registration.addRecipes(PULVERIZER_TYPE, (List<RecipeHolder<PulverizerRecipe>>) (List<?>) recipeManager.getAllRecipesFor(PULVERIZER_RECYCLE_RECIPE.get()));
         registration.addRecipes(PULVERIZER_TYPE, PulverizerRecipeManager.instance().getConvertedRecipes());
         registration.addRecipes(SMELTER_TYPE, recipeManager.getAllRecipesFor(SMELTER_RECIPE.get()));
-        registration.addRecipes(SMELTER_TYPE, new ArrayList<>(recipeManager.getAllRecipesFor(SMELTER_RECYCLE_RECIPE.get())));
+        registration.addRecipes(SMELTER_TYPE, (List<RecipeHolder<SmelterRecipe>>) (List<?>) recipeManager.getAllRecipesFor(SMELTER_RECYCLE_RECIPE.get()));
         registration.addRecipes(SMELTER_TYPE, SmelterRecipeManager.instance().getConvertedRecipes());
         registration.addRecipes(INSOLATOR_TYPE, recipeManager.getAllRecipesFor(INSOLATOR_RECIPE.get()));
         registration.addRecipes(CENTRIFUGE_TYPE, recipeManager.getAllRecipesFor(CENTRIFUGE_RECIPE.get()));
@@ -201,34 +202,5 @@ public class TExpJeiPlugin implements IModPlugin {
         }
         return recipeManager;
     }
-    // endregion
-
-    // region RECIPE TYPES
-    public static final RecipeType<FurnaceRecipe> FURNACE_TYPE = new RecipeType<>(FURNACE_RECIPE.getId(), FurnaceRecipe.class);
-    public static final RecipeType<SawmillRecipe> SAWMILL_TYPE = new RecipeType<>(SAWMILL_RECIPE.getId(), SawmillRecipe.class);
-    public static final RecipeType<PulverizerRecipe> PULVERIZER_TYPE = new RecipeType<>(PULVERIZER_RECIPE.getId(), PulverizerRecipe.class);
-    public static final RecipeType<SmelterRecipe> SMELTER_TYPE = new RecipeType<>(SMELTER_RECIPE.getId(), SmelterRecipe.class);
-    public static final RecipeType<InsolatorRecipe> INSOLATOR_TYPE = new RecipeType<>(INSOLATOR_RECIPE.getId(), InsolatorRecipe.class);
-    public static final RecipeType<CentrifugeRecipe> CENTRIFUGE_TYPE = new RecipeType<>(CENTRIFUGE_RECIPE.getId(), CentrifugeRecipe.class);
-    public static final RecipeType<PressRecipe> PRESS_TYPE = new RecipeType<>(PRESS_RECIPE.getId(), PressRecipe.class);
-    public static final RecipeType<CrucibleRecipe> CRUCIBLE_TYPE = new RecipeType<>(CRUCIBLE_RECIPE.getId(), CrucibleRecipe.class);
-    public static final RecipeType<ChillerRecipe> CHILLER_TYPE = new RecipeType<>(CHILLER_RECIPE.getId(), ChillerRecipe.class);
-    public static final RecipeType<RefineryRecipe> REFINERY_TYPE = new RecipeType<>(REFINERY_RECIPE.getId(), RefineryRecipe.class);
-    public static final RecipeType<PyrolyzerRecipe> PYROLYZER_TYPE = new RecipeType<>(PYROLYZER_RECIPE.getId(), PyrolyzerRecipe.class);
-    public static final RecipeType<BottlerRecipe> BOTTLER_TYPE = new RecipeType<>(BOTTLER_RECIPE.getId(), BottlerRecipe.class);
-    public static final RecipeType<BrewerRecipe> BREWER_TYPE = new RecipeType<>(BREWER_RECIPE.getId(), BrewerRecipe.class);
-    public static final RecipeType<CrystallizerRecipe> CRYSTALLIZER_TYPE = new RecipeType<>(CRYSTALLIZER_RECIPE.getId(), CrystallizerRecipe.class);
-
-    public static final RecipeType<PulverizerCatalyst> PULVERIZER_CATALYST_TYPE = new RecipeType<>(PULVERIZER_CATALYST.getId(), PulverizerCatalyst.class);
-    public static final RecipeType<SmelterCatalyst> SMELTER_CATALYST_TYPE = new RecipeType<>(SMELTER_CATALYST.getId(), SmelterCatalyst.class);
-    public static final RecipeType<InsolatorCatalyst> INSOLATOR_CATALYST_TYPE = new RecipeType<>(INSOLATOR_CATALYST.getId(), InsolatorCatalyst.class);
-
-    public static final RecipeType<StirlingFuel> STIRLING_FUEL_TYPE = new RecipeType<>(STIRLING_FUEL.getId(), StirlingFuel.class);
-    public static final RecipeType<CompressionFuel> COMPRESSION_FUEL_TYPE = new RecipeType<>(COMPRESSION_FUEL.getId(), CompressionFuel.class);
-    public static final RecipeType<MagmaticFuel> MAGMATIC_FUEL_TYPE = new RecipeType<>(MAGMATIC_FUEL.getId(), MagmaticFuel.class);
-    public static final RecipeType<NumismaticFuel> NUMISMATIC_FUEL_TYPE = new RecipeType<>(NUMISMATIC_FUEL.getId(), NumismaticFuel.class);
-    public static final RecipeType<LapidaryFuel> LAPIDARY_FUEL_TYPE = new RecipeType<>(LAPIDARY_FUEL.getId(), LapidaryFuel.class);
-    public static final RecipeType<DisenchantmentFuel> DISENCHANTMENT_FUEL_TYPE = new RecipeType<>(DISENCHANTMENT_FUEL.getId(), DisenchantmentFuel.class);
-    public static final RecipeType<GourmandFuel> GOURMAND_FUEL_TYPE = new RecipeType<>(GOURMAND_FUEL.getId(), GourmandFuel.class);
     // endregion
 }

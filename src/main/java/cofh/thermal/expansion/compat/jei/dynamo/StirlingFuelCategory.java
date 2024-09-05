@@ -12,6 +12,7 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeHolder;
 
 import java.util.List;
 
@@ -19,9 +20,9 @@ import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.lib.util.ThermalIDs.ID_DYNAMO_STIRLING;
 
-public class StirlingFuelCategory extends ThermalFuelCategory<StirlingFuel> {
+public class StirlingFuelCategory extends ThermalFuelCategory<RecipeHolder<StirlingFuel>> {
 
-    public StirlingFuelCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<StirlingFuel> type) {
+    public StirlingFuelCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<RecipeHolder<StirlingFuel>> type) {
 
         super(guiHelper, icon, type);
 
@@ -35,15 +36,15 @@ public class StirlingFuelCategory extends ThermalFuelCategory<StirlingFuel> {
     }
 
     @Override
-    public RecipeType<StirlingFuel> getRecipeType() {
+    public RecipeType<RecipeHolder<StirlingFuel>> getRecipeType() {
 
         return type;
     }
 
     @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, StirlingFuel fuel, IFocusGroup focuses) {
+    public void setRecipe(IRecipeLayoutBuilder builder, RecipeHolder<StirlingFuel> fuel, IFocusGroup focuses) {
 
-        List<Ingredient> inputs = fuel.getInputItems();
+        List<Ingredient> inputs = fuel.value().getInputItems();
 
         builder.addSlot(RecipeIngredientRole.INPUT, 34, 24)
                 .addIngredients(inputs.get(0));

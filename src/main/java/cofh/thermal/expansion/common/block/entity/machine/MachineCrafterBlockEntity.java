@@ -20,7 +20,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ResultContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingRecipe;
-import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -99,11 +99,11 @@ public class MachineCrafterBlockEntity extends MachineBlockEntity {
         for (int i = 0; i < 9; ++i) {
             craftMatrix.setItem(i, inventory.get(SLOT_CRAFTING_START + i));
         }
-        CraftingRecipe craftRecipe;
-        Optional<CraftingRecipe> possibleRecipe = level.getRecipeManager().getRecipeFor(RecipeType.CRAFTING, craftMatrix, level);
+        RecipeHolder<CraftingRecipe> craftRecipe;
+        Optional<RecipeHolder<CraftingRecipe>> possibleRecipe = level.getRecipeManager().getRecipeFor(RecipeType.CRAFTING, craftMatrix, level);
         if (possibleRecipe.isPresent()) {
             craftRecipe = possibleRecipe.get();
-            craftResult.setItem(0, craftRecipe.assemble(craftMatrix, level.registryAccess()));
+            craftResult.setItem(0, craftRecipe.value().assemble(craftMatrix, level.registryAccess()));
         } else {
             craftRecipe = null;
             craftResult.setItem(0, ItemStack.EMPTY);
@@ -268,7 +268,7 @@ public class MachineCrafterBlockEntity extends MachineBlockEntity {
         boolean hasRecipe = craftResult.getRecipeUsed() != null;
         buffer.writeBoolean(hasRecipe);
         if (hasRecipe) {
-            buffer.writeResourceLocation(craftResult.getRecipeUsed().getId());
+            buffer.writeResourceLocation(craftResult.getRecipeUsed().id());
         }
         return buffer;
     }
@@ -279,7 +279,7 @@ public class MachineCrafterBlockEntity extends MachineBlockEntity {
         super.handleGuiPacket(buffer);
 
         if (buffer.readBoolean() && level != null) {
-            Optional<? extends Recipe<?>> possibleRecipe = level.getRecipeManager().byKey(buffer.readResourceLocation());
+            Optional<RecipeHolder<?>> possibleRecipe = level.getRecipeManager().byKey(buffer.readResourceLocation());
             possibleRecipe.ifPresent(recipe -> curRecipe = CrafterRecipeManager.instance().getRecipe(recipe, level.registryAccess()));
         } else {
             curRecipe = null;

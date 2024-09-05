@@ -5,17 +5,18 @@ import cofh.thermal.core.util.recipes.dynamo.CompressionFuel;
 import cofh.thermal.expansion.client.gui.dynamo.DynamoCompressionScreen;
 import cofh.thermal.lib.compat.jei.Drawables;
 import cofh.thermal.lib.compat.jei.ThermalFuelCategory;
-import mezz.jei.api.forge.ForgeTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
+import mezz.jei.api.neoforge.NeoForgeTypes;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 
 import java.util.List;
 
@@ -26,12 +27,12 @@ import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.defaultFluidTooltip;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.tankSize;
 import static cofh.thermal.lib.util.ThermalIDs.ID_DYNAMO_COMPRESSION;
 
-public class CompressionFuelCategory extends ThermalFuelCategory<CompressionFuel> {
+public class CompressionFuelCategory extends ThermalFuelCategory<RecipeHolder<CompressionFuel>> {
 
     protected IDrawableStatic tankBackground;
     protected IDrawableStatic tankOverlay;
 
-    public CompressionFuelCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<CompressionFuel> type) {
+    public CompressionFuelCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<RecipeHolder<CompressionFuel>> type) {
 
         super(guiHelper, icon, type);
 
@@ -47,25 +48,25 @@ public class CompressionFuelCategory extends ThermalFuelCategory<CompressionFuel
     }
 
     @Override
-    public RecipeType<CompressionFuel> getRecipeType() {
+    public RecipeType<RecipeHolder<CompressionFuel>> getRecipeType() {
 
         return type;
     }
 
     @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, CompressionFuel fuel, IFocusGroup focuses) {
+    public void setRecipe(IRecipeLayoutBuilder builder, RecipeHolder<CompressionFuel> fuel, IFocusGroup focuses) {
 
-        List<FluidIngredient> inputs = fuel.getInputFluids();
+        List<FluidIngredient> inputs = fuel.value().getInputFluids();
 
         builder.addSlot(RecipeIngredientRole.INPUT, 34, 11)
-                .addIngredients(ForgeTypes.FLUID_STACK, List.of(inputs.get(0).getFluids()))
+                .addIngredients(NeoForgeTypes.FLUID_STACK, List.of(inputs.get(0).getFluids()))
                 .setFluidRenderer(tankSize(TANK_MEDIUM), false, 16, 40)
                 .setOverlay(tankOverlay, 0, 0)
                 .addTooltipCallback(defaultFluidTooltip());
     }
 
     @Override
-    public void draw(CompressionFuel recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+    public void draw(RecipeHolder<CompressionFuel> recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
 
         super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
         tankBackground.draw(guiGraphics, 33, 10);

@@ -6,7 +6,7 @@
       "item": "thermal:rf_coil"
     },
     "G": {
-      "tag": "forge:gears/copper"
+      "tag": "c:gears/copper"
     },
     "I": {
       "tag": "forge:ingots/iron"
@@ -15,7 +15,7 @@
       "tag": "forge:dusts/redstone"
     },
     "Y": {
-      "tag": "forge:ingots/tin"
+      "tag": "c:ingots/tin"
     }
   },
   "pattern": [
@@ -25,6 +25,5 @@
   ],
   "result": {
     "item": "thermal:dynamo_gourmand"
-  },
-  "show_notification": true
+  }
 }

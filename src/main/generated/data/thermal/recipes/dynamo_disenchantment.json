@@ -6,7 +6,7 @@
       "item": "thermal:rf_coil"
     },
     "G": {
-      "tag": "forge:gears/silver"
+      "tag": "c:gears/silver"
     },
     "I": {
       "tag": "forge:ingots/iron"
@@ -25,6 +25,5 @@
   ],
   "result": {
     "item": "thermal:dynamo_disenchantment"
-  },
-  "show_notification": true
+  }
 }

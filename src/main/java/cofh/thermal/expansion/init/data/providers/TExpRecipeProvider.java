@@ -2,18 +2,15 @@ package cofh.thermal.expansion.init.data.providers;
 
 import cofh.lib.init.data.RecipeProviderCoFH;
 import cofh.lib.init.tags.ItemTagsCoFH;
-import cofh.thermal.lib.util.ThermalFlags;
 import cofh.thermal.lib.util.references.ThermalTags;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
-
-import java.util.function.Consumer;
 
 import static cofh.lib.util.constants.ModIds.ID_THERMAL;
 import static cofh.thermal.core.ThermalCore.ITEMS;
@@ -26,11 +23,10 @@ public class TExpRecipeProvider extends RecipeProviderCoFH {
     public TExpRecipeProvider(PackOutput output) {
 
         super(output, ID_THERMAL);
-        manager = ThermalFlags.manager();
     }
 
     @Override
-    protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
+    protected void buildRecipes(RecipeOutput consumer) {
 
         generateMachineRecipes(consumer);
         generateDynamoRecipes(consumer);
@@ -38,7 +34,7 @@ public class TExpRecipeProvider extends RecipeProviderCoFH {
         generateCraftingRecipes(consumer);
     }
 
-    private void generateMachineRecipes(Consumer<FinishedRecipe> consumer) {
+    private void generateMachineRecipes(RecipeOutput consumer) {
 
         var reg = ITEMS;
 
@@ -226,7 +222,7 @@ public class TExpRecipeProvider extends RecipeProviderCoFH {
                 .save(consumer);
     }
 
-    private void generateDynamoRecipes(Consumer<FinishedRecipe> consumer) {
+    private void generateDynamoRecipes(RecipeOutput consumer) {
 
         var reg = ITEMS;
 
@@ -317,7 +313,7 @@ public class TExpRecipeProvider extends RecipeProviderCoFH {
                 .save(consumer);
     }
 
-    private void generateCraftingRecipes(Consumer<FinishedRecipe> consumer) {
+    private void generateCraftingRecipes(RecipeOutput consumer) {
 
         var reg = ITEMS;
 

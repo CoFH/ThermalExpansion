@@ -20,6 +20,7 @@ import net.minecraft.world.inventory.ResultSlot;
 import net.minecraft.world.inventory.TransientCraftingContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingRecipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 
@@ -119,9 +120,9 @@ public class MachineCrafterMenu extends BlockEntityCoFHMenu {
         if (Utils.isServerWorld(level)) {
             ServerPlayer playerMP = (ServerPlayer) player;
             ItemStack stack = ItemStack.EMPTY;
-            Optional<CraftingRecipe> possibleRecipe = level.getRecipeManager().getRecipeFor(RecipeType.CRAFTING, craftMatrix, level);
+            Optional<RecipeHolder<CraftingRecipe>> possibleRecipe = level.getRecipeManager().getRecipeFor(RecipeType.CRAFTING, craftMatrix, level);
             if (possibleRecipe.isPresent()) {
-                stack = possibleRecipe.get().assemble(craftMatrix, level.registryAccess());
+                stack = possibleRecipe.get().value().assemble(craftMatrix, level.registryAccess());
                 craftResult.setRecipeUsed(craftResult.getRecipeUsed());
             }
             tile.markRecipeChanges();
@@ -138,10 +139,10 @@ public class MachineCrafterMenu extends BlockEntityCoFHMenu {
         Level level = tile.getLevel();
         ItemStack stack = ItemStack.EMPTY;
         if (level != null) {
-            Optional<CraftingRecipe> possibleRecipe = level.getRecipeManager().getRecipeFor(RecipeType.CRAFTING, craftMatrix, level);
+            Optional<RecipeHolder<CraftingRecipe>> possibleRecipe = level.getRecipeManager().getRecipeFor(RecipeType.CRAFTING, craftMatrix, level);
             if (possibleRecipe.isPresent()) {
                 craftResult.setRecipeUsed(possibleRecipe.get());
-                stack = possibleRecipe.get().assemble(craftMatrix, level.registryAccess());
+                stack = possibleRecipe.get().value().assemble(craftMatrix, level.registryAccess());
             }
         }
         craftResult.setItem(0, stack);

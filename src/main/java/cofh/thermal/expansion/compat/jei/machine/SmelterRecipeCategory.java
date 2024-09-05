@@ -16,6 +16,7 @@ import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,9 +28,9 @@ import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.catalystTooltip;
 import static cofh.thermal.core.compat.jei.TCoreJeiPlugin.catalyzedOutputTooltip;
 import static cofh.thermal.lib.util.ThermalIDs.ID_MACHINE_SMELTER;
 
-public class SmelterRecipeCategory extends ThermalRecipeCategory<SmelterRecipe> {
+public class SmelterRecipeCategory extends ThermalRecipeCategory<RecipeHolder<SmelterRecipe>> {
 
-    public SmelterRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<SmelterRecipe> type) {
+    public SmelterRecipeCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<RecipeHolder<SmelterRecipe>> type) {
 
         super(guiHelper, icon, type);
         energyMod = () -> SmelterRecipeManager.instance().getDefaultScale();
@@ -47,23 +48,23 @@ public class SmelterRecipeCategory extends ThermalRecipeCategory<SmelterRecipe> 
     }
 
     @Override
-    public RecipeType<SmelterRecipe> getRecipeType() {
+    public RecipeType<RecipeHolder<SmelterRecipe>> getRecipeType() {
 
         return type;
     }
 
     @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, SmelterRecipe recipe, IFocusGroup focuses) {
+    public void setRecipe(IRecipeLayoutBuilder builder, RecipeHolder<SmelterRecipe> recipe, IFocusGroup focuses) {
 
-        List<Ingredient> inputs = recipe.getInputItems();
-        List<ItemStack> outputs = new ArrayList<>(recipe.getOutputItems().size());
+        List<Ingredient> inputs = recipe.value().getInputItems();
+        List<ItemStack> outputs = new ArrayList<>(recipe.value().getOutputItems().size());
         List<ItemStack> catalysts = SmelterRecipeManager.instance().getCatalysts();
 
-        for (ItemStack stack : recipe.getOutputItems()) {
+        for (ItemStack stack : recipe.value().getOutputItems()) {
             outputs.add(cloneStack(stack));
         }
         for (int i = 0; i < outputs.size(); ++i) {
-            float chance = recipe.getOutputItemChances().get(i);
+            float chance = recipe.value().getOutputItemChances().get(i);
             if (chance > 1.0F) {
                 outputs.get(i).setCount((int) chance);
             }
@@ -80,7 +81,7 @@ public class SmelterRecipeCategory extends ThermalRecipeCategory<SmelterRecipe> 
         for (int i = 0; i < inputs.size(); ++i) {
             inputSlots[i].addIngredients(inputs.get(i));
         }
-        if (recipe.isCatalyzable()) {
+        if (recipe.value().isCatalyzable()) {
             catalystSlot.addItemStacks(catalysts)
                     .addTooltipCallback(catalystTooltip());
         }
@@ -91,12 +92,12 @@ public class SmelterRecipeCategory extends ThermalRecipeCategory<SmelterRecipe> 
 
         for (int i = 0; i < outputs.size(); ++i) {
             outputSlots[i].addItemStack(outputs.get(i))
-                    .addTooltipCallback(catalyzedOutputTooltip(recipe.getOutputItemChances().get(i), recipe.isCatalyzable()));
+                    .addTooltipCallback(catalyzedOutputTooltip(recipe.value().getOutputItemChances().get(i), recipe.value().isCatalyzable()));
         }
     }
 
     @Override
-    public void draw(SmelterRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+    public void draw(RecipeHolder<SmelterRecipe> recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
 
         super.draw(recipe, recipeSlotsView, guiGraphics, mouseX, mouseY);
 

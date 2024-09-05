@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_invar_plate": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "c:plates/invar"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "thermal:press_packing_2x2_die"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_invar_plate"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "thermal:press_packing_2x2_die"
+    ]
+  }
+}

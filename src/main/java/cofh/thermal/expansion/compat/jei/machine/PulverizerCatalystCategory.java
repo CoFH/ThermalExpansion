@@ -5,14 +5,15 @@ import cofh.thermal.lib.compat.jei.ThermalCatalystCategory;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.RecipeType;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 
 import static cofh.lib.util.helpers.StringHelper.getTextComponent;
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.lib.util.ThermalIDs.ID_MACHINE_PULVERIZER;
 
-public class PulverizerCatalystCategory extends ThermalCatalystCategory<PulverizerCatalyst> {
+public class PulverizerCatalystCategory extends ThermalCatalystCategory<RecipeHolder<PulverizerCatalyst>> {
 
-    public PulverizerCatalystCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<PulverizerCatalyst> type) {
+    public PulverizerCatalystCategory(IGuiHelper guiHelper, ItemStack icon, RecipeType<RecipeHolder<PulverizerCatalyst>> type) {
 
         super(guiHelper, icon, type);
 
@@ -20,7 +21,7 @@ public class PulverizerCatalystCategory extends ThermalCatalystCategory<Pulveriz
     }
 
     @Override
-    public RecipeType<PulverizerCatalyst> getRecipeType() {
+    public RecipeType<RecipeHolder<PulverizerCatalyst>> getRecipeType() {
 
         return type;
     }
