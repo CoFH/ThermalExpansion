@@ -23,8 +23,8 @@
     {
       "type": "forge:not",
       "value": {
-        "type": "thermal:flag",
-        "flag": "mod_quark"
+        "type": "cofh_core:flag_set",
+        "flag": "thermal:mod_quark"
       }
     }
   ]

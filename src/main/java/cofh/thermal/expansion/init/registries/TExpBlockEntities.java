@@ -2,8 +2,12 @@ package cofh.thermal.expansion.init.registries;
 
 import cofh.thermal.expansion.common.block.entity.dynamo.*;
 import cofh.thermal.expansion.common.block.entity.machine.*;
+import cofh.thermal.lib.common.block.entity.AugmentableBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 import static cofh.thermal.core.ThermalCore.BLOCKS;
@@ -18,6 +22,41 @@ public class TExpBlockEntities {
 
     public static void register() {
 
+    }
+
+    public static void capabilitySetup(RegisterCapabilitiesEvent event) {
+
+        var entities = List.of(
+                MACHINE_FURNACE_TILE.get(),
+                MACHINE_SAWMILL_TILE.get(),
+                MACHINE_PULVERIZER_TILE.get(),
+                MACHINE_SMELTER_TILE.get(),
+                MACHINE_INSOLATOR_TILE.get(),
+                MACHINE_CENTRIFUGE_TILE.get(),
+                MACHINE_PRESS_TILE.get(),
+                MACHINE_CRUCIBLE_TILE.get(),
+                MACHINE_CHILLER_TILE.get(),
+                MACHINE_REFINERY_TILE.get(),
+                MACHINE_PYROLYZER_TILE.get(),
+                MACHINE_BOTTLER_TILE.get(),
+                MACHINE_BREWER_TILE.get(),
+                MACHINE_CRYSTALLIZER_TILE.get(),
+                MACHINE_CRAFTER_TILE.get(),
+
+                DYNAMO_STIRLING_TILE.get(),
+                DYNAMO_COMPRESSION_TILE.get(),
+                DYNAMO_MAGMATIC_TILE.get(),
+                DYNAMO_NUMISMATIC_TILE.get(),
+                DYNAMO_LAPIDARY_TILE.get(),
+                DYNAMO_DISENCHANTMENT_TILE.get(),
+                DYNAMO_GOURMAND_TILE.get()
+        );
+
+        for (var type : entities) {
+            event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, type, (blockEntity, side) -> ((AugmentableBlockEntity) blockEntity).getItemHandlerCapability(side));
+            event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, type, (blockEntity, side) -> ((AugmentableBlockEntity) blockEntity).getFluidHandlerCapability(side));
+            event.registerBlockEntity(Capabilities.EnergyStorage.BLOCK, type, (blockEntity, side) -> ((AugmentableBlockEntity) blockEntity).getEnergyCapability(side));
+        }
     }
 
     public static final Supplier<BlockEntityType<?>> MACHINE_FURNACE_TILE = BLOCK_ENTITIES.register(ID_MACHINE_FURNACE, () -> BlockEntityType.Builder.of(MachineFurnaceBlockEntity::new, BLOCKS.get(ID_MACHINE_FURNACE)).build(null));

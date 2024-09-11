@@ -10,6 +10,7 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 
 import static cofh.lib.util.FlagManager.setFlag;
@@ -30,6 +31,7 @@ public class ThermalExpansion {
                 .addServerConfig(new ThermalDynamoConfig())
                 .addServerConfig(new ThermalMachineConfig());
 
+        modEventBus.addListener(this::capabilitySetup);
         modEventBus.addListener(this::menuScreenSetup);
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::clientSetup);
@@ -105,6 +107,11 @@ public class ThermalExpansion {
     }
 
     // region INITIALIZATION
+    private void capabilitySetup(RegisterCapabilitiesEvent event) {
+
+        TExpBlockEntities.capabilitySetup(event);
+    }
+
     private void menuScreenSetup(final RegisterMenuScreensEvent event) {
 
         event.register(MACHINE_FURNACE_CONTAINER.get(), MachineFurnaceScreen::new);
