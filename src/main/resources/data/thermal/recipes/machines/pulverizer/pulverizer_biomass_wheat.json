@@ -1,0 +1,14 @@
+{
+  "type": "thermal:pulverizer",
+  "ingredient": {
+    "tag": "forge:crops/wheat",
+    "count": 4
+  },
+  "result": [
+    {
+      "item": "thermal:biomass",
+      "chance": 1.25
+    }
+  ],
+  "experience": 0.1
+}

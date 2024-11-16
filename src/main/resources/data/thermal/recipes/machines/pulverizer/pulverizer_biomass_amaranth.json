@@ -1,0 +1,20 @@
+{
+  "type": "thermal:pulverizer",
+  "ingredient": {
+    "tag": "forge:crops/amaranth",
+    "count": 4
+  },
+  "result": [
+    {
+      "item": "thermal:biomass",
+      "chance": 1.5
+    }
+  ],
+  "experience": 0.1,
+  "conditions": [
+    {
+      "tag": "forge:crops/amaranth",
+      "type": "cofh_core:tag_exists"
+    }
+  ]
+}

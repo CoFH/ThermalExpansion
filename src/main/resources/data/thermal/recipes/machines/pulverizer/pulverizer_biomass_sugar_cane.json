@@ -1,0 +1,14 @@
+{
+  "type": "thermal:pulverizer",
+  "ingredient": {
+    "item": "minecraft:sugar_cane",
+    "count": 4
+  },
+  "result": [
+    {
+      "item": "thermal:biomass",
+      "chance": 1.5
+    }
+  ],
+  "experience": 0.1
+}

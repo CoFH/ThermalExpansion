@@ -1,0 +1,19 @@
+{
+  "type": "thermal:refinery",
+  "ingredient": {
+    "fluid": "thermal:biocrude",
+    "amount": 100
+  },
+  "result": [
+    {
+      "fluid": "thermal:refined_biofuel",
+      "amount": 50
+    },
+    {
+      "item": "thermal:sulfur_dust",
+      "chance": 0.05
+    }
+  ],
+  "energy": 6000,
+  "experience": 0.3
+}

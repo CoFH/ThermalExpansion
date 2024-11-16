@@ -1,0 +1,20 @@
+{
+  "type": "thermal:pulverizer",
+  "ingredient": {
+    "tag": "forge:crops/corn",
+    "count": 6
+  },
+  "result": [
+    {
+      "item": "thermal:biomass",
+      "chance": 1.25
+    }
+  ],
+  "experience": 0.1,
+  "conditions": [
+    {
+      "tag": "forge:crops/corn",
+      "type": "cofh_core:tag_exists"
+    }
+  ]
+}

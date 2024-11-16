@@ -1,0 +1,14 @@
+{
+  "type": "thermal:pulverizer",
+  "ingredient": {
+    "item": "minecraft:bamboo",
+    "count": 8
+  },
+  "result": [
+    {
+      "item": "thermal:biomass",
+      "chance": 1.0
+    }
+  ],
+  "experience": 0.1
+}

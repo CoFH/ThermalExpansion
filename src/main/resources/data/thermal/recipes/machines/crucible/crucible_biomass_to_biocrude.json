@@ -1,0 +1,14 @@
+{
+  "type": "thermal:crucible",
+  "ingredient": {
+    "item": "thermal:biomass"
+  },
+  "result": [
+    {
+      "fluid": "thermal:biocrude",
+      "amount": 100
+    }
+  ],
+  "energy": 4000,
+  "experience": 0.1
+}

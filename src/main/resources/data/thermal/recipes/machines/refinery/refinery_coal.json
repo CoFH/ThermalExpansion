@@ -1,0 +1,23 @@
+{
+  "type": "thermal:refinery",
+  "ingredient": {
+    "fluid": "thermal:coal",
+    "amount": 100
+  },
+  "result": [
+    {
+      "fluid": "thermal:heavy_oil",
+      "amount": 60
+    },
+    {
+      "fluid": "thermal:light_oil",
+      "amount": 40
+    },
+    {
+      "item": "thermal:tar",
+      "chance": 0.10
+    }
+  ],
+  "energy": 6000,
+  "experience": 0.2
+}
