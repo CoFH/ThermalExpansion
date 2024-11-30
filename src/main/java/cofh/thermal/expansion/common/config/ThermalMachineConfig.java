@@ -134,7 +134,7 @@ public class ThermalMachineConfig implements IBaseConfig {
             builder.pop();
         }
         if (getFlag(ID_MACHINE_CRYSTALLIZER).get()) {
-            builder.push("Brewer");
+            builder.push("Crystallizer");
 
             machineCrystallizerPower = builder
                     .comment("This sets the base power consumption (RF/t) for the Crystallizer.")
