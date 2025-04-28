@@ -95,7 +95,7 @@ public class CrystallizerRecipeCategory extends ThermalRecipeCategory<Crystalliz
         tankBackground.draw(guiGraphics, 24, 10);
         speedBackground.draw(guiGraphics, 61, 34);
 
-        if (!recipe.getInputFluids().isEmpty()) {
+        if (!recipe.getInputFluids().isEmpty() && recipe.getInputFluids().get(0).getFluids().length > 0) {
             RenderHelper.drawFluid(guiGraphics, 95, 24, recipe.getInputFluids().get(0).getFluids()[0], 24, 16);
             progressFluidBackground.draw(guiGraphics, 95, 24);
             progressFluid.draw(guiGraphics, 95, 24);

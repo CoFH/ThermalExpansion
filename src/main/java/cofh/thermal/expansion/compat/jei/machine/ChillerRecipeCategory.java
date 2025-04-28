@@ -91,7 +91,7 @@ public class ChillerRecipeCategory extends ThermalRecipeCategory<ChillerRecipe> 
         tankBackground.draw(guiGraphics, 24, 10);
         speedBackground.draw(guiGraphics, 52, 34);
 
-        if (!recipe.getInputFluids().isEmpty()) {
+        if (!recipe.getInputFluids().isEmpty() && recipe.getInputFluids().get(0).getFluids().length > 0) {
             RenderHelper.drawFluid(guiGraphics, 78, 24, recipe.getInputFluids().get(0).getFluids()[0], 24, 16);
             progressFluidBackground.draw(guiGraphics, 78, 24);
             progressFluid.draw(guiGraphics, 78, 24);

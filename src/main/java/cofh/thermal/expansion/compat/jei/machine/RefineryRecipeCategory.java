@@ -128,7 +128,7 @@ public class RefineryRecipeCategory extends ThermalRecipeCategory<RefineryRecipe
         tankOutputB.draw(guiGraphics, 143, 11);
         speedBackground.draw(guiGraphics, 29, 40);
 
-        if (!recipe.getInputFluids().isEmpty()) {
+        if (!recipe.getInputFluids().isEmpty() && recipe.getInputFluids().get(0).getFluids().length > 0) {
             RenderHelper.drawFluid(guiGraphics, 57, 22, recipe.getInputFluids().get(0).getFluids()[0], 24, 16);
             progressFluidBackground.draw(guiGraphics, 57, 22);
             progressFluid.draw(guiGraphics, 57, 22);

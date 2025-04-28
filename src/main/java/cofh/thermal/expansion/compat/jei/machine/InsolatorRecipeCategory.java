@@ -117,7 +117,7 @@ public class InsolatorRecipeCategory extends ThermalRecipeCategory<InsolatorReci
         tankBackground.draw(guiGraphics, 24, 10);
         speedBackground.draw(guiGraphics, 52, 24);
 
-        if (!recipe.getInputFluids().isEmpty()) {
+        if (!recipe.getInputFluids().isEmpty() && recipe.getInputFluids().get(0).getFluids().length > 0) {
             RenderHelper.drawFluid(guiGraphics, 76, 24, recipe.getInputFluids().get(0).getFluids()[0], 24, 16);
             progressFluidBackground.draw(guiGraphics, 76, 24);
             progressFluid.draw(guiGraphics, 76, 24);

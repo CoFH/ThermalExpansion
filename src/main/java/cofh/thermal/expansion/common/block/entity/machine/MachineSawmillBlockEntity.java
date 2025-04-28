@@ -51,6 +51,13 @@ public class MachineSawmillBlockEntity extends MachineBlockEntity {
         return curRecipe != null;
     }
 
+    @Override
+    protected void resolveInputs() {
+
+        // Input Items
+        inputSlot.modify(-itemInputCounts.get(0));
+    }
+
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
