@@ -47,7 +47,7 @@ public class PotionFluidRecipeManagerPlugin implements IRecipeManagerPlugin {
     @Override
     public <T, V> List<T> getRecipes(IRecipeCategory<T> recipeCategory, IFocus<V> focus) {
 
-        if (recipeCategory instanceof BottlerRecipeCategory) {
+        if (BottlerRecipeManager.instance().getDefaultPotionRecipes() && recipeCategory instanceof BottlerRecipeCategory) {
             List<BottlerRecipe> retList = new ArrayList<>();
             if (focus.getRole() == RecipeIngredientRole.INPUT) {
                 var fluidIngredient = focus.getTypedValue().getIngredient(ForgeTypes.FLUID_STACK);
